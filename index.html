@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imtihon Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Beginner Imtihon Savollari</h1>
+        </header>
+
+        <section class="cards-wrapper">
+            <h3>Kartani tanlang:</h3>
+            <nav class="cards-nav" id="cards-nav">
+                <!-- Kartalar tugmalari JS orqali qo'shiladi -->
+            </nav>
+        </section>
+
+        <section class="parts-wrapper">
+            <h3>Qismni tanlang:</h3>
+            <nav class="parts-nav">
+                <button class="part-btn active" data-part="Part 1">Part 1</button>
+                <button class="part-btn" data-part="Part 2">Part 2</button>
+            </nav>
+        </section>
+
+        <main id="content-area">
+            <!-- Savollar shu yerga chiqadi -->
+            <div id="loader" class="loader">Yuklanmoqda...</div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

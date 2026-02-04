@@ -1,0 +1,642 @@
+[
+  {
+    "Unnamed: 0":"Card A",
+    "Unnamed: 1":"Part 1",
+    "Question":"1.  Do you like shopping?",
+    "UZ tarjima:":"Xarid qilishni yoqtirasanmi?",
+    "Answer (EN):":"Yes, I like shopping.\nI like buying new clothes.\nShopping is fun.",
+    "Javob (UZ):":"Ha, men xarid qilishni yoqtiraman.\nMen yangi kiyimlar sotib olishni yaxshi ko‘raman.\nXarid qilish qiziqarli."
+  },
+  {
+    "Unnamed: 0":"Card A",
+    "Unnamed: 1":"Part 1",
+    "Question":"2.  Do you go shopping on Sundays?",
+    "UZ tarjima:":"Yakshanba kunlari xarid qilasanmi?",
+    "Answer (EN):":"Yes, I go shopping on Sundays.\nI go with my family.\nWe buy food and clothes.",
+    "Javob (UZ):":"Ha, men yakshanba kunlari xarid qilaman.\nMen oilam bilan boraman.\nBiz ovqat va kiyim olamiz."
+  },
+  {
+    "Unnamed: 0":"Card A",
+    "Unnamed: 1":"Part 1",
+    "Question":"3.  Do you buy your clothes online?",
+    "UZ tarjima:":"Kiyimlaringni internetdan sotib olasanmi?",
+    "Answer (EN):":"Sometimes I buy clothes online.\nIt is easy and fast.\nI like online shopping.",
+    "Javob (UZ):":"Ba’zan men kiyimlarni internetdan olaman.\nBu oson va tez.\nMenga onlayn xarid yoqadi."
+  },
+  {
+    "Unnamed: 0":"Card A",
+    "Unnamed: 1":"Part 1",
+    "Question":"4.  Are clothes cheap in your country?",
+    "UZ tarjima:":"Sening mamlakatingda kiyimlar arzonmi?",
+    "Answer (EN):":"Clothes are not very cheap in my country.\nSome clothes are expensive.\nI buy clothes on sale.",
+    "Javob (UZ):":"Mening mamlakatimda kiyimlar juda arzon emas.\nBa’zi kiyimlar qimmat.\nMen chegirmada kiyim sotib olaman."
+  },
+  {
+    "Unnamed: 0":"Card A",
+    "Unnamed: 1":"Part 2",
+    "Question":"1.  How do you spend your free time?",
+    "UZ tarjima:":"Bo‘sh vaqtingni qanday o‘tkazasan?",
+    "Answer (EN):":"I read books and cook food for my family.",
+    "Javob (UZ):":"Men kitob o‘qiyman va oilam uchun ovqat pishiraman."
+  },
+  {
+    "Unnamed: 0":"Card A",
+    "Unnamed: 1":"Part 2",
+    "Question":"2.  How often do you go shopping?",
+    "UZ tarjima:":"Qanchalik tez-tez xarid qilasan?",
+    "Answer (EN):":"I go shopping once a week.\nI buy food and clothes.",
+    "Javob (UZ):":"Men haftasiga bir marta xarid qilaman. \nOziq-ovqat va kiyim sotib olaman."
+  },
+  {
+    "Unnamed: 0":"Card A",
+    "Unnamed: 1":"Part 2",
+    "Question":"3.  Speak about a shopping centre you like.",
+    "UZ tarjima:":"Yoqtirgan savdo markazing haqida gapir.",
+    "Answer (EN):":"I like “City Mall”. \nIt is modern and comfortable.\nI go there with my family.",
+    "Javob (UZ):":"Men “City Mall”ni yoqtiraman. \nU zamonaviy va qulay. \nMen oilam bilan boraman."
+  },
+  {
+    "Unnamed: 0":"Card A",
+    "Unnamed: 1":"Part 2",
+    "Question":"4.  Speak about your day.",
+    "UZ tarjima:":"Kuning haqida gapir.",
+    "Answer (EN):":"I wake up at 7 o’clock.\nI go to work at 9 o’clock and come home at 8 p.m.",
+    "Javob (UZ):":"Men soat 7 da turaman. \nMen 9 da ishga boraman va 8 da uyga qaytaman."
+  },
+  {
+    "Unnamed: 0":"Card B",
+    "Unnamed: 1":"Part 1",
+    "Question":"1.  What is your hobby?",
+    "UZ tarjima:":"Sizning hobbiingiz nima?",
+    "Answer (EN):":"My hobbies are playing football and reading books.",
+    "Javob (UZ):":"Mening hobbilarim futbol o‘ynash va kitob o‘qish."
+  },
+  {
+    "Unnamed: 0":"Card B",
+    "Unnamed: 1":"Part 1",
+    "Question":"2.  Do you like cooking at home?",
+    "UZ tarjima:":"Uyda ovqat pishirishni yoqtirasizmi?",
+    "Answer (EN):":"Yes, I like cooking.\nI enjoy making plov.",
+    "Javob (UZ):":"Ha, men ovqat pishirishni yoqtiraman.\nPlov qilishni yaxshi ko‘raman."
+  },
+  {
+    "Unnamed: 0":"Card B",
+    "Unnamed: 1":"Part 1",
+    "Question":"3.  Do you do morning exercises?",
+    "UZ tarjima:":"Ertalab mashq qilasizmi?",
+    "Answer (EN):":"Yes, I do morning exercises every day.",
+    "Javob (UZ):":"Ha, men har kuni ertalab mashq qilaman."
+  },
+  {
+    "Unnamed: 0":"Card B",
+    "Unnamed: 1":"Part 1",
+    "Question":"4.  Do you like watching films?",
+    "UZ tarjima:":"Film tomosha qilishni yoqtirasizmi?",
+    "Answer (EN):":"Yes, I like watching films.\nMy favourite film is Prison Break.",
+    "Javob (UZ):":"Ha, men film tomosha qilishni yoqtiraman.\nMening sevimli filmim Prison Break."
+  },
+  {
+    "Unnamed: 0":"Card B",
+    "Unnamed: 1":"Part 2",
+    "Question":"1.  Speak about your last holiday.",
+    "UZ tarjima:":"Oxirgi ta’tilingiz haqida gapiring.",
+    "Answer (EN):":"I went on holiday in July 2025.\nI rested in the mountains.",
+    "Javob (UZ):":"Men 2025-yil iyul oyida ta’tilga chiqdim.\nTog‘da dam oldim."
+  },
+  {
+    "Unnamed: 0":"Card B",
+    "Unnamed: 1":"Part 2",
+    "Question":"2.  Speak about your last birthday party.",
+    "UZ tarjima:":"Oxirgi tug‘ilgan kuningiz haqida gapiring.",
+    "Answer (EN):":"I celebrated my birthday at home.\nMy family was with me.",
+    "Javob (UZ):":"Men tug‘ilgan kunimni uyda nishonladim.\nOilam yonimda edi."
+  },
+  {
+    "Unnamed: 0":"Card B",
+    "Unnamed: 1":"Part 2",
+    "Question":"3.  Speak about your house.",
+    "UZ tarjima:":"Uyingiz haqida gapiring.",
+    "Answer (EN):":"My house is small but comfortable.\nI live with my family.",
+    "Javob (UZ):":"Mening uyim kichik, lekin qulay. \nMen oilam bilan yashayman."
+  },
+  {
+    "Unnamed: 0":"Card B",
+    "Unnamed: 1":"Part 2",
+    "Question":"4.  Talk about a book you like.",
+    "UZ tarjima:":"Siz yoqtirgan kitob haqida gapiring.",
+    "Answer (EN):":"I like reading books.\nMy favourite book is Rich Dad Poor Dad.\nI read it three times.",
+    "Javob (UZ):":"Men kitob o‘qishni yoqtiraman.\nSevimli kitobim Rich Dad Poor Dad.\nMen uni uch marta o‘qiganman."
+  },
+  {
+    "Unnamed: 0":"Card C",
+    "Unnamed: 1":"Part 1",
+    "Question":"1.  Do you often get up early?",
+    "UZ tarjima:":"Siz tez-tez erta turasizmi?",
+    "Answer (EN):":"Yes, I do.\nI get up at 7 every day.",
+    "Javob (UZ):":"Ha, turaman. \nMen har kuni soat 7 da turaman."
+  },
+  {
+    "Unnamed: 0":"Card C",
+    "Unnamed: 1":"Part 1",
+    "Question":"2.  Do you always have breakfast with your family?",
+    "UZ tarjima:":"Siz doimo oilangiz bilan nonushta qilasizmi?",
+    "Answer (EN):":"Yes, I do. I always have breakfast with my family.",
+    "Javob (UZ):":"Ha, qilaman.\nMen doimo oilam bilan nonushta qilaman."
+  },
+  {
+    "Unnamed: 0":"Card C",
+    "Unnamed: 1":"Part 1",
+    "Question":"3.  What time do you go to school \/ university \/ work?",
+    "UZ tarjima:":"Siz maktabga \/ universitetga \/ ishga soat nechada borasiz?",
+    "Answer (EN):":"I go to work at 8.",
+    "Javob (UZ):":"Men ishga soat 8 da boraman."
+  },
+  {
+    "Unnamed: 0":"Card C",
+    "Unnamed: 1":"Part 1",
+    "Question":"4.  What time do you have dinner?",
+    "UZ tarjima:":"Siz kechki ovqatni soat nechada yeysiz?",
+    "Answer (EN):":"I do not have dinner.",
+    "Javob (UZ):":"Men kechki ovqat yemayman."
+  },
+  {
+    "Unnamed: 0":"Card C",
+    "Unnamed: 1":"Part 2",
+    "Question":"1.  What do you do on Saturdays and Sundays?",
+    "UZ tarjima:":"Shanba va yakshanba kunlari nima qilasiz?",
+    "Answer (EN):":"I read books and cook food for my family.",
+    "Javob (UZ):":"Men kitob o‘qiyman va oilam uchun ovqat pishiraman."
+  },
+  {
+    "Unnamed: 0":"Card C",
+    "Unnamed: 1":"Part 2",
+    "Question":"2.  Speak about the day of the week you do not like.",
+    "UZ tarjima:":"Siz yoqtirmaydigan hafta kuni haqida gapiring.",
+    "Answer (EN):":"I do not like Monday. I do not know why, but it is a hard day.",
+    "Javob (UZ):":"Menga dushanba kuni yoqmaydi. Nima uchunligini bilmayman, lekin u og‘ir o‘tadi."
+  },
+  {
+    "Unnamed: 0":"Card C",
+    "Unnamed: 1":"Part 2",
+    "Question":"3.  Which days of the week do you have your English lessons?",
+    "UZ tarjima:":"Siz ingliz tili darslarini haftaning qaysi kunlari o‘tasiz?",
+    "Answer (EN):":"I have English lessons on Tuesday, Thursday, and Saturday at 6:30 p.m.",
+    "Javob (UZ):":"Men ingliz tili darslarini seshanba, payshanba va shanba kunlari soat 6:30 da o‘qiyman."
+  },
+  {
+    "Unnamed: 0":"Card C",
+    "Unnamed: 1":"Part 2",
+    "Question":"4.  How often do you meet your friends? What do you do with them?",
+    "UZ tarjima:":"Do‘stlaringiz bilan qanchalik tez-tez uchrashasiz? Ular bilan nima qilasiz?",
+    "Answer (EN):":"I meet my friends once a month. \nWe remember our childhood.",
+    "Javob (UZ):":"Men do‘stlarim bilan oyda bir marta uchrashaman.\nUlar bilan yoshlikni eslaymiz."
+  },
+  {
+    "Unnamed: 0":"Card D",
+    "Unnamed: 1":"Part 1",
+    "Question":"1.  Do you live in a house or flat?",
+    "UZ tarjima:":"Siz uyda yashaysiz yoki kvartirada?",
+    "Answer (EN):":"I live in a house.",
+    "Javob (UZ):":"Men uyda yashayman."
+  },
+  {
+    "Unnamed: 0":"Card D",
+    "Unnamed: 1":"Part 1",
+    "Question":"2.  How many rooms are there in your house\/flat?",
+    "UZ tarjima:":"Sizning uyingizda\/qvartirangizda nechta xona bor?",
+    "Answer (EN):":"There are five bedrooms, two living rooms, two bathrooms, one toilet, and one kitchen.",
+    "Javob (UZ):":"Mening uymda 5 ta yotoq xonasi, 2 ta mehmonxona, 2 ta hammom, 1 ta hojatxona va 1 ta oshxona bor."
+  },
+  {
+    "Unnamed: 0":"Card D",
+    "Unnamed: 1":"Part 1",
+    "Question":"3.  Which room do you like?",
+    "UZ tarjima:":"Qaysi xona sizga yoqadi?",
+    "Answer (EN):":"I like my own room.",
+    "Javob (UZ):":"Men o‘zimning xonamni yoqtiraman."
+  },
+  {
+    "Unnamed: 0":"Card D",
+    "Unnamed: 1":"Part 1",
+    "Question":"4.  Why do you like this room?",
+    "UZ tarjima:":"Nima uchun bu xona sizga yoqadi?",
+    "Answer (EN):":"I like it because it is quiet and comfortable.",
+    "Javob (UZ):":"Men uni yoqtiraman, chunki u tinch va qulay."
+  },
+  {
+    "Unnamed: 0":"Card D",
+    "Unnamed: 1":"Part 2",
+    "Question":"1.  What facilities are there in your house\/flat?",
+    "UZ tarjima:":"Sizning uyingizda\/qvartirangizda qanday qulayliklar bor?",
+    "Answer (EN):":"My house has free internet and an air conditioner. \nWe have a beautiful garden.",
+    "Javob (UZ):":"Mening uyimda tekin internet va konditsioner bor.\nChiroyli bog‘imiz ham bor."
+  },
+  {
+    "Unnamed: 0":"Card D",
+    "Unnamed: 1":"Part 2",
+    "Question":"2.  Can you speak about your living room?",
+    "UZ tarjima:":"Mehmonxonangiz haqida gapira olasizmi?",
+    "Answer (EN):":"My living room is big and comfortable. \nThere is a sofa, a table, and a TV.",
+    "Javob (UZ):":"Mening mehmonxonam katta va qulay. Unda divan, stol va televizor bor."
+  },
+  {
+    "Unnamed: 0":"Card D",
+    "Unnamed: 1":"Part 2",
+    "Question":"3.  Would you like to move house? Why?",
+    "UZ tarjima:":"Siz uyni almashtirmoqchimisiz? Nima uchun?",
+    "Answer (EN):":"No, I do not want to move.\nI like my house.",
+    "Javob (UZ):":"Yo‘q, men uyni almashtirmoqchi emasman.\nMenga uyim yoqadi."
+  },
+  {
+    "Unnamed: 0":"Card D",
+    "Unnamed: 1":"Part 2",
+    "Question":"4.  What are expensive possessions in the house for you? Why?",
+    "UZ tarjima:":"Uyingizdagi siz uchun qimmat buyumlar nima? Nima uchun?",
+    "Answer (EN):":"My TV and computer are expensive for me because I use them every day.",
+    "Javob (UZ):":"Mening televizor va kompyuterim qimmat, chunki men ularni har kuni ishlataman."
+  },
+  {
+    "Unnamed: 0":"Card E",
+    "Unnamed: 1":"Part 1",
+    "Question":"1.  Do you like going to cafés?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card E",
+    "Unnamed: 1":"Part 1",
+    "Question":"2.  What cafés are popular in your town?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card E",
+    "Unnamed: 1":"Part 1",
+    "Question":"3.  What café food and drinks do you like?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card E",
+    "Unnamed: 1":"Part 1",
+    "Question":"4.  Are cafes expensive in your country\/city?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card E",
+    "Unnamed: 1":"Part 2",
+    "Question":"1.  What are your plans for the future?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card E",
+    "Unnamed: 1":"Part 2",
+    "Question":"2.  What are you going to do after the exam?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card E",
+    "Unnamed: 1":"Part 2",
+    "Question":"3.  Are you going to study in Uzbekistan or in another country?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card E",
+    "Unnamed: 1":"Part 2",
+    "Question":"4.  What are you going to do this weekend?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card F",
+    "Unnamed: 1":"Part 1",
+    "Question":"1.  Do you have good neighbours? Who are they?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card F",
+    "Unnamed: 1":"Part 1",
+    "Question":"2.  What are their jobs?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card F",
+    "Unnamed: 1":"Part 1",
+    "Question":"3.  Do you often talk to your neighbours?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card F",
+    "Unnamed: 1":"Part 1",
+    "Question":"4.  Do you help your neighbours?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card F",
+    "Unnamed: 1":"Part 2",
+    "Question":"1.  Speak about your next door neighbour.",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card F",
+    "Unnamed: 1":"Part 2",
+    "Question":"2.  When do you usually meet your neighbour?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card F",
+    "Unnamed: 1":"Part 2",
+    "Question":"3.  Has your neighbor got a pet?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card F",
+    "Unnamed: 1":"Part 2",
+    "Question":"4.  Do you like your neighbour? Why?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card G",
+    "Unnamed: 1":"Part 1",
+    "Question":"1.  How many people are there in your family?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card G",
+    "Unnamed: 1":"Part 1",
+    "Question":"2.  Do you have any brothers or sisters? What are their names?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card G",
+    "Unnamed: 1":"Part 1",
+    "Question":"3.  What are your parents’ jobs?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card G",
+    "Unnamed: 1":"Part 1",
+    "Question":"4.  What do you like doing with your family?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card G",
+    "Unnamed: 1":"Part 2",
+    "Question":"1.  What is your favourite day of the week?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card G",
+    "Unnamed: 1":"Part 2",
+    "Question":"2.  What do you do with your family on Sundays?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card G",
+    "Unnamed: 1":"Part 2",
+    "Question":"3.  Where did you go with your family last time?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card G",
+    "Unnamed: 1":"Part 2",
+    "Question":"4.  How did you spend your time with your family?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card H",
+    "Unnamed: 1":"Part 1",
+    "Question":"1.  Do you have friends?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card H",
+    "Unnamed: 1":"Part 1",
+    "Question":"2.  Do you often meet with friends?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card H",
+    "Unnamed: 1":"Part 1",
+    "Question":"3.  Who is your best friend?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card H",
+    "Unnamed: 1":"Part 1",
+    "Question":"4.  What does your friend like?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card H",
+    "Unnamed: 1":"Part 2",
+    "Question":"1.  Do you like meeting with your friends?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card H",
+    "Unnamed: 1":"Part 2",
+    "Question":"2.  When did you meet with them last time? And where?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card H",
+    "Unnamed: 1":"Part 2",
+    "Question":"3.  What did you do together?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card H",
+    "Unnamed: 1":"Part 2",
+    "Question":"4.  Did you like it?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card I",
+    "Unnamed: 1":"Part 1",
+    "Question":"1.  Have you got a job or are you a student?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card I",
+    "Unnamed: 1":"Part 1",
+    "Question":"2.  Which job is your dream job?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card I",
+    "Unnamed: 1":"Part 1",
+    "Question":"3.  Do you work in an office?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card I",
+    "Unnamed: 1":"Part 1",
+    "Question":"4.  Is your job in hospital?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card I",
+    "Unnamed: 1":"Part 2",
+    "Question":"1.  How do you usually go to work or school?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card I",
+    "Unnamed: 1":"Part 2",
+    "Question":"2.  What is your favorite type of transport?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card I",
+    "Unnamed: 1":"Part 2",
+    "Question":"3.  Talk about a trip you had.",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card I",
+    "Unnamed: 1":"Part 2",
+    "Question":"4.  How often do people use public transport?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card J",
+    "Unnamed: 1":"Part 1",
+    "Question":"1.  Is it sunny today?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card J",
+    "Unnamed: 1":"Part 1",
+    "Question":"2.  Do you like rainy weather?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card J",
+    "Unnamed: 1":"Part 1",
+    "Question":"3.  Is it hot in the summer?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card J",
+    "Unnamed: 1":"Part 1",
+    "Question":"4.  What is the weather like in winter?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card J",
+    "Unnamed: 1":"Part 2",
+    "Question":"1.  Do you eat at fast food restaurants?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card J",
+    "Unnamed: 1":"Part 2",
+    "Question":"2.  What do you order at a restaurant?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card J",
+    "Unnamed: 1":"Part 2",
+    "Question":"3.  Describe a visit to a cafe. What did you eat?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  },
+  {
+    "Unnamed: 0":"Card J",
+    "Unnamed: 1":"Part 2",
+    "Question":"4.  What do you like eating at a restaurant?",
+    "UZ tarjima:":null,
+    "Answer (EN):":null,
+    "Javob (UZ):":null
+  }
+]
