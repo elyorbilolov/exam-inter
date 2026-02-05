@@ -3,25 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imtihon Dashboard</title>
+    <title>English Exam</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js');
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Beginner Imtihon Savollari</h1>
+            <h1>English Exam</h1>
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                🌙
+            </button>
         </header>
 
+        <div class="progress-container">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+
         <section class="cards-wrapper">
-            <h3>Kartani tanlang:</h3>
             <nav class="cards-nav" id="cards-nav">
                 <!-- Kartalar tugmalari JS orqali qo'shiladi -->
             </nav>
         </section>
 
         <section class="parts-wrapper">
-            <h3>Qismni tanlang:</h3>
             <nav class="parts-nav">
                 <button class="part-btn active" data-part="Part 1">Part 1</button>
                 <button class="part-btn" data-part="Part 2">Part 2</button>
