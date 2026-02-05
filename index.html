@@ -4,15 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English Exam</title>
-    <!-- Use a fresh timestamp to force CSS refresh -->
-    <link rel="stylesheet" href="app.css?update=05021305">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js');
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>English Exam</h1>
-            <button id="theme-toggle" class="theme-toggle-btn">🌙</button>
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                🌙
+            </button>
         </header>
 
         <div class="progress-container">
@@ -20,7 +27,9 @@
         </div>
 
         <section class="cards-wrapper">
-            <nav class="cards-nav" id="cards-nav"></nav>
+            <nav class="cards-nav" id="cards-nav">
+                <!-- Kartalar tugmalari JS orqali qo'shiladi -->
+            </nav>
         </section>
 
         <section class="parts-wrapper">
@@ -31,21 +40,11 @@
         </section>
 
         <main id="content-area">
+            <!-- Savollar shu yerga chiqadi -->
             <div id="loader" class="loader">Yuklanmoqda...</div>
         </main>
     </div>
 
-    <!-- Use a fresh timestamp to force JS refresh -->
-    <script src="app.js?update=05021305"></script>
-    <script>
-        // Unregister any old service workers to break the cache loop
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                for(let registration of registrations) {
-                    registration.unregister();
-                }
-            });
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
