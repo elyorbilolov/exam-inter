@@ -112,8 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        updateProgress(0, filtered.length);
-        let seenCount = 0;
+        updateProgress(100, 100);
 
         filtered.forEach((item, index) => {
             if (!item["Sovollar"]) return;
@@ -134,39 +133,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="question-section">
                     <span class="en-text">${item["Sovollar"]}</span>
-                    <span class="uz-text">(${item["Sovollar (UZ)"] || "Tarjima yo'q"})</span>
+                    <span class="uz-text">${item["Sovollar (UZ)"] || ""}</span>
                 </div>
-                <button class="show-answer-btn">Javobni ko'rsat</button>
-                <div class="answer-section hidden">
+                <div class="answer-section">
                     <div class="answer-content">
-                        <span class="en-text" style="color: var(--primary); font-weight: 600;">${cleanAnswerEN}</span>
-                        <span class="uz-text" style="display: block; margin-top: 5px;">(${cleanAnswerUZ})</span>
+                        <span class="en-text">${cleanAnswerEN}</span>
+                        <span class="uz-text">(${cleanAnswerUZ})</span>
                     </div>
                 </div>
             `;
 
-            const showBtn = cardEl.querySelector('.show-answer-btn');
-            const ansSection = cardEl.querySelector('.answer-section');
             const audioBtn = cardEl.querySelector('.audio-btn');
             const favBtn = cardEl.querySelector('.fav-btn');
 
-            showBtn.addEventListener('click', () => {
-                ansSection.classList.toggle('hidden');
-                showBtn.textContent = ansSection.classList.contains('hidden') ? "Javobni ko'rsat" : "Javobni yashirish";
-                
-                if (!ansSection.classList.contains('hidden') && !cardEl.dataset.seen) {
-                    cardEl.dataset.seen = "true";
-                    seenCount++;
-                    updateProgress(seenCount, filtered.length);
-                }
-            });
-
             audioBtn.addEventListener('click', () => {
                 speak(item["Sovollar"]);
-                // Optional: speak answer too if visible
-                if (!ansSection.classList.contains('hidden')) {
-                    setTimeout(() => speak(item["Jovoblar (EN)"]), 1500);
-                }
+                setTimeout(() => speak(item["Jovoblar (EN)"]), 1500);
             });
 
             favBtn.addEventListener('click', () => {
