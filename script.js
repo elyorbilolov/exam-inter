@@ -13,7 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) throw new Error('JSON faylni yuklab bo\'lmadi');
             examData = await response.json();
             
-            const uniqueCards = [...new Set(examData.map(item => item["Unnamed: 0"]))].filter(Boolean);
+            const uniqueCards = [];
+            const cardMap = new Map();
+            
+            examData.forEach(item => {
+                const cardName = item["Mavzular"];
+                const topicName = item["Mavzular nomi"];
+                if (cardName && !cardMap.has(cardName)) {
+                    cardMap.set(cardName, topicName);
+                    uniqueCards.push({ name: cardName, topic: topicName });
+                }
+            });
+
             renderCardButtons(uniqueCards);
             renderContent(currentCard, currentPart);
         } catch (error) {
@@ -25,12 +36,17 @@ document.addEventListener('DOMContentLoaded', () => {
         cardsNav.innerHTML = '';
         cards.forEach(card => {
             const btn = document.createElement('button');
-            btn.className = `card-btn ${card === currentCard ? 'active' : ''}`;
-            btn.textContent = card;
+            btn.className = `card-btn ${card.name === currentCard ? 'active' : ''}`;
+            btn.innerHTML = `
+                <div class="card-btn-content">
+                    <span class="card-title">${card.name}</span>
+                    <span class="card-topic">${card.topic}</span>
+                </div>
+            `;
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.card-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                currentCard = card;
+                currentCard = card.name;
                 renderContent(currentCard, currentPart);
             });
             cardsNav.appendChild(btn);
@@ -40,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderContent(card, part) {
         contentArea.innerHTML = '';
         const filtered = examData.filter(item => 
-            item["Unnamed: 0"] === card && item["Unnamed: 1"] === part
+            item["Mavzular"] === card && item["Qism"] === part
         );
 
         if (filtered.length === 0) {
@@ -49,19 +65,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         filtered.forEach(item => {
-            if (!item.Question) return;
+            if (!item["Sovollar"]) return;
             
             const cardEl = document.createElement('div');
             cardEl.className = 'question-card';
 
-            // \n larni bo'shliqqa almashtiramiz, shunda matn yonma-yon chiqadi
-            const cleanAnswerEN = item["Answer (EN):"] ? item["Answer (EN):"].replace(/\n/g, ' ') : "No answer";
-            const cleanAnswerUZ = item["Javob (UZ):"] ? item["Javob (UZ):"].replace(/\n/g, ' ') : "Javob yo'q";
+            const cleanAnswerEN = item["Jovoblar (EN)"] ? item["Jovoblar (EN)"].replace(/\n/g, '<br>') : "No answer";
+            const cleanAnswerUZ = item["Jovoblar (UZ)"] ? item["Jovoblar (UZ)"].replace(/\n/g, '<br>') : "Javob yo'q";
 
             const questionHtml = `
                 <div class="question-section">
-                    <span class="en-text">${item.Question}</span>
-                    <span class="uz-text">(${item["UZ tarjima:"] || "Tarjima yo'q"})</span>
+                    <span class="en-text">${item["Sovollar"]}</span>
+                    <span class="uz-text">(${item["Sovollar (UZ)"] || "Tarjima yo'q"})</span>
                 </div>
                 <div class="answer-section">
                     <span class="ans-label">Javob / Answer:</span>
