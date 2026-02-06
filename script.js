@@ -4,12 +4,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const partButtons = document.querySelectorAll('.part-btn');
     const themeToggle = document.getElementById('theme-toggle');
     const progressBar = document.getElementById('progress-bar');
+    const searchInput = document.getElementById('search-input');
     
     let examData = [];
     let currentCard = localStorage.getItem('currentCard') || "Card A";
     let currentPart = localStorage.getItem('currentPart') || "Part 1";
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     let theme = localStorage.getItem('theme') || 'light';
+
+    // Search Listener
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        renderContent(currentCard, currentPart, query);
+    });
+
+    // Theme Logic
 
     // Theme Logic
     document.documentElement.setAttribute('data-theme', theme);
@@ -101,14 +110,26 @@ document.addEventListener('DOMContentLoaded', () => {
         progressBar.style.width = `${percent}%`;
     }
 
-    function renderContent(card, part) {
+    function renderContent(card, part, searchQuery = '') {
         contentArea.innerHTML = '';
-        const filtered = examData.filter(item => 
+        
+        // Filter by Card and Part first
+        let filtered = examData.filter(item => 
             item["Mavzular"] === card && item["Qism"] === part
         );
 
+        // Then filter by search query if it exists
+        if (searchQuery) {
+            filtered = filtered.filter(item => {
+                const question = (item["Sovollar"] || '').toLowerCase();
+                const answerEn = (item["FullAnswer_EN"] || item["Jovoblar (EN)"] || '').toLowerCase();
+                const answerUz = (item["FullAnswer_UZ"] || item["Jovoblar (UZ)"] || '').toLowerCase();
+                return question.includes(searchQuery) || answerEn.includes(searchQuery) || answerUz.includes(searchQuery);
+            });
+        }
+
         if (filtered.length === 0) {
-            contentArea.innerHTML = `<div class="loader">${card} uchun ${part} ma'lumotlari topilmadi.</div>`;
+            contentArea.innerHTML = `<div class="loader">${searchQuery ? 'Qidiruv bo\'yicha natija topilmadi.' : 'Ma\'lumotlar topilmadi.'}</div>`;
             return;
         }
 
@@ -142,9 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (!p.en) return '';
                     return `
                         <div class="answer-block">
-                            <div class="answer-header">
-                                <span class="answer-label">${p.label}</span>
-                            </div>
+                            <span class="answer-label">${p.label}:</span>
                             <span class="en-text highlight">${p.en}</span>
                             <span class="uz-text small">(${p.uz})</span>
                         </div>
@@ -184,7 +203,6 @@ document.addEventListener('DOMContentLoaded', () => {
             audioBtn.addEventListener('click', () => {
                 const questionText = item["Sovollar"];
                 speak(questionText);
-                // Wait appropriately based on question length, but 1.5s is a good default
                 setTimeout(() => speak(textToSpeak), 1500);
             });
 
