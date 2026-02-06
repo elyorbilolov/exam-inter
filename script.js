@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function loadData() {
         try {
-            const response = await fetch('exam.json');
+            const response = await fetch('exam.json?v=' + new Date().getTime());
             if (!response.ok) throw new Error('JSON faylni yuklab bo\'lmadi');
             examData = await response.json();
             
