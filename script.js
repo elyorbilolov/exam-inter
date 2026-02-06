@@ -121,10 +121,48 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardEl = document.createElement('div');
             cardEl.className = 'question-card';
 
-            const cleanAnswerEN = item["Jovoblar (EN)"] ? item["Jovoblar (EN)"].replace(/\n/g, '<br>') : "No answer";
-            const cleanAnswerUZ = item["Jovoblar (UZ)"] ? item["Jovoblar (UZ)"].replace(/\n/g, '<br>') : "Javob yo'q";
-
             const isFav = favorites.includes(questionId);
+            
+            let answerHTML = '';
+            let textToSpeak = '';
+
+            // Check if it's the new Detailed Structure (Card A type)
+            if (item["FullAnswer_EN"]) {
+                const parts = [
+                    { label: "Answer", en: item["FullAnswer_EN"], uz: item["FullAnswer_UZ"] },
+                    { label: "Reason", en: item["Reason_EN"], uz: item["Reason_UZ"] },
+                    { label: "Example", en: item["Example_EN"], uz: item["Example_UZ"] },
+                    { label: "Extra Info", en: item["ExtraInfo_EN"], uz: item["ExtraInfo_UZ"] }
+                ];
+
+                // Join texts for speech
+                textToSpeak = parts.map(p => p.en).filter(Boolean).join('. ');
+
+                answerHTML = parts.map(p => {
+                    if (!p.en) return '';
+                    return `
+                        <div class="answer-block">
+                            <div class="answer-header">
+                                <span class="answer-label">${p.label}</span>
+                            </div>
+                            <span class="en-text highlight">${p.en}</span>
+                            <span class="uz-text small">(${p.uz})</span>
+                        </div>
+                    `;
+                }).join('');
+            } else {
+                // Old Structure
+                const cleanAnswerEN = item["Jovoblar (EN)"] ? item["Jovoblar (EN)"].replace(/\n/g, '<br>') : "No answer";
+                const cleanAnswerUZ = item["Jovoblar (UZ)"] ? item["Jovoblar (UZ)"].replace(/\n/g, '<br>') : "Javob yo'q";
+                textToSpeak = item["Jovoblar (EN)"] || "";
+                
+                answerHTML = `
+                    <div class="answer-content">
+                        <span class="en-text" style="color: var(--primary); font-weight: 600;">${cleanAnswerEN}</span>
+                        <span class="uz-text" style="display: block; margin-top: 5px;">(${cleanAnswerUZ})</span>
+                    </div>
+                `;
+            }
 
             cardEl.innerHTML = `
                 <div class="card-actions">
@@ -136,10 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="uz-text">(${item["Sovollar (UZ)"] || "Tarjima yo'q"})</span>
                 </div>
                 <div class="answer-section">
-                    <div class="answer-content">
-                        <span class="en-text" style="color: var(--primary); font-weight: 600;">${cleanAnswerEN}</span>
-                        <span class="uz-text" style="display: block; margin-top: 5px;">(${cleanAnswerUZ})</span>
-                    </div>
+                    ${answerHTML}
                 </div>
             `;
 
@@ -147,8 +182,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const favBtn = cardEl.querySelector('.fav-btn');
 
             audioBtn.addEventListener('click', () => {
-                speak(item["Sovollar"]);
-                setTimeout(() => speak(item["Jovoblar (EN)"]), 1500);
+                const questionText = item["Sovollar"];
+                speak(questionText);
+                // Wait appropriately based on question length, but 1.5s is a good default
+                setTimeout(() => speak(textToSpeak), 1500);
             });
 
             favBtn.addEventListener('click', () => {

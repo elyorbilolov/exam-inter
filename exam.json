@@ -5,8 +5,14 @@
     "Qism":"Part 1",
     "Sovollar":"1.  Do you like shopping?",
     "Sovollar (UZ)":"Xarid qilishni yoqtirasanmi?",
-    "Jovoblar (EN)":"Yes, I like shopping.\nI like buying new clothes.\nShopping is fun.",
-    "Jovoblar (UZ)":"Ha, men xarid qilishni yoqtiraman.\nMen yangi kiyimlar sotib olishni yaxshi ko‘raman.\nXarid qilish qiziqarli."
+    "FullAnswer_EN": "No, I don’t really like shopping.",
+    "FullAnswer_UZ": "Yo‘q, men xarid qilishni unchalik yoqtirmayman.",
+    "Reason_EN": "Because it is crowded and I get tired.",
+    "Reason_UZ": "Chunki u yerlar gavjum bo‘ladi va men tez charchayman.",
+    "Example_EN": "For example, I want to leave the mall quickly.",
+    "Example_UZ": "Masalan, savdo markazidan tez chiqib ketgim keladi.",
+    "ExtraInfo_EN": "And also, I buy things only when I need them.",
+    "ExtraInfo_UZ": "Va yana, men faqat kerak bo‘lganda narsalar sotib olaman."
   },
   {
     "Mavzular":"Card A",
@@ -14,8 +20,14 @@
     "Qism":"Part 1",
     "Sovollar":"2.  Do you go shopping on Sundays?",
     "Sovollar (UZ)":"Yakshanba kunlari xarid qilasanmi?",
-    "Jovoblar (EN)":"Yes, I go shopping on Sundays.\nI go with my family.\nWe buy food and clothes.",
-    "Jovoblar (UZ)":"Ha, men yakshanba kunlari xarid qilaman.\nMen oilam bilan boraman.\nBiz ovqat va kiyim olamiz."
+    "FullAnswer_EN": "Yes, I usually go shopping on Sundays.",
+    "FullAnswer_UZ": "Ha, men odatda yakshanba kuni xarid qilaman.",
+    "Reason_EN": "Because I am free on that day.",
+    "Reason_UZ": "Chunki o‘sha kuni bo‘sh bo‘laman.",
+    "Example_EN": "For example, I go to the bazaar in the morning.",
+    "Example_UZ": "Masalan, ertalab bozorga boraman.",
+    "ExtraInfo_EN": "And also, I buy food for my family.",
+    "ExtraInfo_UZ": "Va yana, oilam uchun oziq-ovqat sotib olaman."
   },
   {
     "Mavzular":"Card A",
@@ -23,8 +35,14 @@
     "Qism":"Part 1",
     "Sovollar":"3.  Do you buy your clothes online?",
     "Sovollar (UZ)":"Kiyimlaringni internetdan sotib olasanmi?",
-    "Jovoblar (EN)":"Sometimes I buy clothes online.\nIt is easy and fast.\nI like online shopping.",
-    "Jovoblar (UZ)":"Ba’zan men kiyimlarni internetdan olaman.\nBu oson va tez.\nMenga onlayn xarid yoqadi."
+    "FullAnswer_EN": "No, I never buy my clothes online.",
+    "FullAnswer_UZ": "Yo‘q, men kiyimlarni hech qachon onlayn olmayman.",
+    "Reason_EN": "Because I like to try clothes on.",
+    "Reason_UZ": "Chunki kiyimni kiyib ko‘rishni yoqtiraman.",
+    "Example_EN": "For example, I check the size in the shop.",
+    "Example_UZ": "Masalan, do‘konda o‘lchamini tekshiraman.",
+    "ExtraInfo_EN": "And also, I think shops are safer.",
+    "ExtraInfo_UZ": "Va yana, do‘konlar xavfsizroq deb o‘ylayman."
   },
   {
     "Mavzular":"Card A",
@@ -32,8 +50,14 @@
     "Qism":"Part 1",
     "Sovollar":"4.  Are clothes cheap in your country?",
     "Sovollar (UZ)":"Sening mamlakatingda kiyimlar arzonmi?",
-    "Jovoblar (EN)":"Clothes are not very cheap in my country.\nSome clothes are expensive.\nI buy clothes on sale.",
-    "Jovoblar (UZ)":"Mening mamlakatimda kiyimlar juda arzon emas.\nBa’zi kiyimlar qimmat.\nMen chegirmada kiyim sotib olaman."
+    "FullAnswer_EN": "Yes, clothes are cheap in my country.",
+    "FullAnswer_UZ": "Ha, mening mamlakatimda kiyimlar arzon.",
+    "Reason_EN": "Because there are many local markets.",
+    "Reason_UZ": "Chunki mahalliy bozorlar ko‘p.",
+    "Example_EN": "For example, you can buy cheap T-shirts.",
+    "Example_UZ": "Masalan, arzon futbolkalar sotib olish mumkin.",
+    "ExtraInfo_EN": "And also, brands are more expensive.",
+    "ExtraInfo_UZ": "Va yana, mashhur brendlar qimmatroq."
   },
   {
     "Mavzular":"Card A",
@@ -41,8 +65,14 @@
     "Qism":"Part 2",
     "Sovollar":"1.  How do you spend your free time?",
     "Sovollar (UZ)":"Bo‘sh vaqtingni qanday o‘tkazasan?",
-    "Jovoblar (EN)":"I read books and cook food for my family.",
-    "Jovoblar (UZ)":"Men kitob o‘qiyman va oilam uchun ovqat pishiraman."
+    "FullAnswer_EN": "In my free time, I play sports.",
+    "FullAnswer_UZ": "Bo‘sh vaqtimda sport bilan shug‘ullanaman.",
+    "Reason_EN": "Because I want to stay healthy.",
+    "Reason_UZ": "Chunki sog‘lom bo‘lishni xohlayman.",
+    "Example_EN": "For example, I play football with friends.",
+    "Example_UZ": "Masalan, do‘stlarim bilan futbol o‘ynayman.",
+    "ExtraInfo_EN": "And also, I watch TV.",
+    "ExtraInfo_UZ": "Va yana, televizor ko‘raman."
   },
   {
     "Mavzular":"Card A",
@@ -50,8 +80,14 @@
     "Qism":"Part 2",
     "Sovollar":"2.  How often do you go shopping?",
     "Sovollar (UZ)":"Qanchalik tez-tez xarid qilasan?",
-    "Jovoblar (EN)":"I go shopping once a week.\nI buy food and clothes.",
-    "Jovoblar (UZ)":"Men haftasiga bir marta xarid qilaman. \nOziq-ovqat va kiyim sotib olaman."
+    "FullAnswer_EN": "I go shopping every week.",
+    "FullAnswer_UZ": "Men har hafta xarid qilaman.",
+    "Reason_EN": "Because I like new things.",
+    "Reason_UZ": "Chunki yangi narsalarni yoqtiraman.",
+    "Example_EN": "For example, I visit shops on Friday.",
+    "Example_UZ": "Masalan, juma kuni do‘konlarga boraman.",
+    "ExtraInfo_EN": "And also, sometimes I just look.",
+    "ExtraInfo_UZ": "Va yana, ba’zida faqat tomosha qilaman."
   },
   {
     "Mavzular":"Card A",
@@ -59,8 +95,14 @@
     "Qism":"Part 2",
     "Sovollar":"3.  Speak about a shopping centre you like.",
     "Sovollar (UZ)":"Yoqtirgan savdo markazing haqida gapir.",
-    "Jovoblar (EN)":"I like “City Mall”. \nIt is modern and comfortable.\nI go there with my family.",
-    "Jovoblar (UZ)":"Men “City Mall”ni yoqtiraman. \nU zamonaviy va qulay. \nMen oilam bilan boraman."
+    "FullAnswer_EN": "I like a shopping centre near my house.",
+    "FullAnswer_UZ": "Uyim yaqinidagi savdo markazini yoqtiraman.",
+    "Reason_EN": "Because it is clean and nice.",
+    "Reason_UZ": "Chunki u toza va chiroyli.",
+    "Example_EN": "For example, the workers are helpful.",
+    "Example_UZ": "Masalan, xodimlar yordam beradi.",
+    "ExtraInfo_EN": "And also, there is a cafe.",
+    "ExtraInfo_UZ": "Va yana, u yerda kafe bor."
   },
   {
     "Mavzular":"Card A",
@@ -68,8 +110,14 @@
     "Qism":"Part 2",
     "Sovollar":"4.  Speak about your day.",
     "Sovollar (UZ)":"Kuning haqida gapir.",
-    "Jovoblar (EN)":"I wake up at 7 o’clock.\nI go to work at 9 o’clock and come home at 8 p.m.",
-    "Jovoblar (UZ)":"Men soat 7 da turaman. \nMen 9 da ishga boraman va 8 da uyga qaytaman."
+    "FullAnswer_EN": "My day is simple and calm.",
+    "FullAnswer_UZ": "Kunim oddiy va tinch o‘tadi.",
+    "Reason_EN": "Because I am free these days.",
+    "Reason_UZ": "Chunki hozir bo‘shman.",
+    "Example_EN": "For example, I read and walk outside.",
+    "Example_UZ": "Masalan, kitob o‘qiyman va sayr qilaman.",
+    "ExtraInfo_EN": "And also, I talk to my friends.",
+    "ExtraInfo_UZ": "Va yana, do‘stlarim bilan gaplashaman."
   },
   {
     "Mavzular":"Card B",

@@ -263,6 +263,45 @@ h1 {
   margin-bottom: 2px;
 }
 
+.answer-header {
+  margin-bottom: 2px;
+}
+
+.answer-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--secondary);
+  font-weight: 800;
+  background: rgba(244, 63, 94, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.answer-block {
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed var(--glass-border);
+}
+
+.answer-block:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.en-text.highlight {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.uz-text.small {
+  font-size: 0.75rem;
+  margin-top: 2px;
+  color: var(--text-sub);
+}
+
 .answer-content .uz-text {
   font-size: 0.75rem;
   color: var(--text-sub);
