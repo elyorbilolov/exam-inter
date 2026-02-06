@@ -125,8 +125,14 @@
     "Qism":"Part 1",
     "Sovollar":"1.  What is your hobby?",
     "Sovollar (UZ)":"Sizning hobbiingiz nima?",
-    "Jovoblar (EN)":"My hobbies are playing football and reading books.",
-    "Jovoblar (UZ)":"Mening hobbilarim futbol o‘ynash va kitob o‘qish."
+    "FullAnswer_EN": "My hobby is playing football.",
+    "FullAnswer_UZ": "Mening hobbiim futbol o‘ynashdir.",
+    "Reason_EN": "Because it is very exciting and keeps me healthy.",
+    "Reason_UZ": "Chunki bu juda hayajonli va meni sog‘lom qiladi.",
+    "Example_EN": "For example, every Sunday I go to the stadium with my brothers.",
+    "Example_UZ": "Masalan, har yakshanba men akalarim bilan stadionga boraman.",
+    "ExtraInfo_EN": "I also like collecting sports jerseys from different teams.",
+    "ExtraInfo_UZ": "Shuningdek, men turli jamoalarning sport futbolkalarini to‘plashni yoqtiraman."
   },
   {
     "Mavzular":"Card B",
@@ -134,8 +140,14 @@
     "Qism":"Part 1",
     "Sovollar":"2.  Do you like cooking at home?",
     "Sovollar (UZ)":"Uyda ovqat pishirishni yoqtirasizmi?",
-    "Jovoblar (EN)":"Yes, I like cooking.\nI enjoy making plov.",
-    "Jovoblar (UZ)":"Ha, men ovqat pishirishni yoqtiraman.\nPlov qilishni yaxshi ko‘raman."
+    "FullAnswer_EN": "Yes, I like cooking at home very much.",
+    "FullAnswer_UZ": "Ha, men uyda ovqat pishirishni juda yaxshi ko‘raman.",
+    "Reason_EN": "Because home food is delicious and healthy.",
+    "Reason_UZ": "Chunki uy taomi mazali va sog‘lom bo‘ladi.",
+    "Example_EN": "For instance, I usually cook pasta or fried eggs for my breakfast.",
+    "Example_UZ": "Masalan, men odatda nonushta uchun makaron yoki tuxum qovuraman.",
+    "ExtraInfo_EN": "Sometimes I help my mother in the kitchen on weekends.",
+    "ExtraInfo_UZ": "Ba’zan men dam olish kunlari onamga oshxonada yordam beraman."
   },
   {
     "Mavzular":"Card B",
@@ -143,8 +155,14 @@
     "Qism":"Part 1",
     "Sovollar":"3.  Do you do morning exercises?",
     "Sovollar (UZ)":"Ertalab mashq qilasizmi?",
-    "Jovoblar (EN)":"Yes, I do morning exercises every day.",
-    "Jovoblar (UZ)":"Ha, men har kuni ertalab mashq qilaman."
+    "FullAnswer_EN": "No, I do not usually do morning exercises.",
+    "FullAnswer_UZ": "Yo‘q, men odatda ertalab mashq qilmayman.",
+    "Reason_EN": "Because I am very sleepy in the morning.",
+    "Reason_UZ": "Chunki ertalab men juda uyquchan bo‘laman.",
+    "Example_EN": "For example, I prefer to sleep until 7:30 AM and then go to work.",
+    "Example_UZ": "Masalan, men 7:30 gacha uxlashni va keyin ishga borishni afzal ko‘raman.",
+    "ExtraInfo_EN": "But I like to go for a long walk in the evening.",
+    "ExtraInfo_UZ": "Ammo men kechqurun uzoq sayr qilishni yoqtiraman."
   },
   {
     "Mavzular":"Card B",
@@ -152,8 +170,14 @@
     "Qism":"Part 1",
     "Sovollar":"4.  Do you like watching films?",
     "Sovollar (UZ)":"Film tomosha qilishni yoqtirasizmi?",
-    "Jovoblar (EN)":"Yes, I like watching films.\nMy favourite film is Prison Break.",
-    "Jovoblar (UZ)":"Ha, men film tomosha qilishni yoqtiraman.\nMening sevimli filmim Prison Break."
+    "FullAnswer_EN": "Yes, I love watching films.",
+    "FullAnswer_UZ": "Ha, men filmlar tomosha qilishni yaxshi ko‘raman.",
+    "Reason_EN": "Because they help me relax and learn new things.",
+    "Reason_UZ": "Chunki ular meni dam olishga va yangi narsalarni o‘rganishga yordam beradi.",
+    "Example_EN": "For example, I enjoy watching comedy films on Netflix with my family.",
+    "Example_UZ": "Masalan, men oila bilan Netflixda komediya filmlarini tomosha qilishni yoqtiraman.",
+    "ExtraInfo_EN": "My favorite actor is Tom Cruise because he is very brave.",
+    "ExtraInfo_UZ": "Mening sevimli aktyorim Tom Cruise, chunki u juda jasur."
   },
   {
     "Mavzular":"Card B",
@@ -161,8 +185,14 @@
     "Qism":"Part 2",
     "Sovollar":"1.  Speak about your last holiday.",
     "Sovollar (UZ)":"Oxirgi ta’tilingiz haqida gapiring.",
-    "Jovoblar (EN)":"I went on holiday in July 2025.\nI rested in the mountains.",
-    "Jovoblar (UZ)":"Men 2025-yil iyul oyida ta’tilga chiqdim.\nTog‘da dam oldim."
+    "FullAnswer_EN": "My last holiday was in the mountains.",
+    "FullAnswer_UZ": "Mening oxirgi ta’tilim tog‘larda bo‘ldi.",
+    "Reason_EN": "Because the air is fresh and the weather is cool there.",
+    "Reason_UZ": "Chunki havo toza va ob-havo salqin edi.",
+    "Example_EN": "For example, we went hiking and took many beautiful photos.",
+    "Example_UZ": "Masalan, biz sayrga chiqdik va ko‘plab chiroyli suratlar oldik.",
+    "ExtraInfo_EN": "We stayed there for three days and had a great time.",
+    "ExtraInfo_UZ": "Biz u yerda uch kun qolib, juda yaxshi vaqt o‘tkazdik."
   },
   {
     "Mavzular":"Card B",
@@ -170,8 +200,14 @@
     "Qism":"Part 2",
     "Sovollar":"2.  Speak about your last birthday party.",
     "Sovollar (UZ)":"Oxirgi tug‘ilgan kuningiz haqida gapiring.",
-    "Jovoblar (EN)":"I celebrated my birthday at home.\nMy family was with me.",
-    "Jovoblar (UZ)":"Men tug‘ilgan kunimni uyda nishonladim.\nOilam yonimda edi."
+    "FullAnswer_EN": "My last birthday party was at a small cafe.",
+    "FullAnswer_UZ": "Mening oxirgi tug‘ilgan kunim kichik kafeda bo‘ldi.",
+    "Reason_EN": "Because I wanted to see all my best friends.",
+    "Reason_UZ": "Chunki men barcha eng yaxshi do‘stlarimni ko‘rmoqchi edim.",
+    "Example_EN": "For example, we ate a big chocolate cake and sang songs.",
+    "Example_UZ": "Masalan, biz katta shokoladli tort yedik va qo‘shiqlar kuyladik.",
+    "ExtraInfo_EN": "My parents gave me a new watch as a gift.",
+    "ExtraInfo_UZ": "Ota-onam menga yangi soat sovg‘a qildi."
   },
   {
     "Mavzular":"Card B",
@@ -179,8 +215,14 @@
     "Qism":"Part 2",
     "Sovollar":"3.  Speak about your house.",
     "Sovollar (UZ)":"Uyingiz haqida gapiring.",
-    "Jovoblar (EN)":"My house is small but comfortable.\nI live with my family.",
-    "Jovoblar (UZ)":"Mening uyim kichik, lekin qulay. \nMen oilam bilan yashayman."
+    "FullAnswer_EN": "I live in a comfortable house with my family.",
+    "FullAnswer_UZ": "Men oilam bilan qulay uyda yashayman.",
+    "Reason_EN": "Because it is very quiet and warm.",
+    "Reason_UZ": "Chunki u juda tinch va iliq.",
+    "Example_EN": "For example, my favorite room is the living room because it has a big sofa.",
+    "Example_UZ": "Masalan, mening sevimli xonam yashash xonasi, chunki u yerda katta divan bor.",
+    "ExtraInfo_EN": "There is also a small garden with flowers outside.",
+    "ExtraInfo_UZ": "Bundan tashqari, tashqarida gulzor bilan kichik bog‘ bor."
   },
   {
     "Mavzular":"Card B",
@@ -188,8 +230,14 @@
     "Qism":"Part 2",
     "Sovollar":"4.  Talk about a book you like.",
     "Sovollar (UZ)":"Siz yoqtirgan kitob haqida gapiring.",
-    "Jovoblar (EN)":"I like reading books.\nMy favourite book is Rich Dad Poor Dad.\nI read it three times.",
-    "Jovoblar (UZ)":"Men kitob o‘qishni yoqtiraman.\nSevimli kitobim Rich Dad Poor Dad.\nMen uni uch marta o‘qiganman."
+    "FullAnswer_EN": "I like the book \"Harry Potter.\"",
+    "FullAnswer_UZ": "Men \"Harry Potter\" kitobini yoqtiraman.",
+    "Reason_EN": "Because the story is very interesting and magical.",
+    "Reason_UZ": "Chunki hikoya juda qiziqarli va sehrli.",
+    "Example_EN": "For instance, I like the part where Harry learns to fly on a broom.",
+    "Example_UZ": "Masalan, men Harry supurga uchishni o‘rganadigan qismni yoqtiraman.",
+    "ExtraInfo_EN": "I try to read a few pages every night before I go to sleep.",
+    "ExtraInfo_UZ": "Men har kecha uxlashdan oldin bir nechta sahifani o‘qishga harakat qilaman."
   },
   {
     "Mavzular":"Card C",
