@@ -13,10 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let theme = localStorage.getItem('theme') || 'light';
 
     // Search Listener
-    searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
-        renderContent(currentCard, currentPart, query);
-    });
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            renderContent(currentCard, currentPart, query);
+        });
+    }
 
     // Theme Logic
 
