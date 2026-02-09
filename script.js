@@ -167,9 +167,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderContentForPrint(data) {
         contentArea.innerHTML = '';
         const header = document.createElement('div');
-        header.style.textAlign = 'center';
-        header.style.marginBottom = '20px';
-        header.innerHTML = `<h1 style="color: black !important;">${currentCard}: ${data[0]?.["Mavzular nomi"] || ""}</h1>`;
+        header.className = 'print-title-container';
+        header.innerHTML = `
+            <div class="print-card-label">${currentCard}</div>
+            <div class="print-topic-label">${data[0]?.["Mavzular nomi"] || ""}</div>
+        `;
         contentArea.appendChild(header);
 
         data.forEach((item, index) => {

@@ -434,6 +434,7 @@ h1 {
     line-height: 1.1 !important;
   }
 
+  header,
   .theme-toggle-btn,
   .action-header-btn,
   .search-container,
@@ -445,22 +446,28 @@ h1 {
     display: none !important;
   }
 
-  header {
-    margin-bottom: 3mm !important;
-    border-bottom: 1pt solid #000;
+  .print-title-container {
+    text-align: center !important;
+    margin-bottom: 5mm !important;
+    border-bottom: 1.5pt solid #000;
     padding-bottom: 2mm;
-    display: flex !important;
-    justify-content: center !important;
+    display: block !important;
+    width: 100% !important;
   }
 
-  header h1 {
-    -webkit-text-fill-color: black !important;
-    background: none !important;
-    font-size: 14pt !important;
-    display: block !important;
+  .print-card-label {
+    font-size: 16pt !important;
+    font-weight: 800 !important;
     color: black !important;
+    text-transform: uppercase;
     margin: 0 !important;
-    font-weight: 800;
+  }
+
+  .print-topic-label {
+    font-size: 12pt !important;
+    font-weight: 600 !important;
+    color: #333 !important;
+    margin: 1mm 0 0 0 !important;
   }
 
   .container {
