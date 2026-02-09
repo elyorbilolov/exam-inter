@@ -179,6 +179,13 @@ h1 {
   box-shadow: 0 4px 12px rgba(244, 63, 94, 0.4);
 }
 
+.card-btn-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+}
+
 .card-title {
   font-size: 0.75rem;
   font-weight: 700;
