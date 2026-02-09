@@ -212,8 +212,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             cardEl.innerHTML = `
                 <div class="question-section">
-                    <span class="en-text">Part: ${item["Qism"]} | ${item["Sovollar"]}</span>
-                    <span class="uz-text">(${item["Sovollar (UZ)"] || "Tarjima yo'q"})</span>
+                    <div class="en-text">${item["Sovollar"]}</div>
+                    <div class="uz-text">(${item["Sovollar (UZ)"] || ""})</div>
                 </div>
                 <div class="answer-section">
                     ${answerHTML}
