@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
     const progressBar = document.getElementById('progress-bar');
     const searchInput = document.getElementById('search-input');
+    const printPdfBtn = document.getElementById('print-pdf');
     
     let examData = [];
     let currentCard = localStorage.getItem('currentCard') || "Card A";
@@ -15,8 +16,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Search Listener
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
+            const query = e.target.value.toLowerCase().trim();
             renderContent(currentCard, currentPart, query);
+        });
+    }
+
+    // Print PDF Listener
+    if (printPdfBtn) {
+        printPdfBtn.addEventListener('click', () => {
+            exportToPDF();
         });
     }
 
@@ -112,6 +120,109 @@ document.addEventListener('DOMContentLoaded', () => {
         progressBar.style.width = `${percent}%`;
     }
 
+    function highlightText(text, query) {
+        if (!query) return text;
+        const regex = new RegExp(`(${query})`, 'gi');
+        return text.replace(regex, '<mark class="search-highlight">$1</mark>');
+    }
+
+    async function exportToPDF() {
+        const originalPart = currentPart;
+        const loader = document.getElementById('loader');
+        
+        // Show all parts for the current card
+        const allCardData = examData.filter(item => item["Mavzular"] === currentCard);
+        
+        // Create a temporary container for printing to avoid flickering if possible, 
+        // but for simplicity we'll just render everything to contentArea
+        contentArea.innerHTML = '<div class="loader">PDF tayyorlanmoqda...</div>';
+        
+        // Custom render for print
+        let printHTML = `
+            <div class="print-header" style="text-align: center; margin-bottom: 20px;">
+                <h1 style="color: black !important; font-size: 24pt !important;">${currentCard} - ${allCardData[0]?.["Mavzular nomi"] || ""}</h1>
+                <p>English Exam Questions & Answers</p>
+            </div>
+        `;
+
+        // Sort by Part then Sovollar number if possible
+        const sortedData = allCardData.sort((a, b) => {
+            if (a["Qism"] !== b["Qism"]) return a["Qism"].localeCompare(b["Qism"]);
+            return (parseInt(a["Sovollar"]) || 0) - (parseInt(b["Sovollar"]) || 0);
+        });
+
+        // We'll reuse renderContent's logic but in a string-building way for speed
+        // Or just call renderContent with a special flag
+        
+        // Let's actually just render ALL content to the contentArea
+        renderContentForPrint(sortedData);
+        
+        setTimeout(() => {
+            window.print();
+            // Restore original view
+            renderContent(currentCard, originalPart);
+        }, 500);
+    }
+
+    function renderContentForPrint(data) {
+        contentArea.innerHTML = '';
+        const header = document.createElement('div');
+        header.style.textAlign = 'center';
+        header.style.marginBottom = '20px';
+        header.innerHTML = `<h1 style="color: black !important;">${currentCard}: ${data[0]?.["Mavzular nomi"] || ""}</h1>`;
+        contentArea.appendChild(header);
+
+        data.forEach((item, index) => {
+            if (!item["Sovollar"]) return;
+            
+            const cardEl = document.createElement('div');
+            cardEl.className = 'question-card';
+            
+            // Simplified version for print (no buttons)
+            let answerHTML = '';
+            if (item["FullAnswer_EN"]) {
+                const parts = [
+                    { label: "Answer", en: item["FullAnswer_EN"], uz: item["FullAnswer_UZ"] },
+                    { label: "Reason", en: item["Reason_EN"], uz: item["Reason_UZ"] },
+                    { label: "Example", en: item["Example_EN"], uz: item["Example_UZ"] },
+                    { label: "Extra Info", en: item["ExtraInfo_EN"], uz: item["ExtraInfo_UZ"] }
+                ];
+
+                answerHTML = parts.map(p => {
+                    if (!p.en) return '';
+                    return `
+                        <div class="answer-block">
+                            <span class="answer-label">${p.label}:</span>
+                            <span class="en-text highlight">${p.en}</span>
+                            <span class="uz-text small">(${p.uz})</span>
+                        </div>
+                    `;
+                }).join('');
+            } else {
+                const cleanAnswerEN = item["Jovoblar (EN)"] ? item["Jovoblar (EN)"].replace(/\n/g, '<br>') : "No answer";
+                const cleanAnswerUZ = item["Jovoblar (UZ)"] ? item["Jovoblar (UZ)"].replace(/\n/g, '<br>') : "Javob yo'q";
+                
+                answerHTML = `
+                    <div class="answer-content">
+                        <span class="en-text" style="color: black; font-weight: 600;">${cleanAnswerEN}</span>
+                        <span class="uz-text" style="display: block; margin-top: 5px;">(${cleanAnswerUZ})</span>
+                    </div>
+                `;
+            }
+
+            cardEl.innerHTML = `
+                <div class="question-section">
+                    <span class="en-text">Part: ${item["Qism"]} | ${item["Sovollar"]}</span>
+                    <span class="uz-text">(${item["Sovollar (UZ)"] || "Tarjima yo'q"})</span>
+                </div>
+                <div class="answer-section">
+                    ${answerHTML}
+                </div>
+            `;
+            contentArea.appendChild(cardEl);
+        });
+    }
+
     function renderContent(card, part, searchQuery = '') {
         contentArea.innerHTML = '';
         
@@ -166,8 +277,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     return `
                         <div class="answer-block">
                             <span class="answer-label">${p.label}:</span>
-                            <span class="en-text highlight">${p.en}</span>
-                            <span class="uz-text small">(${p.uz})</span>
+                            <span class="en-text highlight">${highlightText(p.en, searchQuery)}</span>
+                            <span class="uz-text small">(${highlightText(p.uz, searchQuery)})</span>
                         </div>
                     `;
                 }).join('');
@@ -179,8 +290,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 answerHTML = `
                     <div class="answer-content">
-                        <span class="en-text" style="color: var(--primary); font-weight: 600;">${cleanAnswerEN}</span>
-                        <span class="uz-text" style="display: block; margin-top: 5px;">(${cleanAnswerUZ})</span>
+                        <span class="en-text" style="color: var(--primary); font-weight: 600;">${highlightText(cleanAnswerEN, searchQuery)}</span>
+                        <span class="uz-text" style="display: block; margin-top: 5px;">(${highlightText(cleanAnswerUZ, searchQuery)})</span>
                     </div>
                 `;
             }
@@ -191,8 +302,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     <button class="action-btn fav-btn ${isFav ? 'active' : ''}" title="Saralangan">⭐</button>
                 </div>
                 <div class="question-section">
-                    <span class="en-text">${item["Sovollar"]}</span>
-                    <span class="uz-text">(${item["Sovollar (UZ)"] || "Tarjima yo'q"})</span>
+                    <span class="en-text">${highlightText(item["Sovollar"], searchQuery)}</span>
+                    <span class="uz-text">(${highlightText(item["Sovollar (UZ)"] || "Tarjima yo'q", searchQuery)})</span>
                 </div>
                 <div class="answer-section">
                     ${answerHTML}
