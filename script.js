@@ -228,19 +228,22 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderContent(card, part, searchQuery = '') {
         contentArea.innerHTML = '';
         
-        // Filter by Card and Part first
-        let filtered = examData.filter(item => 
-            item["Mavzular"] === card && item["Qism"] === part
-        );
-
-        // Then filter by search query if it exists
+        let filtered;
         if (searchQuery) {
-            filtered = filtered.filter(item => {
-                const question = (item["Sovollar"] || '').toLowerCase();
-                const answerEn = (item["FullAnswer_EN"] || item["Jovoblar (EN)"] || '').toLowerCase();
-                const answerUz = (item["FullAnswer_UZ"] || item["Jovoblar (UZ)"] || '').toLowerCase();
-                return question.includes(searchQuery) || answerEn.includes(searchQuery) || answerUz.includes(searchQuery);
+            // Global search
+            filtered = examData.filter(item => {
+                const qEn = (item["Sovollar"] || "").toLowerCase();
+                const qUz = (item["Sovollar (UZ)"] || "").toLowerCase();
+                const aEn = (item["FullAnswer_EN"] || item["Jovoblar (EN)"] || "").toLowerCase();
+                const aUz = (item["FullAnswer_UZ"] || item["Jovoblar (UZ)"] || "").toLowerCase();
+                const query = searchQuery.toLowerCase();
+                return qEn.includes(query) || qUz.includes(query) || aEn.includes(query) || aUz.includes(query);
             });
+        } else {
+            // Normal filter
+            filtered = examData.filter(item => 
+                item["Mavzular"] === card && item["Qism"] === part
+            );
         }
 
         if (filtered.length === 0) {
@@ -253,7 +256,8 @@ document.addEventListener('DOMContentLoaded', () => {
         filtered.forEach((item, index) => {
             if (!item["Sovollar"]) return;
             
-            const questionId = `${card}-${part}-${index}`;
+            // Unique ID including card and part for global search results
+            const questionId = `${item["Mavzular"]}-${item["Qism"]}-${index}`;
             const cardEl = document.createElement('div');
             cardEl.className = 'question-card';
 
@@ -262,7 +266,6 @@ document.addEventListener('DOMContentLoaded', () => {
             let answerHTML = '';
             let textToSpeak = '';
 
-            // Check if it's the new Detailed Structure (Card A type)
             if (item["FullAnswer_EN"]) {
                 const parts = [
                     { label: "Answer", en: item["FullAnswer_EN"], uz: item["FullAnswer_UZ"] },
@@ -270,10 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     { label: "Example", en: item["Example_EN"], uz: item["Example_UZ"] },
                     { label: "Extra Info", en: item["ExtraInfo_EN"], uz: item["ExtraInfo_UZ"] }
                 ];
-
-                // Join texts for speech
                 textToSpeak = parts.map(p => p.en).filter(Boolean).join('. ');
-
                 answerHTML = parts.map(p => {
                     if (!p.en) return '';
                     return `
@@ -285,11 +285,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     `;
                 }).join('');
             } else {
-                // Old Structure
                 const cleanAnswerEN = item["Jovoblar (EN)"] ? item["Jovoblar (EN)"].replace(/\n/g, '<br>') : "No answer";
                 const cleanAnswerUZ = item["Jovoblar (UZ)"] ? item["Jovoblar (UZ)"].replace(/\n/g, '<br>') : "Javob yo'q";
                 textToSpeak = item["Jovoblar (EN)"] || "";
-                
                 answerHTML = `
                     <div class="answer-content">
                         <span class="en-text" style="color: var(--primary); font-weight: 600;">${highlightText(cleanAnswerEN, searchQuery)}</span>
@@ -298,7 +296,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             }
 
+            const sourceHTML = searchQuery ? `<div class="search-result-source">${item["Mavzular"]} | ${item["Mavzular nomi"]}</div>` : '';
+
             cardEl.innerHTML = `
+                ${sourceHTML}
                 <div class="card-actions">
                     <button class="action-btn audio-btn" title="Eshitish">🔊</button>
                     <button class="action-btn fav-btn ${isFav ? 'active' : ''}" title="Saralangan">⭐</button>
@@ -316,8 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const favBtn = cardEl.querySelector('.fav-btn');
 
             audioBtn.addEventListener('click', () => {
-                const questionText = item["Sovollar"];
-                speak(questionText);
+                speak(item["Sovollar"]);
                 setTimeout(() => speak(textToSpeak), 1500);
             });
 
