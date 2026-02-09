@@ -245,8 +245,14 @@
     "Qism":"Part 1",
     "Sovollar":"1.  Do you often get up early?",
     "Sovollar (UZ)":"Siz tez-tez erta turasizmi?",
-    "Jovoblar (EN)":"Yes, I do.\nI get up at 7 every day.",
-    "Jovoblar (UZ)":"Ha, turaman. \nMen har kuni soat 7 da turaman."
+    "FullAnswer_EN": "Yes, I get up early at 6:00 AM.",
+    "FullAnswer_UZ": "Ha, men soat 6 da turaman.",
+    "Reason_EN": "Because I want to prepare for my day.",
+    "Reason_UZ": "Chunki men kunimga tayyorlanmoqchiman.",
+    "Example_EN": "For example, I drink coffee.",
+    "Example_UZ": "Masalan, men kofe ichaman.",
+    "ExtraInfo_EN": "At weekends, I sleep longer.",
+    "ExtraInfo_UZ": "Dam olish kunlari ko‘proq uxlayman."
   },
   {
     "Mavzular":"Card C",
@@ -254,8 +260,14 @@
     "Qism":"Part 1",
     "Sovollar":"2.  Do you always have breakfast with your family?",
     "Sovollar (UZ)":"Siz doimo oilangiz bilan nonushta qilasizmi?",
-    "Jovoblar (EN)":"Yes, I do. I always have breakfast with my family.",
-    "Jovoblar (UZ)":"Ha, qilaman.\nMen doimo oilam bilan nonushta qilaman."
+    "FullAnswer_EN": "No, I don’t always have breakfast with my family.",
+    "FullAnswer_UZ": "Yo‘q, men har doim oilam bilan nonushta qilmayman.",
+    "Reason_EN": "Because my parents go to work early.",
+    "Reason_UZ": "Chunki ota-onam erta ishga ketishadi.",
+    "Example_EN": "For example, I eat breakfast alone.",
+    "Example_UZ": "Masalan, men yolg‘iz nonushta qilaman.",
+    "ExtraInfo_EN": "And also, we have dinner together.",
+    "ExtraInfo_UZ": "Yana, biz birga kechki ovqat qilamiz."
   },
   {
     "Mavzular":"Card C",
@@ -263,8 +275,14 @@
     "Qism":"Part 1",
     "Sovollar":"3.  What time do you go to school \/ university \/ work?",
     "Sovollar (UZ)":"Siz maktabga \/ universitetga \/ ishga soat nechada borasiz?",
-    "Jovoblar (EN)":"I go to work at 8.",
-    "Jovoblar (UZ)":"Men ishga soat 8 da boraman."
+    "FullAnswer_EN": "I go to university at 8:30 AM.",
+    "FullAnswer_UZ": "Men universitetga soat 8:30 da boraman.",
+    "Reason_EN": "Because my lesson starts at 9:00 AM.",
+    "Reason_UZ": "Chunki darsim soat 9 da boshlanadi.",
+    "Example_EN": "For example, I go by bus.",
+    "Example_UZ": "Masalan, men avtobus bilan boraman.",
+    "ExtraInfo_EN": "And also, the bus ride takes 20 minutes.",
+    "ExtraInfo_UZ": "Yana, avtobusda 20 daqiqa davom etadi."
   },
   {
     "Mavzular":"Card C",
@@ -272,8 +290,14 @@
     "Qism":"Part 1",
     "Sovollar":"4.  What time do you have dinner?",
     "Sovollar (UZ)":"Siz kechki ovqatni soat nechada yeysiz?",
-    "Jovoblar (EN)":"I do not have dinner.",
-    "Jovoblar (UZ)":"Men kechki ovqat yemayman."
+    "FullAnswer_EN": "I have dinner at 7 p.m.",
+    "FullAnswer_UZ": "Men kechki ovqatni soat 7 da yeyman.",
+    "Reason_EN": "Because I come home early.",
+    "Reason_UZ": "Chunki men uyga erta kelaman.",
+    "Example_EN": "For example, I eat with my family.",
+    "Example_UZ": "Masalan, oilam bilan ovqatlanaman.", 
+    "ExtraInfo_EN": "And also, after dinner I listen to music.",
+    "ExtraInfo_UZ": "Yana, kechki ovqatdan keyin musiqani tinglayman."
   },
   {
     "Mavzular":"Card C",
@@ -281,8 +305,14 @@
     "Qism":"Part 2",
     "Sovollar":"1.  What do you do on Saturdays and Sundays?",
     "Sovollar (UZ)":"Shanba va yakshanba kunlari nima qilasiz?",
-    "Jovoblar (EN)":"I read books and cook food for my family.",
-    "Jovoblar (UZ)":"Men kitob o‘qiyman va oilam uchun ovqat pishiraman."
+    "FullAnswer_EN": "I relax on weekends.",
+    "FullAnswer_UZ": "Men dam olish kunlari dam olaman.",
+    "Reason_EN": "Because I am busy on weekdays.",
+    "Reason_UZ": "Chunki ish kunlari band bo‘laman.",
+    "Example_EN": "For example, I go to the park.",
+    "Example_UZ": "Masalan, men parkka boraman.",
+    "ExtraInfo_EN": "And also, on Sunday I prepare for Monday.",
+    "ExtraInfo_UZ": "Yana, yakshanba kuni dushanba uchun tayyorgarlik qilaman."
   },
   {
     "Mavzular":"Card C",
@@ -290,8 +320,14 @@
     "Qism":"Part 2",
     "Sovollar":"2.  Speak about the day of the week you do not like.",
     "Sovollar (UZ)":"Siz yoqtirmaydigan hafta kuni haqida gapiring.",
-    "Jovoblar (EN)":"I do not like Monday. I do not know why, but it is a hard day.",
-    "Jovoblar (UZ)":"Menga dushanba kuni yoqmaydi. Nima uchunligini bilmayman, lekin u og‘ir o‘tadi."
+    "FullAnswer_EN": "I do not like Monday.",
+    "FullAnswer_UZ": "Men dushanba kunini yoqtirmayman.",
+    "Reason_EN": "Because I have a lot of work.",
+    "Reason_UZ": "Chunki ishlarim juda ko‘p.",
+    "Example_EN": "For example, I have many tasks.",
+    "Example_UZ": "Masalan, ishlarim ko‘p bo‘ladi.",
+    "ExtraInfo_EN": "And also, I try to stay positive.",
+    "ExtraInfo_UZ": "Yana, o‘zimni ijobiy tutishga harakat qilaman."
   },
   {
     "Mavzular":"Card C",
@@ -299,8 +335,14 @@
     "Qism":"Part 2",
     "Sovollar":"3.  Which days of the week do you have your English lessons?",
     "Sovollar (UZ)":"Siz ingliz tili darslarini haftaning qaysi kunlari o‘tasiz?",
-    "Jovoblar (EN)":"I have English lessons on Tuesday, Thursday, and Saturday at 6:30 p.m.",
-    "Jovoblar (UZ)":"Men ingliz tili darslarini seshanba, payshanba va shanba kunlari soat 6:30 da o‘qiyman."
+    "FullAnswer_EN": "I have English lessons on Saturday.",
+  "FullAnswer_UZ": "Men ingliz tili darslarini shanba kuni o‘qiyman.",
+  "Reason_EN": "Because I want to improve my English.",
+  "Reason_UZ": "Chunki men ingliz tilimni rivojlantirmoqchiman.",
+  "Example_EN": "For example, I practice speaking.",
+  "Example_UZ": "Masalan, men so‘zlashuvni mashq qilaman.",
+  "ExtraInfo_EN": "And also, the lessons are interesting.",
+  "ExtraInfo_UZ": "Yana, darslar qiziqarli o‘tadi."
   },
   {
     "Mavzular":"Card C",
@@ -308,8 +350,14 @@
     "Qism":"Part 2",
     "Sovollar":"4.  How often do you meet your friends? What do you do with them?",
     "Sovollar (UZ)":"Do‘stlaringiz bilan qanchalik tez-tez uchrashasiz? Ular bilan nima qilasiz?",
-    "Jovoblar (EN)":"I meet my friends once a month. \nWe remember our childhood.",
-    "Jovoblar (UZ)":"Men do‘stlarim bilan oyda bir marta uchrashaman.\nUlar bilan yoshlikni eslaymiz."
+    "FullAnswer_EN": "I meet my friends every weekend.",
+    "FullAnswer_UZ": "Men do‘stlarim bilan har hafta oxiri uchrashaman.",
+    "Reason_EN": "Because we have free time.",
+    "Reason_UZ": "Chunki bo‘sh vaqtimiz bo‘ladi.",
+    "Example_EN": "For example, we go to a cafe.",
+    "Example_UZ": "Masalan, biz kafega boramiz.",
+    "ExtraInfo_EN": "And also, we have a lot of fun together.",
+    "ExtraInfo_UZ": "Yana, birga juda maroqli vaqt o‘tkazamiz."
   },
   {
     "Mavzular":"Card D",
