@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("--- VERSION 3.0: CLEAN SLATE BLUE ---");
     const contentArea = document.getElementById('content-area');
     const cardsNav = document.getElementById('cards-nav');
     const partButtons = document.querySelectorAll('.part-btn');

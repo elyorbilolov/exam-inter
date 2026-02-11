@@ -1,9 +1,9 @@
-const CACHE_NAME = 'exam-cache-nuclear-v2';
+const CACHE_NAME = 'exam-cache-v35';
 const ASSETS = [
   './',
   './index.html',
-  './style_v2.css',
-  './main_v2.js',
+  './style.css',
+  './script.js',
   './exam.json',
   './writing.json'
 ];
@@ -26,10 +26,9 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  // Network-First Strategy for better updates
+  // Network-First Strategy
   event.respondWith(
     fetch(event.request).then((response) => {
-      // If network works, update cache
       if (response && response.status === 200) {
         const responseClone = response.clone();
         caches.open(CACHE_NAME).then((cache) => {
@@ -38,7 +37,6 @@ self.addEventListener('fetch', (event) => {
       }
       return response;
     }).catch(() => {
-      // If network fails, serve from cache
       return caches.match(event.request);
     })
   );
