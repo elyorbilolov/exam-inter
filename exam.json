@@ -245,14 +245,14 @@
     "Qism":"Part 1",
     "Sovollar":"1.  Do you often get up early?",
     "Sovollar (UZ)":"Siz tez-tez erta turasizmi?",
-    "FullAnswer_EN": "Yes, I get up early at 6:00 AM.",
-    "FullAnswer_UZ": "Ha, men soat 6 da turaman.",
-    "Reason_EN": "Because I want to prepare for my day.",
-    "Reason_UZ": "Chunki men kunimga tayyorlanmoqchiman.",
-    "Example_EN": "For example, I drink coffee.",
-    "Example_UZ": "Masalan, men kofe ichaman.",
-    "ExtraInfo_EN": "At weekends, I sleep longer.",
-    "ExtraInfo_UZ": "Dam olish kunlari ko‘proq uxlayman."
+    "FullAnswer_EN": "Yes, I often get up early, around 7 o'clock in the morning.",
+  "FullAnswer_UZ": "Ha, men tez-tez ertalab soat 7 lar atrofida turaman.",
+  "Reason_EN": "Because I need time to prepare for my day.",
+  "Reason_UZ": "Chunki kunimga tayyorlanishim uchun vaqt kerak.",
+  "Example_EN": "For example, I wash my face and have breakfast.",
+  "Example_UZ": "Masalan, men yuzimni yuvaman va nonushta qilaman.",
+  "ExtraInfo_EN": "And also, at weekends I sleep longer.",
+  "ExtraInfo_UZ": "Yana, dam olish kunlari ko‘proq uxlayman."
   },
   {
     "Mavzular":"Card C",
