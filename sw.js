@@ -1,9 +1,9 @@
-const CACHE_NAME = 'exam-cache-nuclear-v1';
+const CACHE_NAME = 'exam-cache-nuclear-v2';
 const ASSETS = [
   './',
   './index.html',
-  './style_v1.css',
-  './main_v1.js',
+  './style_v2.css',
+  './main_v2.js',
   './exam.json',
   './writing.json'
 ];
