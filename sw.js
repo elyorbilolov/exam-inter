@@ -1,4 +1,4 @@
-const CACHE_NAME = 'exam-cache-v29';
+const CACHE_NAME = 'exam-cache-v30';
 const ASSETS = [
   './',
   './index.html',
@@ -26,9 +26,20 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  // Network-First Strategy for better updates
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
+    fetch(event.request).then((response) => {
+      // If network works, update cache
+      if (response && response.status === 200) {
+        const responseClone = response.clone();
+        caches.open(CACHE_NAME).then((cache) => {
+          cache.put(event.request, responseClone);
+        });
+      }
+      return response;
+    }).catch(() => {
+      // If network fails, serve from cache
+      return caches.match(event.request);
     })
   );
 });
