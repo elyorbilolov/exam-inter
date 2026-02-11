@@ -618,28 +618,30 @@ h1 {
   color: #fef08a;
 }
 
-/* Writing Section Enhancements - Antique/Gold Theme */
+/* Writing Section Refinement - Slate Blue & Compact Theme */
 .writing-card {
-  border: 1px solid rgba(212, 175, 55, 0.3) !important;
-  background: linear-gradient(135deg, var(--card-bg), rgba(212, 175, 55, 0.05)) !important;
+  border: 1px solid rgba(71, 85, 105, 0.2) !important;
+  background: linear-gradient(135deg, var(--card-bg), rgba(71, 85, 105, 0.03)) !important;
   cursor: pointer;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  transition: all 0.3s ease !important;
   display: block !important;
+  padding: 12px 15px !important;
+  margin-bottom: 10px !important;
 }
 
 .writing-card:hover {
-  border-color: rgba(212, 175, 55, 0.8) !important;
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2) !important;
-  transform: translateY(-3px) scale(1.01);
+  border-color: #6366f1 !important;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1) !important;
+  transform: translateY(-2px);
 }
 
 .writing-card .question-section {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
   position: relative;
-  padding-right: 30px;
+  padding-right: 25px;
 }
 
 .writing-card .question-section::after {
@@ -648,10 +650,10 @@ h1 {
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 0.7rem;
-  color: #d4af37;
+  font-size: 0.65rem;
+  color: #6366f1;
   transition: transform 0.3s ease;
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 .writing-card.active .question-section::after {
@@ -661,61 +663,68 @@ h1 {
 .writing-answer-container {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+  transition: max-height 0.4s ease-out;
   opacity: 0;
 }
 
 .writing-card.active .writing-answer-container {
-  max-height: 2000px;
-  transition: max-height 1.2s ease-in-out;
+  max-height: 1500px;
   opacity: 1;
 }
 
 .writing-answer-content {
-  padding: 15px 10px;
-  background: rgba(212, 175, 55, 0.03);
-  border-radius: 8px;
-  border-top: 1px solid rgba(212, 175, 55, 0.1);
-  margin-top: 10px;
+  padding: 10px 0 5px 0;
+  border-top: 1px solid rgba(71, 85, 105, 0.1);
+  margin-top: 8px;
 }
 
 .writing-card .en-text.essay-title {
-  color: #d4af37 !important;
-  font-size: 1.1rem;
+  color: #4f46e5 !important;
+  font-size: 0.95rem;
   font-weight: 700;
-  text-shadow: 0 0 1px rgba(212, 175, 55, 0.2);
 }
 
 .writing-card .uz-text.essay-title-uz {
   color: var(--text-sub);
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* Bullet points styling */
+.prompt-list {
+  margin: 8px 0;
+  padding-left: 15px;
+  list-style-type: disc;
   font-size: 0.85rem;
-  opacity: 0.8;
-  font-style: italic;
 }
 
-.writing-card .essay-body-en {
-  font-size: 1rem;
-  line-height: 1.7;
+.prompt-item {
+  margin-bottom: 3px;
   color: var(--text-main);
-  font-weight: 500;
-  text-align: justify;
 }
 
-.writing-card .essay-body-uz {
+.essay-body-en {
   font-size: 0.9rem;
-  line-height: 1.6;
+  line-height: 1.5;
+  color: var(--text-main);
+  background: var(--bg-main);
+  padding: 10px;
+  border-radius: 6px;
+  border-left: 3px solid #6366f1;
+}
+
+.essay-body-uz {
+  font-size: 0.85rem;
+  line-height: 1.4;
   color: var(--text-sub);
-  margin-top: 15px;
-  padding-top: 12px;
-  border-top: 1px dashed rgba(212, 175, 55, 0.2);
-  text-align: justify;
+  margin-top: 8px;
+  padding: 8px;
 }
 
-[data-theme='dark'] .writing-card {
-  border-color: rgba(212, 175, 55, 0.2) !important;
+[data-theme='dark'] .writing-card .en-text.essay-title {
+  color: #818cf8 !important;
 }
 
-[data-theme='dark'] .writing-card:hover {
-  border-color: rgba(212, 175, 55, 0.6) !important;
-  box-shadow: 0 0 30px rgba(212, 175, 55, 0.15) !important;
+[data-theme='dark'] .essay-body-en {
+  background: rgba(255, 255, 255, 0.03);
 }
