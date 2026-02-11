@@ -308,22 +308,22 @@ document.addEventListener('DOMContentLoaded', () => {
             cardEl.className = 'question-card writing-card';
             
             // Build dynamic prompt content
-            let promptHtml = `
+            const titleHtml = `
                 <span class="en-text essay-title">${highlightText(data.sovol_en, searchQuery)}</span>
                 <span class="uz-text essay-title-uz">${highlightText(data.sovol_uz, searchQuery)}</span>
             `;
 
+            let extraPromptHtml = '';
             // If there's extra prompt data (bullet points)
             if (data.sovol_en_2) {
-                promptHtml += `<ul class="prompt-list">`;
-                // Look for sovol_en_2, 3, 4, 5...
+                extraPromptHtml += `<ul class="prompt-list">`;
                 for (let i = 2; i <= 10; i++) {
                     const enKey = `sovol_en_${i}`;
                     const uzKey = `sovol_uz_${i}`;
                     if (data[enKey]) {
-                        promptHtml += `
+                        extraPromptHtml += `
                             <li class="prompt-item">
-                                <div style="font-weight: 600;">${highlightText(data[enKey], searchQuery)}</div>
+                                <div style="font-weight: 600; color: var(--primary);">${highlightText(data[enKey], searchQuery)}</div>
                                 <div style="font-size: 0.75rem; opacity: 0.7;">${highlightText(data[uzKey] || '', searchQuery)}</div>
                             </li>
                         `;
@@ -331,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         break;
                     }
                 }
-                promptHtml += `</ul>`;
+                extraPromptHtml += `</ul>`;
             }
 
             cardEl.innerHTML = `
@@ -339,11 +339,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     <button class="action-btn audio-btn" title="Eshitish">🔊</button>
                 </div>
                 <div class="question-section">
-                    ${promptHtml}
+                    ${titleHtml}
                 </div>
                 <div class="writing-answer-container">
                     <div class="writing-answer-content">
-                        <div class="essay-body-en">${highlightText(data.jovob_en, searchQuery)}</div>
+                        ${extraPromptHtml}
+                        <div class="essay-body-en" style="margin-top: 10px;">${highlightText(data.jovob_en, searchQuery)}</div>
                         <div class="essay-body-uz">${highlightText(data.jovob_uz, searchQuery)}</div>
                     </div>
                 </div>

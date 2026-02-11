@@ -626,8 +626,8 @@ h1 {
   overflow: hidden;
   transition: all 0.3s ease !important;
   display: block !important;
-  padding: 12px 15px !important;
-  margin-bottom: 10px !important;
+  padding: 8px 12px !important;
+  margin-bottom: 6px !important;
 }
 
 .writing-card:hover {
