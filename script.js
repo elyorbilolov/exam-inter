@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentCard = localStorage.getItem('currentCard') || "Card A";
     let currentPart = localStorage.getItem('currentPart') || "Part 1";
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    let learnedWriting = JSON.parse(localStorage.getItem('learnedWriting')) || [];
     let theme = localStorage.getItem('theme') || 'light';
 
     // Mode Switch Logic
@@ -179,6 +180,20 @@ document.addEventListener('DOMContentLoaded', () => {
         return text.replace(regex, '<mark class="search-highlight">$1</mark>');
     }
 
+    function getWordCount(text) {
+        return text.trim().split(/\s+/).length;
+    }
+
+    function toggleLearned(id) {
+        const index = learnedWriting.indexOf(id);
+        if (index > -1) {
+            learnedWriting.splice(index, 1);
+        } else {
+            learnedWriting.push(id);
+        }
+        localStorage.setItem('learnedWriting', JSON.stringify(learnedWriting));
+    }
+
     async function exportWritingToPDF() {
         renderWritingContent(); // Ensure all rendered
         setTimeout(() => {
@@ -304,8 +319,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         filtered.forEach(([id, data]) => {
+            const isLearned = learnedWriting.includes(id);
+            const wordCount = getWordCount(data.jovob_en);
+            
             const cardEl = document.createElement('div');
-            cardEl.className = 'question-card writing-card';
+            cardEl.className = `question-card writing-card ${isLearned ? 'learned' : ''}`;
             
             // Build dynamic prompt content
             const titleHtml = `
@@ -337,6 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             cardEl.innerHTML = `
                 <div class="card-actions">
+                    <button class="action-btn learned-btn ${isLearned ? 'active' : ''}" title="Yodlab bo'lingan">✅</button>
                     <button class="action-btn audio-btn" title="Eshitish">🔊</button>
                     <span class="expand-icon">▼</span>
                 </div>
@@ -348,11 +367,29 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${extraPromptHtml}
                         <div class="essay-body-en" style="margin-top: 8px;">${highlightText(data.jovob_en, searchQuery)}</div>
                         <div class="essay-body-uz">${highlightText(data.jovob_uz, searchQuery)}</div>
+                        <div class="essay-footer">
+                            <span class="word-count-badge">📝 ${wordCount} so'z</span>
+                            <button class="practice-toggle-btn">✍️ Mashq qilish</button>
+                        </div>
+                        <div class="practice-area" style="display: none;">
+                            <textarea placeholder="Inshoni shu yerga yozib mashq qiling..."></textarea>
+                            <div class="practice-actions">
+                                <button class="check-practice-btn">Tekshirish</button>
+                                <span class="practice-feedback"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             `;
 
             const audioBtn = cardEl.querySelector('.audio-btn');
+            const learnedBtn = cardEl.querySelector('.learned-btn');
+            const practiceBtn = cardEl.querySelector('.practice-toggle-btn');
+            const practiceArea = cardEl.querySelector('.practice-area');
+            const checkBtn = cardEl.querySelector('.check-practice-btn');
+            const textarea = cardEl.querySelector('textarea');
+            const feedback = cardEl.querySelector('.practice-feedback');
+
             audioBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 let fullSpeech = data.sovol_en;
@@ -362,6 +399,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 speak(fullSpeech);
                 setTimeout(() => speak(data.jovob_en), 2000);
+            });
+
+            learnedBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleLearned(id);
+                learnedBtn.classList.toggle('active');
+                cardEl.classList.toggle('learned');
+            });
+
+            practiceBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isHidden = practiceArea.style.display === 'none';
+                practiceArea.style.display = isHidden ? 'block' : 'none';
+                practiceBtn.textContent = isHidden ? '❌ Yopish' : '✍️ Mashq qilish';
+            });
+
+            checkBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const userText = textarea.value.trim().toLowerCase();
+                const originalText = data.jovob_en.trim().toLowerCase();
+                
+                if (!userText) {
+                    feedback.textContent = "Iltimos, oldin biror narsa yozing.";
+                    feedback.style.color = "orange";
+                    return;
+                }
+
+                // Simple check: how many words match
+                const userWords = userText.split(/\s+/);
+                const originalWords = originalText.split(/\s+/);
+                let matches = 0;
+                userWords.forEach(word => {
+                    if (originalWords.includes(word)) matches++;
+                });
+
+                const accuracy = Math.round((matches / originalWords.length) * 100);
+                feedback.textContent = `Aniqlik: ${accuracy}%`;
+                feedback.style.color = accuracy > 70 ? "#10b981" : "#f43f5e";
             });
 
             cardEl.addEventListener('click', () => {
