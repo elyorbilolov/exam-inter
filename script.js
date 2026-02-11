@@ -365,13 +365,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="writing-answer-container">
                     <div class="writing-answer-content">
                         ${extraPromptHtml}
-                        <div class="essay-body-en" style="margin-top: 8px;">${highlightText(data.jovob_en, searchQuery)}</div>
-                        <div class="essay-body-uz">${highlightText(data.jovob_uz, searchQuery)}</div>
+                        
+                        <div class="model-answers-wrapper">
+                            <div class="essay-body-en" style="margin-top: 8px;">${highlightText(data.jovob_en, searchQuery)}</div>
+                            <div class="essay-body-uz">${highlightText(data.jovob_uz, searchQuery)}</div>
+                        </div>
+
                         <div class="essay-footer">
-                            <span class="word-count-badge">📝 ${wordCount} so'z</span>
+                            <span class="word-count-badge">📝 Model: ${wordCount} so'z</span>
                             <button class="practice-toggle-btn">✍️ Mashq qilish</button>
                         </div>
                         <div class="practice-area" style="display: none;">
+                            <div class="practice-controls">
+                                <span class="user-word-count">Siz: 0 so'z</span>
+                                <button class="toggle-answer-btn">👁️ Javobni ko'rish</button>
+                            </div>
                             <textarea placeholder="Inshoni shu yerga yozib mashq qiling..."></textarea>
                             <div class="practice-actions">
                                 <button class="check-practice-btn">Tekshirish</button>
@@ -389,6 +397,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const checkBtn = cardEl.querySelector('.check-practice-btn');
             const textarea = cardEl.querySelector('textarea');
             const feedback = cardEl.querySelector('.practice-feedback');
+            
+            // New v4.2 elements
+            const modelWrapper = cardEl.querySelector('.model-answers-wrapper');
+            const toggleAnswerBtn = cardEl.querySelector('.toggle-answer-btn');
+            const userWordCountSpan = cardEl.querySelector('.user-word-count');
 
             audioBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -409,14 +422,41 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             textarea.addEventListener('click', (e) => e.stopPropagation());
+            
+            textarea.addEventListener('input', (e) => {
+                const count = getWordCount(e.target.value);
+                userWordCountSpan.textContent = `Siz: ${count} so'z`;
+            });
+
+            toggleAnswerBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (modelWrapper.style.display === 'none') {
+                    modelWrapper.style.display = 'block';
+                    toggleAnswerBtn.textContent = '🙈 Yashirish';
+                } else {
+                    modelWrapper.style.display = 'none';
+                    toggleAnswerBtn.textContent = '👁️ Javobni ko\'rish';
+                }
+            });
 
             practiceBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const isHidden = practiceArea.style.display === 'none';
-                practiceArea.style.display = isHidden ? 'block' : 'none';
-                practiceBtn.textContent = isHidden ? '❌ Yopish' : '✍️ Mashq qilish';
+                
                 if (isHidden) {
+                    // Open Practice Mode
+                    practiceArea.style.display = 'block';
+                    practiceBtn.textContent = '❌ Yopish';
+                    // Hide model answers by default
+                    modelWrapper.style.display = 'none';
+                    toggleAnswerBtn.textContent = '👁️ Javobni ko\'rish';
                     setTimeout(() => textarea.focus(), 100);
+                } else {
+                    // Close Practice Mode
+                    practiceArea.style.display = 'none';
+                    practiceBtn.textContent = '✍️ Mashq qilish';
+                    // Show model answers again
+                    modelWrapper.style.display = 'block';
                 }
             });
 

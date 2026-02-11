@@ -850,6 +850,37 @@ h1 {
   margin-right: 4px;
 }
 
+/* Practice Controls v4.2 */
+.practice-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.user-word-count {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-sub);
+}
+
+.toggle-answer-btn {
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.toggle-answer-btn:hover {
+  background: var(--primary);
+  color: white;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
