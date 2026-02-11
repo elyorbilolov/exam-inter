@@ -408,17 +408,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 cardEl.classList.toggle('learned');
             });
 
+            textarea.addEventListener('click', (e) => e.stopPropagation());
+
             practiceBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const isHidden = practiceArea.style.display === 'none';
                 practiceArea.style.display = isHidden ? 'block' : 'none';
                 practiceBtn.textContent = isHidden ? '❌ Yopish' : '✍️ Mashq qilish';
+                if (isHidden) {
+                    setTimeout(() => textarea.focus(), 100);
+                }
             });
 
             checkBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const userText = textarea.value.trim().toLowerCase();
-                const originalText = data.jovob_en.trim().toLowerCase();
+                const userText = textarea.value.trim();
+                const originalText = data.jovob_en.trim();
                 
                 if (!userText) {
                     feedback.textContent = "Iltimos, oldin biror narsa yozing.";
@@ -426,16 +431,33 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                // Simple check: how many words match
+                // Visual Diff Logic
                 const userWords = userText.split(/\s+/);
                 const originalWords = originalText.split(/\s+/);
+                let diffHtml = '<div class="diff-container">';
                 let matches = 0;
-                userWords.forEach(word => {
-                    if (originalWords.includes(word)) matches++;
-                });
+
+                const maxLen = Math.max(userWords.length, originalWords.length);
+                for (let i = 0; i < maxLen; i++) {
+                    const uW = userWords[i] ? userWords[i].toLowerCase().replace(/[.,!?;:]/g, "") : null;
+                    const oW = originalWords[i] ? originalWords[i].toLowerCase().replace(/[.,!?;:]/g, "") : null;
+
+                    if (uW === oW && uW !== null) {
+                        diffHtml += `<span class="word-correct">${userWords[i]}</span> `;
+                        matches++;
+                    } else if (uW !== null) {
+                        diffHtml += `<span class="word-error">${userWords[i]}</span> `;
+                        if (oW !== null) {
+                            diffHtml += `<span class="word-missing">(${originalWords[i]})</span> `;
+                        }
+                    } else if (oW !== null) {
+                        diffHtml += `<span class="word-missing">(${originalWords[i]})</span> `;
+                    }
+                }
+                diffHtml += '</div>';
 
                 const accuracy = Math.round((matches / originalWords.length) * 100);
-                feedback.textContent = `Aniqlik: ${accuracy}%`;
+                feedback.innerHTML = `Aniqlik: ${accuracy}%<br>${diffHtml}`;
                 feedback.style.color = accuracy > 70 ? "#10b981" : "#f43f5e";
             });
 
