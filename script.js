@@ -309,12 +309,13 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Build dynamic prompt content
             const titleHtml = `
-                <span class="en-text essay-title">${highlightText(data.sovol_en, searchQuery)}</span>
-                <span class="uz-text essay-title-uz">${highlightText(data.sovol_uz, searchQuery)}</span>
+                <div class="essay-header-row">
+                    <span class="en-text essay-title">${highlightText(data.sovol_en, searchQuery)}</span>
+                    <span class="uz-text essay-title-uz">(${highlightText(data.sovol_uz, searchQuery)})</span>
+                </div>
             `;
 
             let extraPromptHtml = '';
-            // If there's extra prompt data (bullet points)
             if (data.sovol_en_2) {
                 extraPromptHtml += `<ul class="prompt-list">`;
                 for (let i = 2; i <= 10; i++) {
@@ -323,8 +324,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (data[enKey]) {
                         extraPromptHtml += `
                             <li class="prompt-item">
-                                <div style="font-weight: 600; color: var(--primary);">${highlightText(data[enKey], searchQuery)}</div>
-                                <div style="font-size: 0.75rem; opacity: 0.7;">${highlightText(data[uzKey] || '', searchQuery)}</div>
+                                <span style="font-weight: 600; color: var(--primary);">${highlightText(data[enKey], searchQuery)}</span>
+                                <span style="font-size: 0.75rem; opacity: 0.7; margin-left: 5px;">(${highlightText(data[uzKey] || '', searchQuery)})</span>
                             </li>
                         `;
                     } else {
@@ -337,6 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cardEl.innerHTML = `
                 <div class="card-actions">
                     <button class="action-btn audio-btn" title="Eshitish">🔊</button>
+                    <span class="expand-icon">▼</span>
                 </div>
                 <div class="question-section">
                     ${titleHtml}
@@ -344,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="writing-answer-container">
                     <div class="writing-answer-content">
                         ${extraPromptHtml}
-                        <div class="essay-body-en" style="margin-top: 10px;">${highlightText(data.jovob_en, searchQuery)}</div>
+                        <div class="essay-body-en" style="margin-top: 8px;">${highlightText(data.jovob_en, searchQuery)}</div>
                         <div class="essay-body-uz">${highlightText(data.jovob_uz, searchQuery)}</div>
                     </div>
                 </div>
