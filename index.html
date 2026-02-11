@@ -3,35 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Exam</title>
-    <link rel="stylesheet" href="style_v2.css">
+    <title>English Exam v2.2 (New)</title>
     <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <script>
-        // Service Worker vaqtincha o'chirildi keshni tozalash uchun
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                for(let registration of registrations) {
-                    registration.unregister();
-                }
-            });
+    <style>
+        /* INLINED CRITICAL CSS */
+        :root {
+            --bg-color: #f0f2f5;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --text-main: #0f172a;
+            --text-sub: #475569;
+            --primary: #4f46e5;
+            --secondary: #f43f5e;
+            --uz-color: #10b981;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --border-radius: 12px;
+            --nav-bg: rgba(255, 255, 255, 0.5);
         }
-    </script>
+
+        [data-theme="dark"] {
+            --bg-color: #020617;
+            --card-bg: rgba(15, 23, 42, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.05);
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --primary: #818cf8;
+            --secondary: #fb7185;
+            --uz-color: #34d399;
+            --nav-bg: rgba(15, 23, 42, 0.4);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            background-attachment: fixed;
+            background-image:
+                radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
+                radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 1) 0, transparent 50%),
+                radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
+            color: var(--text-main);
+            line-height: 1.4;
+            padding: 10px;
+            min-height: 100vh;
+            transition: all 0.4s ease;
+        }
+
+        .container { max-width: 800px; margin: 0 auto; }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        h1 {
+            font-size: 1.3rem; font-weight: 800;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .header-actions { display: flex; gap: 8px; align-items: center; }
+        .action-header-btn, .theme-toggle-btn, .reset-btn {
+            background: var(--nav-bg); backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            width: 36px; height: 36px; border-radius: 50%;
+            cursor: pointer; color: var(--text-main);
+            display: flex; align-items: center; justify-content: center; font-size: 1rem;
+        }
+
+        .reset-btn { color: #f43f5e; font-size: 0.8rem; font-weight: bold; border-radius: 8px; width: auto; padding: 0 10px; }
+
+        .progress-container { margin-bottom: 12px; height: 4px; background: rgba(255, 255, 255, 0.1); border-radius: 10px; overflow: hidden; }
+        .progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--primary), var(--secondary)); }
+
+        .cards-wrapper, .parts-wrapper {
+            margin-bottom: 12px; background: var(--nav-bg); padding: 8px; border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md); border: 1px solid var(--glass-border);
+        }
+
+        .main-mode-nav { display: flex; justify-content: center; gap: 10px; margin-bottom: 12px; }
+        .mode-btn {
+            flex: 1; padding: 10px; border: 1px solid var(--glass-border); border-radius: var(--border-radius);
+            background: var(--nav-bg); color: var(--text-main); font-weight: 700; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+        }
+        .mode-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+        .cards-nav { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; }
+        .card-btn, .part-btn {
+            padding: 6px 2px; border: 1px solid var(--glass-border); border-radius: 8px;
+            background: rgba(255, 255, 255, 0.03); color: var(--text-main); cursor: pointer; font-size: 0.7rem;
+        }
+        .card-btn.active, .part-btn.active { background: var(--primary); color: white; }
+        .card-btn.active { background: var(--secondary); }
+
+        .parts-nav { display: flex; justify-content: center; gap: 8px; }
+        .part-btn { padding: 8px 20px; font-size: 0.8rem; }
+
+        #content-area { display: flex; flex-direction: column; gap: 6px; }
+        .question-card {
+            background: var(--card-bg); padding: 10px 12px; border-radius: var(--border-radius);
+            border: 1px solid var(--glass-border); position: relative; cursor: pointer;
+        }
+
+        /* Writing Specific */
+        .writing-card { border: 1px solid rgba(71, 85, 105, 0.2); margin-bottom: 8px; }
+        .writing-card .en-text.essay-title { color: #4f46e5 !important; font-size: 0.95rem; font-weight: 700; }
+        .writing-card .uz-text.essay-title-uz { color: var(--text-sub); font-size: 0.8rem; opacity: 0.7; }
+        .writing-answer-container { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; opacity: 0; }
+        .writing-card.active .writing-answer-container { max-height: 2000px; opacity: 1; margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px; }
+        .prompt-list { margin: 8px 0; padding-left: 20px; list-style-type: disc; font-size: 0.85rem; }
+        .prompt-item { margin-bottom: 4px; }
+        .essay-body-en { padding: 10px; background: rgba(79, 70, 229, 0.05); border-left: 4px solid #4f46e5; border-radius: 4px; font-size: 0.9rem; line-height: 1.5; }
+        .essay-body-uz { margin-top: 8px; font-size: 0.85rem; color: var(--text-sub); font-style: italic; }
+
+        .search-container { flex-grow: 1; margin: 0 10px; }
+        #search-input { width: 100%; padding: 8px 15px; border-radius: 20px; border: 1px solid var(--glass-border); background: var(--nav-bg); color: var(--text-main); outline: none; }
+
+        .loader { text-align: center; padding: 20px; font-weight: bold; }
+        .search-highlight { background: #fef08a; border-radius: 2px; }
+        
+        .answer-section { margin-top: 8px; padding: 8px; background: rgba(0,0,0,0.02); border-radius: 8px; }
+        .answer-block { margin-bottom: 6px; border-bottom: 1px dashed #ddd; padding-bottom: 4px; }
+        .answer-label { font-size: 0.65rem; font-weight: 800; color: var(--secondary); text-transform: uppercase; margin-right: 5px; }
+
+        @media (max-width: 480px) {
+            header { flex-wrap: wrap; gap: 10px; }
+            .search-container { order: 3; width: 100%; margin: 0; }
+            h1 { font-size: 1.1rem; }
+            .cards-nav { grid-template-columns: repeat(4, 1fr); }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>English Exam v2.1 (New)</h1>
+            <h1>Exam v2.2</h1>
             <div class="search-container">
                 <input type="text" id="search-input" placeholder="Qidirish...">
             </div>
             <div class="header-actions">
-                <button id="print-pdf" class="action-header-btn" title="PDF orqali chop etish" aria-label="Print PDF">
-                    📄
-                </button>
-                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
-                    🌙
-                </button>
+                <button onclick="hardReset()" class="reset-btn" title="Keshni tozalash">🔄 Tozalash</button>
+                <button id="theme-toggle" class="theme-toggle-btn">🌙</button>
             </div>
         </header>
 
@@ -45,9 +156,7 @@
         </nav>
 
         <section class="cards-wrapper" id="cards-wrapper">
-            <nav class="cards-nav" id="cards-nav">
-                <!-- Kartalar tugmalari JS orqali qo'shiladi -->
-            </nav>
+            <nav class="cards-nav" id="cards-nav"></nav>
         </section>
 
         <section class="parts-wrapper">
@@ -58,11 +167,200 @@
         </section>
 
         <main id="content-area">
-            <!-- Savollar shu yerga chiqadi -->
             <div id="loader" class="loader">Yuklanmoqda...</div>
         </main>
     </div>
 
-    <script src="main_v2.js"></script>
+    <script>
+        // HARD RESET FUNCTION
+        function hardReset() {
+            if(confirm("Barcha kesh va ma'lumotlar tozalanadi. Ishonchingiz komilmi?")) {
+                localStorage.clear();
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.getRegistrations().then(regs => {
+                        for(let r of regs) r.unregister();
+                        location.reload(true);
+                    });
+                } else {
+                    location.reload(true);
+                }
+            }
+        }
+
+        // AUTO UNREGISTER OLD SW
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(regs => {
+                for(let r of regs) r.unregister();
+            });
+        }
+
+        // APP LOGIC
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("--- APP VERSION 2.2 LOADED ---");
+            const contentArea = document.getElementById('content-area');
+            const cardsNav = document.getElementById('cards-nav');
+            const partButtons = document.querySelectorAll('.part-btn');
+            const themeToggle = document.getElementById('theme-toggle');
+            const progressBar = document.getElementById('progress-bar');
+            const searchInput = document.getElementById('search-input');
+            const modeButtons = document.querySelectorAll('.mode-btn');
+            const cardsWrapper = document.getElementById('cards-wrapper');
+            const partsWrapper = document.querySelector('.parts-wrapper');
+
+            let examData = [];
+            let writingData = {};
+            let currentMode = localStorage.getItem('currentMode') || 'speaking';
+            let currentCard = localStorage.getItem('currentCard') || "Card A";
+            let currentPart = localStorage.getItem('currentPart') || "Part 1";
+            let theme = localStorage.getItem('theme') || 'light';
+
+            // Theme Init
+            document.documentElement.setAttribute('data-theme', theme);
+            themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
+            themeToggle.onclick = () => {
+                theme = theme === 'light' ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
+            };
+
+            // Mode Logic
+            modeButtons.forEach(btn => {
+                btn.onclick = () => {
+                    modeButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentMode = btn.dataset.mode;
+                    localStorage.setItem('currentMode', currentMode);
+                    updateView();
+                };
+            });
+
+            function updateView() {
+                if (currentMode === 'writing') {
+                    cardsWrapper.style.display = 'none';
+                    partsWrapper.style.display = 'none';
+                    renderWritingContent();
+                } else {
+                    cardsWrapper.style.display = 'block';
+                    partsWrapper.style.display = 'block';
+                    renderContent();
+                }
+            }
+
+            async function loadData() {
+                try {
+                    const [resExam, resWriting] = await Promise.all([
+                        fetch('exam.json?v=' + Date.now()),
+                        fetch('writing.json?v=' + Date.now())
+                    ]);
+                    examData = await resExam.json();
+                    writingData = await resWriting.json();
+                    
+                    const cards = [...new Set(examData.map(i => i.Mavzular))].filter(Boolean);
+                    cardsNav.innerHTML = cards.map(c => `
+                        <button class="card-btn ${c === currentCard ? 'active' : ''}" onclick="setCard('${c}')">
+                            ${c}
+                        </button>
+                    `).join('');
+                    
+                    updateView();
+                } catch(e) {
+                    contentArea.innerHTML = '<div class="loader" style="color:red">Xatolik: ' + e.message + '</div>';
+                }
+            }
+
+            window.setCard = (c) => {
+                currentCard = c;
+                localStorage.setItem('currentCard', c);
+                document.querySelectorAll('.card-btn').forEach(b => b.classList.toggle('active', b.innerText.trim() === c));
+                renderContent();
+            };
+
+            partButtons.forEach(btn => {
+                btn.onclick = () => {
+                    partButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentPart = btn.dataset.part;
+                    localStorage.setItem('currentPart', currentPart);
+                    renderContent();
+                };
+            });
+
+            function highlightText(text, query) {
+                if (!query) return text;
+                const regex = new RegExp(`(${query})`, 'gi');
+                return text.replace(regex, '<mark class="search-highlight">$1</mark>');
+            }
+
+            function renderWritingContent(query = '') {
+                contentArea.innerHTML = '';
+                const items = Object.entries(writingData);
+                const filtered = query ? items.filter(([k,v]) => JSON.stringify(v).toLowerCase().includes(query.toLowerCase())) : items;
+
+                filtered.forEach(([id, data]) => {
+                    const card = document.createElement('div');
+                    card.className = 'question-card writing-card';
+                    let prompt = `<div class="en-text essay-title">${highlightText(data.sovol_en, query)}</div>
+                                  <div class="uz-text essay-title-uz">${highlightText(data.sovol_uz, query)}</div>`;
+                    
+                    if(data.sovol_en_2) {
+                        prompt += '<ul class="prompt-list">';
+                        for(let i=2; i<=10; i++) {
+                            if(data['sovol_en_'+i]) {
+                                prompt += `<li class="prompt-item">
+                                    <strong>${highlightText(data['sovol_en_'+i], query)}</strong>
+                                    <div style="font-size:0.75rem; opacity:0.8">${highlightText(data['sovol_uz_'+i] || '', query)}</div>
+                                </li>`;
+                            }
+                        }
+                        prompt += '</ul>';
+                    }
+
+                    card.innerHTML = `
+                        <div class="question-section">${prompt}</div>
+                        <div class="writing-answer-container">
+                            <div class="essay-body-en">${highlightText(data.jovob_en, query)}</div>
+                            <div class="essay-body-uz">${highlightText(data.jovob_uz, query)}</div>
+                        </div>
+                    `;
+                    card.onclick = () => card.classList.toggle('active');
+                    contentArea.appendChild(card);
+                });
+                progressBar.style.width = '100%';
+            }
+
+            function renderContent(query = '') {
+                contentArea.innerHTML = '';
+                const filtered = examData.filter(i => 
+                    query ? JSON.stringify(i).toLowerCase().includes(query.toLowerCase()) : (i.Mavzular === currentCard && i.Qism === currentPart)
+                );
+
+                filtered.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'question-card';
+                    let answer = item.FullAnswer_EN ? `
+                        <div class="answer-block"><span class="answer-label">Answer:</span> ${highlightText(item.FullAnswer_EN, query)}</div>
+                        <div class="answer-block"><span class="answer-label">Reason:</span> ${highlightText(item.Reason_EN, query)}</div>
+                    ` : `<div class="en-text" style="color:var(--primary)">${highlightText(item['Jovoblar (EN)'] || '', query)}</div>`;
+
+                    card.innerHTML = `
+                        <div class="en-text">${highlightText(item.Sovollar, query)}</div>
+                        <div class="uz-text">(${highlightText(item['Sovollar (UZ)'] || '', query)})</div>
+                        <div class="answer-section">${answer}</div>
+                    `;
+                    contentArea.appendChild(card);
+                });
+                progressBar.style.width = '100%';
+            }
+
+            searchInput.oninput = (e) => {
+                const q = e.target.value.trim();
+                if(currentMode === 'writing') renderWritingContent(q);
+                else renderContent(q);
+            };
+
+            loadData();
+        });
+    </script>
 </body>
 </html>
