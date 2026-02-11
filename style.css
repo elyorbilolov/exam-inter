@@ -138,6 +138,47 @@ h1 {
   border: 1px solid var(--glass-border);
 }
 
+.main-mode-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.mode-btn {
+  flex: 1;
+  max-width: 200px;
+  padding: 12px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius);
+  background: var(--nav-bg);
+  backdrop-filter: blur(10px);
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: var(--shadow-md);
+}
+
+.mode-btn:hover {
+  transform: translateY(-2px);
+  background: var(--card-bg);
+  border-color: var(--primary);
+}
+
+.mode-btn.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+}
+
 .cards-nav {
   display: grid;
   grid-template-columns: repeat(5, 1fr);

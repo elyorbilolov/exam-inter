@@ -6,29 +6,70 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressBar = document.getElementById('progress-bar');
     const searchInput = document.getElementById('search-input');
     const printPdfBtn = document.getElementById('print-pdf');
+    const modeButtons = document.querySelectorAll('.mode-btn');
+    const cardsWrapper = document.getElementById('cards-wrapper');
+    const partsWrapper = document.querySelector('.parts-wrapper');
     
     let examData = [];
+    let writingData = {};
+    let currentMode = localStorage.getItem('currentMode') || 'speaking';
     let currentCard = localStorage.getItem('currentCard') || "Card A";
     let currentPart = localStorage.getItem('currentPart') || "Part 1";
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     let theme = localStorage.getItem('theme') || 'light';
 
+    // Mode Switch Logic
+    modeButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            modeButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentMode = btn.getAttribute('data-mode');
+            localStorage.setItem('currentMode', currentMode);
+            
+            if (currentMode === 'writing') {
+                cardsWrapper.style.display = 'none';
+                partsWrapper.style.display = 'none';
+                renderWritingContent();
+            } else {
+                cardsWrapper.style.display = 'block';
+                partsWrapper.style.display = 'block';
+                renderContent(currentCard, currentPart);
+            }
+        });
+    });
+
+    // Initialize UI with current mode
+    if (currentMode === 'writing') {
+        cardsWrapper.style.display = 'none';
+        partsWrapper.style.display = 'none';
+        modeButtons.forEach(b => {
+            if (b.getAttribute('data-mode') === 'writing') b.classList.add('active');
+            else b.classList.remove('active');
+        });
+    }
+
     // Search Listener
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase().trim();
-            renderContent(currentCard, currentPart, query);
+            if (currentMode === 'writing') {
+                renderWritingContent(query);
+            } else {
+                renderContent(currentCard, currentPart, query);
+            }
         });
     }
 
     // Print PDF Listener
     if (printPdfBtn) {
         printPdfBtn.addEventListener('click', () => {
-            exportToPDF();
+            if (currentMode === 'writing') {
+                exportWritingToPDF();
+            } else {
+                exportToPDF();
+            }
         });
     }
-
-    // Theme Logic
 
     // Theme Logic
     document.documentElement.setAttribute('data-theme', theme);
@@ -43,9 +84,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function loadData() {
         try {
-            const response = await fetch('exam.json?v=' + new Date().getTime());
-            if (!response.ok) throw new Error('JSON faylni yuklab bo\'lmadi');
-            examData = await response.json();
+            // Load speaking data
+            const resExam = await fetch('exam.json?v=' + new Date().getTime());
+            if (!resExam.ok) throw new Error('Exam JSON faylni yuklab bo\'lmadi');
+            examData = await resExam.json();
+
+            // Load writing data
+            const resWriting = await fetch('writing.json?v=' + new Date().getTime());
+            if (!resWriting.ok) throw new Error('Writing JSON faylni yuklab bo\'lmadi');
+            writingData = await resWriting.json();
             
             const uniqueCards = [];
             const cardMap = new Map();
@@ -61,7 +108,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             renderCardButtons(uniqueCards);
             updateActivePartButton();
-            renderContent(currentCard, currentPart);
+            
+            if (currentMode === 'writing') {
+                renderWritingContent();
+            } else {
+                renderContent(currentCard, currentPart);
+            }
         } catch (error) {
             contentArea.innerHTML = `<div class="loader" style="color: red;">Xatolik: ${error.message}</div>`;
         }
@@ -124,6 +176,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!query) return text;
         const regex = new RegExp(`(${query})`, 'gi');
         return text.replace(regex, '<mark class="search-highlight">$1</mark>');
+    }
+
+    async function exportWritingToPDF() {
+        renderWritingContent(); // Ensure all rendered
+        setTimeout(() => {
+            window.print();
+        }, 500);
     }
 
     async function exportToPDF() {
@@ -223,6 +282,58 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             contentArea.appendChild(cardEl);
         });
+    }
+
+    function renderWritingContent(searchQuery = '') {
+        contentArea.innerHTML = '';
+        const items = Object.entries(writingData);
+        
+        let filtered = items;
+        if (searchQuery) {
+            filtered = items.filter(([id, data]) => {
+                const qEn = (data.sovol_en || "").toLowerCase();
+                const qUz = (data.sovol_uz || "").toLowerCase();
+                const aEn = (data.jovob_en || "").toLowerCase();
+                const aUz = (data.jovob_uz || "").toLowerCase();
+                const query = searchQuery.toLowerCase();
+                return qEn.includes(query) || qUz.includes(query) || aEn.includes(query) || aUz.includes(query);
+            });
+        }
+
+        if (filtered.length === 0) {
+            contentArea.innerHTML = `<div class="loader">Qidiruv bo'yicha natija topilmadi.</div>`;
+            return;
+        }
+
+        filtered.forEach(([id, data]) => {
+            const cardEl = document.createElement('div');
+            cardEl.className = 'question-card writing-card';
+            
+            cardEl.innerHTML = `
+                <div class="card-actions">
+                    <button class="action-btn audio-btn" title="Eshitish">🔊</button>
+                </div>
+                <div class="question-section">
+                    <span class="answer-label" style="display: inline-block; margin-bottom: 4px;">Topic:</span>
+                    <span class="en-text" style="color: var(--secondary);">${highlightText(data.sovol_en, searchQuery)}</span>
+                    <span class="uz-text">(${highlightText(data.sovol_uz, searchQuery)})</span>
+                </div>
+                <div class="answer-section">
+                    <div class="answer-block" style="border: none;">
+                        <span class="en-text highlight" style="line-height:1.6;">${highlightText(data.jovob_en, searchQuery)}</span>
+                        <span class="uz-text small" style="display: block; margin-top: 8px; line-height: 1.5; font-style: normal;">${highlightText(data.jovob_uz, searchQuery)}</span>
+                    </div>
+                </div>
+            `;
+
+            cardEl.querySelector('.audio-btn').addEventListener('click', () => {
+                speak(data.sovol_en);
+                setTimeout(() => speak(data.jovob_en), 1500);
+            });
+
+            contentArea.appendChild(cardEl);
+        });
+        updateProgress(100, 100);
     }
 
     function renderContent(card, part, searchQuery = '') {
