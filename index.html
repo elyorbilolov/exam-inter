@@ -8,9 +8,12 @@
     <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <script>
+        // Service Worker vaqtincha o'chirildi keshni tozalash uchun
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./sw.js?v=nuclear_v2').then(reg => {
-                reg.update();
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                for(let registration of registrations) {
+                    registration.unregister();
+                }
             });
         }
     </script>
@@ -18,7 +21,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>English Exam</h1>
+            <h1>English Exam v2.1 (New)</h1>
             <div class="search-container">
                 <input type="text" id="search-input" placeholder="Qidirish...">
             </div>
