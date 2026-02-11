@@ -291,12 +291,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let filtered = items;
         if (searchQuery) {
             filtered = items.filter(([id, data]) => {
-                const qEn = (data.sovol_en || "").toLowerCase();
-                const qUz = (data.sovol_uz || "").toLowerCase();
-                const aEn = (data.jovob_en || "").toLowerCase();
-                const aUz = (data.jovob_uz || "").toLowerCase();
+                const combinedText = Object.values(data).join(' ').toLowerCase();
                 const query = searchQuery.toLowerCase();
-                return qEn.includes(query) || qUz.includes(query) || aEn.includes(query) || aUz.includes(query);
+                return combinedText.includes(query);
             });
         }
 
@@ -309,13 +306,39 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardEl = document.createElement('div');
             cardEl.className = 'question-card writing-card';
             
+            // Build dynamic prompt content
+            let promptHtml = `
+                <span class="en-text essay-title">${highlightText(data.sovol_en, searchQuery)}</span>
+                <span class="uz-text essay-title-uz">${highlightText(data.sovol_uz, searchQuery)}</span>
+            `;
+
+            // If there's extra prompt data (bullet points)
+            if (data.sovol_en_2) {
+                promptHtml += `<ul class="prompt-list">`;
+                // Look for sovol_en_2, 3, 4, 5...
+                for (let i = 2; i <= 10; i++) {
+                    const enKey = `sovol_en_${i}`;
+                    const uzKey = `sovol_uz_${i}`;
+                    if (data[enKey]) {
+                        promptHtml += `
+                            <li class="prompt-item">
+                                <div style="font-weight: 600;">${highlightText(data[enKey], searchQuery)}</div>
+                                <div style="font-size: 0.75rem; opacity: 0.7;">${highlightText(data[uzKey] || '', searchQuery)}</div>
+                            </li>
+                        `;
+                    } else {
+                        break;
+                    }
+                }
+                promptHtml += `</ul>`;
+            }
+
             cardEl.innerHTML = `
                 <div class="card-actions">
                     <button class="action-btn audio-btn" title="Eshitish">🔊</button>
                 </div>
                 <div class="question-section">
-                    <span class="en-text essay-title">${highlightText(data.sovol_en, searchQuery)}</span>
-                    <span class="uz-text essay-title-uz">${highlightText(data.sovol_uz, searchQuery)}</span>
+                    ${promptHtml}
                 </div>
                 <div class="writing-answer-container">
                     <div class="writing-answer-content">
@@ -325,15 +348,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
 
-            // Audio button click should not bubble up to card toggle
             const audioBtn = cardEl.querySelector('.audio-btn');
             audioBtn.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent card toggle
-                speak(data.sovol_en);
-                setTimeout(() => speak(data.jovob_en), 1500);
+                e.stopPropagation();
+                let fullSpeech = data.sovol_en;
+                for (let i = 2; i <= 10; i++) {
+                    if (data[`sovol_en_${i}`]) fullSpeech += ". " + data[`sovol_en_${i}`];
+                    else break;
+                }
+                speak(fullSpeech);
+                setTimeout(() => speak(data.jovob_en), 2000);
             });
 
-            // Toggle active state on card click
             cardEl.addEventListener('click', () => {
                 cardEl.classList.toggle('active');
             });
