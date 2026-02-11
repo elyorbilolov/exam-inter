@@ -314,21 +314,28 @@ document.addEventListener('DOMContentLoaded', () => {
                     <button class="action-btn audio-btn" title="Eshitish">🔊</button>
                 </div>
                 <div class="question-section">
-                    <span class="answer-label" style="display: inline-block; margin-bottom: 4px;">Topic:</span>
-                    <span class="en-text" style="color: var(--secondary);">${highlightText(data.sovol_en, searchQuery)}</span>
-                    <span class="uz-text">(${highlightText(data.sovol_uz, searchQuery)})</span>
+                    <span class="en-text essay-title">${highlightText(data.sovol_en, searchQuery)}</span>
+                    <span class="uz-text essay-title-uz">${highlightText(data.sovol_uz, searchQuery)}</span>
                 </div>
-                <div class="answer-section">
-                    <div class="answer-block" style="border: none;">
-                        <span class="en-text highlight" style="line-height:1.6;">${highlightText(data.jovob_en, searchQuery)}</span>
-                        <span class="uz-text small" style="display: block; margin-top: 8px; line-height: 1.5; font-style: normal;">${highlightText(data.jovob_uz, searchQuery)}</span>
+                <div class="writing-answer-container">
+                    <div class="writing-answer-content">
+                        <div class="essay-body-en">${highlightText(data.jovob_en, searchQuery)}</div>
+                        <div class="essay-body-uz">${highlightText(data.jovob_uz, searchQuery)}</div>
                     </div>
                 </div>
             `;
 
-            cardEl.querySelector('.audio-btn').addEventListener('click', () => {
+            // Audio button click should not bubble up to card toggle
+            const audioBtn = cardEl.querySelector('.audio-btn');
+            audioBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent card toggle
                 speak(data.sovol_en);
                 setTimeout(() => speak(data.jovob_en), 1500);
+            });
+
+            // Toggle active state on card click
+            cardEl.addEventListener('click', () => {
+                cardEl.classList.toggle('active');
             });
 
             contentArea.appendChild(cardEl);

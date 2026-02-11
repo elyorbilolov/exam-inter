@@ -617,3 +617,105 @@ h1 {
   background-color: #854d0e;
   color: #fef08a;
 }
+
+/* Writing Section Enhancements - Antique/Gold Theme */
+.writing-card {
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  background: linear-gradient(135deg, var(--card-bg), rgba(212, 175, 55, 0.05)) !important;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  display: block !important;
+}
+
+.writing-card:hover {
+  border-color: rgba(212, 175, 55, 0.8) !important;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2) !important;
+  transform: translateY(-3px) scale(1.01);
+}
+
+.writing-card .question-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  padding-right: 30px;
+}
+
+.writing-card .question-section::after {
+  content: '▼';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.7rem;
+  color: #d4af37;
+  transition: transform 0.3s ease;
+  opacity: 0.6;
+}
+
+.writing-card.active .question-section::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.writing-answer-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+  opacity: 0;
+}
+
+.writing-card.active .writing-answer-container {
+  max-height: 2000px;
+  transition: max-height 1.2s ease-in-out;
+  opacity: 1;
+}
+
+.writing-answer-content {
+  padding: 15px 10px;
+  background: rgba(212, 175, 55, 0.03);
+  border-radius: 8px;
+  border-top: 1px solid rgba(212, 175, 55, 0.1);
+  margin-top: 10px;
+}
+
+.writing-card .en-text.essay-title {
+  color: #d4af37 !important;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-shadow: 0 0 1px rgba(212, 175, 55, 0.2);
+}
+
+.writing-card .uz-text.essay-title-uz {
+  color: var(--text-sub);
+  font-size: 0.85rem;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+.writing-card .essay-body-en {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-main);
+  font-weight: 500;
+  text-align: justify;
+}
+
+.writing-card .essay-body-uz {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-sub);
+  margin-top: 15px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(212, 175, 55, 0.2);
+  text-align: justify;
+}
+
+[data-theme='dark'] .writing-card {
+  border-color: rgba(212, 175, 55, 0.2) !important;
+}
+
+[data-theme='dark'] .writing-card:hover {
+  border-color: rgba(212, 175, 55, 0.6) !important;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.15) !important;
+}
