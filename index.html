@@ -3,15 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Exam</title>
-    <link rel="stylesheet" href="style.css?v=v35">
+    <title>English Exam v3.7</title>
+    <link rel="stylesheet" href="style.css?v=v40">
     <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./sw.js?v=v35').then(reg => {
+            navigator.serviceWorker.register('./sw.js?v=v40').then(reg => {
                 reg.update();
             });
+        }
+        function hardReset() {
+            if(confirm("Barcha kesh va ma'lumotlar tozalanadi. Ishonchingiz komilmi?")) {
+                localStorage.clear();
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.getRegistrations().then(regs => {
+                        for(let r of regs) r.unregister();
+                        location.reload(true);
+                    });
+                } else {
+                    location.reload(true);
+                }
+            }
         }
     </script>
 </head>
@@ -23,6 +36,9 @@
                 <input type="text" id="search-input" placeholder="Qidirish...">
             </div>
             <div class="header-actions">
+                <button onclick="hardReset()" class="action-header-btn" title="Keshni tozalash" style="background: rgba(244, 63, 94, 0.2); border-color: rgba(244, 63, 94, 0.3);">
+                    🔄
+                </button>
                 <button id="print-pdf" class="action-header-btn" title="PDF orqali chop etish" aria-label="Print PDF">
                     📄
                 </button>
@@ -60,6 +76,6 @@
         </main>
     </div>
 
-    <script src="script.js?v=v35"></script>
+    <script src="script.js?v=v40"></script>
 </body>
 </html>

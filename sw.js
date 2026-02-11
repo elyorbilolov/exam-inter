@@ -1,4 +1,4 @@
-const CACHE_NAME = 'exam-cache-v35';
+const CACHE_NAME = 'exam-cache-v40';
 const ASSETS = [
   './',
   './index.html',
@@ -26,7 +26,6 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  // Network-First Strategy
   event.respondWith(
     fetch(event.request).then((response) => {
       if (response && response.status === 200) {
