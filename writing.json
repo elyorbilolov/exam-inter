@@ -10,8 +10,8 @@
     "sovol_uz_4": "Nima uchun yoqtirasiz",
     "sovol_en_5": "how often you do it",
     "sovol_uz_5": "Uni qanchalik tez-tez qilasiz",
-    "jovob_en": "My favorite hobby is reading books. I like reading because it helps me learn new words and improve my English. I usually read almost every day, especially in the evening.",
-    "jovob_uz": "Mening sevimli mashg‘ulotim kitob o‘qish. Men uni yaxshi ko‘raman, chunki u yangi so‘zlarni o‘rganishga va ingliz tilimni yaxshilashga yordam beradi. Men deyarli har kuni, ayniqsa kechqurun kitob o‘qiyman."
+    "jovob_en": "My favorite hobby is reading books. I like reading because it helps me learn new words, improves my English, and relaxes me. I usually read almost every day, especially in the evening before sleep. Reading stories and interesting books makes my free time enjoyable and useful, and I cannot spend a day without it.",
+    "jovob_uz": "Mening sevimli mashg‘ulotim kitob o‘qish. Men uni yaxshi ko‘raman, chunki u yangi so‘zlarni o‘rganishga, ingliz tilimni yaxshilashga va meni tinchlantirishga yordam beradi. Men deyarli har kuni, ayniqsa kechqurun, hikoya va qiziqarli kitoblarni o‘qiyman. Kitob o‘qish bo‘sh vaqtimni foydali qiladi va kunimni shunsiz o‘tkazolmayman."
   },
   "№2": {
     "sovol_en": "Write a small essay about your family.",
@@ -24,8 +24,8 @@
     "sovol_uz_4": "Ular nima ish qiladi yoki qanday mashg‘ulotlarni yoqtiradi",
     "sovol_en_5": "how you spend time together",
     "sovol_uz_5": "Birga vaqtni qanday o‘tkazasiz",
-    "jovob_en": "There are five people in my family: my father, my mother, my brother, my sister, and me. My father works in an office and my mother is a teacher. My brother likes football and my sister enjoys drawing. In the evening, we have dinner together and talk.",
-    "jovob_uz": "Mening oilamda besh kishi bor: otam, onam, akam, singlim va men. Otam ofisda ishlaydi, onam o‘qituvchi. Akam futbolni yaxshi ko‘radi, singlim rasm chizadi. Kechqurun birga ovqatlanib suhbatlashamiz."
+    "jovob_en": "There are five people in my family: my father, mother, brother, sister, and me. My father works in an office and my mother is a teacher. My brother likes football and my sister enjoys drawing. In the evening, we have dinner together, talk about our day, and sometimes play board games. Spending time with them is my favorite part of the day.",
+    "jovob_uz": "Mening oilamda besh kishi bor: otam, onam, akam, singlim va men. Otam ofisda ishlaydi, onam o‘qituvchi. Akam futbolni yaxshi ko‘radi, singlim rasm chizadi. Kechqurun birga ovqatlanamiz, kunimiz haqida gaplashamiz va ba’zida stol o‘yinlarini o‘ynaymiz. Ular bilan vaqt o‘tkazish kunimning eng yoqimli qismidir."
   },
   "№3": {
     "sovol_en": "Write a small essay about your school.",
@@ -35,11 +35,11 @@
     "sovol_en_3": "your classmates",
     "sovol_uz_3": "Sinfdoshlaringiz",
     "sovol_en_4": "your school teachers",
-    "sovol_uz_4": "Maktab o‘qituvchilaringiz",
+    "sovol_uz_4": "O‘qituvchilaringiz",
     "sovol_en_5": "the buildings (for example, football and basketball stadiums)",
     "sovol_uz_5": "Binolar (masalan, futbol va basketbol maydonlari)",
-    "jovob_en": "I study at a big and modern school. My classmates are friendly and helpful. We study and play together. My teachers are kind and explain lessons clearly. Our school has a large building, a library, and sports stadiums. I like my school very much.",
-    "jovob_uz": "Men katta va zamonaviy maktabda o‘qiyman. Sinfdoshlarim do‘stona va yordam beradi. Biz birga o‘qiymiz va o‘ynaymiz. O‘qituvchilarim mehribon va darslarni tushuntiradi. Maktabimizda katta bino, kutubxona va sport maydonlari bor. Men maktabimni yaxshi ko‘raman."
+    "jovob_en": "I study at a big and modern school. My classmates are friendly and helpful. We study, play, and work together. My teachers are kind and explain lessons clearly. Our school has a large building, library, and football and basketball stadiums. I enjoy learning here because the school is comfortable and full of interesting activities every day.",
+    "jovob_uz": "Men katta va zamonaviy maktabda o‘qiyman. Sinfdoshlarim do‘stona va yordam beradi. Biz birga o‘qiymiz, o‘ynaymiz va ishlaymiz. O‘qituvchilarim mehribon va darslarni tushuntiradi. Maktabimizda katta bino, kutubxona, futbol va basketbol maydonlari bor. Bu yerda o‘qishni yoqtiraman, chunki maktab qulay va qiziqarli mashg‘ulotlarga boy."
   },
   "№4": {
     "sovol_en": "Write a small essay about your favourite holiday.",
@@ -52,8 +52,8 @@
     "sovol_uz_4": "Qanday ovqat tayyorlaysiz",
     "sovol_en_5": "what you do on that day",
     "sovol_uz_5": "O‘sha kuni nima qilasiz",
-    "jovob_en": "My favourite holiday is Eid. I like it because I can spend time with my family. We cook traditional food like plov and sweets. We visit our relatives and say kind words. I feel very happy on this day.",
-    "jovob_uz": "Mening sevimli bayramim Hayit. Men uni yaxshi ko‘raman, chunki oilam bilan vaqt o‘tkazaman. Biz palov va shirinliklar tayyorlaymiz. Qarindoshlarni ziyorat qilamiz va yaxshi tilaklar aytamiz. Bu kun meni juda xursand qiladi."
+    "jovob_en": "My favourite holiday is Eid. I like it because I spend time with family and relatives. We cook traditional food such as plov, sweets, and desserts. On that day, we visit relatives, exchange gifts, and say kind words. It is a happy day and I enjoy it every year with my family and friends.",
+    "jovob_uz": "Mening sevimli bayramim Hayit. Men uni oilam va qarindoshlarim bilan vaqt o‘tkazish uchun yaxshi ko‘raman. Biz palov, shirinliklar va desertlar tayyorlaymiz. Bu kunda qarindoshlarni ziyorat qilamiz, sovg‘a beramiz va yaxshi tilaklar aytamiz. Bu kun meni xursand qiladi va men har yili undan zavqlanaman."
   },
   "№5": {
     "sovol_en": "Write a small essay about your city.",
@@ -66,8 +66,8 @@
     "sovol_uz_4": "Bog‘lar",
     "sovol_en_5": "the buildings",
     "sovol_uz_5": "Binolar",
-    "jovob_en": "I live in a beautiful city. There are many markets with fresh fruits and vegetables. The parks are green and clean. Families walk and relax there. There are tall buildings, schools, and shops. I like my city because it is peaceful and comfortable.",
-    "jovob_uz": "Men chiroyli shaharda yashayman. Bu yerda yangi meva va sabzavotlar sotiladigan ko‘plab bozorlar bor. Bog‘lar yashil va toza. Odamlar u yerda dam oladi. Baland binolar, maktablar va do‘konlar bor. Men shahrimni yaxshi ko‘raman."
+    "jovob_en": "I live in a beautiful city. There are many markets where people buy fresh fruits and vegetables. The parks are green, clean, and peaceful. Families walk and relax there. There are tall buildings, schools, and shops. I like my city because it is friendly, comfortable, and a nice place to live with family and friends.",
+    "jovob_uz": "Men chiroyli shaharda yashayman. Bu yerda odamlar yangi meva va sabzavot sotib oladigan ko‘plab bozorlar bor. Bog‘lar yashil, toza va tinch. Odamlar u yerda sayr qiladi va dam oladi. Shuningdek, baland binolar, maktablar va do‘konlar bor. Men shahrimni qulay va do‘stona deb bilaman."
   },
   "№6": {
     "sovol_en": "Write a small essay about your last birthday.",
@@ -80,63 +80,63 @@
     "sovol_uz_4": "Kimlar bor edi",
     "sovol_en_5": "What happened",
     "sovol_uz_5": "Nima bo‘lgan",
-    "jovob_en": "My last birthday was in July. I celebrated it at home with my family and friends. We ate delicious food and a big cake. My friends gave me presents. We talked, laughed, and took photos. It was a very happy day.",
-    "jovob_uz": "Oxirgi tug‘ilgan kunim iyul oyida bo‘ldi. Men uni uyda oilam va do‘stlarim bilan nishonladim. Biz mazali ovqat va katta tort yedik. Do‘stlarim sovg‘alar berdi. Bu juda baxtli kun edi."
+    "jovob_en": "My last birthday was in July. I celebrated it at home with my family and friends. We ate delicious food and a big chocolate cake. My friends gave me presents, and we laughed, talked, and took many photos. It was a very happy and memorable day, and I enjoyed every moment with them.",
+    "jovob_uz": "Oxirgi tug‘ilgan kunim iyul oyida bo‘ldi. Men uni uyda oilam va do‘stlarim bilan nishonladim. Biz mazali ovqat va katta shokoladli tort yedik. Do‘stlarim sovg‘alar berdi, biz kuldik, gaplashdik va ko‘p suratga tushdik. Bu juda baxtli va esda qoladigan kun bo‘ldi."
   },
   "№7": {
     "sovol_en": "Write a small essay about a place you like.",
     "sovol_uz": "Yoqtirgan joyingiz haqida kichik insho yozing.",
     "sovol_en_2": "In your essay, you should write about:",
     "sovol_uz_2": "Inshoda quyidagilar haqida yozing:",
-    "sovol_en_3": "Where the place is",
+    "sovol_en_3": "where the place is",
     "sovol_uz_3": "U qayerda joylashgan",
-    "sovol_en_4": "What you can see there",
+    "sovol_en_4": "what you can see there",
     "sovol_uz_4": "U yerda nimani ko‘rish mumkin",
-    "sovol_en_5": "What you do there",
+    "sovol_en_5": "what you do there",
     "sovol_uz_5": "U yerda nima qilasiz",
-    "jovob_en": "One place I like is the park near my house. It is close to my home. There are many trees and flowers. I can see children playing and families walking. I go there to relax and breathe fresh air.",
-    "jovob_uz": "Men yoqtiradigan joylardan biri uyim yaqinidagi bog‘. U uyimga yaqin. U yerda ko‘plab daraxtlar va gullar bor. Bolalar o‘ynaydi, oilalar sayr qiladi. Men u yerga dam olish uchun boraman."
+    "jovob_en": "One place I like is the park near my house. It is very close to my home. There are many trees, flowers, and benches. People walk, play, and relax there. I usually go to the park in the evening to breathe fresh air, enjoy nature, and sometimes read a book. It makes me calm and happy.",
+    "jovob_uz": "Men yoqtiradigan joylardan biri uyim yaqinidagi bog‘. U uyimga juda yaqin. Bu yerda ko‘p daraxtlar, gullar va skameykalar bor. Odamlar sayr qiladi, o‘ynaydi va dam oladi. Men kechqurun toza havo olish, tabiatdan zavqlanish va ba’zan kitob o‘qish uchun boraman. Bu meni tinchlantiradi va xursand qiladi."
   },
   "№8": {
     "sovol_en": "Write a small essay about your house or flat.",
     "sovol_uz": "Uyingiz yoki kvartirangiz haqida kichik insho yozing.",
     "sovol_en_2": "In your essay, you should write about:",
     "sovol_uz_2": "Inshoda quyidagilar haqida yozing:",
-    "sovol_en_3": "How many rooms it has",
+    "sovol_en_3": "how many rooms it has",
     "sovol_uz_3": "Nechta xona bor",
-    "sovol_en_4": "Your favorite room",
+    "sovol_en_4": "your favorite room",
     "sovol_uz_4": "Sevimli xonangiz",
-    "sovol_en_5": "What you like about your house/flat",
+    "sovol_en_5": "what you like about your house/flat",
     "sovol_uz_5": "Uyingiz yoki kvartirangizning nimasi yoqadi",
-    "jovob_en": "I live in a comfortable house. It has four rooms: a living room, two bedrooms, and a kitchen. My favorite room is my bedroom because I can study and rest there. I like my house because it is clean and quiet.",
-    "jovob_uz": "Men qulay uyda yashayman. Unda to‘rtta xona bor: mehmonxona, ikkita yotoqxona va oshxona. Mening sevimli xonam yotoqxonam. U yerda o‘qiyman va dam olaman. Uylim toza va tinch."
+    "jovob_en": "I live in a comfortable house with four rooms: a living room, two bedrooms, and a kitchen. My favorite room is my bedroom because I can study, read, and rest there. I like my house because it is clean, quiet, and cozy. I feel safe and happy living here with my family.",
+    "jovob_uz": "Men qulay uyda yashayman. Unda to‘rtta xona bor: mehmonxona, ikkita yotoqxona va oshxona. Mening sevimli xonam yotoqxonam, chunki u yerda o‘qiyman, kitob o‘qiyman va dam olaman. Uylim toza, tinch va qulay. Men bu yerda oilam bilan yashashdan xursandman."
   },
   "№9": {
     "sovol_en": "Write a small essay about yourself.",
     "sovol_uz": "O‘zingiz haqida kichik insho yozing.",
     "sovol_en_2": "In your essay, you should write about:",
     "sovol_uz_2": "Inshoda quyidagilar haqida yozing:",
-    "sovol_en_3": "Your name and age",
+    "sovol_en_3": "your name and age",
     "sovol_uz_3": "Ismingiz va yoshingiz",
-    "sovol_en_4": "Where you are from",
+    "sovol_en_4": "where you are from",
     "sovol_uz_4": "Qayerdansiz",
-    "sovol_en_5": "Your hobbies",
+    "sovol_en_5": "your hobbies",
     "sovol_uz_5": "Mashg‘ulotlaringiz",
-    "jovob_en": "My name is Elyor, and I am a university student. I am from Uzbekistan. I am friendly and hardworking. In my free time, I like reading books and learning English.",
-    "jovob_uz": "Mening ismim Elyor, men universitet talabasisiman. Men O‘zbekistondanman. Men do‘stona va mehnatsevarman. Bo‘sh vaqtimda kitob o‘qishni va ingliz tilini o‘rganishni yaxshi ko‘raman."
+    "jovob_en": "My name is Elyor, and I am 20 years old. I am from Uzbekistan. I am friendly, hardworking, and curious. I like reading books, learning English, and spending time with friends. In my free time, I often read stories or watch educational videos. I enjoy improving my knowledge and skills every day.",
+    "jovob_uz": "Mening ismim Elyor, men 20 yoshdaman. Men O‘zbekistondanman. Men do‘stona, mehnatsevar va qiziquvchanman. Men kitob o‘qishni, ingliz tilini o‘rganishni va do‘stlar bilan vaqt o‘tkazishni yaxshi ko‘raman. Bo‘sh vaqtimda hikoya o‘qiyman yoki ta’limiy videolar tomosha qilaman. Men har kuni bilim va ko‘nikmalarimni yaxshilashni yoqtiraman."
   },
   "№10": {
     "sovol_en": "Write a small essay about your favorite thing.",
     "sovol_uz": "Sevimli narsangiz haqida kichik insho yozing.",
     "sovol_en_2": "In your essay, you should write about:",
     "sovol_uz_2": "Inshoda quyidagilar haqida yozing:",
-    "sovol_en_3": "What it is",
+    "sovol_en_3": "what it is",
     "sovol_uz_3": "U nima",
-    "sovol_en_4": "Who gave it to you or where you got it",
+    "sovol_en_4": "who gave it to you or where you got it",
     "sovol_uz_4": "Kim bergan yoki qayerdan olgansiz",
-    "sovol_en_5": "Why you like it",
+    "sovol_en_5": "why you like it",
     "sovol_uz_5": "Nima uchun yoqtirasiz",
-    "jovob_en": "My favorite thing is my smartphone. I bought it last year with my own money. I use it to study English and talk to my friends. It helps me in my daily life. I like it because it is very useful.",
-    "jovob_uz": "Mening sevimli narsam smartfonim. Uni o‘tgan yili o‘z pulimga sotib oldim. Men undan ingliz tilini o‘rganish va do‘stlarim bilan gaplashish uchun foydalanaman. U juda foydali."
+    "jovob_en": "My favorite thing is my smartphone. I bought it last year with my own money. I use it to study English, communicate with friends, and watch videos. It helps me organize my day and stay informed. I like it because it is very useful, convenient, and makes my daily life easier and more enjoyable.",
+    "jovob_uz": "Mening sevimli narsam smartfonim. Uni o‘tgan yili o‘z pulimga sotib oldim. Men undan ingliz tilini o‘rganish, do‘stlar bilan gaplashish va videolar tomosha qilish uchun foydalanaman. U kundalik hayotimni tartibga solishga va yangiliklardan xabardor bo‘lishga yordam beradi. Men uni juda foydali va qulay deb bilaman."
   }
 }
