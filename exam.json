@@ -365,8 +365,14 @@
     "Qism":"Part 1",
     "Sovollar":"1.  Do you live in a house or flat?",
     "Sovollar (UZ)":"Siz uyda yashaysiz yoki kvartirada?",
-    "Jovoblar (EN)":"I live in a house.",
-    "Jovoblar (UZ)":"Men uyda yashayman."
+    "FullAnswer_EN": "I live in a house.",
+    "FullAnswer_UZ": "Men uyda yashayman.",
+    "Reason_EN": "Because it is comfortable.",
+    "Reason_UZ": "Chunki u qulay.",
+    "Example_EN": "For example, we have a small yard.",
+    "Example_UZ": "Masalan, bizda kichik hovli bor.",
+    "ExtraInfo_EN": "And also, it is quiet.",
+  "ExtraInfo_UZ": "Yana, u tinch."
   },
   {
     "Mavzular":"Card D",
@@ -374,8 +380,14 @@
     "Qism":"Part 1",
     "Sovollar":"2.  How many rooms are there in your house\/flat?",
     "Sovollar (UZ)":"Sizning uyingizda\/kvartirangizda nechta xona bor?",
-    "Jovoblar (EN)":"There are five bedrooms, two living rooms, two bathrooms, one toilet, and one kitchen.",
-    "Jovoblar (UZ)":"Mening uymda 5 ta yotoq xonasi, 2 ta mehmonxona, 2 ta hammom, 1 ta hojatxona va 1 ta oshxona bor."
+    "FullAnswer_EN": "There are four rooms in my house.",
+    "FullAnswer_UZ": "Mening uyimda to‘rtta xona bor.",
+    "Reason_EN": "Because we are a small family.",
+    "Reason_UZ": "Chunki biz kichik oilamiz.",
+    "Example_EN": "For example, there is a living room and two bedrooms.",
+    "Example_UZ": "Masalan, mehmonxona va ikkita yotoqxona bor.",
+    "ExtraInfo_EN": "And also, there is a kitchen.",
+    "ExtraInfo_UZ": "Yana, oshxona ham bor."
   },
   {
     "Mavzular":"Card D",
@@ -383,8 +395,14 @@
     "Qism":"Part 1",
     "Sovollar":"3.  Which room do you like?",
     "Sovollar (UZ)":"Qaysi xona sizga yoqadi?",
-    "Jovoblar (EN)":"I like my own room.",
-    "Jovoblar (UZ)":"Men o‘zimning xonamni yoqtiraman."
+    "FullAnswer_EN": "I like my living room.",
+    "FullAnswer_UZ": "Men mehmonxonani yoqtiraman.",
+    "Reason_EN": "Because it is big and bright.",
+    "Reason_UZ": "Chunki u katta va yorug‘.",
+    "Example_EN": "For example, there is a big sofa.",
+    "Example_UZ": "Masalan, katta divan bor.",
+    "ExtraInfo_EN": "And also, I watch TV there.",
+    "ExtraInfo_UZ": "Yana, u yerda televizor ko‘raman."
   },
   {
     "Mavzular":"Card D",
@@ -392,8 +410,14 @@
     "Qism":"Part 1",
     "Sovollar":"4.  Why do you like this room?",
     "Sovollar (UZ)":"Nima uchun bu xona sizga yoqadi?",
-    "Jovoblar (EN)":"I like it because it is quiet and comfortable.",
-    "Jovoblar (UZ)":"Men uni yoqtiraman, chunki u tinch va qulay."
+    "FullAnswer_EN": "I like this room because it is comfortable.",
+    "FullAnswer_UZ": "Men bu xonani yoqtiraman, chunki u qulay.",
+    "Reason_EN": "Because I can relax there.",
+    "Reason_UZ": "Chunki u yerda dam olaman.",
+    "Example_EN": "For example, I can sit on the sofa and watch TV or read books.",
+    "Example_UZ": "Masalan, men divanda o‘tirib televizor ko‘raman yoki kitob o‘qiyman.",
+    "ExtraInfo_EN": "And also, I spend time with my family there.",
+    "ExtraInfo_UZ": "Yana, u yerda oilam bilan vaqt o‘tkazaman."
   },
   {
     "Mavzular":"Card D",
@@ -401,8 +425,14 @@
     "Qism":"Part 2",
     "Sovollar":"1.  What facilities are there in your house\/flat?",
     "Sovollar (UZ)":"Sizning uyingizda\/qvartirangizda qanday qulayliklar bor?",
-    "Jovoblar (EN)":"My house has free internet and an air conditioner. \nWe have a beautiful garden.",
-    "Jovoblar (UZ)":"Mening uyimda tekin internet va konditsioner bor.\nChiroyli bog‘imiz ham bor."
+    "FullAnswer_EN": "There are many facilities in my house.",
+    "FullAnswer_UZ": "Uyimda ko‘plab qulayliklar bor.",
+    "Reason_EN": "Because we have everything we need.",
+    "Reason_UZ": "Chunki bizda kerakli hamma narsa bor.",
+    "Example_EN": "For example, we have Wi-Fi and a washing machine.",
+    "Example_UZ": "Masalan, bizda Wi-Fi va kir yuvish mashinasi bor.",
+    "ExtraInfo_EN": "And also, we have a fridge.",
+    "ExtraInfo_UZ": "Yana, muzlatgich ham bor."
   },
   {
     "Mavzular":"Card D",
@@ -410,8 +440,14 @@
     "Qism":"Part 2",
     "Sovollar":"2.  Can you speak about your living room?",
     "Sovollar (UZ)":"Mehmonxonangiz haqida gapira olasizmi?",
-    "Jovoblar (EN)":"My living room is big and comfortable. \nThere is a sofa, a table, and a TV.",
-    "Jovoblar (UZ)":"Mening mehmonxonam katta va qulay. Unda divan, stol va televizor bor."
+    "FullAnswer_EN": "My living room is large and comfortable.",
+    "FullAnswer_UZ": "Mening mehmonxonam katta va qulay.",
+    "Reason_EN": "Because it has nice furniture.",
+    "Reason_UZ": "Chunki unda yaxshi mebellar bor.",
+    "Example_EN": "For example, there is a TV and a sofa.",
+    "Example_UZ": "Masalan, televizor va divan bor.",
+    "ExtraInfo_EN": "And also, we receive guests there.",
+    "ExtraInfo_UZ": "Yana, biz mehmonlarni shu yerda kutib olamiz."
   },
   {
     "Mavzular":"Card D",
@@ -419,8 +455,14 @@
     "Qism":"Part 2",
     "Sovollar":"3.  Would you like to move house? Why?",
     "Sovollar (UZ)":"Siz uyni almashtirmoqchimisiz? Nima uchun?",
-    "Jovoblar (EN)":"No, I do not want to move.\nI like my house.",
-    "Jovoblar (UZ)":"Yo‘q, men uyni almashtirmoqchi emasman.\nMenga uyim yoqadi."
+    "FullAnswer_EN": "Yes, I would like to move house.",
+    "FullAnswer_UZ": "Ha, men boshqa uyga ko‘chishni xohlayman.",
+    "Reason_EN": "Because I want a bigger house.",
+    "Reason_UZ": "Chunki kattaroq uy xohlayman.",
+    "Example_EN": "For example, I want more rooms.",
+    "Example_UZ": "Masalan, ko‘proq xona xohlayman.",
+    "ExtraInfo_EN": "And also, I want a bigger garden.",
+    "ExtraInfo_UZ": "Yana, kattaroq bog‘ xohlayman."
   },
   {
     "Mavzular":"Card D",
@@ -428,8 +470,14 @@
     "Qism":"Part 2",
     "Sovollar":"4.  What are expensive possessions in the house for you? Why?",
     "Sovollar (UZ)":"Uyingizdagi siz uchun qimmat buyumlar nima? Nima uchun?",
-    "Jovoblar (EN)":"My TV and computer are expensive for me because I use them every day.",
-    "Jovoblar (UZ)":"Mening televizor va kompyuterim qimmat, chunki men ularni har kuni ishlataman."
+    "FullAnswer_EN": "The most expensive possession in my house is my TV.",
+    "FullAnswer_UZ": "Uyimdagi eng qimmat buyum televizorim.",
+    "Reason_EN": "Because it costs a lot of money.",
+    "Reason_UZ": "Chunki u qimmat turadi.",
+    "Example_EN": "For example, it is a smart TV.",
+    "Example_UZ": "Masalan, u smart televizor.",
+    "ExtraInfo_EN": "And also, we use it every day.",
+    "ExtraInfo_UZ": "Yana, biz uni har kuni ishlatamiz."
   },
   {
     "Mavzular":"Card E",
