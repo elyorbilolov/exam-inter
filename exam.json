@@ -485,8 +485,14 @@
     "Qism":"Part 1",
     "Sovollar":"1.  Do you like going to cafés?",
     "Sovollar (UZ)":"Siz kafelarga borishni yoqtirasizmi?",
-    "Jovoblar (EN)":"Yes, I like going to cafés. I go with my friends.",
-    "Jovoblar (UZ)":"Ha, men kafelarga borishni yoqtiraman. Do‘stlarim bilan boraman."
+    "FullAnswer_EN": "Yes, I like going to cafés very much.",
+    "FullAnswer_UZ": "Ha, men kafelarga borishni juda yoqtiraman.",
+    "Reason_EN": "Because I like the quiet atmosphere and the smell of coffee.",
+    "Reason_UZ": "Chunki menga tinch muhit va kofe hidi yoqadi.",
+    "Example_EN": "For example, on Saturdays I go to a café to read a book or relax.",
+    "Example_UZ": "Masalan, shanba kunlari kitob o‘qish yoki dam olish uchun kafega boraman.",
+    "ExtraInfo_EN": "And also, I sometimes meet my friends there.",
+    "ExtraInfo_UZ": "Yana, ba’zan u yerda do‘stlarim bilan uchrashaman."
   },
   {
     "Mavzular":"Card E",
@@ -494,8 +500,14 @@
     "Qism":"Part 1",
     "Sovollar":"2.  What cafés are popular in your town?",
     "Sovollar (UZ)":"Sizning shahringizda qaysi kafelar mashhur?",
-    "Jovoblar (EN)":"Basri Baba and Zoxid Kabob are popular cafés in my town.",
-    "Jovoblar (UZ)":"Mening shahrimda Basri Baba va Zoxid Kabob mashhur."
+    "FullAnswer_EN": "In my town, Safia is very popular.",
+    "FullAnswer_UZ": "Mening shahrimda Safia juda mashhur.",
+    "Reason_EN": "Because they have delicious desserts and good service.",
+    "Reason_UZ": "Chunki u yerda mazali shirinliklar va yaxshi xizmat bor.",
+    "Example_EN": "For example, many people go there to eat cakes and drink coffee.",
+    "Example_UZ": "Masalan, ko‘p odamlar u yerga tort yeyish va qahva ichish uchun borishadi.",
+    "ExtraInfo_EN": "And also, it is very crowded on weekends.",
+    "ExtraInfo_UZ": "Yana, dam olish kunlari u yer juda gavjum bo‘ladi."
   },
   {
     "Mavzular":"Card E",
@@ -503,8 +515,14 @@
     "Qism":"Part 1",
     "Sovollar":"3.  What café food and drinks do you like?",
     "Sovollar (UZ)":"Siz kafeda qaysi ovqat va ichimliklarni yoqtirasiz?",
-    "Jovoblar (EN)":"I like Zoxid Kabob. It is very tasty.",
-    "Jovoblar (UZ)":"Men Zoxid kabobni yoqtiraman. U juda mazali."
+    "FullAnswer_EN": "My favorite drinks and food are herbal tea and lemon cake.",
+    "FullAnswer_UZ": "Mening sevimli ichimligim va taomim o‘simlik choyi va limonli tort.",
+    "Reason_EN": "Because they are light and not too sweet.",
+    "Reason_UZ": "Chunki ular yengil va juda shirin emas.",
+    "Example_EN": "For example, I usually order green tea.",
+    "Example_UZ": "Masalan, men odatda ko‘k choy buyurtma qilaman.",
+    "ExtraInfo_EN": "And also, I sometimes eat a sandwich.",
+    "ExtraInfo_UZ": "Yana, ba’zan sendvich ham yeyman."
   },
   {
     "Mavzular":"Card E",
@@ -512,8 +530,14 @@
     "Qism":"Part 1",
     "Sovollar":"4.  Are cafes expensive in your country\/city?",
     "Sovollar (UZ)":"Sizning mamlakatingizda\/shahringizda kafelar qimmatmi?",
-    "Jovoblar (EN)":"No, cafés are not very expensive. The prices are average.",
-    "Jovoblar (UZ)":"Yo‘q, kafelar juda qimmat emas. Narxlari o‘rtacha."
+    "FullAnswer_EN": "Some cafés are expensive, but many are affordable.",
+    "FullAnswer_UZ": "Ba’zi kafelar qimmat, lekin ko‘pchiligi arzon.",
+    "Reason_EN": "Because prices depend on the place and location.",
+    "Reason_UZ": "Chunki narxlar joy va hududga bog‘liq.",
+    "Example_EN": "For example, cafés in the city center are usually more expensive.",
+    "Example_UZ": "Masalan, shahar markazidagi kafelar odatda qimmatroq bo‘ladi.",
+    "ExtraInfo_EN": "And also, some cafés offer discounts for students.",
+    "ExtraInfo_UZ": "Yana, ba’zi kafelar talabalarga chegirma taklif qiladi."
   },
   {
     "Mavzular":"Card E",
@@ -521,8 +545,14 @@
     "Qism":"Part 2",
     "Sovollar":"1.  What are your plans for the future?",
     "Sovollar (UZ)":"Kelajakdagi rejalaringiz qanday?",
-    "Jovoblar (EN)":"My plans for the future are to learn English and travel around the world.",
-    "Jovoblar (UZ)":"Kelajakdagi rejalarim ingliz tilini o‘rganish va dunyoni kezish."
+    "FullAnswer_EN": "In the future, I want to become a professional IT specialist.",
+    "FullAnswer_UZ": "Kelajakda men professional IT mutaxassisi bo‘lishni xohlayman.",
+    "Reason_EN": "Because I am interested in technology and computers.",
+    "Reason_UZ": "Chunki men texnologiya va kompyuterlarga qiziqaman.",
+    "Example_EN": "For example, I am taking programming courses.",
+    "Example_UZ": "Masalan, men dasturlash kurslariga qatnashyapman.",
+    "ExtraInfo_EN": "And also, I hope to work for a big international company.",
+    "ExtraInfo_UZ": "Yana, katta xalqaro kompaniyada ishlashni xohlayman."
   },
   {
     "Mavzular":"Card E",
@@ -530,8 +560,14 @@
     "Qism":"Part 2",
     "Sovollar":"2.  What are you going to do after the exam?",
     "Sovollar (UZ)":"Imtihondan keyin nima qilmoqchisiz?",
-    "Jovoblar (EN)":"After the exam, I am going to go to KFC and eat food.",
-    "Jovoblar (UZ)":"Imtihondan keyin KFCga borib ovqatlanmoqchiman."
+    "FullAnswer_EN": "After the exam, I am going to travel to the mountains with my family.",
+    "FullAnswer_UZ": "Imtihondan keyin men oilam bilan tog‘larga sayohat qilmoqchiman.",
+    "Reason_EN": "Because I want to relax after studying hard.",
+    "Reason_UZ": "Chunki ko‘p o‘qiganimdan keyin dam olishni xohlayman.",
+    "Example_EN": "For example, we are going to stay there for three days.",
+    "Example_UZ": "Masalan, u yerda uch kun qolamiz.",
+    "ExtraInfo_EN": "And also, I am going to sleep a lot.",
+    "ExtraInfo_UZ": "Yana, ko‘p uxlamoqchiman."
   },
   {
     "Mavzular":"Card E",
@@ -539,8 +575,14 @@
     "Qism":"Part 2",
     "Sovollar":"3.  Are you going to study in Uzbekistan or in another country?",
     "Sovollar (UZ)":"Siz O‘zbekistonda yoki boshqa davlatda o‘qimoqchimisiz?",
-    "Jovoblar (EN)":"I am going to study for a master’s degree in the USA.",
-    "Jovoblar (UZ)":"Men magistraturani AQShda o‘qimoqchiman."
+    "FullAnswer_EN": "I am going to study in another country, like the USA or Germany.",
+    "FullAnswer_UZ": "Men AQSh yoki Germaniya kabi boshqa davlatda o‘qimoqchiman.",
+    "Reason_EN": "Because I want an international education.",
+    "Reason_UZ": "Chunki xalqaro ta’lim olishni xohlayman.",
+    "Example_EN": "For example, I am preparing for the IELTS exam.",
+    "Example_UZ": "Masalan, men IELTS imtihoniga tayyorlanyapman.",
+    "ExtraInfo_EN": "And also, I want to learn about new cultures.",
+    "ExtraInfo_UZ": "Yana, yangi madaniyatlarni o‘rganishni xohlayman."
   },
   {
     "Mavzular":"Card E",
@@ -548,8 +590,14 @@
     "Qism":"Part 2",
     "Sovollar":"4.  What are you going to do this weekend?",
     "Sovollar (UZ)":"Bu hafta oxirida nima qilmoqchisiz?",
-    "Jovoblar (EN)":"This weekend, I am going to cook plov for my family.",
-    "Jovoblar (UZ)":"Bu hafta oxirida oilam uchun palov pishirib bermoqchiman."
+    "FullAnswer_EN": "This weekend, I am going to visit my grandparents.",
+    "FullAnswer_UZ": "Bu hafta oxiri men buvim va buvamni ko‘rgani bormoqchiman.",
+    "Reason_EN": "Because I miss them.",
+    "Reason_UZ": "Chunki men ularni sog‘indim.",
+    "Example_EN": "For example, we are going to have dinner together.",
+    "Example_UZ": "Masalan, biz birga kechki ovqat qilamiz.",
+    "ExtraInfo_EN": "And also, I will help my grandfather in the garden.",
+    "ExtraInfo_UZ": "Yana, bobomga bog‘da yordam beraman."
   },
   {
     "Mavzular":"Card F",
