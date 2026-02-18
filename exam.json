@@ -605,8 +605,14 @@
     "Qism":"Part 1",
     "Sovollar":"1.  Do you have good neighbours? Who are they?",
     "Sovollar (UZ)":"Sizning yaxshi qo‘shnilaringiz bormi? Ular kimlar?",
-    "Jovoblar (EN)":"Yes, I have good neighbours. They are kind and friendly people.",
-    "Jovoblar (UZ)":"Ha, mening yaxshi qo‘shnilarim bor. Ular mehribon va inoq insonlar."
+    "FullAnswer_EN": "Yes, I have good neighbours.",
+    "FullAnswer_UZ": "Ha, mening yaxshi qo‘shnilarim bor.",
+    "Reason_EN": "They are a friendly family.",
+    "Reason_UZ": "Ular do‘stona oila.",
+    "Example_EN": "We live in the same building.",
+    "Example_UZ": "Biz bir binoda yashaymiz.",
+    "ExtraInfo_EN": "They have two children.",
+    "ExtraInfo_UZ": "Ularning ikki farzandi bor."
   },
   {
     "Mavzular":"Card F",
@@ -614,8 +620,14 @@
     "Qism":"Part 1",
     "Sovollar":"2.  What are their jobs?",
     "Sovollar (UZ)":"Ularning kasbi nima?",
-    "Jovoblar (EN)":"They are a doctor, a banker, a taxi driver, and a businessman.",
-    "Jovoblar (UZ)":"Ular shifokor, bank xodimi, taksichi va biznesmen."
+    "FullAnswer_EN": "The father is a doctor and the mother is a teacher.",
+    "FullAnswer_UZ": "Otasi shifokor va onasi o‘qituvchi.",
+    "Reason_EN": "They work every day.",
+    "Reason_UZ": "Ular har kuni ishlaydi.",
+    "Example_EN": "They are very hardworking.",
+    "Example_UZ": "Ular juda mehnatkash.",
+    "ExtraInfo_EN": "They are kind people.",
+    "ExtraInfo_UZ": "Ular mehribon insonlar."
   },
   {
     "Mavzular":"Card F",
@@ -623,8 +635,14 @@
     "Qism":"Part 1",
     "Sovollar":"3.  Do you often talk to your neighbours?",
     "Sovollar (UZ)":"Siz qo‘shnilaringiz bilan tez-tez gaplashasizmi?",
-    "Jovoblar (EN)":"Yes, I talk to them every day. I see them often.",
-    "Jovoblar (UZ)":"Ha, men ular bilan har kuni gaplashaman. Tez-tez ko‘raman."
+    "FullAnswer_EN": "Yes, I talk to them.",
+    "FullAnswer_UZ": "Ha, men ular bilan gaplashaman.",
+    "Reason_EN": "I like to say hello.",
+    "Reason_UZ": "Men salomlashishni yoqtiraman.",
+    "Example_EN": "We talk about simple things.",
+    "Example_UZ": "Oddiy narsalar haqida gaplashamiz.",
+    "ExtraInfo_EN": "Sometimes we talk for a few minutes.",
+    "ExtraInfo_UZ": "Ba’zida bir necha daqiqa gaplashamiz."
   },
   {
     "Mavzular":"Card F",
@@ -632,8 +650,14 @@
     "Qism":"Part 1",
     "Sovollar":"4.  Do you help your neighbours?",
     "Sovollar (UZ)":"Siz qo‘shnilaringizga yordam berasizmi?",
-    "Jovoblar (EN)":"Yes, I help my neighbours. I help them when I can.",
-    "Jovoblar (UZ)":"Ha, men qo‘shnilarimga yordam beraman. Qo‘limdan kelgancha yordam qilaman."
+    "FullAnswer_EN": "Yes, I help them.",
+    "FullAnswer_UZ": "Ha, ularga yordam beraman.",
+    "Reason_EN": "It is good to help others.",
+    "Reason_UZ": "Boshqalarga yordam berish yaxshi.",
+    "Example_EN": "I carry bags for them.",
+    "Example_UZ": "Ularga sumkalarni ko‘tarishda yordam beraman.",
+    "ExtraInfo_EN": "They also help me.",
+    "ExtraInfo_UZ": "Ular ham menga yordam beradi."
   },
   {
     "Mavzular":"Card F",
@@ -641,8 +665,14 @@
     "Qism":"Part 2",
     "Sovollar":"1.  Speak about your next door neighbour.",
     "Sovollar (UZ)":"Yoningizdagi qo‘shningiz haqida gapirib bering.",
-    "Jovoblar (EN)":"My next door neighbour is a doctor. He is a very kind person.",
-    "Jovoblar (UZ)":"Mening yonimdagi qo‘shnim shifokor. U juda yaxshi inson."
+    "FullAnswer_EN": "My next door neighbour is Mr. Aziz.",
+    "FullAnswer_UZ": "Yon qo‘shnim Aziz aka.",
+    "Reason_EN": "He is kind and quiet.",
+    "Reason_UZ": "U mehribon va tinch.",
+    "Example_EN": "He lives alone.",
+    "Example_UZ": "U yolg‘iz yashaydi.",
+    "ExtraInfo_EN": "He is an old man.",
+    "ExtraInfo_UZ": "U keksa kishi."
   },
   {
     "Mavzular":"Card F",
@@ -650,8 +680,14 @@
     "Qism":"Part 2",
     "Sovollar":"2.  When do you usually meet your neighbour?",
     "Sovollar (UZ)":"Siz odatda qo‘shningizni qachon uchratasiz?",
-    "Jovoblar (EN)":"I usually meet my neighbour in the morning and in the evening.",
-    "Jovoblar (UZ)":"Men qo‘shnimni odatda ertalab va kechqurun uchrataman."
+    "FullAnswer_EN": "I usually see him in the afternoon.",
+    "FullAnswer_UZ": "Men uni odatda tushdan keyin ko‘raman.",
+    "Reason_EN": "I come home at that time.",
+    "Reason_UZ": "Men o‘sha paytda uyga kelaman.",
+    "Example_EN": "We meet near the elevator.",
+    "Example_UZ": "Lift yonida uchrashamiz.",
+    "ExtraInfo_EN": "Sometimes I see him at the shop.",
+    "ExtraInfo_UZ": "Ba’zida uni do‘konda ko‘raman."
   },
   {
     "Mavzular":"Card F",
@@ -659,8 +695,14 @@
     "Qism":"Part 2",
     "Sovollar":"3.  Has your neighbor got a pet?",
     "Sovollar (UZ)":"Qo‘shningizning uy hayvoni bormi?",
-    "Jovoblar (EN)":"Yes, my neighbour has chickens.",
-    "Jovoblar (UZ)":"Ha, qo‘shnimning tovuqlari bor."
+    "FullAnswer_EN": "No, he does not have a pet.",
+    "FullAnswer_UZ": "Yo‘q, uning uy hayvoni yo‘q.",
+    "Reason_EN": "His apartment is small.",
+    "Reason_UZ": "Uning uyi kichkina.",
+    "Example_EN": "He likes cats.",
+    "Example_UZ": "U mushuklarni yaxshi ko‘radi.",
+    "ExtraInfo_EN": "He feeds birds on the balcony.",
+    "ExtraInfo_UZ": "U balkonda qushlarga ovqat beradi."
   },
   {
     "Mavzular":"Card F",
@@ -668,8 +710,14 @@
     "Qism":"Part 2",
     "Sovollar":"4.  Do you like your neighbour? Why?",
     "Sovollar (UZ)":"Siz qo‘shningizni yoqtirasizmi? Nima uchun?",
-    "Jovoblar (EN)":"Yes, I like my neighbour because he is kind.",
-    "Jovoblar (UZ)":"Ha, men qo‘shnimni yoqtiraman, chunki u yaxshi inson."
+    "FullAnswer_EN": "Yes, I like him.",
+    "FullAnswer_UZ": "Ha, men uni yoqtiraman.",
+    "Reason_EN": "He is kind and calm.",
+    "Reason_UZ": "U mehribon va xotirjam.",
+    "Example_EN": "He is a good neighbour.",
+    "Example_UZ": "U yaxshi qo‘shni.",
+    "ExtraInfo_EN": "I am happy to have him.",
+    "ExtraInfo_UZ": "Men bunday qo‘shnim borligidan xursandman."
   },
   {
     "Mavzular":"Card G",
