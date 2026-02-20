@@ -599,7 +599,7 @@
     "ExtraInfo_EN": "And also, I will help my grandfather in the garden.",
     "ExtraInfo_UZ": "Yana, bobomga bog‘da yordam beraman."
   },
-{
+  {
 "Mavzular":"Card F",
 "Mavzular nomi":"Neighbourhood",
 "Qism":"Part 1",
@@ -608,11 +608,11 @@
 "FullAnswer_EN": "Yes, I have good neighbours.",
 "FullAnswer_UZ": "Ha, mening yaxshi qo‘shnilarim bor.",
 "Reason_EN": "Because they are a friendly family.",
-"Reason_UZ": "Ular do‘stona oila.",
+"Reason_UZ": "Chunki ular do‘stona oila.",
 "Example_EN": "For example, we live in the same building.",
-"Example_UZ": "Biz bir binoda yashaymiz.",
+"Example_UZ": "Masalan, biz bir binoda yashaymiz.",
 "ExtraInfo_EN": "And also, they have two children.",
-"ExtraInfo_UZ": "Ularning ikki farzandi bor."
+"ExtraInfo_UZ": "Shuningdek, ularning ikki nafar farzandi bor."
 },
 {
 "Mavzular":"Card F",
@@ -623,11 +623,11 @@
 "FullAnswer_EN": "The father is a doctor and the mother is a teacher.",
 "FullAnswer_UZ": "Otasi shifokor va onasi o‘qituvchi.",
 "Reason_EN": "Because they work every day.",
-"Reason_UZ": "Ular har kuni ishlaydi.",
+"Reason_UZ": "Chunki ular har kuni ishlaydi.",
 "Example_EN": "For example, they are very hardworking.",
-"Example_UZ": "Ular juda mehnatkash.",
+"Example_UZ": "Masalan, ular juda mehnatkash.",
 "ExtraInfo_EN": "And also, they are kind people.",
-"ExtraInfo_UZ": "Ular mehribon insonlar."
+"ExtraInfo_UZ": "Shuningdek, ular mehribon insonlar."
 },
 {
 "Mavzular":"Card F",
@@ -638,11 +638,11 @@
 "FullAnswer_EN": "Yes, I talk to them.",
 "FullAnswer_UZ": "Ha, men ular bilan gaplashaman.",
 "Reason_EN": "Because I like to say hello.",
-"Reason_UZ": "Men salomlashishni yoqtiraman.",
+"Reason_UZ": "Chunki men salomlashishni yoqtiraman.",
 "Example_EN": "For example, we talk about simple things.",
-"Example_UZ": "Oddiy narsalar haqida gaplashamiz.",
+"Example_UZ": "Masalan, biz oddiy narsalar haqida gaplashamiz.",
 "ExtraInfo_EN": "And also, sometimes we talk for a few minutes.",
-"ExtraInfo_UZ": "Ba’zida bir necha daqiqa gaplashamiz."
+"ExtraInfo_UZ": "Shuningdek, ba’zida bir necha daqiqa suhbatlashamiz."
 },
 {
 "Mavzular":"Card F",
@@ -653,11 +653,11 @@
 "FullAnswer_EN": "Yes, I help them.",
 "FullAnswer_UZ": "Ha, ularga yordam beraman.",
 "Reason_EN": "Because it is good to help others.",
-"Reason_UZ": "Boshqalarga yordam berish yaxshi.",
+"Reason_UZ": "Chunki boshqalarga yordam berish yaxshi.",
 "Example_EN": "For example, I carry bags for them.",
-"Example_UZ": "Ularga sumkalarni ko‘tarishda yordam beraman.",
+"Example_UZ": "Masalan, ularga sumkalarni ko‘tarishda yordam beraman.",
 "ExtraInfo_EN": "And also, they also help me.",
-"ExtraInfo_UZ": "Ular ham menga yordam beradi."
+"ExtraInfo_UZ": "Shuningdek, ular ham menga yordam berishadi."
 },
 {
 "Mavzular":"Card F",
@@ -668,11 +668,11 @@
 "FullAnswer_EN": "My next door neighbour is Mr. Aziz.",
 "FullAnswer_UZ": "Yon qo‘shnim Aziz aka.",
 "Reason_EN": "Because he is kind and quiet.",
-"Reason_UZ": "U mehribon va tinch.",
+"Reason_UZ": "Chunki u mehribon va tinch.",
 "Example_EN": "For example, he lives alone.",
-"Example_UZ": "U yolg‘iz yashaydi.",
+"Example_UZ": "Masalan, u yolg‘iz yashaydi.",
 "ExtraInfo_EN": "And also, he is an old man.",
-"ExtraInfo_UZ": "U keksa kishi."
+"ExtraInfo_UZ": "Shuningdek, u keksa inson."
 },
 {
 "Mavzular":"Card F",
@@ -683,11 +683,11 @@
 "FullAnswer_EN": "I usually see him in the afternoon.",
 "FullAnswer_UZ": "Men uni odatda tushdan keyin ko‘raman.",
 "Reason_EN": "Because I come home at that time.",
-"Reason_UZ": "Men o‘sha paytda uyga kelaman.",
+"Reason_UZ": "Chunki men o‘sha paytda uyga kelaman.",
 "Example_EN": "For example, we meet near the elevator.",
-"Example_UZ": "Lift yonida uchrashamiz.",
+"Example_UZ": "Masalan, biz lift yonida uchrashamiz.",
 "ExtraInfo_EN": "And also, sometimes I see him at the shop.",
-"ExtraInfo_UZ": "Ba’zida uni do‘konda ko‘raman."
+"ExtraInfo_UZ": "Shuningdek, ba’zida uni do‘konda ham ko‘raman."
 },
 {
 "Mavzular":"Card F",
@@ -698,11 +698,11 @@
 "FullAnswer_EN": "No, he does not have a pet.",
 "FullAnswer_UZ": "Yo‘q, uning uy hayvoni yo‘q.",
 "Reason_EN": "Because his apartment is small.",
-"Reason_UZ": "Uning uyi kichkina.",
+"Reason_UZ": "Chunki uning uyi kichkina.",
 "Example_EN": "For example, he likes cats.",
-"Example_UZ": "U mushuklarni yaxshi ko‘radi.",
+"Example_UZ": "Masalan, u mushuklarni yaxshi ko‘radi.",
 "ExtraInfo_EN": "And also, he feeds birds on the balcony.",
-"ExtraInfo_UZ": "U balkonda qushlarga ovqat beradi."
+"ExtraInfo_UZ": "Shuningdek, u balkonda qushlarga ovqat beradi."
 },
 {
 "Mavzular":"Card F",
@@ -713,11 +713,11 @@
 "FullAnswer_EN": "Yes, I like him.",
 "FullAnswer_UZ": "Ha, men uni yoqtiraman.",
 "Reason_EN": "Because he is kind and calm.",
-"Reason_UZ": "U mehribon va xotirjam.",
+"Reason_UZ": "Chunki u mehribon va xotirjam.",
 "Example_EN": "For example, he is a good neighbour.",
-"Example_UZ": "U yaxshi qo‘shni.",
+"Example_UZ": "Masalan, u yaxshi qo‘shni.",
 "ExtraInfo_EN": "And also, I am happy to have him.",
-"ExtraInfo_UZ": "Men bunday qo‘shnim borligidan xursandman."
+"ExtraInfo_UZ": "Shuningdek, men bunday qo‘shnim borligidan juda xursandman."
 },
   {
     "Mavzular":"Card G",
@@ -725,8 +725,14 @@
     "Qism":"Part 1",
     "Sovollar":"1.  How many people are there in your family?",
     "Sovollar (UZ)":"Sizning oilangizda nechta odam bor?",
-    "Jovoblar (EN)":"There are nine people in my family. We live together.",
-    "Jovoblar (UZ)":"Mening oilamda to‘qqiz kishi bor. Biz birga yashaymiz."
+    "FullAnswer_EN": "There are five people in my family.",
+    "FullAnswer_UZ": "Mening oilamda besh kishi bor.",
+    "Reason_EN": "Because my house is always full of energy and noise.",
+    "Reason_UZ": "Chunki uyimiz doimo quvnoqlik va shovqinga to‘la.",
+    "Example_EN": "For example, I live with my parents and also my two siblings.",
+    "Example_UZ": "Masalan, men ota-onam va shuningdek ikki opa-ukam bilan yashayman.",
+    "ExtraInfo_EN": "And also, we have a small cat named Tom.",
+    "ExtraInfo_UZ": "Va shuningdek, bizning Tom ismli kichkina mushugimiz ham bor."
   },
   {
     "Mavzular":"Card G",
@@ -734,8 +740,14 @@
     "Qism":"Part 1",
     "Sovollar":"2.  Do you have any brothers or sisters? What are their names?",
     "Sovollar (UZ)":"Sizning aka-uka yoki opa-singillaringiz bormi? Ularning ismlari qanday?",
-    "Jovoblar (EN)":"Yes, I have a brother and a younger brother. Their names are Doniyor and Ismoil.",
-    "Jovoblar (UZ)":"Ha, mening akam va ukam bor. Ularning ismlari Doniyor va Ismoil."
+    "FullAnswer_EN": "Yes, I have one brother and one sister.",
+    "FullAnswer_UZ": "Ha, mening bir aka-ukam va bir opa-ukam bor.",
+    "Reason_EN": "Because they are both younger than me.",
+    "Reason_UZ": "Chunki ular ikkalasi ham mendan yosh.",
+    "Example_EN": "For example, my brother’s name is Ali and also my sister’s name is Layla.",
+    "Example_UZ": "Masalan, mening akamning ismi Ali va shuningdek opamning ismi Layla.",
+    "ExtraInfo_EN": "And also, they are both students at the local school.",
+    "ExtraInfo_UZ": "Va shuningdek, ular ikkalasi ham mahalliy maktabda o‘qiydi."
   },
   {
     "Mavzular":"Card G",
@@ -743,8 +755,14 @@
     "Qism":"Part 1",
     "Sovollar":"3.  What are your parents’ jobs?",
     "Sovollar (UZ)":"Ota-onangizning kasbi nima?",
-    "Jovoblar (EN)":"My mother is a housewife. My father passed away.",
-    "Jovoblar (UZ)":"Onam uy bekasi. Otam olamdan o‘tganlar."
+    "FullAnswer_EN": "My father is an engineer and my mother is a nurse.",
+    "FullAnswer_UZ": "Mening otam muhandis va onam hamshiradir.",
+    "Reason_EN": "Because they work very hard to support our family.",
+    "Reason_UZ": "Chunki ular oilamizni qo‘llab-quvvatlash uchun juda ko‘p ishlaydi.",
+    "Example_EN": "For example, my father builds bridges and also my mother works at the hospital.",
+    "Example_UZ": "Masalan, mening otam ko‘priklar quradi va shuningdek onam kasalxonada ishlaydi.",
+    "ExtraInfo_EN": "And also, they usually come home late in the evening.",
+    "ExtraInfo_UZ": "Va shuningdek, ular odatda kechqurun uyga keladi."
   },
   {
     "Mavzular":"Card G",
@@ -752,8 +770,14 @@
     "Qism":"Part 1",
     "Sovollar":"4.  What do you like doing with your family?",
     "Sovollar (UZ)":"Siz oilangiz bilan nima qilishni yoqtirasiz?",
-    "Jovoblar (EN)":"I like travelling with my family.",
-    "Jovoblar (UZ)":"Men oilam bilan sayohat qilishni yoqtiraman."
+    "FullAnswer_EN": "I love having dinner with my family.",
+    "FullAnswer_UZ": "Men oilam bilan kechki ovqatni yaxshi ko‘raman.",
+    "Reason_EN": "Because it is the only time we are all together.",
+    "Reason_UZ": "Chunki bu yagona vaqt biz hammamiz birga bo‘lamiz.",
+    "Example_EN": "For example, every night we sit at the table and also talk about our day.",
+    "Example_UZ": "Masalan, har kecha biz stol atrofida o‘tirib va shuningdek kunimiz haqida gaplashamiz.",
+    "ExtraInfo_EN": "And also, sometimes we watch a movie after dinner.",
+    "ExtraInfo_UZ": "Va shuningdek, ba’zan kechki ovqatdan keyin film tomosha qilamiz."
   },
   {
     "Mavzular":"Card G",
@@ -761,8 +785,14 @@
     "Qism":"Part 2",
     "Sovollar":"1.  What is your favourite day of the week?",
     "Sovollar (UZ)":"Haftaning qaysi kunini eng yaxshi ko‘rasiz?",
-    "Jovoblar (EN)":"My favourite day is Sunday because I can rest.",
-    "Jovoblar (UZ)":"Eng sevimli kunim yakshanba, chunki dam olaman."
+    "FullAnswer_EN": "My favorite day is Saturday.",
+    "FullAnswer_UZ": "Mening eng sevimli kunim shanba.",
+    "Reason_EN": "Because I don’t have any lessons or work on that day.",
+    "Reason_UZ": "Chunki o‘sha kuni dars yoki ishim yo‘q.",
+    "Example_EN": "For example, I can sleep until 10:00 AM and also feel very relaxed.",
+    "Example_UZ": "Masalan, men soat 10:00 gacha uxlashim va shuningdek juda dam olishim mumkin.",
+    "ExtraInfo_EN": "And also, it is the best day for playing video games.",
+    "ExtraInfo_UZ": "Va shuningdek, bu video o‘yinlar o‘ynash uchun eng yaxshi kun."
   },
   {
     "Mavzular":"Card G",
@@ -770,8 +800,14 @@
     "Qism":"Part 2",
     "Sovollar":"2.  What do you do with your family on Sundays?",
     "Sovollar (UZ)":"Yakshanba kunlari oilangiz bilan nima qilasiz?",
-    "Jovoblar (EN)":"We go shopping and cook dinner together.",
-    "Jovoblar (UZ)":"Biz birga xarid qilamiz va kechki ovqatni tayyorlaymiz."
+    "FullAnswer_EN": "We usually visit our grandparents on Sundays.",
+    "FullAnswer_UZ": "Biz odatda yakshanba kuni buvimiz va bobomizni ziyorat qilamiz.",
+    "Reason_EN": "Because they live in a small house outside the city.",
+    "Reason_UZ": "Chunki ular shahardan tashqaridagi kichkina uyda yashaydi.",
+    "Example_EN": "For example, we drive there in the morning and also stay for lunch.",
+    "Example_UZ": "Masalan, ertalab u yerga boramiz va shuningdek tushlikka qolamiz.",
+    "ExtraInfo_EN": "And also, my grandmother always makes delicious traditional food.",
+    "ExtraInfo_UZ": "Va shuningdek, buvimiz har doim mazali an’anaviy taom tayyorlaydi."
   },
   {
     "Mavzular":"Card G",
@@ -779,8 +815,14 @@
     "Qism":"Part 2",
     "Sovollar":"3.  Where did you go with your family last time?",
     "Sovollar (UZ)":"Oxirgi safar oilangiz bilan qayerga bordingiz?",
-    "Jovoblar (EN)":"We went to City Mall to buy clothes.",
-    "Jovoblar (UZ)":"Oxirgi safar kiyim olish uchun City Mallga bordik."
+    "FullAnswer_EN":"Last time, we went to a big shopping mall.",
+    "FullAnswer_UZ":"Oxirgi marta biz katta savdo markaziga bordik.",
+    "Reason_EN":"Because my sister needed some new clothes for school.",
+    "Reason_UZ":"Chunki singlimga maktab uchun yangi kiyimlar kerak edi.",
+    "Example_EN":"For example, we spent the whole afternoon walking around the shops.",
+    "Example_UZ":"Masalan, biz butun tushdan keyin do‘konlarni aylanib chiqdik.",
+    "ExtraInfo_EN":"And also, after shopping, we went to the cinema to see a cartoon.",
+    "ExtraInfo_UZ":"Va shuningdek, xariddan keyin multfilm ko‘rish uchun kinoga bordik."
   },
   {
     "Mavzular":"Card G",
@@ -788,8 +830,14 @@
     "Qism":"Part 2",
     "Sovollar":"4.  How did you spend your time with your family?",
     "Sovollar (UZ)":"Oilangiz bilan vaqtni qanday o‘tkazdingiz?",
-    "Jovoblar (EN)":"We watched a film and talked together.",
-    "Jovoblar (UZ)":"Biz film ko‘rdik va birga suhbatlashdik."
+    "FullAnswer_EN":"We spent our time talking and laughing together.",
+    "FullAnswer_UZ":"Biz vaqtimizni suhbatlashib va kulib o‘tkazdik.",
+    "Reason_EN":"Because we are a very close and happy family.",
+    "Reason_UZ":"Chunki biz juda ahil va baxtli oilamiz.",
+    "Example_EN":"For example, we ate ice cream and took many photos at the park.",
+    "Example_UZ":"Masalan, bog‘da muzqaymoq yedik va ko‘p suratga tushdik.",
+    "ExtraInfo_EN":"And also, it was a very wonderful and memorable day.",
+    "ExtraInfo_UZ":"Va shuningdek, bu juda ajoyib va esda qolarli kun edi."
   },
   {
     "Mavzular":"Card H",
@@ -797,8 +845,14 @@
     "Qism":"Part 1",
     "Sovollar":"1.  Do you have friends?",
     "Sovollar (UZ)":"Sizning do‘stlaringiz bormi?",
-    "Jovoblar (EN)":"Yes, I have many friends.",
-    "Jovoblar (UZ)":"Ha, mening juda ko‘p do‘stlarim bor."
+    "FullAnswer_EN":"Yes, I have many good friends.",
+    "FullAnswer_UZ":"Ha, mening ko‘plab yaxshi do‘stlarim bor.",
+    "Reason_EN":"Because I am a friendly person and I like meeting people.",
+    "Reason_UZ":"Chunki men do‘stona insonman va odamlar bilan tanishishni yoqtiraman.",
+    "Example_EN":"For example, most of my friends are from my school or my neighborhood.",
+    "Example_UZ":"Masalan, do‘stlarimning ko‘pchiligi maktabimdan yoki mahallamdan.",
+    "ExtraInfo_EN":"And also, I have about five very close friends.",
+    "ExtraInfo_UZ":"Va shuningdek, mening beshta juda yaqin do‘stim bor."
   },
   {
     "Mavzular":"Card H",
@@ -806,8 +860,14 @@
     "Qism":"Part 1",
     "Sovollar":"2.  Do you often meet with friends?",
     "Sovollar (UZ)":"Siz do‘stlaringiz bilan tez-tez uchratasizmi?",
-    "Jovoblar (EN)":"We meet once a week.",
-    "Jovoblar (UZ)":"Biz haftasiga bir marta uchrashamiz."
+    "FullAnswer_EN":"I meet my friends almost every day.",
+    "FullAnswer_UZ":"Men do‘stlarim bilan deyarli har kuni uchrashaman.",
+    "Reason_EN":"Because we study together and help each other with homework.",
+    "Reason_UZ":"Chunki biz birga o‘qiymiz va uy vazifalarida yordam beramiz.",
+    "Example_EN":"For example, after our lessons finish, we go to a cafe or the park.",
+    "Example_UZ":"Masalan, darslardan keyin kafe yoki bog‘ga boramiz.",
+    "ExtraInfo_EN":"And also, on the weekends, we usually play football together.",
+    "ExtraInfo_UZ":"Va shuningdek, dam olish kunlari odatda birga futbol o‘ynaymiz."
   },
   {
     "Mavzular":"Card H",
@@ -815,8 +875,14 @@
     "Qism":"Part 1",
     "Sovollar":"3.  Who is your best friend?",
     "Sovollar (UZ)":"Sizning eng yaqin do‘stingiz kim?",
-    "Jovoblar (EN)":"My best friend is Anvar. I have known him since childhood.",
-    "Jovoblar (UZ)":"Eng yaqin do‘stim Anvar. Men uni bolaligimizdan taniyman."
+    "FullAnswer_EN":"My best friend is a guy named Bekzod.",
+    "FullAnswer_UZ":"Mening eng yaqin do‘stim Bekzod ismli yigit.",
+    "Reason_EN":"Because we have known each other since we were children.",
+    "Reason_UZ":"Chunki biz bir-birimizni bolaligimizdan beri taniymiz.",
+    "Example_EN":"For example, he is very funny and always makes me laugh.",
+    "Example_UZ":"Masalan, u juda hazilkash va doimo meni kuldiradi.",
+    "ExtraInfo_EN":"And also, we tell each other all our secrets.",
+    "ExtraInfo_UZ":"Va shuningdek, biz bir-birimizga barcha sirlarimizni aytamiz."
   },
   {
     "Mavzular":"Card H",
@@ -824,8 +890,14 @@
     "Qism":"Part 1",
     "Sovollar":"4.  What does your friend like?",
     "Sovollar (UZ)":"Sizning do‘stingiz nimani yoqtiradi?",
-    "Jovoblar (EN)":"He likes travelling.",
-    "Jovoblar (UZ)":"U sayohat qilishni yoqtiradi."
+    "FullAnswer_EN":"My friend likes sports and technology.",
+    "FullAnswer_UZ":"Do‘stim sport va texnologiyani yoqtiradi.",
+    "Reason_EN":"Because he wants to be a professional programmer in the future.",
+    "Reason_UZ":"Chunki u kelajakda professional dasturchi bo‘lishni xohlaydi.",
+    "Example_EN":"For example, he loves playing basketball and reading about new computers.",
+    "Example_UZ":"Masalan, u basketbol o‘ynashni va yangi kompyuterlar haqida o‘qishni yaxshi ko‘radi.",
+    "ExtraInfo_EN":"And also, he likes listening to English pop music.",
+    "ExtraInfo_UZ":"Va shuningdek, u inglizcha pop musiqalarni tinglashni yoqtiradi."
   },
   {
     "Mavzular":"Card H",
@@ -833,8 +905,14 @@
     "Qism":"Part 2",
     "Sovollar":"1.  Do you like meeting with your friends?",
     "Sovollar (UZ)":"Do‘stlaringiz bilan uchrashishni yoqtirasizmi?",
-    "Jovoblar (EN)":"Yes, I like meeting my friends.",
-    "Jovoblar (UZ)":"Ha, men do‘stlarim bilan uchrashishni yoqtiraman."
+    "FullAnswer_EN":"Yes, I really enjoy spending time with them.",
+    "FullAnswer_UZ":"Ha, men ular bilan vaqt o‘tkazishni juda yoqtiraman.",
+    "Reason_EN":"Because it helps me relax when I am stressed from studying.",
+    "Reason_UZ":"Chunki o‘qishdan charchaganimda bu menga dam olishga yordam beradi.",
+    "Example_EN":"For example, we always have a great time when we hang out together.",
+    "Example_UZ":"Masalan, biz birga vaqt o‘tkazganimizda doimo yaxshi dam olamiz.",
+    "ExtraInfo_EN":"And also, my life would be very boring without my friends.",
+    "ExtraInfo_UZ":"Va shuningdek, do‘stlarsiz hayotim juda zerikarli bo‘lardi."
   },
   {
     "Mavzular":"Card H",
@@ -842,8 +920,14 @@
     "Qism":"Part 2",
     "Sovollar":"2.  When did you meet with them last time? And where?",
     "Sovollar (UZ)":"Ularni oxirgi safar qachon uchratdingiz? Qayerda?",
-    "Jovoblar (EN)":"We met last Sunday in a café.",
-    "Jovoblar (UZ)":"Biz oxirgi safar o‘tgan yakshanba kuni kafeda uchrashdik."
+    "FullAnswer_EN":"We met last Friday at the city center.",
+    "FullAnswer_UZ":"Biz oxirgi marta juma kuni shahar markazida uchrashdik.",
+    "Reason_EN":"Because there was a festival and we wanted to see it.",
+    "Reason_UZ":"Chunki festival bor edi va biz uni ko‘rmoqchi edik.",
+    "Example_EN":"For example, we gathered near the big fountain at 6:00 PM.",
+    "Example_UZ":"Masalan, soat 18:00 da katta favvora yonida yig‘ildik.",
+    "ExtraInfo_EN":"And also, it was very crowded but we had a lot of fun.",
+    "ExtraInfo_UZ":"Va shuningdek, juda gavjum edi, lekin biz juda yaxshi dam oldik."
   },
   {
     "Mavzular":"Card H",
@@ -851,8 +935,14 @@
     "Qism":"Part 2",
     "Sovollar":"3.  What did you do together?",
     "Sovollar (UZ)":"Siz birga nima qildingiz?",
-    "Jovoblar (EN)":"We ate food and talked together.",
-    "Jovoblar (UZ)":"Biz ovqatlandik va birga suhbatlashdik."
+    "FullAnswer_EN":"We walked around and ate some street food.",
+    "FullAnswer_UZ":"Biz aylanib yurdik va ko‘cha taomlaridan yedik.",
+    "Reason_EN":"Because we were very hungry after our long walk.",
+    "Reason_UZ":"Chunki uzoq yurganimizdan keyin juda och edik.",
+    "Example_EN":"For example, we bought some burgers and sat on a bench to eat.",
+    "Example_UZ":"Masalan, burger sotib olib, o‘rindiqqa o‘tirib yedik.",
+    "ExtraInfo_EN":"And also, we played some games at the arcade.",
+    "ExtraInfo_UZ":"Va shuningdek, o‘yin zalida bir nechta o‘yin o‘ynadik."
   },
   {
     "Mavzular":"Card H",
@@ -860,8 +950,14 @@
     "Qism":"Part 2",
     "Sovollar":"4.  Did you like it?",
     "Sovollar (UZ)":"Sizga yoqdimi?",
-    "Jovoblar (EN)":"Yes, I liked it.",
-    "Jovoblar (UZ)":"Ha, menga yoqdi."
+    "FullAnswer_EN":"Yes, I liked it very much.",
+    "FullAnswer_UZ":"Ha, menga juda yoqdi.",
+    "Reason_EN":"Because the weather was perfect and the food was great.",
+    "Reason_UZ":"Chunki ob-havo ajoyib edi va ovqat juda mazali edi.",
+    "Example_EN":"For example, I felt very happy to spend my evening with them.",
+    "Example_UZ":"Masalan, ular bilan kechqurun vaqt o‘tkazganimdan juda xursand bo‘ldim.",
+    "ExtraInfo_EN":"And also, I want to go there again next week!",
+    "ExtraInfo_UZ":"Va shuningdek, keyingi hafta yana u yerga borishni xohlayman!"
   },
   {
     "Mavzular":"Card I",

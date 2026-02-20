@@ -203,40 +203,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function exportToPDF() {
         const originalPart = currentPart;
-        const loader = document.getElementById('loader');
         
-        // Show all parts for the current card
-        const allCardData = examData.filter(item => item["Mavzular"] === currentCard);
-        
-        // Create a temporary container for printing to avoid flickering if possible, 
-        // but for simplicity we'll just render everything to contentArea
-        contentArea.innerHTML = '<div class="loader">PDF tayyorlanmoqda...</div>';
-        
-        // Custom render for print
-        let printHTML = `
-            <div class="print-header" style="text-align: center; margin-bottom: 20px;">
-                <h1 style="color: black !important; font-size: 24pt !important;">${currentCard} - ${allCardData[0]?.["Mavzular nomi"] || ""}</h1>
-                <p>English Exam Questions & Answers</p>
-            </div>
-        `;
+        try {
+            // Show all parts for the current card
+            const allCardData = examData.filter(item => item["Mavzular"] === currentCard);
+            
+            if (!allCardData || allCardData.length === 0) {
+                alert("Chop etish uchun ma'lumot topilmadi.");
+                return;
+            }
 
-        // Sort by Part then Sovollar number if possible
-        const sortedData = allCardData.sort((a, b) => {
-            if (a["Qism"] !== b["Qism"]) return a["Qism"].localeCompare(b["Qism"]);
-            return (parseInt(a["Sovollar"]) || 0) - (parseInt(b["Sovollar"]) || 0);
-        });
+            // Create a temporary container for printing to avoid flickering if possible, 
+            // but for simplicity we'll just render everything to contentArea
+            contentArea.innerHTML = '<div class="loader">PDF tayyorlanmoqda...</div>';
+            
+            // Sort by Part then Sovollar number if possible
+            const sortedData = allCardData.sort((a, b) => {
+                if (a["Qism"] !== b["Qism"]) return a["Qism"].localeCompare(b["Qism"]);
+                return (parseInt(a["Sovollar"]) || 0) - (parseInt(b["Sovollar"]) || 0);
+            });
 
-        // We'll reuse renderContent's logic but in a string-building way for speed
-        // Or just call renderContent with a special flag
-        
-        // Let's actually just render ALL content to the contentArea
-        renderContentForPrint(sortedData);
-        
-        setTimeout(() => {
-            window.print();
-            // Restore original view
+            // Let's actually just render ALL content to the contentArea
+            renderContentForPrint(sortedData);
+            
+            // Wait for DOM to update then print
+            setTimeout(() => {
+                window.print();
+                // Restore original view after print dialog closes
+                setTimeout(() => {
+                    renderContent(currentCard, originalPart);
+                }, 100);
+            }, 800);
+            
+        } catch (e) {
+            console.error("PDF export error:", e);
+            alert("Xatolik yuz berdi: " + e.message);
             renderContent(currentCard, originalPart);
-        }, 500);
+        }
     }
 
     function renderContentForPrint(data) {
