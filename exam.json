@@ -959,7 +959,6 @@
     "ExtraInfo_EN": "And also, I want to go there again.",
     "ExtraInfo_UZ": "Va shuningdek, Men yana u yerga borishni xohlayman."
 },
-  [
   {
     "Mavzular":"Card I",
     "Mavzular nomi":"Jobs",
@@ -1079,9 +1078,7 @@
     "Example_UZ":"Masalan, ular avtobus va metrodan foydalanadi.",
     "ExtraInfo_EN":"And also, it is fast in traffic.",
     "ExtraInfo_UZ":"Va shuningdek, transport tirbandlikda ham tez."
-  }
-],
-  [
+  },
   {
     "Mavzular":"Card J",
     "Mavzular nomi":"Weather",
@@ -1202,5 +1199,4 @@
     "ExtraInfo_EN":"And also, I enjoy dessert sometimes.",
     "ExtraInfo_UZ":"Va shuningdek, ba’zan desert yeyishni yoqtiraman."
   }
-]
 ]
