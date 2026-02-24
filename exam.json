@@ -1147,12 +1147,12 @@
     "Sovollar (UZ)":"Siz tez ovqat restoranlarida ovqat yeyasizmi?",
     "FullAnswer_EN":"Yes, sometimes I eat at fast food restaurants.",
     "FullAnswer_UZ":"Ha, ba’zan tez ovqat restoranlarida ovqatlanaman.",
-    "Reason_EN":"Because it is quick and tasty.",
+    "Reason_EN":"Because it is fast and tasty.",
     "Reason_UZ":"Chunki bu tez va mazali.",
-    "Example_EN":"For example, I eat burgers or fries.",
-    "Example_UZ":"Masalan, burger yoki kartoshka yeyman.",
-    "ExtraInfo_EN":"And also, I drink soda there.",
-    "ExtraInfo_UZ":"Va shuningdek, u yerda soda ichaman."
+    "Example_EN":"For example, I eat burger or sandwich.",
+    "Example_UZ":"Masalan, burger yoki sendvich yeyman.",
+    "ExtraInfo_EN":"And also, I drink coffee there.",
+    "ExtraInfo_UZ":"Va shuningdek, u yerda kofe ichaman."
   },
   {
     "Mavzular":"Card J",
