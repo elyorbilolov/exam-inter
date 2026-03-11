@@ -31,12 +31,17 @@
 <body>
     <div class="container">
         <header>
-            <h1>English Exam</h1>
+            <div class="header-left">
+                <button id="home-btn" class="action-header-btn" title="Dashboardga qaytish" style="display: none;">
+                    🏠
+                </button>
+                <h1>English Exam</h1>
+            </div>
             <div class="search-container">
                 <input type="text" id="search-input" placeholder="Qidirish...">
             </div>
             <div class="header-actions">
-                <button onclick="hardReset()" class="action-header-btn" title="Keshni tozalash" style="background: rgba(244, 63, 94, 0.2); border-color: rgba(244, 63, 94, 0.3);">
+                <button onclick="hardReset()" class="action-header-btn" title="Keshni tozalash" style="background: rgba(244, 63, 94, 0.2); border-color: rgba(244, 63, 64, 0.3);">
                     🔄
                 </button>
                 <button id="print-pdf" class="action-header-btn" title="PDF orqali chop etish" aria-label="Print PDF">
@@ -48,32 +53,56 @@
             </div>
         </header>
 
-        <div class="progress-container">
-            <div id="progress-bar" class="progress-bar"></div>
+        <div id="level-selector" class="level-selector">
+            <h2 class="level-select-title">Darajani tanlang / Choose your level</h2>
+            <div class="level-cards">
+                <button class="level-card-btn beginner" data-level="beginner">
+                    <div class="level-icon">🌱</div>
+                    <div class="level-info">
+                        <span class="level-name">Beginner</span>
+                        <span class="level-desc">Boshlang'ich daraja / Starter Level</span>
+                    </div>
+                    <div class="level-arrow">→</div>
+                </button>
+                <button class="level-card-btn elementary" data-level="elementary">
+                    <div class="level-icon">🌿</div>
+                    <div class="level-info">
+                        <span class="level-name">Elementary</span>
+                        <span class="level-desc">Elementary daraja / Basic English</span>
+                    </div>
+                    <div class="level-arrow">→</div>
+                </button>
+            </div>
         </div>
 
-        <nav class="main-mode-nav">
-            <button class="mode-btn active" data-mode="speaking">🗣️ Speaking</button>
-            <button class="mode-btn" data-mode="writing">✍️ Writing</button>
-        </nav>
+        <div id="main-content" style="display: none;">
+            <div class="progress-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
 
-        <section class="cards-wrapper" id="cards-wrapper">
-            <nav class="cards-nav" id="cards-nav">
-                <!-- Kartalar tugmalari JS orqali qo'shiladi -->
+            <nav class="main-mode-nav">
+                <button class="mode-btn active" data-mode="speaking">🗣️ Speaking</button>
+                <button class="mode-btn" data-mode="writing">✍️ Writing</button>
             </nav>
-        </section>
 
-        <section class="parts-wrapper">
-            <nav class="parts-nav">
-                <button class="part-btn active" data-part="Part 1">Part 1</button>
-                <button class="part-btn" data-part="Part 2">Part 2</button>
-            </nav>
-        </section>
+            <section class="cards-wrapper" id="cards-wrapper">
+                <nav class="cards-nav" id="cards-nav">
+                    <!-- Kartalar tugmalari JS orqali qo'shiladi -->
+                </nav>
+            </section>
 
-        <main id="content-area">
-            <!-- Savollar shu yerga chiqadi -->
-            <div id="loader" class="loader">Yuklanmoqda...</div>
-        </main>
+            <section class="parts-wrapper">
+                <nav class="parts-nav">
+                    <button class="part-btn active" data-part="Part 1">Part 1</button>
+                    <button class="part-btn" data-part="Part 2">Part 2</button>
+                </nav>
+            </section>
+
+            <main id="content-area">
+                <!-- Savollar shu yerga chiqadi -->
+                <div id="loader" class="loader">Yuklanmoqda...</div>
+            </main>
+        </div>
     </div>
 
     <script src="script.js?v=v42"></script>

@@ -13,12 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let examData = [];
     let writingData = {};
+    let currentLevel = localStorage.getItem('selectedLevel') || null;
     let currentMode = localStorage.getItem('currentMode') || 'speaking';
     let currentCard = localStorage.getItem('currentCard') || "Card A";
     let currentPart = localStorage.getItem('currentPart') || "Part 1";
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     let learnedWriting = JSON.parse(localStorage.getItem('learnedWriting')) || [];
     let theme = localStorage.getItem('theme') || 'light';
+
+    const levelSelector = document.getElementById('level-selector');
+    const mainContent = document.getElementById('main-content');
+    const homeBtn = document.getElementById('home-btn');
+    const levelBtns = document.querySelectorAll('.level-card-btn');
 
     // Mode Switch Logic
     modeButtons.forEach(btn => {
@@ -84,16 +90,54 @@ document.addEventListener('DOMContentLoaded', () => {
         themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
     });
 
+    function initLevelSelection() {
+        if (currentLevel) {
+            levelSelector.style.display = 'none';
+            mainContent.style.display = 'block';
+            homeBtn.style.display = 'flex';
+            loadData();
+        } else {
+            levelSelector.style.display = 'flex';
+            mainContent.style.display = 'none';
+            homeBtn.style.display = 'none';
+            progressBar.style.width = '0%';
+        }
+    }
+
+    levelBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            currentLevel = btn.getAttribute('data-level');
+            localStorage.setItem('selectedLevel', currentLevel);
+            initLevelSelection();
+        });
+    });
+
+    homeBtn.addEventListener('click', () => {
+        currentLevel = null;
+        localStorage.removeItem('selectedLevel');
+        initLevelSelection();
+    });
+
     async function loadData() {
+        if (!currentLevel) return;
+        
         try {
+            contentArea.innerHTML = '<div class="loader">Yuklanmoqda...</div>';
+            
+            const examFile = currentLevel === 'beginner' ? 'exam.json' : 'exam_elementary.json';
+            const writingFile = currentLevel === 'beginner' ? 'writing.json' : 'writing_elementary.json';
+
+            const levelTitle = currentLevel === 'beginner' ? 'English Exam (Beginner)' : 'English Exam (Elementary)';
+            document.querySelector('h1').textContent = levelTitle;
+
             // Load speaking data
-            const resExam = await fetch('exam.json?v=' + new Date().getTime());
-            if (!resExam.ok) throw new Error('Exam JSON faylni yuklab bo\'lmadi');
+            const resExam = await fetch(`${examFile}?v=${new Date().getTime()}`);
+            if (!resExam.ok) throw new Error(`${examFile} faylni yuklab bo'lmadi`);
             examData = await resExam.json();
 
             // Load writing data
-            const resWriting = await fetch('writing.json?v=' + new Date().getTime());
-            if (!resWriting.ok) throw new Error('Writing JSON faylni yuklab bo\'lmadi');
+            const resWriting = await fetch(`${writingFile}?v=${new Date().getTime()}`);
+            if (!resWriting.ok) throw new Error(`${writingFile} faylni yuklab bo'lmadi`);
             writingData = await resWriting.json();
             
             const uniqueCards = [];
@@ -628,5 +672,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    loadData();
+    initLevelSelection();
 });

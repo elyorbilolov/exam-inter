@@ -78,10 +78,10 @@ h1 {
   -webkit-text-fill-color: transparent;
 }
 
-.header-actions {
+.header-left {
   display: flex;
-  gap: 10px;
   align-items: center;
+  gap: 12px;
 }
 
 .action-header-btn,
@@ -101,6 +101,125 @@ h1 {
   align-items: center;
   justify-content: center;
   font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* Level Selector Styling */
+.level-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 30px;
+  padding: 20px 0;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.level-select-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-main);
+  text-align: center;
+  opacity: 0.9;
+}
+
+.level-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.level-card-btn {
+  display: flex;
+  align-items: center;
+  padding: 20px 25px;
+  background: var(--card-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  width: 100%;
+}
+
+.level-card-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.level-card-btn:hover::before {
+  transform: translateX(100%);
+}
+
+.level-card-btn:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: var(--primary);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.level-icon {
+  font-size: 2.5rem;
+  margin-right: 20px;
+  filter: drop-shadow(0 0 8px rgba(0,0,0,0.1));
+}
+
+.level-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.level-name {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+
+.level-desc {
+  font-size: 0.85rem;
+  color: var(--text-sub);
+  font-weight: 500;
+}
+
+.level-arrow {
+  font-size: 1.5rem;
+  color: var(--primary);
+  opacity: 0.5;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.level-card-btn:hover .level-arrow {
+  transform: translateX(5px);
+  opacity: 1;
+}
+
+.level-card-btn.beginner {
+  border-left: 6px solid #10b981;
+}
+
+.level-card-btn.elementary {
+  border-left: 6px solid #6366f1;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .action-header-btn:hover,
