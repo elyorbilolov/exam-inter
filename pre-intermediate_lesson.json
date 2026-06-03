@@ -9,7 +9,8 @@
     "Example": "For example, I usually go jogging or do stretching exercises in the morning.",
     "Example translate": "Masalan, men odatda ertalab yuguraman yoki cho‘zilish mashqlari qilaman.",
     "Extra Info": "Also, it gives me energy for the whole day.",
-    "Extra Info translate": "Bundan tashqari, bu menga kun bo‘yi energiya beradi."
+    "Extra Info translate": "Bundan tashqari, bu menga kun bo‘yi energiya beradi.",
+    "lesson": "1.1"
   },
   {
     "Verb + Collocation": "do housework",
@@ -21,7 +22,8 @@
     "Example": "For example, I clean my room, wash dishes, and sweep the floor.",
     "Example translate": "Masalan, men xonamni tozalayman, idish yuvaman va pol supuraman.",
     "Extra Info": "It also teaches me responsibility.",
-    "Extra Info translate": "Bu menga mas’uliyatni ham o‘rgatadi."
+    "Extra Info translate": "Bu menga mas’uliyatni ham o‘rgatadi.",
+    "lesson": "1.1"
   },
   {
     "Verb + Collocation": "do the shopping",
@@ -33,7 +35,8 @@
     "Example": "For example, I buy food, drinks, and household items.",
     "Example translate": "Masalan, men ovqat, ichimlik va uy uchun narsalar sotib olaman.",
     "Extra Info": "It helps my family save time.",
-    "Extra Info translate": "Bu oilamga vaqtni tejashga yordam beradi."
+    "Extra Info translate": "Bu oilamga vaqtni tejashga yordam beradi.",
+    "lesson": "1.1"
   },
   {
     "Verb + Collocation": "do some work",
@@ -45,7 +48,8 @@
     "Example": "For example, I complete my tasks and check my emails.",
     "Example translate": "Masalan, men vazifalarimni bajaraman va elektron xatlarni tekshiraman.",
     "Extra Info": "It helps me improve my skills.",
-    "Extra Info translate": "Bu mening ko‘nikmalarimni yaxshilaydi."
+    "Extra Info translate": "Bu mening ko‘nikmalarimni yaxshilaydi.",
+    "lesson": "1.1"
   },
   {
     "Verb + Collocation": "do homework",
@@ -57,7 +61,8 @@
     "Example": "For example, I write exercises and learn new grammar rules.",
     "Example translate": "Masalan, men mashqlar yozaman va yangi grammatik qoidalarni o‘rganaman.",
     "Extra Info": "It helps me learn better and get good grades.",
-    "Extra Info translate": "Bu menga yaxshi o‘qishga va yuqori baho olishga yordam beradi."
+    "Extra Info translate": "Bu menga yaxshi o‘qishga va yuqori baho olishga yordam beradi.",
+    "lesson": "1.1"
   },
   {
     "Verb + Collocation": "make future plans",
@@ -69,7 +74,8 @@
     "Example": "For example, I plan to study at university and learn English well.",
     "Example translate": "Masalan, men universitetda o‘qish va ingliz tilini yaxshi o‘rganishni rejalashtiraman.",
     "Extra Info": "It motivates me to work harder.",
-    "Extra Info translate": "Bu meni ko‘proq ishlashga undaydi."
+    "Extra Info translate": "Bu meni ko‘proq ishlashga undaydi.",
+    "lesson": "1.1"
   },
   {
     "Verb + Collocation": "make a to-do list",
@@ -81,7 +87,8 @@
     "Example": "For example, I write my homework, chores, and other tasks.",
     "Example translate": "Masalan, men uy vazifa, yumushlar va boshqa ishlarni yozaman.",
     "Extra Info": "It helps me not forget important things.",
-    "Extra Info translate": "Bu muhim narsalarni unutmaslikka yordam beradi."
+    "Extra Info translate": "Bu muhim narsalarni unutmaslikka yordam beradi.",
+    "lesson": "1.1"
   },
   {
     "Verb + Collocation": "stay in for the evening",
@@ -93,7 +100,8 @@
     "Example": "For example, I watch TV or listen to music.",
     "Example translate": "Masalan, men televizor ko‘raman yoki musiqa tinglayman.",
     "Extra Info": "It helps me relax after a long day.",
-    "Extra Info translate": "Bu menga uzoq kundan keyin dam olishga yordam beradi."
+    "Extra Info translate": "Bu menga uzoq kundan keyin dam olishga yordam beradi.",
+    "lesson": "1.1"
   },
   {
     "Verb + Collocation": "eat healthy food",
@@ -105,7 +113,8 @@
     "Example": "For example, I eat fruits, vegetables, and drink water.",
     "Example translate": "Masalan, men meva, sabzavot yeyman va suv ichaman.",
     "Extra Info": "It improves my overall health.",
-    "Extra Info translate": "Bu mening umumiy sog‘lig‘imni yaxshilaydi."
+    "Extra Info translate": "Bu mening umumiy sog‘lig‘imni yaxshilaydi.",
+    "lesson": "1.1"
   },
   {
     "Verb + Collocation": "have an early night",
@@ -117,7 +126,8 @@
     "Example": "For example, I go to bed at 9 or 10 pm.",
     "Example translate": "Masalan, men soat 9 yoki 10 da uxlayman.",
     "Extra Info": "It helps me wake up fresh in the morning.",
-    "Extra Info translate": "Bu menga ertalab tetik uyg‘onishga yordam beradi."
+    "Extra Info translate": "Bu menga ertalab tetik uyg‘onishga yordam beradi.",
+    "lesson": "1.1"
   },
   {
     "Verb + Collocation": "have to bed late",
@@ -129,7 +139,8 @@
     "Example": "For example, I study or finish homework at night.",
     "Example translate": "Masalan, men kechasi o‘qiyman yoki uy vazifani tugataman.",
     "Extra Info": "It makes me feel tired the next day.",
-    "Extra Info translate": "Bu keyingi kuni charchoq his qilishga olib keladi."
+    "Extra Info translate": "Bu keyingi kuni charchoq his qilishga olib keladi.",
+    "lesson": "1.1"
   },
   {
     "Verb + Collocation": "have fun",
@@ -141,7 +152,8 @@
     "Example": "For example, we play games or go out together.",
     "Example translate": "Masalan, biz o‘yin o‘ynaymiz yoki tashqariga chiqamiz.",
     "Extra Info": "It reduces stress and improves mood.",
-    "Extra Info translate": "Bu stressni kamaytiradi va kayfiyatni yaxshilaydi."
+    "Extra Info translate": "Bu stressni kamaytiradi va kayfiyatni yaxshilaydi.",
+    "lesson": "1.1"
   },
   {
     "Verb + Collocation": "have a good time",
@@ -153,7 +165,8 @@
     "Example": "For example, we dance, talk, and take photos.",
     "Example translate": "Masalan, biz raqsga tushamiz, gaplashamiz va rasmga tushamiz.",
     "Extra Info": "It creates nice memories.",
-    "Extra Info translate": "Bu yaxshi xotiralar yaratadi."
+    "Extra Info translate": "Bu yaxshi xotiralar yaratadi.",
+    "lesson": "1.1"
   },
   {
     "Verb + Collocation": "have a family meal",
@@ -165,7 +178,8 @@
     "Example": "For example, we eat together and talk about our week.",
     "Example translate": "Masalan, biz birga ovqatlanamiz va hafta haqida gaplashamiz.",
     "Extra Info": "It brings our family closer.",
-    "Extra Info translate": "Bu oilamizni yanada yaqinlashtiradi."
+    "Extra Info translate": "Bu oilamizni yanada yaqinlashtiradi.",
+    "lesson": "1.1"
   },
   {
     "Verb + Collocation": "have a lie-in",
@@ -177,7 +191,8 @@
     "Example": "For example, I wake up around 10 or 11 am.",
     "Example translate": "Masalan, men soat 10 yoki 11 da uyg‘onaman.",
     "Extra Info": "It helps me feel more relaxed.",
-    "Extra Info translate": "Bu meni xotirjam qiladi."
+    "Extra Info translate": "Bu meni xotirjam qiladi.",
+    "lesson": "1.1"
   },
   {
     "Verb + Collocation": "go on a trip",
@@ -189,7 +204,8 @@
     "Example": "For example, we visit mountains or different cities.",
     "Example translate": "Masalan, biz tog‘larga yoki boshqa shaharlarga boramiz.",
     "Extra Info": "It gives me new experiences and memories.",
-    "Extra Info translate": "Bu menga yangi tajriba va xotiralar beradi."
+    "Extra Info translate": "Bu menga yangi tajriba va xotiralar beradi.",
+    "lesson": "1.1"
   },
   {
     "Verb + Collocation": "go shopping",
@@ -201,7 +217,8 @@
     "Example": "For example, we buy clothes and shoes.",
     "Example translate": "Masalan, biz kiyim va poyabzal sotib olamiz.",
     "Extra Info": "We also spend good time together.",
-    "Extra Info translate": "Biz birga yaxshi vaqt o‘tkazamiz."
+    "Extra Info translate": "Biz birga yaxshi vaqt o‘tkazamiz.",
+    "lesson": "1.1"
   },
   {
     "Verb + Collocation": "chat with friends online",
@@ -213,6 +230,7 @@
     "Example": "For example, we use social media and messaging apps.",
     "Example translate": "Masalan, biz ijtimoiy tarmoqlar va xabar ilovalaridan foydalanamiz.",
     "Extra Info": "It helps us stay in touch.",
-    "Extra Info translate": "Bu bizni aloqada ushlab turadi."
+    "Extra Info translate": "Bu bizni aloqada ushlab turadi.",
+    "lesson": "1.1"
   }
 ]

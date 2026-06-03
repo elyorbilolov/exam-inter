@@ -394,29 +394,20 @@ document.addEventListener('DOMContentLoaded', () => {
             let answerHTML = '';
             if (currentLevel === 'pre-intermediate') {
                 const parts = [
-                    { label: "Answer", en: item["Answer"] },
-                    { label: "Reason", en: item["Reason"] },
-                    { label: "Example", en: item["Example"] },
-                    { label: "Extra Info", en: item["Extra Info"] },
-                    { label: "Translation (UZ)", uz: item["Tarjima"] }
+                    { label: "Answer", en: item["Answer"], uz: item["Answer translate"] },
+                    { label: "Reason", en: item["Reason"], uz: item["Reason translate"] },
+                    { label: "Example", en: item["Example"], uz: item["Example translate"] },
+                    { label: "Extra Info", en: item["Extra Info"], uz: item["Extra Info translate"] }
                 ];
                 answerHTML = parts.map(p => {
-                    if (p.en) {
-                        return `
-                            <div class="answer-block">
-                                <span class="answer-label">${p.label}:</span>
-                                <span class="en-text highlight">${p.en}</span>
-                            </div>
-                        `;
-                    } else if (p.uz) {
-                        return `
-                            <div class="answer-block">
-                                <span class="answer-label">${p.label}:</span>
-                                <span class="uz-text small" style="margin-left: 0;">(${p.uz})</span>
-                            </div>
-                        `;
-                    }
-                    return '';
+                    if (!p.en) return '';
+                    return `
+                        <div class="answer-block">
+                            <span class="answer-label">${p.label}:</span>
+                            <span class="en-text highlight">${p.en}</span>
+                            <span class="uz-text small">(${p.uz || "Tarjima yo'q"})</span>
+                        </div>
+                    `;
                 }).join('');
                 
                 cardEl.innerHTML = `
@@ -694,15 +685,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     const phraseEn = (item["Verb + Collocation"] || "").toLowerCase();
                     const phraseUz = (item["O‘zbekcha tarjima"] || "").toLowerCase();
                     const answer = (item["Answer"] || "").toLowerCase();
+                    const answerTr = (item["Answer translate"] || "").toLowerCase();
                     const reason = (item["Reason"] || "").toLowerCase();
+                    const reasonTr = (item["Reason translate"] || "").toLowerCase();
                     const example = (item["Example"] || "").toLowerCase();
+                    const exampleTr = (item["Example translate"] || "").toLowerCase();
                     const extraInfo = (item["Extra Info"] || "").toLowerCase();
-                    const translation = (item["Tarjima"] || "").toLowerCase();
+                    const extraInfoTr = (item["Extra Info translate"] || "").toLowerCase();
                     const query = searchQuery.toLowerCase();
                     return phraseEn.includes(query) || phraseUz.includes(query) || 
-                           answer.includes(query) || reason.includes(query) || 
-                           example.includes(query) || extraInfo.includes(query) || 
-                           translation.includes(query);
+                           answer.includes(query) || answerTr.includes(query) ||
+                           reason.includes(query) || reasonTr.includes(query) || 
+                           example.includes(query) || exampleTr.includes(query) ||
+                           extraInfo.includes(query) || extraInfoTr.includes(query);
                 });
             } else {
                 // Filter by lesson
@@ -757,30 +752,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (currentLevel === 'pre-intermediate') {
                 const parts = [
-                    { label: "Answer", en: item["Answer"] },
-                    { label: "Reason", en: item["Reason"] },
-                    { label: "Example", en: item["Example"] },
-                    { label: "Extra Info", en: item["Extra Info"] },
-                    { label: "Translation (UZ)", uz: item["Tarjima"] }
+                    { label: "Answer", en: item["Answer"], uz: item["Answer translate"] },
+                    { label: "Reason", en: item["Reason"], uz: item["Reason translate"] },
+                    { label: "Example", en: item["Example"], uz: item["Example translate"] },
+                    { label: "Extra Info", en: item["Extra Info"], uz: item["Extra Info translate"] }
                 ];
                 textToSpeak = parts.map(p => p.en).filter(Boolean).join('. ');
                 answerHTML = parts.map(p => {
-                    if (p.en) {
-                        return `
-                            <div class="answer-block">
-                                <span class="answer-label">${p.label}:</span>
-                                <span class="en-text highlight">${highlightText(p.en, searchQuery)}</span>
-                            </div>
-                        `;
-                    } else if (p.uz) {
-                        return `
-                            <div class="answer-block">
-                                <span class="answer-label">${p.label}:</span>
-                                <span class="uz-text small" style="margin-left: 0;">(${highlightText(p.uz, searchQuery)})</span>
-                            </div>
-                        `;
-                    }
-                    return '';
+                    if (!p.en) return '';
+                    return `
+                        <div class="answer-block">
+                            <span class="answer-label">${p.label}:</span>
+                            <span class="en-text highlight">${highlightText(p.en, searchQuery)}</span>
+                            <span class="uz-text small">(${highlightText(p.uz || "Tarjima yo'q", searchQuery)})</span>
+                        </div>
+                    `;
                 }).join('');
             } else if (item["FullAnswer_EN"]) {
                 const parts = [
