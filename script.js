@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("--- VERSION 3.0: CLEAN SLATE BLUE ---");
+    console.log("--- VERSION 4.3: PRE-INTERMEDIATE INTEGRATION ---");
     const contentArea = document.getElementById('content-area');
     const cardsNav = document.getElementById('cards-nav');
     const partButtons = document.querySelectorAll('.part-btn');
@@ -60,7 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase().trim();
-            if (currentMode === 'writing') {
+            if (currentLevel === 'pre-intermediate') {
+                renderContent(currentCard, currentPart, query);
+            } else if (currentMode === 'writing') {
                 renderWritingContent(query);
             } else {
                 renderContent(currentCard, currentPart, query);
@@ -71,7 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Print PDF Listener
     if (printPdfBtn) {
         printPdfBtn.addEventListener('click', () => {
-            if (currentMode === 'writing') {
+            if (currentLevel === 'pre-intermediate') {
+                exportToPDF();
+            } else if (currentMode === 'writing') {
                 exportWritingToPDF();
             } else {
                 exportToPDF();
@@ -124,38 +128,92 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             contentArea.innerHTML = '<div class="loader">Yuklanmoqda...</div>';
             
-            const examFile = currentLevel === 'beginner' ? 'exam.json' : 'exam_elementary.json';
-            const writingFile = currentLevel === 'beginner' ? 'writing.json' : 'writing_elementary.json';
+            let examFile, writingFile, levelTitle;
+            if (currentLevel === 'beginner') {
+                examFile = 'exam.json';
+                writingFile = 'writing.json';
+                levelTitle = 'English Exam (Beginner)';
+            } else if (currentLevel === 'elementary') {
+                examFile = 'exam_elementary.json';
+                writingFile = 'writing_elementary.json';
+                levelTitle = 'English Exam (Elementary)';
+            } else if (currentLevel === 'pre-intermediate') {
+                examFile = 'pre-intermediate_lesson.json';
+                writingFile = null;
+                levelTitle = 'English Exam (Pre-Intermediate)';
+            }
 
-            const levelTitle = currentLevel === 'beginner' ? 'English Exam (Beginner)' : 'English Exam (Elementary)';
             document.querySelector('h1').textContent = levelTitle;
 
-            // Load speaking data
+            // Load speaking/lesson data
             const resExam = await fetch(`${examFile}?v=${new Date().getTime()}`);
             if (!resExam.ok) throw new Error(`${examFile} faylni yuklab bo'lmadi`);
             examData = await resExam.json();
 
-            // Load writing data
-            const resWriting = await fetch(`${writingFile}?v=${new Date().getTime()}`);
-            if (!resWriting.ok) throw new Error(`${writingFile} faylni yuklab bo'lmadi`);
-            writingData = await resWriting.json();
+            // Load writing data if applicable
+            if (writingFile) {
+                const resWriting = await fetch(`${writingFile}?v=${new Date().getTime()}`);
+                if (!resWriting.ok) throw new Error(`${writingFile} faylni yuklab bo'lmadi`);
+                writingData = await resWriting.json();
+            } else {
+                writingData = {};
+            }
             
             const uniqueCards = [];
             const cardMap = new Map();
             
-            examData.forEach(item => {
-                const cardName = item["Mavzular"];
-                const topicName = item["Mavzular nomi"];
-                if (cardName && !cardMap.has(cardName)) {
-                    cardMap.set(cardName, topicName);
-                    uniqueCards.push({ name: cardName, topic: topicName });
+            if (currentLevel === 'pre-intermediate') {
+                examData.forEach(item => {
+                    const lessonName = item["lesson"];
+                    if (lessonName && !cardMap.has(lessonName)) {
+                        cardMap.set(lessonName, `Lesson ${lessonName}`);
+                        uniqueCards.push({ name: lessonName, topic: `Lesson ${lessonName}` });
+                    }
+                });
+                
+                // If currentCard is not valid for pre-intermediate, reset it to first lesson
+                if (!cardMap.has(currentCard)) {
+                    currentCard = uniqueCards.length > 0 ? uniqueCards[0].name : "1.1";
+                    localStorage.setItem('currentCard', currentCard);
                 }
-            });
+            } else {
+                examData.forEach(item => {
+                    const cardName = item["Mavzular"];
+                    const topicName = item["Mavzular nomi"];
+                    if (cardName && !cardMap.has(cardName)) {
+                        cardMap.set(cardName, topicName);
+                        uniqueCards.push({ name: cardName, topic: topicName });
+                    }
+                });
+                
+                // If currentCard looks like a lesson number, reset it to first card
+                if (currentCard.match(/^\d+(\.\d+)?$/) || !cardMap.has(currentCard)) {
+                    currentCard = uniqueCards.length > 0 ? uniqueCards[0].name : "Card A";
+                    localStorage.setItem('currentCard', currentCard);
+                }
+            }
+
+            // Hide/show mode navigation and parts wrapper for pre-intermediate
+            if (currentLevel === 'pre-intermediate') {
+                const modeNav = document.querySelector('.main-mode-nav');
+                if (modeNav) modeNav.style.display = 'none';
+                partsWrapper.style.display = 'none';
+            } else {
+                const modeNav = document.querySelector('.main-mode-nav');
+                if (modeNav) modeNav.style.display = 'flex';
+                if (currentMode === 'speaking') {
+                    partsWrapper.style.display = 'block';
+                } else {
+                    partsWrapper.style.display = 'none';
+                }
+            }
 
             renderCardButtons(uniqueCards);
             updateActivePartButton();
             
-            if (currentMode === 'writing') {
+            if (currentLevel === 'pre-intermediate') {
+                renderContent(currentCard, currentPart);
+            } else if (currentMode === 'writing') {
                 renderWritingContent();
             } else {
                 renderContent(currentCard, currentPart);
@@ -180,10 +238,18 @@ document.addEventListener('DOMContentLoaded', () => {
         cards.forEach(card => {
             const btn = document.createElement('button');
             btn.className = `card-btn ${card.name === currentCard ? 'active' : ''}`;
+            
+            let titleText = card.name;
+            let topicText = card.topic;
+            if (currentLevel === 'pre-intermediate') {
+                titleText = `Lesson`;
+                topicText = card.name;
+            }
+
             btn.innerHTML = `
                 <div class="card-btn-content">
-                    <span class="card-title">${card.name}</span>
-                    <span class="card-topic">${card.topic}</span>
+                    <span class="card-title">${titleText}</span>
+                    <span class="card-topic">${topicText}</span>
                 </div>
             `;
             btn.addEventListener('click', () => {
@@ -249,8 +315,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const originalPart = currentPart;
         
         try {
-            // Show all parts for the current card
-            const allCardData = examData.filter(item => item["Mavzular"] === currentCard);
+            // Show all parts for the current card/lesson
+            let allCardData;
+            if (currentLevel === 'pre-intermediate') {
+                allCardData = examData.filter(item => item["lesson"] === currentCard);
+            } else {
+                allCardData = examData.filter(item => item["Mavzular"] === currentCard);
+            }
             
             if (!allCardData || allCardData.length === 0) {
                 alert("Chop etish uchun ma'lumot topilmadi.");
@@ -261,11 +332,16 @@ document.addEventListener('DOMContentLoaded', () => {
             // but for simplicity we'll just render everything to contentArea
             contentArea.innerHTML = '<div class="loader">PDF tayyorlanmoqda...</div>';
             
-            // Sort by Part then Sovollar number if possible
-            const sortedData = allCardData.sort((a, b) => {
-                if (a["Qism"] !== b["Qism"]) return a["Qism"].localeCompare(b["Qism"]);
-                return (parseInt(a["Sovollar"]) || 0) - (parseInt(b["Sovollar"]) || 0);
-            });
+            let sortedData;
+            if (currentLevel === 'pre-intermediate') {
+                sortedData = allCardData;
+            } else {
+                // Sort by Part then Sovollar number if possible
+                sortedData = allCardData.sort((a, b) => {
+                    if (a["Qism"] !== b["Qism"]) return a["Qism"].localeCompare(b["Qism"]);
+                    return (parseInt(a["Sovollar"]) || 0) - (parseInt(b["Sovollar"]) || 0);
+                });
+            }
 
             // Let's actually just render ALL content to the contentArea
             renderContentForPrint(sortedData);
@@ -290,59 +366,109 @@ document.addEventListener('DOMContentLoaded', () => {
         contentArea.innerHTML = '';
         const header = document.createElement('div');
         header.className = 'print-title-container';
-        header.innerHTML = `
-            <div class="print-card-label">${currentCard}</div>
-            <div class="print-topic-label">${data[0]?.["Mavzular nomi"] || ""}</div>
-        `;
+        
+        if (currentLevel === 'pre-intermediate') {
+            header.innerHTML = `
+                <div class="print-card-label">Pre-Intermediate</div>
+                <div class="print-topic-label">Lesson ${currentCard}</div>
+            `;
+        } else {
+            header.innerHTML = `
+                <div class="print-card-label">${currentCard}</div>
+                <div class="print-topic-label">${data[0]?.["Mavzular nomi"] || ""}</div>
+            `;
+        }
         contentArea.appendChild(header);
 
         data.forEach((item, index) => {
-            if (!item["Sovollar"]) return;
+            if (currentLevel === 'pre-intermediate') {
+                if (!item["Verb + Collocation"]) return;
+            } else {
+                if (!item["Sovollar"]) return;
+            }
             
             const cardEl = document.createElement('div');
             cardEl.className = 'question-card';
             
             // Simplified version for print (no buttons)
             let answerHTML = '';
-            if (item["FullAnswer_EN"]) {
+            if (currentLevel === 'pre-intermediate') {
                 const parts = [
-                    { label: "Answer", en: item["FullAnswer_EN"], uz: item["FullAnswer_UZ"] },
-                    { label: "Reason", en: item["Reason_EN"], uz: item["Reason_UZ"] },
-                    { label: "Example", en: item["Example_EN"], uz: item["Example_UZ"] },
-                    { label: "Extra Info", en: item["ExtraInfo_EN"], uz: item["ExtraInfo_UZ"] }
+                    { label: "Answer", en: item["Answer"] },
+                    { label: "Reason", en: item["Reason"] },
+                    { label: "Example", en: item["Example"] },
+                    { label: "Extra Info", en: item["Extra Info"] },
+                    { label: "Translation (UZ)", uz: item["Tarjima"] }
                 ];
-
                 answerHTML = parts.map(p => {
-                    if (!p.en) return '';
-                    return `
-                        <div class="answer-block">
-                            <span class="answer-label">${p.label}:</span>
-                            <span class="en-text highlight">${p.en}</span>
-                            <span class="uz-text small">(${p.uz})</span>
+                    if (p.en) {
+                        return `
+                            <div class="answer-block">
+                                <span class="answer-label">${p.label}:</span>
+                                <span class="en-text highlight">${p.en}</span>
+                            </div>
+                        `;
+                    } else if (p.uz) {
+                        return `
+                            <div class="answer-block">
+                                <span class="answer-label">${p.label}:</span>
+                                <span class="uz-text small" style="margin-left: 0;">(${p.uz})</span>
+                            </div>
+                        `;
+                    }
+                    return '';
+                }).join('');
+                
+                cardEl.innerHTML = `
+                    <div class="question-section">
+                        <div class="en-text" style="color: black;">${item["Verb + Collocation"]}</div>
+                        <div class="uz-text">(${item["O‘zbekcha tarjima"] || ""})</div>
+                    </div>
+                    <div class="answer-section">
+                        ${answerHTML}
+                    </div>
+                `;
+            } else {
+                if (item["FullAnswer_EN"]) {
+                    const parts = [
+                        { label: "Answer", en: item["FullAnswer_EN"], uz: item["FullAnswer_UZ"] },
+                        { label: "Reason", en: item["Reason_EN"], uz: item["Reason_UZ"] },
+                        { label: "Example", en: item["Example_EN"], uz: item["Example_UZ"] },
+                        { label: "Extra Info", en: item["ExtraInfo_EN"], uz: item["ExtraInfo_UZ"] }
+                    ];
+
+                    answerHTML = parts.map(p => {
+                        if (!p.en) return '';
+                        return `
+                            <div class="answer-block">
+                                <span class="answer-label">${p.label}:</span>
+                                <span class="en-text highlight">${p.en}</span>
+                                <span class="uz-text small">(${p.uz})</span>
+                            </div>
+                        `;
+                    }).join('');
+                } else {
+                    const cleanAnswerEN = item["Jovoblar (EN)"] ? item["Jovoblar (EN)"].replace(/\n/g, '<br>') : "No answer";
+                    const cleanAnswerUZ = item["Jovoblar (UZ)"] ? item["Jovoblar (UZ)"].replace(/\n/g, '<br>') : "Javob yo'q";
+                    
+                    answerHTML = `
+                        <div class="answer-content">
+                            <span class="en-text" style="color: black; font-weight: 600;">${cleanAnswerEN}</span>
+                            <span class="uz-text" style="display: block; margin-top: 5px;">(${cleanAnswerUZ})</span>
                         </div>
                     `;
-                }).join('');
-            } else {
-                const cleanAnswerEN = item["Jovoblar (EN)"] ? item["Jovoblar (EN)"].replace(/\n/g, '<br>') : "No answer";
-                const cleanAnswerUZ = item["Jovoblar (UZ)"] ? item["Jovoblar (UZ)"].replace(/\n/g, '<br>') : "Javob yo'q";
-                
-                answerHTML = `
-                    <div class="answer-content">
-                        <span class="en-text" style="color: black; font-weight: 600;">${cleanAnswerEN}</span>
-                        <span class="uz-text" style="display: block; margin-top: 5px;">(${cleanAnswerUZ})</span>
+                }
+
+                cardEl.innerHTML = `
+                    <div class="question-section">
+                        <div class="en-text">${item["Sovollar"]}</div>
+                        <div class="uz-text">(${item["Sovollar (UZ)"] || ""})</div>
+                    </div>
+                    <div class="answer-section">
+                        ${answerHTML}
                     </div>
                 `;
             }
-
-            cardEl.innerHTML = `
-                <div class="question-section">
-                    <div class="en-text">${item["Sovollar"]}</div>
-                    <div class="uz-text">(${item["Sovollar (UZ)"] || ""})</div>
-                </div>
-                <div class="answer-section">
-                    ${answerHTML}
-                </div>
-            `;
             contentArea.appendChild(cardEl);
         });
     }
@@ -561,21 +687,46 @@ document.addEventListener('DOMContentLoaded', () => {
         contentArea.innerHTML = '';
         
         let filtered;
-        if (searchQuery) {
-            // Global search
-            filtered = examData.filter(item => {
-                const qEn = (item["Sovollar"] || "").toLowerCase();
-                const qUz = (item["Sovollar (UZ)"] || "").toLowerCase();
-                const aEn = (item["FullAnswer_EN"] || item["Jovoblar (EN)"] || "").toLowerCase();
-                const aUz = (item["FullAnswer_UZ"] || item["Jovoblar (UZ)"] || "").toLowerCase();
-                const query = searchQuery.toLowerCase();
-                return qEn.includes(query) || qUz.includes(query) || aEn.includes(query) || aUz.includes(query);
-            });
+        if (currentLevel === 'pre-intermediate') {
+            if (searchQuery) {
+                // Global search for pre-intermediate
+                filtered = examData.filter(item => {
+                    const phraseEn = (item["Verb + Collocation"] || "").toLowerCase();
+                    const phraseUz = (item["O‘zbekcha tarjima"] || "").toLowerCase();
+                    const answer = (item["Answer"] || "").toLowerCase();
+                    const reason = (item["Reason"] || "").toLowerCase();
+                    const example = (item["Example"] || "").toLowerCase();
+                    const extraInfo = (item["Extra Info"] || "").toLowerCase();
+                    const translation = (item["Tarjima"] || "").toLowerCase();
+                    const query = searchQuery.toLowerCase();
+                    return phraseEn.includes(query) || phraseUz.includes(query) || 
+                           answer.includes(query) || reason.includes(query) || 
+                           example.includes(query) || extraInfo.includes(query) || 
+                           translation.includes(query);
+                });
+            } else {
+                // Filter by lesson
+                filtered = examData.filter(item => 
+                    item["lesson"] === card
+                );
+            }
         } else {
-            // Normal filter
-            filtered = examData.filter(item => 
-                item["Mavzular"] === card && item["Qism"] === part
-            );
+            if (searchQuery) {
+                // Global search
+                filtered = examData.filter(item => {
+                    const qEn = (item["Sovollar"] || "").toLowerCase();
+                    const qUz = (item["Sovollar (UZ)"] || "").toLowerCase();
+                    const aEn = (item["FullAnswer_EN"] || item["Jovoblar (EN)"] || "").toLowerCase();
+                    const aUz = (item["FullAnswer_UZ"] || item["Jovoblar (UZ)"] || "").toLowerCase();
+                    const query = searchQuery.toLowerCase();
+                    return qEn.includes(query) || qUz.includes(query) || aEn.includes(query) || aUz.includes(query);
+                });
+            } else {
+                // Normal filter
+                filtered = examData.filter(item => 
+                    item["Mavzular"] === card && item["Qism"] === part
+                );
+            }
         }
 
         if (filtered.length === 0) {
@@ -586,10 +737,16 @@ document.addEventListener('DOMContentLoaded', () => {
         updateProgress(100, 100);
 
         filtered.forEach((item, index) => {
-            if (!item["Sovollar"]) return;
+            if (currentLevel === 'pre-intermediate') {
+                if (!item["Verb + Collocation"]) return;
+            } else {
+                if (!item["Sovollar"]) return;
+            }
             
             // Unique ID including card and part for global search results
-            const questionId = `${item["Mavzular"]}-${item["Qism"]}-${index}`;
+            const questionId = currentLevel === 'pre-intermediate'
+                ? `pre-int-${item["lesson"]}-${index}`
+                : `${item["Mavzular"]}-${item["Qism"]}-${index}`;
             const cardEl = document.createElement('div');
             cardEl.className = 'question-card';
 
@@ -598,7 +755,34 @@ document.addEventListener('DOMContentLoaded', () => {
             let answerHTML = '';
             let textToSpeak = '';
 
-            if (item["FullAnswer_EN"]) {
+            if (currentLevel === 'pre-intermediate') {
+                const parts = [
+                    { label: "Answer", en: item["Answer"] },
+                    { label: "Reason", en: item["Reason"] },
+                    { label: "Example", en: item["Example"] },
+                    { label: "Extra Info", en: item["Extra Info"] },
+                    { label: "Translation (UZ)", uz: item["Tarjima"] }
+                ];
+                textToSpeak = parts.map(p => p.en).filter(Boolean).join('. ');
+                answerHTML = parts.map(p => {
+                    if (p.en) {
+                        return `
+                            <div class="answer-block">
+                                <span class="answer-label">${p.label}:</span>
+                                <span class="en-text highlight">${highlightText(p.en, searchQuery)}</span>
+                            </div>
+                        `;
+                    } else if (p.uz) {
+                        return `
+                            <div class="answer-block">
+                                <span class="answer-label">${p.label}:</span>
+                                <span class="uz-text small" style="margin-left: 0;">(${highlightText(p.uz, searchQuery)})</span>
+                            </div>
+                        `;
+                    }
+                    return '';
+                }).join('');
+            } else if (item["FullAnswer_EN"]) {
                 const parts = [
                     { label: "Answer", en: item["FullAnswer_EN"], uz: item["FullAnswer_UZ"] },
                     { label: "Reason", en: item["Reason_EN"], uz: item["Reason_UZ"] },
@@ -628,28 +812,53 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             }
 
-            const sourceHTML = searchQuery ? `<div class="search-result-source">${item["Mavzular"]} | ${item["Mavzular nomi"]}</div>` : '';
+            if (currentLevel === 'pre-intermediate') {
+                const sourceHTML = searchQuery ? `<div class="search-result-source">Lesson ${item["lesson"]}</div>` : '';
+                const headingEn = item["Verb + Collocation"];
+                const headingUz = item["O‘zbekcha tarjima"];
 
-            cardEl.innerHTML = `
-                ${sourceHTML}
-                <div class="card-actions">
-                    <button class="action-btn audio-btn" title="Eshitish">🔊</button>
-                    <button class="action-btn fav-btn ${isFav ? 'active' : ''}" title="Saralangan">⭐</button>
-                </div>
-                <div class="question-section">
-                    <span class="en-text">${highlightText(item["Sovollar"], searchQuery)}</span>
-                    <span class="uz-text">(${highlightText(item["Sovollar (UZ)"] || "Tarjima yo'q", searchQuery)})</span>
-                </div>
-                <div class="answer-section">
-                    ${answerHTML}
-                </div>
-            `;
+                cardEl.innerHTML = `
+                    ${sourceHTML}
+                    <div class="card-actions">
+                        <button class="action-btn audio-btn" title="Eshitish">🔊</button>
+                        <button class="action-btn fav-btn ${isFav ? 'active' : ''}" title="Saralangan">⭐</button>
+                    </div>
+                    <div class="question-section">
+                        <span class="en-text" style="color: var(--secondary); font-size: 1rem;">${highlightText(headingEn, searchQuery)}</span>
+                        <span class="uz-text">(${highlightText(headingUz || "Tarjima yo'q", searchQuery)})</span>
+                    </div>
+                    <div class="answer-section">
+                        ${answerHTML}
+                    </div>
+                `;
+            } else {
+                const sourceHTML = searchQuery ? `<div class="search-result-source">${item["Mavzular"]} | ${item["Mavzular nomi"]}</div>` : '';
+
+                cardEl.innerHTML = `
+                    ${sourceHTML}
+                    <div class="card-actions">
+                        <button class="action-btn audio-btn" title="Eshitish">🔊</button>
+                        <button class="action-btn fav-btn ${isFav ? 'active' : ''}" title="Saralangan">⭐</button>
+                    </div>
+                    <div class="question-section">
+                        <span class="en-text">${highlightText(item["Sovollar"], searchQuery)}</span>
+                        <span class="uz-text">(${highlightText(item["Sovollar (UZ)"] || "Tarjima yo'q", searchQuery)})</span>
+                    </div>
+                    <div class="answer-section">
+                        ${answerHTML}
+                    </div>
+                `;
+            }
 
             const audioBtn = cardEl.querySelector('.audio-btn');
             const favBtn = cardEl.querySelector('.fav-btn');
 
             audioBtn.addEventListener('click', () => {
-                speak(item["Sovollar"]);
+                if (currentLevel === 'pre-intermediate') {
+                    speak(item["Verb + Collocation"]);
+                } else {
+                    speak(item["Sovollar"]);
+                }
                 setTimeout(() => speak(textToSpeak), 1500);
             });
 

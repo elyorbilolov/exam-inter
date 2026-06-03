@@ -1,11 +1,14 @@
-const CACHE_NAME = 'exam-cache-v42';
+const CACHE_NAME = 'exam-cache-v43';
 const ASSETS = [
   './',
   './index.html',
   './style.css',
   './script.js',
   './exam.json',
-  './writing.json'
+  './writing.json',
+  './exam_elementary.json',
+  './writing_elementary.json',
+  './pre-intermediate_lesson.json'
 ];
 
 self.addEventListener('install', (event) => {

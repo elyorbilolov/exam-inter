@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Exam v4.2</title>
-    <link rel="stylesheet" href="style.css?v=v42">
+    <title>English Exam v4.3</title>
+    <link rel="stylesheet" href="style.css?v=v43">
     <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./sw.js?v=v42').then(reg => {
+            navigator.serviceWorker.register('./sw.js?v=v43').then(reg => {
                 reg.update();
             });
         }
@@ -72,6 +72,14 @@
                     </div>
                     <div class="level-arrow">→</div>
                 </button>
+                <button class="level-card-btn pre-intermediate" data-level="pre-intermediate">
+                    <div class="level-icon">📘</div>
+                    <div class="level-info">
+                        <span class="level-name">Pre-Intermediate</span>
+                        <span class="level-desc">Pre-Intermediate daraja / Lessons</span>
+                    </div>
+                    <div class="level-arrow">→</div>
+                </button>
             </div>
         </div>
 
@@ -105,6 +113,6 @@
         </div>
     </div>
 
-    <script src="script.js?v=v42"></script>
+    <script src="script.js?v=v43"></script>
 </body>
 </html>
