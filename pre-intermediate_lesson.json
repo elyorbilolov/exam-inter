@@ -1,182 +1,218 @@
 [
   {
-    "lesson": "1.1",
     "Verb + Collocation": "do some exercise",
     "O‘zbekcha tarjima": "mashq qilish",
     "Answer": "I do some exercise every day to stay healthy and active.",
-    "Tarjima": "Bundan tashqari, bu menga kun bo‘yi energiya beradi.",
+    "Answer translate": "Men sog‘lom va faol bo‘lish uchun har kuni mashq qilaman.",
     "Reason": "Because it helps me stay fit and improves my health.",
+    "Reason translate": "Chunki bu meni sog‘lom qiladi va sog‘lig‘imni yaxshilaydi.",
     "Example": "For example, I usually go jogging or do stretching exercises in the morning.",
-    "Extra Info": "Also, it gives me energy for the whole day."
+    "Example translate": "Masalan, men odatda ertalab yuguraman yoki cho‘zilish mashqlari qilaman.",
+    "Extra Info": "Also, it gives me energy for the whole day.",
+    "Extra Info translate": "Bundan tashqari, bu menga kun bo‘yi energiya beradi."
   },
   {
-    "lesson": "1.1",
     "Verb + Collocation": "do housework",
     "O‘zbekcha tarjima": "uy yumushlari",
     "Answer": "I do housework at home to help my family.",
-    "Tarjima": "Bu menga mas’uliyatni ham o‘rgatadi.",
+    "Answer translate": "Men oilamga yordam berish uchun uy yumushlarini qilaman.",
     "Reason": "Because I want to keep my home clean and organized.",
+    "Reason translate": "Chunki men uyimni toza va tartibli saqlashni xohlayman.",
     "Example": "For example, I clean my room, wash dishes, and sweep the floor.",
-    "Extra Info": "It also teaches me responsibility."
+    "Example translate": "Masalan, men xonamni tozalayman, idish yuvaman va pol supuraman.",
+    "Extra Info": "It also teaches me responsibility.",
+    "Extra Info translate": "Bu menga mas’uliyatni ham o‘rgatadi."
   },
   {
-    "lesson": "1.1",
     "Verb + Collocation": "do the shopping",
     "O‘zbekcha tarjima": "xarid qilish",
     "Answer": "I do the shopping on weekends when I am free.",
-    "Tarjima": "Bu oilamga vaqtni tejashga yordam beradi.",
+    "Answer translate": "Men bo‘sh bo‘lganimda dam olish kunlari xarid qilaman.",
     "Reason": "Because it is more comfortable when I have free time.",
+    "Reason translate": "Chunki bo‘sh vaqtim bo‘lganda bu qulayroq.",
     "Example": "For example, I buy food, drinks, and household items.",
-    "Extra Info": "It helps my family save time."
+    "Example translate": "Masalan, men ovqat, ichimlik va uy uchun narsalar sotib olaman.",
+    "Extra Info": "It helps my family save time.",
+    "Extra Info translate": "Bu oilamga vaqtni tejashga yordam beradi."
   },
   {
-    "lesson": "1.1",
     "Verb + Collocation": "do some work",
     "O‘zbekcha tarjima": "ish qilish",
     "Answer": "I do some work in the evening after my classes.",
-    "Tarjima": "Bu mening ko‘nikmalarimni yaxshilaydi.",
+    "Answer translate": "Men darslardan keyin kechqurun ish qilaman.",
     "Reason": "Because I am busy during the daytime.",
+    "Reason translate": "Chunki men kunduzi band bo‘laman.",
     "Example": "For example, I complete my tasks and check my emails.",
-    "Extra Info": "It helps me improve my skills."
+    "Example translate": "Masalan, men vazifalarimni bajaraman va elektron xatlarni tekshiraman.",
+    "Extra Info": "It helps me improve my skills.",
+    "Extra Info translate": "Bu mening ko‘nikmalarimni yaxshilaydi."
   },
   {
-    "lesson": "1.1",
     "Verb + Collocation": "do homework",
     "O‘zbekcha tarjima": "uy vazifasi qilish",
     "Answer": "I do my homework after school every day.",
-    "Tarjima": "Bu menga yaxshi o‘qishga va yuqori baho olishga yordam beradi.",
+    "Answer translate": "Men har kuni maktabdan keyin uy vazifamni qilaman.",
     "Reason": "Because my teachers give me homework regularly.",
+    "Reason translate": "Chunki o‘qituvchilar menga muntazam uy vazifa berishadi.",
     "Example": "For example, I write exercises and learn new grammar rules.",
-    "Extra Info": "It helps me learn better and get good grades."
+    "Example translate": "Masalan, men mashqlar yozaman va yangi grammatik qoidalarni o‘rganaman.",
+    "Extra Info": "It helps me learn better and get good grades.",
+    "Extra Info translate": "Bu menga yaxshi o‘qishga va yuqori baho olishga yordam beradi."
   },
   {
-    "lesson": "1.1",
     "Verb + Collocation": "make future plans",
     "O‘zbekcha tarjima": "kelajak rejalari tuzish",
     "Answer": "I make future plans for my education and life.",
-    "Tarjima": "Bu meni ko‘proq ishlashga undaydi.",
+    "Answer translate": "Men ta’limim va hayotim uchun kelajak rejalari tuzaman.",
     "Reason": "Because I want to have a successful future.",
+    "Reason translate": "Chunki men muvaffaqiyatli kelajakni xohlayman.",
     "Example": "For example, I plan to study at university and learn English well.",
-    "Extra Info": "It motivates me to work harder."
+    "Example translate": "Masalan, men universitetda o‘qish va ingliz tilini yaxshi o‘rganishni rejalashtiraman.",
+    "Extra Info": "It motivates me to work harder.",
+    "Extra Info translate": "Bu meni ko‘proq ishlashga undaydi."
   },
   {
-    "lesson": "1.1",
     "Verb + Collocation": "make a to-do list",
     "O‘zbekcha tarjima": "vazifalar ro‘yxati tuzish",
     "Answer": "I make a to-do list every morning before starting my day.",
-    "Tarjima": "Bu muhim narsalarni unutmaslikka yordam beradi.",
+    "Answer translate": "Men har kuni ertalab kunimni boshlashdan oldin vazifalar ro‘yxatini tuzaman.",
     "Reason": "Because it helps me stay organized.",
+    "Reason translate": "Chunki bu meni tartibli bo‘lishga yordam beradi.",
     "Example": "For example, I write my homework, chores, and other tasks.",
-    "Extra Info": "It helps me not forget important things."
+    "Example translate": "Masalan, men uy vazifa, yumushlar va boshqa ishlarni yozaman.",
+    "Extra Info": "It helps me not forget important things.",
+    "Extra Info translate": "Bu muhim narsalarni unutmaslikka yordam beradi."
   },
   {
-    "lesson": "1.1",
     "Verb + Collocation": "stay in for the evening",
     "O‘zbekcha tarjima": "kechqurun uyda qolish",
     "Answer": "I stay in for the evening when I feel tired.",
-    "Tarjima": "Bu menga uzoq kundan keyin dam olishga yordam beradi.",
+    "Answer translate": "Men charchagan paytimda kechqurun uyda qolaman.",
     "Reason": "Because I want to relax and rest at home.",
+    "Reason translate": "Chunki men uyda dam olishni xohlayman.",
     "Example": "For example, I watch TV or listen to music.",
-    "Extra Info": "It helps me relax after a long day."
+    "Example translate": "Masalan, men televizor ko‘raman yoki musiqa tinglayman.",
+    "Extra Info": "It helps me relax after a long day.",
+    "Extra Info translate": "Bu menga uzoq kundan keyin dam olishga yordam beradi."
   },
   {
-    "lesson": "1.1",
     "Verb + Collocation": "eat healthy food",
     "O‘zbekcha tarjima": "sog‘lom ovqat yeyish",
     "Answer": "I eat healthy food every day to stay strong.",
-    "Tarjima": "Bu mening umumiy sog‘lig‘imni yaxshilaydi.",
+    "Answer translate": "Men kuchli bo‘lish uchun har kuni sog‘lom ovqat yeyman.",
     "Reason": "Because it is good for my body and health.",
+    "Reason translate": "Chunki bu mening tanam va sog‘lig‘im uchun foydali.",
     "Example": "For example, I eat fruits, vegetables, and drink water.",
-    "Extra Info": "It improves my overall health."
+    "Example translate": "Masalan, men meva, sabzavot yeyman va suv ichaman.",
+    "Extra Info": "It improves my overall health.",
+    "Extra Info translate": "Bu mening umumiy sog‘lig‘imni yaxshilaydi."
   },
   {
-    "lesson": "1.1",
     "Verb + Collocation": "have an early night",
     "O‘zbekcha tarjima": "erta uxlash",
     "Answer": "I have an early night when I am very tired.",
-    "Tarjima": "Bu menga ertalab tetik uyg‘onishga yordam beradi.",
+    "Answer translate": "Men juda charchagan paytimda erta uxlayman.",
     "Reason": "Because I need enough sleep for my body.",
+    "Reason translate": "Chunki tanamga yetarli uyqu kerak.",
     "Example": "For example, I go to bed at 9 or 10 pm.",
-    "Extra Info": "It helps me wake up fresh in the morning."
+    "Example translate": "Masalan, men soat 9 yoki 10 da uxlayman.",
+    "Extra Info": "It helps me wake up fresh in the morning.",
+    "Extra Info translate": "Bu menga ertalab tetik uyg‘onishga yordam beradi."
   },
   {
-    "lesson": "1.1",
     "Verb + Collocation": "have to bed late",
     "O‘zbekcha tarjima": "kech uxlash",
     "Answer": "I sometimes go to bed late when I have a lot of work.",
-    "Tarjima": "Bu keyingi kuni charchoq his qilishga olib keladi.",
+    "Answer translate": "Ba’zan ko‘p ishim bo‘lganda kech uxlayman.",
     "Reason": "Because I need to finish my tasks first.",
+    "Reason translate": "Chunki men avval vazifalarimni tugatishim kerak.",
     "Example": "For example, I study or finish homework at night.",
-    "Extra Info": "It makes me feel tired the next day."
+    "Example translate": "Masalan, men kechasi o‘qiyman yoki uy vazifani tugataman.",
+    "Extra Info": "It makes me feel tired the next day.",
+    "Extra Info translate": "Bu keyingi kuni charchoq his qilishga olib keladi."
   },
   {
-    "lesson": "1.1",
     "Verb + Collocation": "have fun",
     "O‘zbekcha tarjima": "ko‘ngil ochish",
     "Answer": "I have fun when I spend time with my friends.",
-    "Tarjima": "Bu stressni kamaytiradi va kayfiyatni yaxshilaydi.",
+    "Answer translate": "Men do‘stlarim bilan vaqt o‘tkazganimda ko‘ngil ochaman.",
     "Reason": "Because it makes me happy and relaxed.",
+    "Reason translate": "Chunki bu meni baxtli va xotirjam qiladi.",
     "Example": "For example, we play games or go out together.",
-    "Extra Info": "It reduces stress and improves mood."
+    "Example translate": "Masalan, biz o‘yin o‘ynaymiz yoki tashqariga chiqamiz.",
+    "Extra Info": "It reduces stress and improves mood.",
+    "Extra Info translate": "Bu stressni kamaytiradi va kayfiyatni yaxshilaydi."
   },
   {
-    "lesson": "1.1",
     "Verb + Collocation": "have a good time",
     "O‘zbekcha tarjima": "yaxshi vaqt o‘tkazish",
     "Answer": "I have a good time when I go to parties or trips.",
-    "Tarjima": "Bu yaxshi xotiralar yaratadi.",
+    "Answer translate": "Men ziyofat yoki sayohatga borganda yaxshi vaqt o‘tkazaman.",
     "Reason": "Because I enjoy spending time with people.",
+    "Reason translate": "Chunki men odamlar bilan vaqt o‘tkazishni yoqtiraman.",
     "Example": "For example, we dance, talk, and take photos.",
-    "Extra Info": "It creates nice memories."
+    "Example translate": "Masalan, biz raqsga tushamiz, gaplashamiz va rasmga tushamiz.",
+    "Extra Info": "It creates nice memories.",
+    "Extra Info translate": "Bu yaxshi xotiralar yaratadi."
   },
   {
-    "lesson": "1.1",
     "Verb + Collocation": "have a family meal",
     "O‘zbekcha tarjima": "oilaviy ovqatlanish",
     "Answer": "I have a family meal every Sunday with my family.",
-    "Tarjima": "Bu oilamizni yanada yaqinlashtiradi.",
+    "Answer translate": "Men har yakshanba oilam bilan ovqatlanaman.",
     "Reason": "Because family time is very important for me.",
+    "Reason translate": "Chunki oila vaqti men uchun juda muhim.",
     "Example": "For example, we eat together and talk about our week.",
-    "Extra Info": "It brings our family closer."
+    "Example translate": "Masalan, biz birga ovqatlanamiz va hafta haqida gaplashamiz.",
+    "Extra Info": "It brings our family closer.",
+    "Extra Info translate": "Bu oilamizni yanada yaqinlashtiradi."
   },
   {
-    "lesson": "1.1",
     "Verb + Collocation": "have a lie-in",
     "O‘zbekcha tarjima": "kech uyg‘onish",
     "Answer": "I have a lie-in on weekends because I don’t go to school.",
-    "Tarjima": "Bu meni xotirjam qiladi.",
+    "Answer translate": "Men dam olish kunlari maktabga bormaganim uchun kech uyg‘onaman.",
     "Reason": "Because I want to rest after a busy week.",
+    "Reason translate": "Chunki men band haftadan keyin dam olishni xohlayman.",
     "Example": "For example, I wake up around 10 or 11 am.",
-    "Extra Info": "It helps me feel more relaxed."
+    "Example translate": "Masalan, men soat 10 yoki 11 da uyg‘onaman.",
+    "Extra Info": "It helps me feel more relaxed.",
+    "Extra Info translate": "Bu meni xotirjam qiladi."
   },
   {
-    "lesson": "1.1",
     "Verb + Collocation": "go on a trip",
     "O‘zbekcha tarjima": "sayohatga borish",
     "Answer": "I go on a trip in summer with my family.",
-    "Tarjima": "Bu menga yangi tajriba va xotiralar beradi.",
+    "Answer translate": "Men yozda oilam bilan sayohatga boraman.",
     "Reason": "Because I love exploring new places.",
+    "Reason translate": "Chunki men yangi joylarni kashf qilishni yoqtiraman.",
     "Example": "For example, we visit mountains or different cities.",
-    "Extra Info": "It gives me new experiences and memories."
+    "Example translate": "Masalan, biz tog‘larga yoki boshqa shaharlarga boramiz.",
+    "Extra Info": "It gives me new experiences and memories.",
+    "Extra Info translate": "Bu menga yangi tajriba va xotiralar beradi."
   },
   {
-    "lesson": "1.1",
     "Verb + Collocation": "go shopping",
     "O‘zbekcha tarjima": "xaridga borish",
     "Answer": "I go shopping with my friends on weekends.",
-    "Tarjima": "Biz birga yaxshi vaqt o‘tkazamiz.",
+    "Answer translate": "Men dam olish kunlari do‘stlarim bilan xaridga boraman.",
     "Reason": "Because it is fun and enjoyable.",
+    "Reason translate": "Chunki bu qiziqarli va yoqimli.",
     "Example": "For example, we buy clothes and shoes.",
-    "Extra Info": "We also spend good time together."
+    "Example translate": "Masalan, biz kiyim va poyabzal sotib olamiz.",
+    "Extra Info": "We also spend good time together.",
+    "Extra Info translate": "Biz birga yaxshi vaqt o‘tkazamiz."
   },
   {
-    "lesson": "1.1",
     "Verb + Collocation": "chat with friends online",
     "O‘zbekcha tarjima": "onlayn suhbatlashish",
     "Answer": "I chat with my friends online every day.",
-    "Tarjima": "Bu bizni aloqada ushlab turadi.",
+    "Answer translate": "Men har kuni do‘stlarim bilan onlayn gaplashaman.",
     "Reason": "Because we live far from each other.",
+    "Reason translate": "Chunki biz bir-birimizdan uzoqda yashaymiz.",
     "Example": "For example, we use social media and messaging apps.",
-    "Extra Info": "It helps us stay in touch."
+    "Example translate": "Masalan, biz ijtimoiy tarmoqlar va xabar ilovalaridan foydalanamiz.",
+    "Extra Info": "It helps us stay in touch.",
+    "Extra Info translate": "Bu bizni aloqada ushlab turadi."
   }
 ]
