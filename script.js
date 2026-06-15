@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("--- VERSION 4.3: PRE-INTERMEDIATE INTEGRATION ---");
+    console.log("--- VERSION 4.4: FILES RENAMED & PRE-INTERMEDIATE EXAM INTEGRATED ---");
     const contentArea = document.getElementById('content-area');
     const cardsNav = document.getElementById('cards-nav');
     const partButtons = document.querySelectorAll('.part-btn');
@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let examData = [];
     let writingData = {};
+    let lessonsData = [];
     let currentLevel = localStorage.getItem('selectedLevel') || null;
     let currentMode = localStorage.getItem('currentMode') || 'speaking';
     let currentCard = localStorage.getItem('currentCard') || "Card A";
@@ -34,33 +35,70 @@ document.addEventListener('DOMContentLoaded', () => {
             currentMode = btn.getAttribute('data-mode');
             localStorage.setItem('currentMode', currentMode);
             
-            if (currentMode === 'writing') {
+            if (currentMode === 'lessons') {
+                cardsWrapper.style.display = 'block';
+                partsWrapper.style.display = 'none';
+                
+                const uniqueCards = [];
+                const cardMap = new Map();
+                lessonsData.forEach(item => {
+                    const lessonName = item["lesson"];
+                    if (lessonName && !cardMap.has(lessonName)) {
+                        cardMap.set(lessonName, `Lesson ${lessonName}`);
+                        uniqueCards.push({ name: lessonName, topic: `Lesson ${lessonName}` });
+                    }
+                });
+                
+                if (!cardMap.has(currentCard)) {
+                    currentCard = uniqueCards.length > 0 ? uniqueCards[0].name : "1.1";
+                    localStorage.setItem('currentCard', currentCard);
+                }
+                
+                renderCardButtons(uniqueCards);
+                renderContent(currentCard, currentPart);
+            } else if (currentMode === 'writing') {
                 cardsWrapper.style.display = 'none';
                 partsWrapper.style.display = 'none';
                 renderWritingContent();
             } else {
                 cardsWrapper.style.display = 'block';
                 partsWrapper.style.display = 'block';
+                
+                const uniqueCards = [];
+                const cardMap = new Map();
+                examData.forEach(item => {
+                    const cardName = item["Mavzular"];
+                    const topicName = item["Mavzular nomi"];
+                    if (cardName && !cardMap.has(cardName)) {
+                        cardMap.set(cardName, topicName);
+                        uniqueCards.push({ name: cardName, topic: topicName });
+                    }
+                });
+                
+                if (currentCard.match(/^\d+(\.\d+)?$/) || !cardMap.has(currentCard)) {
+                    currentCard = uniqueCards.length > 0 ? uniqueCards[0].name : "Card A";
+                    localStorage.setItem('currentCard', currentCard);
+                }
+                
+                renderCardButtons(uniqueCards);
                 renderContent(currentCard, currentPart);
             }
         });
     });
 
     // Initialize UI with current mode
-    if (currentMode === 'writing') {
-        cardsWrapper.style.display = 'none';
-        partsWrapper.style.display = 'none';
-        modeButtons.forEach(b => {
-            if (b.getAttribute('data-mode') === 'writing') b.classList.add('active');
-            else b.classList.remove('active');
-        });
-    }
+    cardsWrapper.style.display = currentMode === 'writing' ? 'none' : 'block';
+    partsWrapper.style.display = (currentMode === 'speaking') ? 'block' : 'none';
+    modeButtons.forEach(b => {
+        if (b.getAttribute('data-mode') === currentMode) b.classList.add('active');
+        else b.classList.remove('active');
+    });
 
     // Search Listener
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase().trim();
-            if (currentLevel === 'pre-intermediate') {
+            if (currentMode === 'lessons') {
                 renderContent(currentCard, currentPart, query);
             } else if (currentMode === 'writing') {
                 renderWritingContent(query);
@@ -73,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Print PDF Listener
     if (printPdfBtn) {
         printPdfBtn.addEventListener('click', () => {
-            if (currentLevel === 'pre-intermediate') {
+            if (currentMode === 'lessons') {
                 exportToPDF();
             } else if (currentMode === 'writing') {
                 exportWritingToPDF();
@@ -128,42 +166,63 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             contentArea.innerHTML = '<div class="loader">Yuklanmoqda...</div>';
             
-            let examFile, writingFile, levelTitle;
+            // Ensure currentMode is valid for currentLevel
+            if (currentLevel !== 'pre-intermediate' && currentMode === 'lessons') {
+                currentMode = 'speaking';
+                localStorage.setItem('currentMode', currentMode);
+            }
+
+            let speakingFile, writingFile, lessonFile, levelTitle;
             if (currentLevel === 'beginner') {
-                examFile = 'exam.json';
-                writingFile = 'writing.json';
+                speakingFile = 'beginer_speaking.json';
+                writingFile = 'beginer_writing.json';
+                lessonFile = null;
                 levelTitle = 'English Exam (Beginner)';
             } else if (currentLevel === 'elementary') {
-                examFile = 'exam_elementary.json';
-                writingFile = 'writing_elementary.json';
+                speakingFile = 'elementary_speaking.json';
+                writingFile = 'elementary_writing.json';
+                lessonFile = null;
                 levelTitle = 'English Exam (Elementary)';
             } else if (currentLevel === 'pre-intermediate') {
-                examFile = 'pre-intermediate_lesson.json';
-                writingFile = null;
+                speakingFile = 'pre-intermediate_speaking.json';
+                writingFile = 'pre-intermediate_writing.json';
+                lessonFile = 'pre-intermediate_lesson.json';
                 levelTitle = 'English Exam (Pre-Intermediate)';
             }
 
             document.querySelector('h1').textContent = levelTitle;
 
-            // Load speaking/lesson data
-            const resExam = await fetch(`${examFile}?v=${new Date().getTime()}`);
-            if (!resExam.ok) throw new Error(`${examFile} faylni yuklab bo'lmadi`);
-            examData = await resExam.json();
+            // Reset loaded data
+            examData = [];
+            writingData = {};
+            lessonsData = [];
+
+            // Load speaking/exam data
+            if (speakingFile) {
+                const resExam = await fetch(`${speakingFile}?v=${new Date().getTime()}`);
+                if (!resExam.ok) throw new Error(`${speakingFile} faylni yuklab bo'lmadi`);
+                examData = await resExam.json();
+            }
 
             // Load writing data if applicable
             if (writingFile) {
                 const resWriting = await fetch(`${writingFile}?v=${new Date().getTime()}`);
                 if (!resWriting.ok) throw new Error(`${writingFile} faylni yuklab bo'lmadi`);
                 writingData = await resWriting.json();
-            } else {
-                writingData = {};
+            }
+
+            // Load lessons data if applicable
+            if (lessonFile) {
+                const resLesson = await fetch(`${lessonFile}?v=${new Date().getTime()}`);
+                if (!resLesson.ok) throw new Error(`${lessonFile} faylni yuklab bo'lmadi`);
+                lessonsData = await resLesson.json();
             }
             
             const uniqueCards = [];
             const cardMap = new Map();
             
-            if (currentLevel === 'pre-intermediate') {
-                examData.forEach(item => {
+            if (currentMode === 'lessons') {
+                lessonsData.forEach(item => {
                     const lessonName = item["lesson"];
                     if (lessonName && !cardMap.has(lessonName)) {
                         cardMap.set(lessonName, `Lesson ${lessonName}`);
@@ -171,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
                 
-                // If currentCard is not valid for pre-intermediate, reset it to first lesson
+                // If currentCard is not valid for lessons, reset it
                 if (!cardMap.has(currentCard)) {
                     currentCard = uniqueCards.length > 0 ? uniqueCards[0].name : "1.1";
                     localStorage.setItem('currentCard', currentCard);
@@ -193,25 +252,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // Hide/show mode navigation and parts wrapper for pre-intermediate
+            // Hide/show mode navigation and parts wrapper
+            const lessonsBtn = document.getElementById('lessons-mode-btn');
             if (currentLevel === 'pre-intermediate') {
-                const modeNav = document.querySelector('.main-mode-nav');
-                if (modeNav) modeNav.style.display = 'none';
+                if (lessonsBtn) lessonsBtn.style.display = 'flex';
+            } else {
+                if (lessonsBtn) lessonsBtn.style.display = 'none';
+            }
+
+            if (currentMode === 'lessons') {
+                cardsWrapper.style.display = 'block';
+                partsWrapper.style.display = 'none';
+            } else if (currentMode === 'writing') {
+                cardsWrapper.style.display = 'none';
                 partsWrapper.style.display = 'none';
             } else {
-                const modeNav = document.querySelector('.main-mode-nav');
-                if (modeNav) modeNav.style.display = 'flex';
-                if (currentMode === 'speaking') {
-                    partsWrapper.style.display = 'block';
-                } else {
-                    partsWrapper.style.display = 'none';
-                }
+                cardsWrapper.style.display = 'block';
+                partsWrapper.style.display = 'block';
             }
+
+            // Sync mode buttons active class
+            modeButtons.forEach(b => {
+                if (b.getAttribute('data-mode') === currentMode) b.classList.add('active');
+                else b.classList.remove('active');
+            });
 
             renderCardButtons(uniqueCards);
             updateActivePartButton();
             
-            if (currentLevel === 'pre-intermediate') {
+            if (currentMode === 'lessons') {
                 renderContent(currentCard, currentPart);
             } else if (currentMode === 'writing') {
                 renderWritingContent();
@@ -241,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             let titleText = card.name;
             let topicText = card.topic;
-            if (currentLevel === 'pre-intermediate') {
+            if (currentMode === 'lessons') {
                 titleText = `Lesson`;
                 topicText = card.name;
             }
@@ -317,8 +386,8 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             // Show all parts for the current card/lesson
             let allCardData;
-            if (currentLevel === 'pre-intermediate') {
-                allCardData = examData.filter(item => item["lesson"] === currentCard);
+            if (currentMode === 'lessons') {
+                allCardData = lessonsData.filter(item => item["lesson"] === currentCard);
             } else {
                 allCardData = examData.filter(item => item["Mavzular"] === currentCard);
             }
@@ -333,7 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
             contentArea.innerHTML = '<div class="loader">PDF tayyorlanmoqda...</div>';
             
             let sortedData;
-            if (currentLevel === 'pre-intermediate') {
+            if (currentMode === 'lessons') {
                 sortedData = allCardData;
             } else {
                 // Sort by Part then Sovollar number if possible
@@ -367,9 +436,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const header = document.createElement('div');
         header.className = 'print-title-container';
         
-        if (currentLevel === 'pre-intermediate') {
+        if (currentMode === 'lessons') {
             header.innerHTML = `
-                <div class="print-card-label">Pre-Intermediate</div>
+                <div class="print-card-label">Pre-Intermediate (Lessons)</div>
                 <div class="print-topic-label">Lesson ${currentCard}</div>
             `;
         } else {
@@ -381,7 +450,7 @@ document.addEventListener('DOMContentLoaded', () => {
         contentArea.appendChild(header);
 
         data.forEach((item, index) => {
-            if (currentLevel === 'pre-intermediate') {
+            if (currentMode === 'lessons') {
                 if (!item["Verb + Collocation"]) return;
             } else {
                 if (!item["Sovollar"]) return;
@@ -392,7 +461,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Simplified version for print (no buttons)
             let answerHTML = '';
-            if (currentLevel === 'pre-intermediate') {
+            if (currentMode === 'lessons') {
                 const parts = [
                     { label: "Answer", en: item["Answer"], uz: item["Answer translate"] },
                     { label: "Reason", en: item["Reason"], uz: item["Reason translate"] },
@@ -678,10 +747,10 @@ document.addEventListener('DOMContentLoaded', () => {
         contentArea.innerHTML = '';
         
         let filtered;
-        if (currentLevel === 'pre-intermediate') {
+        if (currentMode === 'lessons') {
             if (searchQuery) {
-                // Global search for pre-intermediate
-                filtered = examData.filter(item => {
+                // Global search for lessons
+                filtered = lessonsData.filter(item => {
                     const phraseEn = (item["Verb + Collocation"] || "").toLowerCase();
                     const phraseUz = (item["O‘zbekcha tarjima"] || "").toLowerCase();
                     const answer = (item["Answer"] || "").toLowerCase();
@@ -701,7 +770,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             } else {
                 // Filter by lesson
-                filtered = examData.filter(item => 
+                filtered = lessonsData.filter(item => 
                     item["lesson"] === card
                 );
             }
@@ -732,15 +801,15 @@ document.addEventListener('DOMContentLoaded', () => {
         updateProgress(100, 100);
 
         filtered.forEach((item, index) => {
-            if (currentLevel === 'pre-intermediate') {
+            if (currentMode === 'lessons') {
                 if (!item["Verb + Collocation"]) return;
             } else {
                 if (!item["Sovollar"]) return;
             }
             
             // Unique ID including card and part for global search results
-            const questionId = currentLevel === 'pre-intermediate'
-                ? `pre-int-${item["lesson"]}-${index}`
+            const questionId = currentMode === 'lessons'
+                ? `pre-int-lesson-${item["lesson"]}-${index}`
                 : `${item["Mavzular"]}-${item["Qism"]}-${index}`;
             const cardEl = document.createElement('div');
             cardEl.className = 'question-card';
@@ -750,7 +819,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let answerHTML = '';
             let textToSpeak = '';
 
-            if (currentLevel === 'pre-intermediate') {
+            if (currentMode === 'lessons') {
                 const parts = [
                     { label: "Answer", en: item["Answer"], uz: item["Answer translate"] },
                     { label: "Reason", en: item["Reason"], uz: item["Reason translate"] },
@@ -798,7 +867,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             }
 
-            if (currentLevel === 'pre-intermediate') {
+            if (currentMode === 'lessons') {
                 const sourceHTML = searchQuery ? `<div class="search-result-source">Lesson ${item["lesson"]}</div>` : '';
                 const headingEn = item["Verb + Collocation"];
                 const headingUz = item["O‘zbekcha tarjima"];
@@ -840,7 +909,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const favBtn = cardEl.querySelector('.fav-btn');
 
             audioBtn.addEventListener('click', () => {
-                if (currentLevel === 'pre-intermediate') {
+                if (currentMode === 'lessons') {
                     speak(item["Verb + Collocation"]);
                 } else {
                     speak(item["Sovollar"]);

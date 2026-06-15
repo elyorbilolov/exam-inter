@@ -1,13 +1,15 @@
-const CACHE_NAME = 'exam-cache-v43';
+const CACHE_NAME = 'exam-cache-v44';
 const ASSETS = [
   './',
   './index.html',
   './style.css',
   './script.js',
-  './exam.json',
-  './writing.json',
-  './exam_elementary.json',
-  './writing_elementary.json',
+  './beginer_speaking.json',
+  './beginer_writing.json',
+  './elementary_speaking.json',
+  './elementary_writing.json',
+  './pre-intermediate_speaking.json',
+  './pre-intermediate_writing.json',
   './pre-intermediate_lesson.json'
 ];
 
