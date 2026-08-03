@@ -503,19 +503,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const originalPart = currentPart;
         
         try {
-            // Show only the selected part for the current card/lesson to fit in 1 page
+            // Show all parts for the current card/lesson to print them together
             let allCardData;
             if (currentMode === 'lessons') {
                 allCardData = lessonsData.filter(item => item["lesson"] === currentCard);
             } else {
-                allCardData = examData.filter(item => item["Mavzular"] === currentCard && item["Qism"] === currentPart);
+                allCardData = examData.filter(item => item["Mavzular"] === currentCard);
             }
             
             if (!allCardData || allCardData.length === 0) {
                 alert("Chop etish uchun ma'lumot topilmadi.");
                 return;
             }
- 
+  
             // Create a temporary container for printing to avoid flickering if possible, 
             // but for simplicity we'll just render everything to contentArea
             contentArea.innerHTML = '<div class="loader">PDF tayyorlanmoqda...</div>';
@@ -530,7 +530,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     return (parseInt(a["Sovollar"]) || 0) - (parseInt(b["Sovollar"]) || 0);
                 });
             }
- 
+  
             // Let's actually just render ALL content to the contentArea
             renderContentForPrint(sortedData);
             
@@ -549,7 +549,7 @@ document.addEventListener('DOMContentLoaded', () => {
             renderContent(currentCard, originalPart);
         }
     }
- 
+  
     function renderContentForPrint(data) {
         contentArea.innerHTML = '';
         const header = document.createElement('div');
@@ -560,9 +560,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="print-card-label">Lesson ${currentCard}</div>
             `;
         } else {
-            const partText = data[0]?.["Qism"] || "";
             header.innerHTML = `
-                <div class="print-card-label">${currentCard} - ${partText}</div>
+                <div class="print-card-label">${currentCard}</div>
             `;
         }
         contentArea.appendChild(header);
