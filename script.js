@@ -22,6 +22,93 @@ document.addEventListener('DOMContentLoaded', () => {
     let learnedWriting = JSON.parse(localStorage.getItem('learnedWriting')) || [];
     let theme = localStorage.getItem('theme') || 'light';
 
+    // Study tools state
+    let isFlashcardModeActive = localStorage.getItem('isFlashcardModeActive') === 'true';
+    let isKeywordBlurActive = localStorage.getItem('isKeywordBlurActive') === 'true';
+    let flashcardRatings = JSON.parse(localStorage.getItem('flashcardRatings')) || {};
+    let activeSpeechRecognition = null;
+    let activeSpeechBtn = null;
+
+    const flashcardToggleBtn = document.getElementById('flashcard-toggle');
+    const keywordBlurToggleBtn = document.getElementById('keyword-blur-toggle');
+    const studyToolsBar = document.getElementById('study-tools-bar');
+
+    function updateStudyToolButtons() {
+        if (!flashcardToggleBtn || !keywordBlurToggleBtn) return;
+        
+        if (isFlashcardModeActive) {
+            flashcardToggleBtn.classList.add('active');
+            flashcardToggleBtn.innerHTML = '<span class="tool-icon">🃏</span> Flashcards: ON';
+        } else {
+            flashcardToggleBtn.classList.remove('active');
+            flashcardToggleBtn.innerHTML = '<span class="tool-icon">🃏</span> Flashcards: OFF';
+        }
+
+        if (isKeywordBlurActive) {
+            keywordBlurToggleBtn.classList.add('active');
+            keywordBlurToggleBtn.innerHTML = '<span class="tool-icon">👁️</span> Hide Keywords: ON';
+        } else {
+            keywordBlurToggleBtn.classList.remove('active');
+            keywordBlurToggleBtn.innerHTML = '<span class="tool-icon">👁️</span> Hide Keywords: OFF';
+        }
+
+        adjustStudyToolsVisibility();
+    }
+
+    function adjustStudyToolsVisibility() {
+        if (!flashcardToggleBtn || !studyToolsBar) return;
+        
+        // Hide flashcards in writing mode
+        if (currentMode === 'writing') {
+            flashcardToggleBtn.style.display = 'none';
+        } else {
+            flashcardToggleBtn.style.display = 'flex';
+        }
+
+        // Show study tools bar only when level is selected (main content is active)
+        if (currentLevel) {
+            studyToolsBar.style.display = 'flex';
+        } else {
+            studyToolsBar.style.display = 'none';
+        }
+    }
+
+    function blurKeywords(text) {
+        if (!isKeywordBlurActive) return text;
+        
+        const stopwords = new Set([
+            'about', 'there', 'their', 'would', 'could', 'should', 'other', 'these', 'those', 
+            'where', 'which', 'after', 'before', 'every', 'first', 'under', 'really', 'always',
+            'because', 'through', 'between', 'during', 'without', 'against'
+        ]);
+        
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = text;
+        
+        function traverseAndBlur(node) {
+            if (node.nodeType === Node.TEXT_NODE) {
+                const words = node.nodeValue.split(/(\s+)/);
+                const blurredWords = words.map(w => {
+                    const cleanWord = w.toLowerCase().replace(/[.,!?;:()]/g, "");
+                    if (cleanWord.length >= 5 && !stopwords.has(cleanWord) && /[a-z]/i.test(cleanWord)) {
+                        return `<span class="blurred-keyword" onclick="event.stopPropagation(); this.classList.toggle('revealed')" title="Bosing va oching">${w}</span>`;
+                    }
+                    return w;
+                });
+                const tempSpan = document.createElement('span');
+                tempSpan.innerHTML = blurredWords.join('');
+                node.parentNode.replaceChild(tempSpan, node);
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
+                if (!node.classList.contains('answer-label') && !node.classList.contains('blurred-keyword')) {
+                    Array.from(node.childNodes).forEach(traverseAndBlur);
+                }
+            }
+        }
+        
+        Array.from(tempDiv.childNodes).forEach(traverseAndBlur);
+        return tempDiv.innerHTML;
+    }
+
     const levelSelector = document.getElementById('level-selector');
     const mainContent = document.getElementById('main-content');
     const homeBtn = document.getElementById('home-btn');
@@ -34,6 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.classList.add('active');
             currentMode = btn.getAttribute('data-mode');
             localStorage.setItem('currentMode', currentMode);
+            
+            // Adjust study tools visibility for mode switch
+            adjustStudyToolsVisibility();
             
             if (currentMode === 'lessons') {
                 cardsWrapper.style.display = 'block';
@@ -86,6 +176,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Initialize study tools listeners
+    if (flashcardToggleBtn && keywordBlurToggleBtn) {
+        flashcardToggleBtn.addEventListener('click', () => {
+            isFlashcardModeActive = !isFlashcardModeActive;
+            localStorage.setItem('isFlashcardModeActive', isFlashcardModeActive);
+            updateStudyToolButtons();
+            
+            if (currentMode === 'writing') {
+                renderWritingContent();
+            } else {
+                renderContent(currentCard, currentPart);
+            }
+        });
+
+        keywordBlurToggleBtn.addEventListener('click', () => {
+            isKeywordBlurActive = !isKeywordBlurActive;
+            localStorage.setItem('isKeywordBlurActive', isKeywordBlurActive);
+            updateStudyToolButtons();
+            
+            if (currentMode === 'writing') {
+                renderWritingContent();
+            } else {
+                renderContent(currentCard, currentPart);
+            }
+        });
+    }
+
     // Initialize UI with current mode
     cardsWrapper.style.display = currentMode === 'writing' ? 'none' : 'block';
     partsWrapper.style.display = (currentMode === 'speaking') ? 'block' : 'none';
@@ -93,6 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (b.getAttribute('data-mode') === currentMode) b.classList.add('active');
         else b.classList.remove('active');
     });
+    updateStudyToolButtons();
 
     // Search Listener
     if (searchInput) {
@@ -144,6 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
             homeBtn.style.display = 'none';
             progressBar.style.width = '0%';
         }
+        adjustStudyToolsVisibility();
     }
 
     levelBtns.forEach(btn => {
@@ -600,7 +719,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${extraPromptHtml}
                         
                         <div class="model-answers-wrapper">
-                            <div class="essay-body-en" style="margin-top: 8px;">${highlightText(data.jovob_en, searchQuery)}</div>
+                            <div class="essay-body-en" style="margin-top: 8px;">${blurKeywords(highlightText(data.jovob_en, searchQuery))}</div>
                             <div class="essay-body-uz">${highlightText(data.jovob_uz, searchQuery)}</div>
                         </div>
 
@@ -800,6 +919,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         updateProgress(100, 100);
 
+        let targetContainer = contentArea;
+        if (isFlashcardModeActive) {
+            const container = document.createElement('div');
+            container.className = 'flashcards-container';
+            contentArea.appendChild(container);
+            targetContainer = container;
+        }
+
         filtered.forEach((item, index) => {
             if (currentMode === 'lessons') {
                 if (!item["Verb + Collocation"]) return;
@@ -811,15 +938,34 @@ document.addEventListener('DOMContentLoaded', () => {
             const questionId = currentMode === 'lessons'
                 ? `pre-int-lesson-${item["lesson"]}-${index}`
                 : `${item["Mavzular"]}-${item["Qism"]}-${index}`;
+            
             const cardEl = document.createElement('div');
-            cardEl.className = 'question-card';
+            cardEl.id = `card-${questionId}`;
+            
+            if (isFlashcardModeActive) {
+                cardEl.className = 'question-card flashcard';
+                if (flashcardRatings[questionId]) {
+                    if (flashcardRatings[questionId] === 'know') {
+                        cardEl.style.border = '2px solid #10b981';
+                    } else {
+                        cardEl.style.border = '2px solid #f43f5e';
+                    }
+                }
+            } else {
+                cardEl.className = 'question-card';
+            }
 
             const isFav = favorites.includes(questionId);
             
             let answerHTML = '';
             let textToSpeak = '';
+            let headingEn = '';
+            let headingUz = '';
 
             if (currentMode === 'lessons') {
+                headingEn = item["Verb + Collocation"] || '';
+                headingUz = item["O‘zbekcha tarjima"] || '';
+
                 const parts = [
                     { label: "Answer", en: item["Answer"], uz: item["Answer translate"] },
                     { label: "Reason", en: item["Reason"], uz: item["Reason translate"] },
@@ -829,15 +975,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 textToSpeak = parts.map(p => p.en).filter(Boolean).join('. ');
                 answerHTML = parts.map(p => {
                     if (!p.en) return '';
+                    const highlightedEn = highlightText(p.en, searchQuery);
+                    const blurredEn = isKeywordBlurActive ? blurKeywords(highlightedEn) : highlightedEn;
                     return `
                         <div class="answer-block">
                             <span class="answer-label">${p.label}:</span>
-                            <span class="en-text highlight">${highlightText(p.en, searchQuery)}</span>
+                            <span class="en-text highlight">${blurredEn}</span>
                             <span class="uz-text small">(${highlightText(p.uz || "Tarjima yo'q", searchQuery)})</span>
                         </div>
                     `;
                 }).join('');
             } else if (item["FullAnswer_EN"]) {
+                headingEn = item["Sovollar"] || '';
+                headingUz = item["Sovollar (UZ)"] || '';
+
                 const parts = [
                     { label: "Answer", en: item["FullAnswer_EN"], uz: item["FullAnswer_UZ"] },
                     { label: "Reason", en: item["Reason_EN"], uz: item["Reason_UZ"] },
@@ -847,82 +998,328 @@ document.addEventListener('DOMContentLoaded', () => {
                 textToSpeak = parts.map(p => p.en).filter(Boolean).join('. ');
                 answerHTML = parts.map(p => {
                     if (!p.en) return '';
+                    const highlightedEn = highlightText(p.en, searchQuery);
+                    const blurredEn = isKeywordBlurActive ? blurKeywords(highlightedEn) : highlightedEn;
                     return `
                         <div class="answer-block">
                             <span class="answer-label">${p.label}:</span>
-                            <span class="en-text highlight">${highlightText(p.en, searchQuery)}</span>
+                            <span class="en-text highlight">${blurredEn}</span>
                             <span class="uz-text small">(${highlightText(p.uz, searchQuery)})</span>
                         </div>
                     `;
                 }).join('');
             } else {
+                headingEn = item["Sovollar"] || '';
+                headingUz = item["Sovollar (UZ)"] || '';
+
                 const cleanAnswerEN = item["Jovoblar (EN)"] ? item["Jovoblar (EN)"].replace(/\n/g, '<br>') : "No answer";
                 const cleanAnswerUZ = item["Jovoblar (UZ)"] ? item["Jovoblar (UZ)"].replace(/\n/g, '<br>') : "Javob yo'q";
                 textToSpeak = item["Jovoblar (EN)"] || "";
+                const highlightedEn = highlightText(cleanAnswerEN, searchQuery);
+                const blurredEn = isKeywordBlurActive ? blurKeywords(highlightedEn) : highlightedEn;
                 answerHTML = `
                     <div class="answer-content">
-                        <span class="en-text" style="color: var(--primary); font-weight: 600;">${highlightText(cleanAnswerEN, searchQuery)}</span>
+                        <span class="en-text" style="color: var(--primary); font-weight: 600;">${blurredEn}</span>
                         <span class="uz-text" style="display: block; margin-top: 5px;">(${highlightText(cleanAnswerUZ, searchQuery)})</span>
                     </div>
                 `;
             }
 
-            if (currentMode === 'lessons') {
-                const sourceHTML = searchQuery ? `<div class="search-result-source">Lesson ${item["lesson"]}</div>` : '';
-                const headingEn = item["Verb + Collocation"];
-                const headingUz = item["O‘zbekcha tarjima"];
-
+            if (isFlashcardModeActive) {
                 cardEl.innerHTML = `
-                    ${sourceHTML}
-                    <div class="card-actions">
-                        <button class="action-btn audio-btn" title="Eshitish">🔊</button>
-                        <button class="action-btn fav-btn ${isFav ? 'active' : ''}" title="Saralangan">⭐</button>
-                    </div>
-                    <div class="question-section">
-                        <span class="en-text" style="color: var(--secondary); font-size: 1rem;">${highlightText(headingEn, searchQuery)}</span>
-                        <span class="uz-text">(${highlightText(headingUz || "Tarjima yo'q", searchQuery)})</span>
-                    </div>
-                    <div class="answer-section">
-                        ${answerHTML}
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <div class="question-section" style="border: none; padding: 0;">
+                                <span class="en-text" style="${currentMode === 'lessons' ? 'color: var(--secondary); font-size: 1.1rem;' : 'font-size: 1.1rem;'}">${highlightText(headingEn, searchQuery)}</span>
+                                <span class="uz-text" style="display: block; margin-top: 8px;">(${highlightText(headingUz || "Tarjima yo'q", searchQuery)})</span>
+                            </div>
+                            <div class="flashcard-prompt">Bosing va aylantiring / Tap to flip</div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="card-actions" style="margin-top: 0; margin-bottom: 10px;">
+                                <button class="action-btn audio-btn" title="Eshitish">🔊</button>
+                                <button class="action-btn mic-btn" title="Ovozli javob mashqi">🎤</button>
+                                <button class="action-btn fav-btn ${isFav ? 'active' : ''}" title="Saralangan">⭐</button>
+                            </div>
+                            <div class="question-section" style="margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; width: 100%;">
+                                <span class="en-text" style="${currentMode === 'lessons' ? 'color: var(--secondary); font-size: 0.95rem;' : 'font-size: 0.95rem;'}">${highlightText(headingEn, searchQuery)}</span>
+                            </div>
+                            <div class="answer-section" style="flex-grow: 1;">
+                                ${answerHTML}
+                            </div>
+                            <div class="speech-practice-container" style="display: none; padding: 10px; border-top: 1px solid rgba(255,255,255,0.05); width: 100%;"></div>
+                            <div class="flashcard-actions">
+                                <button class="flashcard-rate-btn know">Bilaman ✅</button>
+                                <button class="flashcard-rate-btn dontknow">Bilmayman ❌</button>
+                            </div>
+                        </div>
                     </div>
                 `;
             } else {
-                const sourceHTML = searchQuery ? `<div class="search-result-source">${item["Mavzular"]} | ${item["Mavzular nomi"]}</div>` : '';
+                if (currentMode === 'lessons') {
+                    const sourceHTML = searchQuery ? `<div class="search-result-source">Lesson ${item["lesson"]}</div>` : '';
 
-                cardEl.innerHTML = `
-                    ${sourceHTML}
-                    <div class="card-actions">
-                        <button class="action-btn audio-btn" title="Eshitish">🔊</button>
-                        <button class="action-btn fav-btn ${isFav ? 'active' : ''}" title="Saralangan">⭐</button>
-                    </div>
-                    <div class="question-section">
-                        <span class="en-text">${highlightText(item["Sovollar"], searchQuery)}</span>
-                        <span class="uz-text">(${highlightText(item["Sovollar (UZ)"] || "Tarjima yo'q", searchQuery)})</span>
-                    </div>
-                    <div class="answer-section">
-                        ${answerHTML}
-                    </div>
-                `;
+                    cardEl.innerHTML = `
+                        ${sourceHTML}
+                        <div class="card-actions">
+                            <button class="action-btn audio-btn" title="Eshitish">🔊</button>
+                            <button class="action-btn mic-btn" title="Ovozli javob mashqi">🎤</button>
+                            <button class="action-btn fav-btn ${isFav ? 'active' : ''}" title="Saralangan">⭐</button>
+                        </div>
+                        <div class="question-section">
+                            <span class="en-text" style="color: var(--secondary); font-size: 1rem;">${highlightText(headingEn, searchQuery)}</span>
+                            <span class="uz-text">(${highlightText(headingUz || "Tarjima yo'q", searchQuery)})</span>
+                        </div>
+                        <div class="answer-section">
+                            ${answerHTML}
+                        </div>
+                        <div class="speech-practice-container" style="display: none; padding: 10px; border-top: 1px solid rgba(255,255,255,0.05);"></div>
+                    `;
+                } else {
+                    const sourceHTML = searchQuery ? `<div class="search-result-source">${item["Mavzular"]} | ${item["Mavzular nomi"]}</div>` : '';
+
+                    cardEl.innerHTML = `
+                        ${sourceHTML}
+                        <div class="card-actions">
+                            <button class="action-btn audio-btn" title="Eshitish">🔊</button>
+                            <button class="action-btn mic-btn" title="Ovozli javob mashqi">🎤</button>
+                            <button class="action-btn fav-btn ${isFav ? 'active' : ''}" title="Saralangan">⭐</button>
+                        </div>
+                        <div class="question-section">
+                            <span class="en-text">${highlightText(headingEn, searchQuery)}</span>
+                            <span class="uz-text">(${highlightText(headingUz || "Tarjima yo'q", searchQuery)})</span>
+                        </div>
+                        <div class="answer-section">
+                            ${answerHTML}
+                        </div>
+                        <div class="speech-practice-container" style="display: none; padding: 10px; border-top: 1px solid rgba(255,255,255,0.05);"></div>
+                    `;
+                }
+            }
+
+            if (isFlashcardModeActive) {
+                cardEl.addEventListener('click', (e) => {
+                    if (e.target.closest('button, input, textarea, select, .speech-practice-area, .blurred-keyword')) {
+                        return;
+                    }
+                    cardEl.classList.toggle('flipped');
+                });
+                
+                const knowBtn = cardEl.querySelector('.flashcard-rate-btn.know');
+                const dontknowBtn = cardEl.querySelector('.flashcard-rate-btn.dontknow');
+                
+                knowBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    flashcardRatings[questionId] = 'know';
+                    localStorage.setItem('flashcardRatings', JSON.stringify(flashcardRatings));
+                    cardEl.style.border = '2px solid #10b981';
+                });
+                
+                dontknowBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    flashcardRatings[questionId] = 'dontknow';
+                    localStorage.setItem('flashcardRatings', JSON.stringify(flashcardRatings));
+                    cardEl.style.border = '2px solid #f43f5e';
+                });
             }
 
             const audioBtn = cardEl.querySelector('.audio-btn');
             const favBtn = cardEl.querySelector('.fav-btn');
+            const micBtn = cardEl.querySelector('.mic-btn');
+            let speechArea = null;
 
-            audioBtn.addEventListener('click', () => {
-                if (currentMode === 'lessons') {
-                    speak(item["Verb + Collocation"]);
-                } else {
-                    speak(item["Sovollar"]);
-                }
+            audioBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                speak(headingEn);
                 setTimeout(() => speak(textToSpeak), 1500);
             });
 
-            favBtn.addEventListener('click', () => {
+            favBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
                 toggleFavorite(questionId);
                 favBtn.classList.toggle('active');
             });
 
-            contentArea.appendChild(cardEl);
+            micBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const container = cardEl.querySelector('.speech-practice-container');
+                if (!container) return;
+
+                if (!speechArea) {
+                    speechArea = document.createElement('div');
+                    speechArea.className = 'speech-practice-area';
+                    speechArea.innerHTML = `
+                        <div class="speech-practice-controls">
+                            <button class="start-record-btn">🎙️ Gapirishni boshlash</button>
+                            <span class="recording-status">Tayyor</span>
+                        </div>
+                        <div class="speech-transcript-box">
+                            <span style="opacity: 0.5; font-style: italic;">Gapirgan gaplaringiz bu yerda chiqadi...</span>
+                        </div>
+                        <div class="speech-practice-actions">
+                            <button class="check-speech-btn" style="display: none;">Tekshirish</button>
+                            <span class="speech-feedback"></span>
+                        </div>
+                    `;
+
+                    const startRecordBtn = speechArea.querySelector('.start-record-btn');
+                    const recordingStatus = speechArea.querySelector('.recording-status');
+                    const transcriptBox = speechArea.querySelector('.speech-transcript-box');
+                    const checkSpeechBtn = speechArea.querySelector('.check-speech-btn');
+                    const speechFeedback = speechArea.querySelector('.speech-feedback');
+
+                    let recognition = null;
+                    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                    let isRecording = false;
+                    let finalTranscript = '';
+
+                    if (SpeechRecognition) {
+                        recognition = new SpeechRecognition();
+                        recognition.continuous = true;
+                        recognition.interimResults = true;
+                        recognition.lang = 'en-US';
+
+                        recognition.onstart = () => {
+                            isRecording = true;
+                            startRecordBtn.classList.add('recording');
+                            startRecordBtn.innerHTML = '🛑 To\'xtatish';
+                            recordingStatus.textContent = 'Eshitilmoqda...';
+                            finalTranscript = '';
+                            transcriptBox.innerHTML = '<span style="opacity: 0.5; font-style: italic;">Gapiring...</span>';
+                            checkSpeechBtn.style.display = 'none';
+                            speechFeedback.innerHTML = '';
+                        };
+
+                        recognition.onresult = (event) => {
+                            let interimTranscript = '';
+                            for (let i = event.resultIndex; i < event.results.length; ++i) {
+                                if (event.results[i].isFinal) {
+                                    finalTranscript += event.results[i][0].transcript;
+                                } else {
+                                    interimTranscript += event.results[i][0].transcript;
+                                }
+                            }
+                            const liveText = finalTranscript + interimTranscript;
+                            transcriptBox.textContent = liveText || "Gapiring...";
+                        };
+
+                        recognition.onerror = (event) => {
+                            console.error("Speech recognition error", event.error);
+                            recordingStatus.textContent = `Xatolik: ${event.error}`;
+                            stopRecording();
+                        };
+
+                        recognition.onend = () => {
+                            isRecording = false;
+                            startRecordBtn.classList.remove('recording');
+                            startRecordBtn.innerHTML = '🎙️ Gapirishni boshlash';
+                            recordingStatus.textContent = 'Yozib olindi';
+                            
+                            const text = transcriptBox.textContent.trim();
+                            if (text && text !== "Gapiring..." && text !== "Gapirgan gaplaringiz bu yerda chiqadi...") {
+                                checkSpeechBtn.style.display = 'inline-block';
+                            }
+                            
+                            if (activeSpeechRecognition === recognition) {
+                                activeSpeechRecognition = null;
+                                activeSpeechBtn = null;
+                            }
+                        };
+                    }
+
+                    function startRecording() {
+                        if (!recognition) {
+                            alert("Sizning brauzeringiz ovozli yozishni qo'llab-quvvatlamaydi. Iltimos Chrome yoki Edge dan foydalaning.");
+                            return;
+                        }
+                        
+                        if (activeSpeechRecognition && activeSpeechRecognition !== recognition) {
+                            try {
+                                activeSpeechRecognition.stop();
+                            } catch(e) {}
+                        }
+
+                        try {
+                            recognition.start();
+                            activeSpeechRecognition = recognition;
+                            activeSpeechBtn = startRecordBtn;
+                        } catch(err) {
+                            console.error(err);
+                        }
+                    }
+
+                    function stopRecording() {
+                        if (recognition) {
+                            try {
+                                recognition.stop();
+                            } catch(e) {}
+                        }
+                    }
+
+                    startRecordBtn.addEventListener('click', (ev) => {
+                        ev.stopPropagation();
+                        if (isRecording) {
+                            stopRecording();
+                        } else {
+                            startRecording();
+                        }
+                    });
+
+                    checkSpeechBtn.addEventListener('click', (ev) => {
+                        ev.stopPropagation();
+                        const userText = transcriptBox.textContent.trim();
+                        const originalText = textToSpeak.trim();
+                        
+                        if (!userText || userText === "Gapiring...") {
+                            speechFeedback.textContent = "Matn aniqlanmadi.";
+                            speechFeedback.style.color = "orange";
+                            return;
+                        }
+
+                        const userWords = userText.split(/\s+/);
+                        const originalWords = originalText.split(/\s+/);
+                        let diffHtml = '<div class="speech-diff-result">';
+                        let matches = 0;
+
+                        const maxLen = Math.max(userWords.length, originalWords.length);
+                        for (let i = 0; i < maxLen; i++) {
+                            const uW = userWords[i] ? userWords[i].toLowerCase().replace(/[.,!?;:]/g, "") : null;
+                            const oW = originalWords[i] ? originalWords[i].toLowerCase().replace(/[.,!?;:]/g, "") : null;
+
+                            if (uW === oW && uW !== null) {
+                                diffHtml += `<span class="word-correct" style="color: #10b981; font-weight: 700;">${userWords[i]}</span> `;
+                                matches++;
+                            } else if (uW !== null) {
+                                diffHtml += `<span class="word-error" style="color: #f43f5e; text-decoration: line-through;">${userWords[i]}</span> `;
+                                if (oW !== null) {
+                                    diffHtml += `<span class="word-missing" style="color: var(--text-second); opacity: 0.8;">(${originalWords[i]})</span> `;
+                                }
+                            } else if (oW !== null) {
+                                diffHtml += `<span class="word-missing" style="color: var(--text-second); opacity: 0.8;">(${originalWords[i]})</span> `;
+                            }
+                        }
+                        diffHtml += '</div>';
+
+                        const accuracy = Math.round((matches / originalWords.length) * 100);
+                        speechFeedback.innerHTML = `Aniqlik: ${accuracy}%<br>${diffHtml}`;
+                        speechFeedback.style.color = accuracy > 70 ? "#10b981" : "#f43f5e";
+                    });
+
+                    container.appendChild(speechArea);
+                    container.style.display = 'block';
+                } else {
+                    if (container.style.display === 'none') {
+                        container.style.display = 'block';
+                    } else {
+                        container.style.display = 'none';
+                        if (activeSpeechBtn && activeSpeechBtn.classList.contains('recording')) {
+                            activeSpeechBtn.click();
+                        }
+                    }
+                }
+            });
+
+            targetContainer.appendChild(cardEl);
         });
     }
 

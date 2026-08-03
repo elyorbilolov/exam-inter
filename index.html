@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Exam v4.4</title>
-    <link rel="stylesheet" href="style.css?v=v44">
+    <title>English Exam v4.5</title>
+    <link rel="stylesheet" href="style.css?v=v45">
     <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./sw.js?v=v44').then(reg => {
+            navigator.serviceWorker.register('./sw.js?v=v45').then(reg => {
                 reg.update();
             });
         }
@@ -93,6 +93,15 @@
                 <button class="mode-btn" data-mode="writing">✍️ Writing</button>
                 <button id="lessons-mode-btn" class="mode-btn" data-mode="lessons" style="display: none;">📖 Lessons</button>
             </nav>
+
+            <div class="study-tools-bar" id="study-tools-bar">
+                <button id="flashcard-toggle" class="study-tool-btn" title="Flashcard rejimini yoqish/o'chirish">
+                    <span class="tool-icon">🃏</span> Flashcards: OFF
+                </button>
+                <button id="keyword-blur-toggle" class="study-tool-btn" title="Kalit so'zlarni yashirish">
+                    <span class="tool-icon">👁️</span> Hide Keywords: OFF
+                </button>
+            </div>
 
             <section class="cards-wrapper" id="cards-wrapper">
                 <nav class="cards-nav" id="cards-nav">
