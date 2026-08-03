@@ -560,9 +560,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="print-card-label">Lesson ${currentCard}</div>
             `;
         } else {
-            header.innerHTML = `
-                <div class="print-card-label">${currentCard}</div>
-            `;
+            if (currentCard.includes('/')) {
+                const parts = currentCard.split('/').map(p => p.trim());
+                header.innerHTML = `
+                    <div class="print-card-label" style="font-size: 20pt !important; font-weight: 800; line-height: 1.1; color: black; text-transform: uppercase;">${parts[0]}</div>
+                    <div style="font-size: 11pt; color: #444; font-weight: 700; margin-top: 1mm; text-transform: uppercase; letter-spacing: 0.5px;">${parts[1]}</div>
+                `;
+            } else {
+                header.innerHTML = `
+                    <div class="print-card-label">${currentCard}</div>
+                `;
+            }
         }
         contentArea.appendChild(header);
 

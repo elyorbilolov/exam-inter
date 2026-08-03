@@ -595,7 +595,7 @@ h1 {
 @media print {
   @page {
     size: portrait;
-    margin: 5mm;
+    margin: 8mm;
   }
 
   body {
@@ -603,8 +603,8 @@ h1 {
     background-image: none !important;
     color: black !important;
     padding: 0 !important;
-    font-size: 7.5pt !important;
-    line-height: 1.05 !important;
+    font-size: 8.5pt !important;
+    line-height: 1.15 !important;
   }
 
   header,
@@ -623,15 +623,15 @@ h1 {
 
   .print-title-container {
     text-align: center !important;
-    margin-bottom: 3mm !important;
-    border-bottom: 1.2pt solid #000;
-    padding-bottom: 1mm;
+    margin-bottom: 4mm !important;
+    border-bottom: 1.5pt solid #000;
+    padding-bottom: 1.5mm;
     display: block !important;
     width: 100% !important;
   }
 
   .print-card-label {
-    font-size: 14pt !important;
+    font-size: 16pt !important;
     font-weight: 800 !important;
     color: black !important;
     text-transform: uppercase;
@@ -647,7 +647,7 @@ h1 {
   #content-area {
     display: block !important;
     column-count: 2 !important;
-    column-gap: 4mm !important;
+    column-gap: 5mm !important;
     column-rule: 0.1pt solid #eee !important;
     width: 100% !important;
   }
@@ -657,9 +657,9 @@ h1 {
     break-inside: avoid !important;
     box-shadow: none !important;
     border: 0.3pt solid #ccc !important;
-    margin-bottom: 1.5mm !important;
+    margin-bottom: 2mm !important;
     background: white !important;
-    padding: 1.5mm !important;
+    padding: 2.2mm !important;
     animation: none !important;
     transform: none !important;
     width: 100% !important;
@@ -668,33 +668,33 @@ h1 {
 
   .en-text {
     color: black !important;
-    font-size: 8pt !important;
+    font-size: 9.5pt !important;
     font-weight: bold !important;
-    margin-bottom: 0.2mm !important;
+    margin-bottom: 0.3mm !important;
     display: block !important;
   }
 
   .uz-text {
-    color: #555 !important;
-    font-size: 7.5pt !important;
+    color: #444 !important;
+    font-size: 8.5pt !important;
     display: block !important;
-    margin-bottom: 1mm !important;
+    margin-bottom: 1.2mm !important;
     font-style: italic !important;
   }
 
   .answer-section {
     border-top: 0.1pt dashed #ddd !important;
-    margin-top: 0.3mm !important;
-    padding-top: 0.5mm !important;
+    margin-top: 0.4mm !important;
+    padding-top: 0.6mm !important;
     background: none !important;
   }
 
   .answer-block {
-    margin-bottom: 0.5mm !important;
-    font-size: 7pt !important;
-    border-bottom: 0.05pt solid #fdfdfd !important;
-    padding-bottom: 0.2mm !important;
-    line-height: 1.05 !important;
+    margin-bottom: 0.6mm !important;
+    font-size: 8.2pt !important;
+    border-bottom: 0.05pt solid #f9f9f9 !important;
+    padding-bottom: 0.3mm !important;
+    line-height: 1.15 !important;
   }
 
   .answer-block:last-child {
@@ -702,23 +702,23 @@ h1 {
   }
 
   .answer-label {
-    font-size: 6pt !important;
+    font-size: 7.2pt !important;
     font-weight: 900 !important;
     color: #444 !important;
     text-transform: uppercase;
-    margin-right: 0.8mm !important;
+    margin-right: 1mm !important;
   }
 
   .en-text.highlight {
-    font-size: 7pt !important;
+    font-size: 8.2pt !important;
     color: #000 !important;
     display: inline !important;
     font-weight: 600 !important;
   }
 
   .uz-text.small {
-    font-size: 6.5pt !important;
-    color: #555 !important;
+    font-size: 7.5pt !important;
+    color: #444 !important;
     display: inline !important;
   }
 }
