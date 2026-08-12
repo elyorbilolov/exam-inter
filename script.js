@@ -364,6 +364,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
                 
+                // If currentCard is not directly in map but stripped version is (e.g. Card A -> A)
+                if (!cardMap.has(currentCard)) {
+                    const stripped = currentCard.replace('Card ', '').trim();
+                    if (cardMap.has(stripped)) {
+                        currentCard = stripped;
+                        localStorage.setItem('currentCard', currentCard);
+                    }
+                }
+                
                 // If currentCard looks like a lesson number, reset it to first card
                 if (currentCard.match(/^\d+(\.\d+)?$/) || !cardMap.has(currentCard)) {
                     currentCard = uniqueCards.length > 0 ? uniqueCards[0].name : "Card A";
@@ -565,11 +574,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="print-card-label">Lesson ${currentCard}</div>
             `;
         } else {
-            if (currentCard.includes('/')) {
+            let letter = currentCard;
+            let cardLabel = `Card ${currentCard}`;
+            
+            if (currentCard.startsWith('Card ')) {
+                letter = currentCard.replace('Card ', '').trim();
+                cardLabel = currentCard;
+            } else if (currentCard.includes('/')) {
                 const parts = currentCard.split('/').map(p => p.trim());
+                letter = parts[0];
+                cardLabel = parts[1];
+            }
+            
+            if (letter.length === 1) {
                 header.innerHTML = `
-                    <div class="print-card-label" style="font-size: 20pt !important; font-weight: 800; line-height: 1.1; color: black; text-transform: uppercase;">${parts[0]}</div>
-                    <div style="font-size: 11pt; color: #444; font-weight: 700; margin-top: 1mm; text-transform: uppercase; letter-spacing: 0.5px;">${parts[1]}</div>
+                    <div class="print-card-label" style="font-size: 20pt !important; font-weight: 800; line-height: 1.1; color: black; text-transform: uppercase;">${letter}</div>
+                    <div style="font-size: 11pt; color: #444; font-weight: 700; margin-top: 1mm; text-transform: uppercase; letter-spacing: 0.5px;">${cardLabel}</div>
                 `;
             } else {
                 header.innerHTML = `
