@@ -428,6 +428,11 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.className = `card-btn ${card.name === currentCard ? 'active' : ''}`;
             
             let titleText = card.name;
+            if (titleText.includes('/')) {
+                titleText = titleText.split('/')[0].trim();
+            }
+            titleText = titleText.replace('Card ', '').trim();
+            
             let topicText = card.topic;
             if (currentMode === 'lessons') {
                 titleText = `Lesson`;
