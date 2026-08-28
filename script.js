@@ -492,9 +492,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function highlightText(text, query) {
-        if (!query) return text;
-        const regex = new RegExp(`(${query})`, 'gi');
-        return text.replace(regex, '<mark class="search-highlight">$1</mark>');
+        if (!text) return '';
+        let processed = String(text);
+
+        // Rich text tags:
+        // [red]...[/red], <red>...</red>, [r]...[/r], <r>...</r> -> Red
+        processed = processed.replace(/\[red\](.*?)\[\/red\]/gi, '<span class="text-red">$1</span>');
+        processed = processed.replace(/<red>(.*?)<\/red>/gi, '<span class="text-red">$1</span>');
+        processed = processed.replace(/\[r\](.*?)\[\/r\]/gi, '<span class="text-red">$1</span>');
+        processed = processed.replace(/<r>(.*?)<\/r>/gi, '<span class="text-red">$1</span>');
+
+        // [blue]...[/blue], [green]...[/green], [yellow]...[/yellow], [orange]...[/orange]
+        processed = processed.replace(/\[blue\](.*?)\[\/blue\]/gi, '<span class="text-blue">$1</span>');
+        processed = processed.replace(/<blue>(.*?)<\/blue>/gi, '<span class="text-blue">$1</span>');
+        processed = processed.replace(/\[green\](.*?)\[\/green\]/gi, '<span class="text-green">$1</span>');
+        processed = processed.replace(/<green>(.*?)<\/green>/gi, '<span class="text-green">$1</span>');
+        processed = processed.replace(/\[yellow\](.*?)\[\/yellow\]/gi, '<span class="text-yellow">$1</span>');
+        processed = processed.replace(/<yellow>(.*?)<\/yellow>/gi, '<span class="text-yellow">$1</span>');
+        processed = processed.replace(/\[orange\](.*?)\[\/orange\]/gi, '<span class="text-orange">$1</span>');
+        processed = processed.replace(/<orange>(.*?)<\/orange>/gi, '<span class="text-orange">$1</span>');
+
+        // **bold**
+        processed = processed.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+        // Search query highlight
+        if (query) {
+            const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp(`(?<!<[^>]*>)(${escaped})`, 'gi');
+            processed = processed.replace(regex, '<mark class="search-highlight">$1</mark>');
+        }
+        return processed;
     }
 
     function getWordCount(text) {
