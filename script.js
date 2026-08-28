@@ -528,6 +528,61 @@ document.addEventListener('DOMContentLoaded', () => {
         return text.trim().split(/\s+/).length;
     }
 
+    function getTopicIcon(text) {
+        if (!text) return '📝';
+        const lower = text.toLowerCase();
+        
+        // Exercise, Sport, Health & Sleep
+        if (lower.includes('exercise') || lower.includes('health') || lower.includes('sport') || lower.includes('diet') || lower.includes('sleep') || lower.includes('gym') || lower.includes('fit')) return '🏃‍♂️';
+        
+        // Social Media & Internet
+        if (lower.includes('social media') || lower.includes('internet') || lower.includes('online') || lower.includes('telegram') || lower.includes('instagram') || lower.includes('facebook') || lower.includes('network')) return '📱';
+        
+        // Countryside & Nature
+        if (lower.includes('countryside') || lower.includes('nature') || lower.includes('village') || lower.includes('plant') || lower.includes('animal') || lower.includes('environment') || lower.includes('rural')) return '🏡';
+        
+        // Hobby, Music & Art
+        if (lower.includes('hobby') || lower.includes('music') || lower.includes('art') || lower.includes('photo') || lower.includes('instrument') || lower.includes('guitar') || lower.includes('drawing')) return '🎨';
+        
+        // Advertising & Shopping
+        if (lower.includes('advertising') || lower.includes('advertisement') || lower.includes('shopping') || lower.includes('buy') || lower.includes('consumer') || lower.includes('market') || lower.includes('product')) return '📢';
+        
+        // Competition & Motivation
+        if (lower.includes('competition') || lower.includes('compete') || lower.includes('motivat') || lower.includes('challenge') || lower.includes('goal') || lower.includes('ambition')) return '🏆';
+        
+        // Computer Skills & Work & Job
+        if (lower.includes('computer') || lower.includes('job') || lower.includes('career') || lower.includes('work') || lower.includes('profession') || lower.includes('employ') || lower.includes('office')) return '💻';
+        
+        // Films & Video Games
+        if (lower.includes('video game') || lower.includes('game') || lower.includes('film') || lower.includes('movie') || lower.includes('cinema') || lower.includes('actor')) return '🎮';
+        
+        // English & Language
+        if (lower.includes('english') || lower.includes('language') || lower.includes('speak') || lower.includes('vocabulary') || lower.includes('grammar') || lower.includes('linguist')) return '🇬🇧';
+        
+        // Teamwork
+        if (lower.includes('teamwork') || lower.includes('team') || lower.includes('cooperat') || lower.includes('group') || lower.includes('partner')) return '🤝';
+        
+        // Technology
+        if (lower.includes('technology') || lower.includes('tech') || lower.includes('robot') || lower.includes('ai') || lower.includes('digital') || lower.includes('device')) return '🚀';
+        
+        // Travel & Holiday & Hometown
+        if (lower.includes('travel') || lower.includes('trip') || lower.includes('holiday') || lower.includes('vacation') || lower.includes('country') || lower.includes('place') || lower.includes('hometown') || lower.includes('tourism')) return '✈️';
+        
+        // Food & Cooking
+        if (lower.includes('food') || lower.includes('cook') || lower.includes('meal') || lower.includes('dish') || lower.includes('restaurant') || lower.includes('kitchen')) return '🍕';
+        
+        // Happiness & Emotion & Personality
+        if (lower.includes('happy') || lower.includes('happiness') || lower.includes('unhappy') || lower.includes('feeling') || lower.includes('emotion') || lower.includes('introvert') || lower.includes('extrovert')) return '😊';
+        
+        // Books & Reading & Education
+        if (lower.includes('book') || lower.includes('read') || lower.includes('study') || lower.includes('school') || lower.includes('university') || lower.includes('education') || lower.includes('student')) return '📚';
+        
+        // Weather & Seasons
+        if (lower.includes('weather') || lower.includes('season') || lower.includes('summer') || lower.includes('winter') || lower.includes('rain') || lower.includes('climate')) return '☀️';
+
+        return '📝';
+    }
+
     function toggleLearned(id) {
         const index = learnedWriting.indexOf(id);
         if (index > -1) {
@@ -740,11 +795,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardEl = document.createElement('div');
             cardEl.className = `question-card writing-card ${isLearned ? 'learned' : ''}`;
             
-            // Build dynamic prompt content
+            const topicIcon = getTopicIcon(data.sovol_en + ' ' + (data.sovol_uz || ''));
             const titleHtml = `
                 <div class="essay-header-row">
-                    <span class="en-text essay-title">${highlightText(data.sovol_en, searchQuery)}</span>
-                    <span class="uz-text essay-title-uz">(${highlightText(data.sovol_uz, searchQuery)})</span>
+                    <span class="essay-topic-icon-badge">${topicIcon}</span>
+                    <div class="essay-title-group">
+                        <span class="en-text essay-title">${highlightText(data.sovol_en, searchQuery)}</span>
+                        ${data.sovol_uz ? `<span class="uz-text essay-title-uz">(${highlightText(data.sovol_uz, searchQuery)})</span>` : ''}
+                    </div>
                 </div>
             `;
 
