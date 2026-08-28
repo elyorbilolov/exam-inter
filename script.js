@@ -307,6 +307,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 writingFile = 'pre-intermediate_writing.json';
                 lessonFile = 'pre-intermediate_lesson.json';
                 levelTitle = 'English Exam (Pre-Intermediate)';
+            } else if (currentLevel === 'intermediate') {
+                speakingFile = 'intermediate_speaking.json';
+                writingFile = 'intermediate_writing.json';
+                lessonFile = null;
+                levelTitle = 'English Exam (Intermediate)';
             }
 
             document.querySelector('h1').textContent = levelTitle;
