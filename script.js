@@ -493,7 +493,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function highlightText(text, query) {
         if (!text) return '';
-        let processed = String(text);
+        let processed = String(text).replace(/\\n/g, '\n');
 
         // Rich text tags:
         // [red]...[/red], <red>...</red>, [r]...[/r], <r>...</r> -> Red
