@@ -133,11 +133,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderWritingContent();
             } else if (currentMode === 'reading') {
                 cardsWrapper.style.display = 'none';
-                partsWrapper.style.display = 'none';
+                partsWrapper.style.display = 'block';
+                updateActivePartButton();
                 renderReadingContent('reading');
             } else if (currentMode === 'listening') {
                 cardsWrapper.style.display = 'none';
-                partsWrapper.style.display = 'none';
+                partsWrapper.style.display = 'block';
+                updateActivePartButton();
                 renderReadingContent('listening');
             } else {
                 cardsWrapper.style.display = 'block';
@@ -202,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize UI with current mode
     cardsWrapper.style.display = (currentMode === 'writing' || currentMode === 'reading' || currentMode === 'listening') ? 'none' : 'block';
-    partsWrapper.style.display = (currentMode === 'speaking') ? 'block' : 'none';
+    partsWrapper.style.display = (currentMode === 'writing' || currentMode === 'lessons') ? 'none' : 'block';
     modeButtons.forEach(b => {
         if (b.getAttribute('data-mode') === currentMode) b.classList.add('active');
         else b.classList.remove('active');
@@ -426,9 +428,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentMode === 'lessons') {
                 cardsWrapper.style.display = 'block';
                 partsWrapper.style.display = 'none';
-            } else if (currentMode === 'writing' || currentMode === 'reading' || currentMode === 'listening') {
+            } else if (currentMode === 'writing') {
                 cardsWrapper.style.display = 'none';
                 partsWrapper.style.display = 'none';
+            } else if (currentMode === 'reading' || currentMode === 'listening') {
+                cardsWrapper.style.display = 'none';
+                partsWrapper.style.display = 'block';
             } else {
                 cardsWrapper.style.display = 'block';
                 partsWrapper.style.display = 'block';
@@ -1171,10 +1176,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             }
 
-            // Render Sections & Questions
+            // Render Active Section based on currentPart (Part 1 or Part 2)
             let sectionsHtml = '';
             if (item.sections) {
-                item.sections.forEach(sec => {
+                const activeIndex = (currentPart === 'Part 2') ? 1 : 0;
+                const activeSection = item.sections[activeIndex] || item.sections[0];
+                const secList = activeSection ? [activeSection] : item.sections;
+
+                secList.forEach(sec => {
                     let questionsHtml = '';
                     if (sec.type === 'multiple_choice') {
                         sec.questions.forEach(q => {
@@ -1882,7 +1891,14 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.classList.add('active');
             currentPart = btn.getAttribute('data-part');
             localStorage.setItem('currentPart', currentPart);
-            renderContent(currentCard, currentPart);
+
+            if (currentMode === 'reading') {
+                renderReadingContent('reading');
+            } else if (currentMode === 'listening') {
+                renderReadingContent('listening');
+            } else {
+                renderContent(currentCard, currentPart);
+            }
         });
     });
 

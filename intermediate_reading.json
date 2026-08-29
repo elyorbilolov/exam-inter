@@ -10,8 +10,8 @@
     "sections": [
       {
         "type": "multiple_choice",
-        "title": "Multiple Choice Questions",
-        "title_uz": "Ko‘p variantli test savollari",
+        "title": "Part 1: Multiple Choice Questions",
+        "title_uz": "1-qism: Ko‘p variantli test savollari (1-5)",
         "questions": [
           {
             "id": "r_mcq_1",
@@ -82,8 +82,8 @@
       },
       {
         "type": "fill_in_blank",
-        "title": "ONE WORD ONLY",
-        "title_uz": "Faqat bitta so‘z bilan to‘ldiring",
+        "title": "Part 2: ONE WORD ONLY",
+        "title_uz": "2-qism: Faqat bitta so‘z bilan to‘ldiring (6-10)",
         "questions": [
           {
             "id": "r_fib_1",
@@ -157,60 +157,11 @@
     "audio_transcript_uz": "Noah (1): Men talabalik davrimda imtihonlardan doim qo‘rqardim. Rostini aytsam, universitetdagi bitiruv imtihonlari juda kuchli stress bo‘lgani sababli hozir ham vaqti-vaqti bilan tushimga kirib chiqadi. Ammo hozir ishlayotganimda tushundimki, yaxshi xodim — bu faqat a’lo baholarga ega bo‘lgan emas, balki ijodkor, moslashuvchan va o‘z ishiga haqiqiy mas’uliyat bilan qaraydigan insondir.\n\nOlivia (2): Maktabda o‘qiganimda men doim eng namunali o‘quvchi bo‘lganman. Sinfdoshlarimning ota-onalari doimo o‘z farzandlariga: 'Nega Oliviyaga o‘xshamaysan?' deyishardi, chunki mening yuqori baholarim meni o‘qituvchilar orasida juda mashhur qilgan edi. Biroq ofisda ish boshlaganimda, o‘rtacha baholarga o‘qigan hamkasblarim ajoyib natijalar ko‘rsatayotganini, jamoalarni boshqarayotganini ko‘rdim.\n\nAva (3): Men imtihonlar juda zarur va ularni inkor etib bo‘lmaydi deb hisoblayman. Tanqidchilar ko‘pincha imtihonlar faqat yod olish qobiliyatini tekshiradi deyishadi, ammo puxta tuzilgan imtihon shunchaki eslab qolishdan tashqari, analitik qobiliyat, mantiqiy fikrlash kabi barcha ko‘nikmalarni sinovdan o‘tkazadi. Shunday bo‘lsa-da, faqat ko‘p variantli (multiple-choice) testlarning o‘zi insonning amaliy qobiliyatlarini to‘liq baholash uchun har doim ham eng yaxshi yo‘l emas.",
     "sections": [
       {
-        "type": "true_false",
-        "title": "Exercise 1: True or False",
-        "title_uz": "1-mashq: To‘g‘ri (True) yoki Noto‘g‘ri (False)",
-        "instruction": "Speakers Noah (1), Olivia (2) and Ava (3) are talking about exams. Listen and decide if these sentences are True or False.",
-        "instruction_uz": "So‘zlovchilar Noah (1), Olivia (2) va Ava (3) imtihonlar haqida gapirmoqda. Tinglang va jumlalarning To‘g‘ri yoki Noto‘g‘riligini aniqlang.",
-        "questions": [
-          {
-            "id": "l_tf_1",
-            "number": 1,
-            "statement": "1. Noah says he was positive about exams until he found his decent job.",
-            "statement_uz": "1. Noah munosib ish topgunga qadar imtihonlarga ijobiy munosabatda bo‘lganini aytadi.",
-            "correct": "FALSE",
-            "explanation": "False. Noah says he used to dread exams and still has nightmares about them."
-          },
-          {
-            "id": "l_tf_2",
-            "number": 2,
-            "statement": "2. According to Noah, it is important to have good personal skills rather than good exam results.",
-            "statement_uz": "2. Noahning fikricha, yaxshi imtihon natijalaridan ko‘ra yaxshi shaxsiy ko‘nikmalarga ega bo‘lish muhimroqdir.",
-            "correct": "TRUE",
-            "explanation": "True. He emphasizes creativity, adaptability, and responsibility over exam scores."
-          },
-          {
-            "id": "l_tf_3",
-            "number": 3,
-            "statement": "3. Olivia says her classmates’ parents wanted their children to be like her.",
-            "statement_uz": "3. Olivia uning sinfdoshlarining ota-onalari o‘z farzandlarini unga o‘xshashini xohlashganini aytadi.",
-            "correct": "TRUE",
-            "explanation": "True. Classmates' parents told their kids 'Why can't you be more like Olivia?'"
-          },
-          {
-            "id": "l_tf_4",
-            "number": 4,
-            "statement": "4. According to Ava, exams test all sorts of skills besides people’s memorizing abilities.",
-            "statement_uz": "4. Avaning fikricha, imtihonlar yodlash qobiliyatidan tashqari barcha turdagi ko‘nikmalarni sinovdan o‘tkazadi.",
-            "correct": "TRUE",
-            "explanation": "True. Ava says exams test structured thought, analytical ability, problem-solving, and logic."
-          },
-          {
-            "id": "l_tf_5",
-            "number": 5,
-            "statement": "5. Ava thinks that a multiple-choice exam is a good way to test people’s abilities.",
-            "statement_uz": "5. Ava ko‘p variantli test imtihoni inson qobiliyatlarini sinashning yaxshi usuli deb hisoblaydi.",
-            "correct": "FALSE",
-            "explanation": "False. She agrees that multiple-choice exams alone are not a good way to test complete practical abilities."
-          }
-        ]
-      },
-      {
         "type": "multiple_choice",
-        "title": "Exercise 2: Multiple Choice",
-        "title_uz": "2-mashq: Ko‘p variantli test",
-        "instruction": "Listen again and choose the correct option.",
-        "instruction_uz": "Qayta tinglang va to‘g‘ri variantni tanlang.",
+        "title": "Part 1: Multiple Choice Questions",
+        "title_uz": "1-qism: Ko‘p variantli test savollari (6-10)",
+        "instruction": "Listen to the speakers (Noah, Olivia, Ava) and choose the correct option.",
+        "instruction_uz": "So‘zlovchilar (Noah, Olivia, Ava) suhbatini tinglang va to‘g‘ri variantni tanlang.",
         "questions": [
           {
             "id": "l_mcq_1",
@@ -276,6 +227,55 @@
             ],
             "correct": "C",
             "explanation": "She explains exams test structured thought processes, analytical ability, and logic."
+          }
+        ]
+      },
+      {
+        "type": "true_false",
+        "title": "Part 2: True or False",
+        "title_uz": "2-qism: To‘g‘ri (True) yoki Noto‘g‘ri (False) (1-5)",
+        "instruction": "Speakers Noah (1), Olivia (2) and Ava (3) are talking about exams. Listen and decide if these sentences are True or False.",
+        "instruction_uz": "So‘zlovchilar Noah (1), Olivia (2) va Ava (3) imtihonlar haqida gapirmoqda. Tinglang va jumlalarning To‘g‘ri yoki Noto‘g‘riligini aniqlang.",
+        "questions": [
+          {
+            "id": "l_tf_1",
+            "number": 1,
+            "statement": "1. Noah says he was positive about exams until he found his decent job.",
+            "statement_uz": "1. Noah munosib ish topgunga qadar imtihonlarga ijobiy munosabatda bo‘lganini aytadi.",
+            "correct": "FALSE",
+            "explanation": "False. Noah says he used to dread exams and still has nightmares about them."
+          },
+          {
+            "id": "l_tf_2",
+            "number": 2,
+            "statement": "2. According to Noah, it is important to have good personal skills rather than good exam results.",
+            "statement_uz": "2. Noahning fikricha, yaxshi imtihon natijalaridan ko‘ra yaxshi shaxsiy ko‘nikmalarga ega bo‘lish muhimroqdir.",
+            "correct": "TRUE",
+            "explanation": "True. He emphasizes creativity, adaptability, and responsibility over exam scores."
+          },
+          {
+            "id": "l_tf_3",
+            "number": 3,
+            "statement": "3. Olivia says her classmates’ parents wanted their children to be like her.",
+            "statement_uz": "3. Olivia uning sinfdoshlarining ota-onalari o‘z farzandlarini unga o‘xshashini xohlashganini aytadi.",
+            "correct": "TRUE",
+            "explanation": "True. Classmates' parents told their kids 'Why can't you be more like Olivia?'"
+          },
+          {
+            "id": "l_tf_4",
+            "number": 4,
+            "statement": "4. According to Ava, exams test all sorts of skills besides people’s memorizing abilities.",
+            "statement_uz": "4. Avaning fikricha, imtihonlar yodlash qobiliyatidan tashqari barcha turdagi ko‘nikmalarni sinovdan o‘tkazadi.",
+            "correct": "TRUE",
+            "explanation": "True. Ava says exams test structured thought, analytical ability, problem-solving, and logic."
+          },
+          {
+            "id": "l_tf_5",
+            "number": 5,
+            "statement": "5. Ava thinks that a multiple-choice exam is a good way to test people’s abilities.",
+            "statement_uz": "5. Ava ko‘p variantli test imtihoni inson qobiliyatlarini sinashning yaxshi usuli deb hisoblaydi.",
+            "correct": "FALSE",
+            "explanation": "False. She agrees that multiple-choice exams alone are not a good way to test complete practical abilities."
           }
         ]
       }
