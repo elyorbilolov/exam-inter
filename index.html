@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Exam v6.3</title>
-    <link rel="stylesheet" href="style.css?v=v63">
+    <title>English Exam v6.4</title>
+    <link rel="stylesheet" href="style.css?v=v64">
     <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./sw.js?v=v63').then(reg => {
+            navigator.serviceWorker.register('./sw.js?v=v64').then(reg => {
                 reg.update();
             });
         }
@@ -99,6 +99,7 @@
             <nav class="main-mode-nav">
                 <button class="mode-btn active" data-mode="speaking">🗣️ Speaking</button>
                 <button class="mode-btn" data-mode="writing">✍️ Writing</button>
+                <button id="reading-mode-btn" class="mode-btn" data-mode="reading" style="display: none;">📚 Reading & Listening</button>
                 <button id="lessons-mode-btn" class="mode-btn" data-mode="lessons" style="display: none;">📖 Lessons</button>
             </nav>
 

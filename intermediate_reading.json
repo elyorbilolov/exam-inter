@@ -1,0 +1,284 @@
+[
+  {
+    "id": "reading_1",
+    "type": "reading",
+    "title": "Robot teachers",
+    "title_uz": "Robot o‘qituvchilar",
+    "topic_icon": "🤖",
+    "passage": "If you think of the jobs robots could never do, you would probably put doctors and teachers at the top of the list. It's easy to imagine robot cleaners and factory workers, but some jobs need human connection and creativity. But are we underestimating what robots can do? In some cases, they already perform better than doctors at diagnosing illness. Also, some patients might feel more comfortable sharing personal information with a machine than a person. Could there be a place for robots in education after all?\n\nBritish education expert Anthony Seldon thinks so. And he even has a date for the robot takeover of the classroom: 2027. He predicts robots will do the main job of transferring information and teachers will be like assistants. Intelligent robots will read students' faces, movements and maybe even brain signals. Then they will adapt the information to each student. It's not a popular opinion and it's not possible robots will ever have empathy and the ability to really connect with humans like another human can.\n\nOne thing is certain, though. A robot teacher is better than no teacher at all. In some parts of the world, there aren't enough teachers and 9–16 per cent of children under the age of 14 don't go to school. That problem could be partly solved by robots because they can teach anywhere and won't get stressed, or tired, or move somewhere for an easier, higher-paid job.\n\nThose negative aspects of teaching are something everyone agrees on. Teachers all over the world are leaving because it is a difficult job and they feel overworked. Perhaps the question is not 'Will robots replace teachers?' but 'How can robots help teachers?' Office workers can use software to do things like organize and answer emails, arrange meetings and update calendars. Teachers waste a lot of time doing non-teaching work, including more than 11 hours a week marking homework. If robots could cut the time teachers spend marking homework and writing reports, teachers would have more time and energy for the parts of the job humans do best.",
+    "passage_uz": "Agar siz robotlar hech qachon bajara olmaydigan kasblar haqida o‘ylasangiz, ehtimol ro‘yxatning eng yuqori qismiga shifokorlar va o‘qituvchilarni qo‘yasiz. Robot farroshlar va zavod ishchilarini tasavvur qilish oson, ammo ba’zi kasblar insoniy aloqa va ijodkorlikni talab qiladi. Lekin biz robotlar nima qila olishini yetarlicha baholamayapmizmi? Ayrim holatlarda ular allaqachon kasalliklarga tashxis qo‘yishda shifokorlardan ko‘ra yaxshiroq natija ko‘rsatmoqda. Shuningdek, ba’zi bemorlar shaxsiy ma’lumotlarni insondan ko‘ra mashina bilan bo‘lishishni qulayroq deb bilishlari mumkin. Oxir-oqibat ta’limda robotlar uchun joy topilishi mumkinmi?\n\nBritaniyalik ta’lim bo‘yicha ekspert Entoni Seldon shunday deb hisoblaydi. Va u hatto sinf xonasini robotlar egallashi uchun aniq yilni ham belgilagan: 2027-yil. Uning bashoratiga ko‘ra, ma’lumotlarni uzatishdek asosiy vazifani robotlar bajaradi, o‘qituvchilar esa yordamchi bo‘lib qoladi. Aqlli robotlar o‘quvchilarning yuz ifodalarini, harakatlarini va hatto miya signallarini o‘qiy oladi. So‘ngra ular ma’lumotlarni har bir o‘quvchiga moslashtiradi. Bu ommabop fikr emas va robotlar hech qachon boshqa inson kabi empatiyaga va insonlar bilan chinakam bog‘lanish qobiliyatiga ega bo‘lishi mumkin emas.\n\nBiroq bir narsa aniq: robot o‘qituvchi umuman o‘qituvchisiz qolishdan yaxshiroqdir. Dunyoning ba’zi joylarida o‘qituvchilar yetishmaydi va 14 yoshgacha bo‘lgan bolalarning 9–16 foizi maktabga bormaydi. Bu muammoni qisman robotlar hal qilishi mumkin, chunki ular istalgan joyda dars bera oladi va stressga tushmaydi, charchamaydi yoki osonroq, maoshi yuqori ish qidirib boshqa joyga ketmaydi.\n\nO‘qituvchilikning bu salbiy jihatlariga hamma qo‘shiladi. Butun dunyoda o‘qituvchilar bu qiyin kasb bo‘lgani va o‘zlarini haddan tashqari ko‘p ishlagandek his qilganliklari uchun ishdan ketishmoqda. Ehtimol, savol 'Robotlar o‘qituvchilarning o‘rnini egallaydimi?' emas, balki 'Robotlar o‘qituvchilarga qanday yordam bera oladi?' bo‘lishi kerakdir. Ofis xodimlari elektron xatlarni tartibga solish va javob berish, uchrashuvlar tashkil qilish va taqvimlarni yangilash kabi ishlarni bajarish uchun dasturiy ta’minotdan foydalanishlari mumkin. O‘qituvchilar dars berishdan tashqari ishlarga ko‘p vaqt sarflaydilar, jumladan, haftasiga 11 soatdan ko‘proq vaqtni uy vazifalarini tekshirishga sarflashadi. Agar robotlar o‘qituvchilarning uy vazifalarini tekshirish va hisobotlar yozishga sarflaydigan vaqtini qisqartira olsa, o‘qituvchilarda insonlar eng yaxshi bajaradigan vazifalar uchun ko‘proq vaqt va quvvat qolgan bo‘lardi.",
+    "sections": [
+      {
+        "type": "multiple_choice",
+        "title": "Multiple Choice Questions",
+        "title_uz": "Ko‘p variantli test savollari",
+        "questions": [
+          {
+            "id": "r_mcq_1",
+            "number": 1,
+            "question": "What job can robots already do better than doctors in some cases?",
+            "question_uz": "Ayrim holatlarda robotlar shifokorlardan ko‘ra qaysi ishni yaxshiroq bajara oladi?",
+            "options": [
+              "A) sharing personal information",
+              "B) performing surgeries.",
+              "C) diagnosing illness."
+            ],
+            "correct": "C",
+            "explanation": "In the first paragraph: 'In some cases, they already perform better than doctors at diagnosing illness.'"
+          },
+          {
+            "id": "r_mcq_2",
+            "number": 2,
+            "question": "What capability does Anthony Seldon predict intelligent robots will have in the classroom?",
+            "question_uz": "Entoni Seldon aqlli robotlar sinfda qanday qobiliyatga ega bo‘lishini bashorat qilmoqda?",
+            "options": [
+              "A) reading students' faces, movements, and possibly brain signals.",
+              "B) teach engineering to students",
+              "C) teaching students empathy and social skills."
+            ],
+            "correct": "A",
+            "explanation": "In paragraph 2: 'Intelligent robots will read students' faces, movements and maybe even brain signals.'"
+          },
+          {
+            "id": "r_mcq_3",
+            "number": 3,
+            "question": "What advantage do robot teachers have according to the text?",
+            "question_uz": "Matnga ko‘ra robot o‘qituvchilarning qanday afzalligi bor?",
+            "options": [
+              "A) don’t need food",
+              "B) can teach anywhere without stress.",
+              "C) are demanding workers"
+            ],
+            "correct": "B",
+            "explanation": "In paragraph 3: '...they can teach anywhere and won't get stressed, or tired, or move somewhere...'"
+          },
+          {
+            "id": "r_mcq_4",
+            "number": 4,
+            "question": "How could robots help teachers, as mentioned in the text?",
+            "question_uz": "Matnda aytilganidek, robotlar o‘qituvchilarga qanday yordam berishi mumkin?",
+            "options": [
+              "A) completely replacing them.",
+              "B) reducing their workload.",
+              "C) checking students’ reports."
+            ],
+            "correct": "B",
+            "explanation": "In paragraph 4: Cutting the time teachers spend marking homework and writing reports reduces their heavy workload."
+          },
+          {
+            "id": "r_mcq_5",
+            "number": 5,
+            "question": "What is the main idea of the text?",
+            "question_uz": "Matnning asosiy g‘oyasi nima?",
+            "options": [
+              "A) robots could assist in education.",
+              "B) humans lead in all professions.",
+              "C) robot friends at school"
+            ],
+            "correct": "A",
+            "explanation": "The text discusses how robots can help teachers and assist in the educational field."
+          }
+        ]
+      },
+      {
+        "type": "fill_in_blank",
+        "title": "ONE WORD ONLY",
+        "title_uz": "Faqat bitta so‘z bilan to‘ldiring",
+        "questions": [
+          {
+            "id": "r_fib_1",
+            "number": 6,
+            "sentence": "Despite robots’ better performance, some jobs still need human _________ and connection.",
+            "sentence_uz": "Robotlarning yaxshiroq ishlashiga qaramay, ba’zi ishlar hali ham insoniy _________ va muloqotga muhtoj.",
+            "correct": "CREATIVITY",
+            "acceptable": [
+              "creativity"
+            ],
+            "explanation": "From text: '...some jobs need human connection and creativity.'"
+          },
+          {
+            "id": "r_fib_2",
+            "number": 7,
+            "sentence": "Anthony Seldon claims that in the future ¬_____________ information will be done by robots while teachers will assist them.",
+            "sentence_uz": "Entoni Seldonning ta’kidlashicha, kelajakda axborotni ¬_____________ robotlar tomonidan amalga oshiriladi, o‘qituvchilar esa ularga yordam beradi.",
+            "correct": "TRANSFERRING",
+            "acceptable": [
+              "transferring",
+              "transfer"
+            ],
+            "explanation": "From text: 'He predicts robots will do the main job of transferring information...'"
+          },
+          {
+            "id": "r_fib_3",
+            "number": 8,
+            "sentence": "9-16 per cent of students under the age of 14 don’t go to school and this issue may be resolved with the help of ____________.",
+            "sentence_uz": "14 yoshgacha bo‘lgan o‘quvchilarning 9-16 foizi maktabga bormaydi va bu muammo ____________ yordamida hal qilinishi mumkin.",
+            "correct": "ROBOTS",
+            "acceptable": [
+              "robots",
+              "robot"
+            ],
+            "explanation": "From text: 'That problem could be partly solved by robots...'"
+          },
+          {
+            "id": "r_fib_4",
+            "number": 9,
+            "sentence": "Office workers may use ____________ to spend less time on routine activities such as answering emails.",
+            "sentence_uz": "Ofis xodimlari elektron pochta xatlariga javob berish kabi kundalik ishlarga kamroq vaqt sarflash uchun ____________dan foydalanishlari mumkin.",
+            "correct": "SOFTWARE",
+            "acceptable": [
+              "software"
+            ],
+            "explanation": "From text: 'Office workers can use software to do things like organize and answer emails...'"
+          },
+          {
+            "id": "r_fib_5",
+            "number": 10,
+            "sentence": "As long as machines were able to save teachers’ time from writing _________, they would feel more energetic and have more spare time.",
+            "sentence_uz": "Agar mashinalar o‘qituvchilarning _________ yozishga sarflaydigan vaqtini tejashga qodir bo‘lsa, ular o‘zlarini ancha tetik his qiladilar va ko‘proq bo‘sh vaqtga ega bo‘ladilar.",
+            "correct": "REPORTS",
+            "acceptable": [
+              "reports",
+              "report"
+            ],
+            "explanation": "From text: 'If robots could cut the time teachers spend marking homework and writing reports...'"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "listening_1",
+    "type": "listening",
+    "title": "Exams & Education (Noah, Olivia & Ava)",
+    "title_uz": "Imtihonlar va Ta’lim (Noah, Olivia va Ava)",
+    "topic_icon": "🎧",
+    "audio_transcript": "Noah (1): I used to dread exams throughout my student life. To be honest, I still have occasional nightmares about my university finals because the entire experience was so intensely stressful. But now that I am working, I realize that a good worker isn't necessarily someone who scored straight A's in exams, but someone who is creative, adaptable, and takes genuine responsibility for their work.\n\nOlivia (2): When I was at school, I was always the top student. My classmates' parents would constantly tell their children, 'Why can't you be more like Olivia?' because my high exam grades and academic discipline made me very popular with our teachers. However, once I entered the corporate office, I noticed that my colleagues who had average exam scores are performing exceptionally well, leading teams, and getting promoted faster. It sometimes makes me feel content with their success, yet surprised at how real-world demands differ from school tests.\n\nAva (3): I firmly believe that exams are essential and should not be dismissed. Critics often say that exams only test memorization and recall ability, but a well-designed exam tests all sorts of skills besides simple memorizing — including structured thought processes, analytical ability, problem-solving, and logic. However, I agree that multiple-choice exams alone are not always a good way to test a person's complete, practical abilities.",
+    "audio_transcript_uz": "Noah (1): Men talabalik davrimda imtihonlardan doim qo‘rqardim. Rostini aytsam, universitetdagi bitiruv imtihonlari juda kuchli stress bo‘lgani sababli hozir ham vaqti-vaqti bilan tushimga kirib chiqadi. Ammo hozir ishlayotganimda tushundimki, yaxshi xodim — bu faqat a’lo baholarga ega bo‘lgan emas, balki ijodkor, moslashuvchan va o‘z ishiga haqiqiy mas’uliyat bilan qaraydigan insondir.\n\nOlivia (2): Maktabda o‘qiganimda men doim eng namunali o‘quvchi bo‘lganman. Sinfdoshlarimning ota-onalari doimo o‘z farzandlariga: 'Nega Oliviyaga o‘xshamaysan?' deyishardi, chunki mening yuqori baholarim meni o‘qituvchilar orasida juda mashhur qilgan edi. Biroq ofisda ish boshlaganimda, o‘rtacha baholarga o‘qigan hamkasblarim ajoyib natijalar ko‘rsatayotganini, jamoalarni boshqarayotganini ko‘rdim.\n\nAva (3): Men imtihonlar juda zarur va ularni inkor etib bo‘lmaydi deb hisoblayman. Tanqidchilar ko‘pincha imtihonlar faqat yod olish qobiliyatini tekshiradi deyishadi, ammo puxta tuzilgan imtihon shunchaki eslab qolishdan tashqari, analitik qobiliyat, mantiqiy fikrlash kabi barcha ko‘nikmalarni sinovdan o‘tkazadi. Shunday bo‘lsa-da, faqat ko‘p variantli (multiple-choice) testlarning o‘zi insonning amaliy qobiliyatlarini to‘liq baholash uchun har doim ham eng yaxshi yo‘l emas.",
+    "sections": [
+      {
+        "type": "true_false",
+        "title": "Exercise 1: True or False",
+        "title_uz": "1-mashq: To‘g‘ri (True) yoki Noto‘g‘ri (False)",
+        "instruction": "Speakers Noah (1), Olivia (2) and Ava (3) are talking about exams. Listen and decide if these sentences are True or False.",
+        "instruction_uz": "So‘zlovchilar Noah (1), Olivia (2) va Ava (3) imtihonlar haqida gapirmoqda. Tinglang va jumlalarning To‘g‘ri yoki Noto‘g‘riligini aniqlang.",
+        "questions": [
+          {
+            "id": "l_tf_1",
+            "number": 1,
+            "statement": "1. Noah says he was positive about exams until he found his decent job.",
+            "statement_uz": "1. Noah munosib ish topgunga qadar imtihonlarga ijobiy munosabatda bo‘lganini aytadi.",
+            "correct": "FALSE",
+            "explanation": "False. Noah says he used to dread exams and still has nightmares about them."
+          },
+          {
+            "id": "l_tf_2",
+            "number": 2,
+            "statement": "2. According to Noah, it is important to have good personal skills rather than good exam results.",
+            "statement_uz": "2. Noahning fikricha, yaxshi imtihon natijalaridan ko‘ra yaxshi shaxsiy ko‘nikmalarga ega bo‘lish muhimroqdir.",
+            "correct": "TRUE",
+            "explanation": "True. He emphasizes creativity, adaptability, and responsibility over exam scores."
+          },
+          {
+            "id": "l_tf_3",
+            "number": 3,
+            "statement": "3. Olivia says her classmates’ parents wanted their children to be like her.",
+            "statement_uz": "3. Olivia uning sinfdoshlarining ota-onalari o‘z farzandlarini unga o‘xshashini xohlashganini aytadi.",
+            "correct": "TRUE",
+            "explanation": "True. Classmates' parents told their kids 'Why can't you be more like Olivia?'"
+          },
+          {
+            "id": "l_tf_4",
+            "number": 4,
+            "statement": "4. According to Ava, exams test all sorts of skills besides people’s memorizing abilities.",
+            "statement_uz": "4. Avaning fikricha, imtihonlar yodlash qobiliyatidan tashqari barcha turdagi ko‘nikmalarni sinovdan o‘tkazadi.",
+            "correct": "TRUE",
+            "explanation": "True. Ava says exams test structured thought, analytical ability, problem-solving, and logic."
+          },
+          {
+            "id": "l_tf_5",
+            "number": 5,
+            "statement": "5. Ava thinks that a multiple-choice exam is a good way to test people’s abilities.",
+            "statement_uz": "5. Ava ko‘p variantli test imtihoni inson qobiliyatlarini sinashning yaxshi usuli deb hisoblaydi.",
+            "correct": "FALSE",
+            "explanation": "False. She agrees that multiple-choice exams alone are not a good way to test complete practical abilities."
+          }
+        ]
+      },
+      {
+        "type": "multiple_choice",
+        "title": "Exercise 2: Multiple Choice",
+        "title_uz": "2-mashq: Ko‘p variantli test",
+        "instruction": "Listen again and choose the correct option.",
+        "instruction_uz": "Qayta tinglang va to‘g‘ri variantni tanlang.",
+        "questions": [
+          {
+            "id": "l_mcq_1",
+            "number": 6,
+            "question": "Why does Noah still have nightmares about his university finals?",
+            "question_uz": "Nega Noah hanuzgacha universitet bitiruv imtihonlari haqida yomon tushlar ko‘radi?",
+            "options": [
+              "A) Because he forgot the answers during the exam.",
+              "B) Because he found the exam experience very stressful.",
+              "C) Because he lost his exam papers"
+            ],
+            "correct": "B",
+            "explanation": "Noah mentions the entire experience was intensely stressful."
+          },
+          {
+            "id": "l_mcq_2",
+            "number": 7,
+            "question": "According to Noah, a good worker is…",
+            "question_uz": "Noahning fikricha, yaxshi xodim bu...",
+            "options": [
+              "A) Someone with high level qualifications",
+              "B) Someone with best exam scores",
+              "C) Someone who is creative and responsible"
+            ],
+            "correct": "C",
+            "explanation": "He explicitly defines a good worker as someone who is creative, adaptable, and responsible."
+          },
+          {
+            "id": "l_mcq_3",
+            "number": 8,
+            "question": "Why does Olivia mention that her classmates' parents wished their kids were more like her?",
+            "question_uz": "Nega Olivia sinfdoshlarining ota-onalari o‘z farzandlarini unga o‘xshashini istashganini eslaydi?",
+            "options": [
+              "A) Because her excellent exam results and performance made her popular with teachers.",
+              "B) Because she had more friends.",
+              "C) Because she grew up without parents"
+            ],
+            "correct": "A",
+            "explanation": "Her high test scores and discipline made her a model student."
+          },
+          {
+            "id": "l_mcq_4",
+            "number": 9,
+            "question": "How does Olivia feel about her current performance in the office in comparison to her colleagues?",
+            "question_uz": "Olivia o‘z hamkasblari bilan taqqoslaganda hozirgi ofisdagi natijalariga qanday munosabatda?",
+            "options": [
+              "A) She feels content with her colleagues' success.",
+              "B) She feels she deserves better than them",
+              "C) She feels upset and demotivated by her colleagues' success."
+            ],
+            "correct": "A",
+            "explanation": "She notes she feels content with their success."
+          },
+          {
+            "id": "l_mcq_5",
+            "number": 10,
+            "question": "Why does Ava believe that exams are essential?",
+            "question_uz": "Nega Ava imtihonlar zarur deb hisoblaydi?",
+            "options": [
+              "A) Because they help you get a better job",
+              "B) Because they only focus on memorization and recall ability.",
+              "C) Because they test various skills like thought processes, analytical ability, and logic."
+            ],
+            "correct": "C",
+            "explanation": "She explains exams test structured thought processes, analytical ability, and logic."
+          }
+        ]
+      }
+    ]
+  }
+]

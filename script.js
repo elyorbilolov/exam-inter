@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let examData = [];
     let writingData = {};
     let lessonsData = [];
+    let readingData = [];
+    let readingAnswers = JSON.parse(localStorage.getItem('readingAnswers')) || {};
     let currentLevel = localStorage.getItem('selectedLevel') || null;
     let currentMode = localStorage.getItem('currentMode') || 'speaking';
     let currentCard = localStorage.getItem('currentCard') || "Card A";
@@ -58,8 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function adjustStudyToolsVisibility() {
         if (!flashcardToggleBtn || !studyToolsBar) return;
         
-        // Hide flashcards in writing mode
-        if (currentMode === 'writing') {
+        // Hide flashcards in writing and reading modes
+        if (currentMode === 'writing' || currentMode === 'reading') {
             flashcardToggleBtn.style.display = 'none';
         } else {
             flashcardToggleBtn.style.display = 'flex';
@@ -150,6 +152,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 cardsWrapper.style.display = 'none';
                 partsWrapper.style.display = 'none';
                 renderWritingContent();
+            } else if (currentMode === 'reading') {
+                cardsWrapper.style.display = 'none';
+                partsWrapper.style.display = 'none';
+                renderReadingContent();
             } else {
                 cardsWrapper.style.display = 'block';
                 partsWrapper.style.display = 'block';
@@ -185,6 +191,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (currentMode === 'writing') {
                 renderWritingContent();
+            } else if (currentMode === 'reading') {
+                renderReadingContent();
             } else {
                 renderContent(currentCard, currentPart);
             }
@@ -197,6 +205,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (currentMode === 'writing') {
                 renderWritingContent();
+            } else if (currentMode === 'reading') {
+                renderReadingContent();
             } else {
                 renderContent(currentCard, currentPart);
             }
@@ -204,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Initialize UI with current mode
-    cardsWrapper.style.display = currentMode === 'writing' ? 'none' : 'block';
+    cardsWrapper.style.display = (currentMode === 'writing' || currentMode === 'reading') ? 'none' : 'block';
     partsWrapper.style.display = (currentMode === 'speaking') ? 'block' : 'none';
     modeButtons.forEach(b => {
         if (b.getAttribute('data-mode') === currentMode) b.classList.add('active');
@@ -220,6 +230,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderContent(currentCard, currentPart, query);
             } else if (currentMode === 'writing') {
                 renderWritingContent(query);
+            } else if (currentMode === 'reading') {
+                renderReadingContent(query);
             } else {
                 renderContent(currentCard, currentPart, query);
             }
@@ -233,6 +245,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 exportToPDF();
             } else if (currentMode === 'writing') {
                 exportWritingToPDF();
+            } else if (currentMode === 'reading') {
+                window.print();
             } else {
                 exportToPDF();
             }
@@ -290,27 +304,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentMode = 'speaking';
                 localStorage.setItem('currentMode', currentMode);
             }
+            if (currentLevel !== 'intermediate' && currentMode === 'reading') {
+                currentMode = 'speaking';
+                localStorage.setItem('currentMode', currentMode);
+            }
 
-            let speakingFile, writingFile, lessonFile, levelTitle;
+            let speakingFile, writingFile, lessonFile, readingFile, levelTitle;
             if (currentLevel === 'beginner') {
                 speakingFile = 'beginer_speaking.json';
                 writingFile = 'beginer_writing.json';
                 lessonFile = null;
+                readingFile = null;
                 levelTitle = 'English Exam (Beginner)';
             } else if (currentLevel === 'elementary') {
                 speakingFile = 'elementary_speaking.json';
                 writingFile = 'elementary_writing.json';
                 lessonFile = null;
+                readingFile = null;
                 levelTitle = 'English Exam (Elementary)';
             } else if (currentLevel === 'pre-intermediate') {
                 speakingFile = 'pre-intermediate_speaking.json';
                 writingFile = 'pre-intermediate_writing.json';
                 lessonFile = 'pre-intermediate_lesson.json';
+                readingFile = null;
                 levelTitle = 'English Exam (Pre-Intermediate)';
             } else if (currentLevel === 'intermediate') {
                 speakingFile = 'intermediate_speaking.json';
                 writingFile = 'intermediate_writing.json';
                 lessonFile = null;
+                readingFile = 'intermediate_reading.json';
                 levelTitle = 'English Exam (Intermediate)';
             }
 
@@ -320,6 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
             examData = [];
             writingData = {};
             lessonsData = [];
+            readingData = [];
 
             // Load speaking/exam data
             if (speakingFile) {
@@ -340,6 +363,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const resLesson = await fetch(`${lessonFile}?v=${new Date().getTime()}`);
                 if (!resLesson.ok) throw new Error(`${lessonFile} faylni yuklab bo'lmadi`);
                 lessonsData = await resLesson.json();
+            }
+
+            // Load reading & listening data if applicable
+            if (readingFile) {
+                const resReading = await fetch(`${readingFile}?v=${new Date().getTime()}`);
+                if (!resReading.ok) throw new Error(`${readingFile} faylni yuklab bo'lmadi`);
+                readingData = await resReading.json();
             }
             
             const uniqueCards = [];
@@ -387,16 +417,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Hide/show mode navigation and parts wrapper
             const lessonsBtn = document.getElementById('lessons-mode-btn');
+            const readingBtn = document.getElementById('reading-mode-btn');
+
             if (currentLevel === 'pre-intermediate') {
                 if (lessonsBtn) lessonsBtn.style.display = 'flex';
             } else {
                 if (lessonsBtn) lessonsBtn.style.display = 'none';
             }
 
+            if (currentLevel === 'intermediate') {
+                if (readingBtn) readingBtn.style.display = 'flex';
+            } else {
+                if (readingBtn) readingBtn.style.display = 'none';
+            }
+
             if (currentMode === 'lessons') {
                 cardsWrapper.style.display = 'block';
                 partsWrapper.style.display = 'none';
             } else if (currentMode === 'writing') {
+                cardsWrapper.style.display = 'none';
+                partsWrapper.style.display = 'none';
+            } else if (currentMode === 'reading') {
                 cardsWrapper.style.display = 'none';
                 partsWrapper.style.display = 'none';
             } else {
@@ -417,6 +458,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderContent(currentCard, currentPart);
             } else if (currentMode === 'writing') {
                 renderWritingContent();
+            } else if (currentMode === 'reading') {
+                renderReadingContent();
             } else {
                 renderContent(currentCard, currentPart);
             }
@@ -981,6 +1024,375 @@ document.addEventListener('DOMContentLoaded', () => {
             contentArea.appendChild(cardEl);
         });
         updateProgress(100, 100);
+    }
+
+    function renderReadingContent(searchQuery = '') {
+        contentArea.innerHTML = '';
+        
+        if (!readingData || readingData.length === 0) {
+            contentArea.innerHTML = `<div class="loader">Reading & Listening ma'lumotlari topilmadi.</div>`;
+            return;
+        }
+
+        let totalQuestionsCount = 0;
+        let totalAnsweredCount = 0;
+        let totalCorrectCount = 0;
+
+        // Calculate overall stats
+        readingData.forEach(item => {
+            if (item.sections) {
+                item.sections.forEach(sec => {
+                    if (sec.questions) {
+                        sec.questions.forEach(q => {
+                            totalQuestionsCount++;
+                            if (readingAnswers[q.id]) {
+                                totalAnsweredCount++;
+                                if (readingAnswers[q.id].isCorrect) {
+                                    totalCorrectCount++;
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+        // Filter items if search query
+        let filtered = readingData;
+        if (searchQuery) {
+            const query = searchQuery.toLowerCase();
+            filtered = readingData.filter(item => {
+                const text = (item.title + ' ' + (item.title_uz || '') + ' ' + (item.passage || '') + ' ' + (item.audio_transcript || '')).toLowerCase();
+                return text.includes(query);
+            });
+        }
+
+        if (filtered.length === 0) {
+            contentArea.innerHTML = `<div class="loader">Qidiruv bo'yicha ma'lumot topilmadi.</div>`;
+            return;
+        }
+
+        const moduleContainer = document.createElement('div');
+        moduleContainer.className = 'reading-module-container';
+
+        // Score summary header
+        const scoreBox = document.createElement('div');
+        scoreBox.className = 'reading-score-summary';
+        scoreBox.innerHTML = `
+            <div class="reading-score-text">
+                🎯 Natijalar: ${totalCorrectCount} / ${totalQuestionsCount} to'g'ri (Javob berildi: ${totalAnsweredCount}/${totalQuestionsCount})
+            </div>
+            <button class="reading-reset-btn" title="Barcha javoblarni tozalash">🔄 Qayta topshirish (Reset)</button>
+        `;
+
+        const resetBtn = scoreBox.querySelector('.reading-reset-btn');
+        resetBtn.addEventListener('click', () => {
+            if (confirm("Haqiqatan ham barcha test javoblaringizni o'chirib, qaytadan topshirmoqchimisiz?")) {
+                readingAnswers = {};
+                localStorage.setItem('readingAnswers', JSON.stringify(readingAnswers));
+                renderReadingContent(searchQuery);
+            }
+        });
+
+        moduleContainer.appendChild(scoreBox);
+
+        filtered.forEach(item => {
+            const cardEl = document.createElement('div');
+            cardEl.className = 'reading-main-card';
+
+            const isListening = item.type === 'listening';
+            const badgeClass = isListening ? 'reading-type-badge listening' : 'reading-type-badge';
+            const badgeLabel = isListening ? '🎧 Listening Test' : '📖 Reading Passage';
+
+            // Top banner
+            const headerHtml = `
+                <div class="reading-header-banner">
+                    <div class="reading-title-box">
+                        <span style="font-size: 1.6rem;">${item.topic_icon || (isListening ? '🎧' : '🤖')}</span>
+                        <div>
+                            <span class="${badgeClass}">${badgeLabel}</span>
+                            <h3 style="margin: 4px 0 2px 0; font-size: 1.25rem; font-weight: 800; color: var(--text-main);">${highlightText(item.title, searchQuery)}</h3>
+                            <span style="font-size: 0.85rem; color: var(--text-sub); font-style: italic;">(${item.title_uz || ''})</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                        <button class="audio-play-stream-btn" data-id="${item.id}">
+                            <span>🔊</span> ${isListening ? "Audio eshitish" : "Matnni o'qish (Audio)"}
+                        </button>
+                        <button class="passage-toggle-uz-btn" data-id="${item.id}">
+                            <span>🌐</span> O'zbekcha tarjima
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            // Passage or Audio Transcript Box
+            let passageHtml = '';
+            if (isListening) {
+                passageHtml = `
+                    <div class="reading-passage-box">
+                        <div style="font-weight: 700; color: var(--primary); margin-bottom: 8px;">🎙️ Audio Transcript:</div>
+                        <div class="passage-en-content">${highlightText(item.audio_transcript, searchQuery)}</div>
+                        <div class="reading-passage-uz" id="uz-${item.id}">
+                            <div style="font-weight: 700; color: var(--text-sub); margin-bottom: 6px;">O'zbekcha tarjimasi:</div>
+                            ${highlightText(item.audio_transcript_uz || '', searchQuery)}
+                        </div>
+                    </div>
+                `;
+            } else {
+                passageHtml = `
+                    <div class="reading-passage-box">
+                        <div class="passage-en-content">${highlightText(item.passage, searchQuery)}</div>
+                        <div class="reading-passage-uz" id="uz-${item.id}">
+                            <div style="font-weight: 700; color: var(--text-sub); margin-bottom: 6px;">O'zbekcha tarjimasi:</div>
+                            ${highlightText(item.passage_uz || '', searchQuery)}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Render Sections & Questions
+            let sectionsHtml = '';
+            if (item.sections) {
+                item.sections.forEach(sec => {
+                    let questionsHtml = '';
+                    if (sec.type === 'multiple_choice') {
+                        sec.questions.forEach(q => {
+                            const userAnswer = readingAnswers[q.id] ? readingAnswers[q.id].userVal : null;
+                            const isAnswered = userAnswer !== null && userAnswer !== undefined;
+
+                            let optionsHtml = '';
+                            q.options.forEach(opt => {
+                                const letterMatch = opt.match(/^([A-Z])\)/);
+                                const optLetter = letterMatch ? letterMatch[1] : opt[0];
+                                let optClass = 'quiz-option-btn';
+                                
+                                if (isAnswered) {
+                                    if (optLetter === q.correct) {
+                                        optClass += ' selected-correct';
+                                    } else if (optLetter === userAnswer) {
+                                        optClass += ' selected-wrong';
+                                    }
+                                }
+
+                                optionsHtml += `
+                                    <button class="${optClass}" data-qid="${q.id}" data-val="${optLetter}" ${isAnswered ? 'disabled' : ''}>
+                                        <span>${highlightText(opt, searchQuery)}</span>
+                                        ${isAnswered && optLetter === q.correct ? '<span>✅</span>' : (isAnswered && optLetter === userAnswer ? '<span>❌</span>' : '')}
+                                    </button>
+                                `;
+                            });
+
+                            const isCorrect = isAnswered && userAnswer === q.correct;
+                            const statusBadge = isAnswered 
+                                ? (isCorrect ? '<span style="color: #10b981; font-weight: 800; font-size: 0.85rem;">To\'g\'ri ✅</span>' : '<span style="color: #f43f5e; font-weight: 800; font-size: 0.85rem;">Noto\'g\'ri (To\'g\'ri javob: ' + q.correct + ') ❌</span>')
+                                : '';
+
+                            questionsHtml += `
+                                <div class="quiz-question-item" id="qitem-${q.id}">
+                                    <div class="quiz-question-text">
+                                        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                            <span>${q.number}. ${highlightText(q.question, searchQuery)}</span>
+                                            ${statusBadge}
+                                        </div>
+                                        <span class="quiz-question-text-uz">(${highlightText(q.question_uz || '', searchQuery)})</span>
+                                    </div>
+                                    <div class="quiz-options-list">
+                                        ${optionsHtml}
+                                    </div>
+                                    <div class="question-explanation-box" id="exp-${q.id}" style="${isAnswered ? 'display: block;' : ''}">
+                                        💡 <strong>Izoh:</strong> ${q.explanation || ''}
+                                    </div>
+                                </div>
+                            `;
+                        });
+                    } else if (sec.type === 'true_false') {
+                        sec.questions.forEach(q => {
+                            const userAnswer = readingAnswers[q.id] ? readingAnswers[q.id].userVal : null;
+                            const isAnswered = userAnswer !== null && userAnswer !== undefined;
+
+                            let trueBtnClass = 'tf-btn';
+                            let falseBtnClass = 'tf-btn';
+
+                            if (isAnswered) {
+                                if (q.correct === 'TRUE') {
+                                    trueBtnClass += ' selected-correct';
+                                    if (userAnswer === 'FALSE') falseBtnClass += ' selected-wrong';
+                                } else {
+                                    falseBtnClass += ' selected-correct';
+                                    if (userAnswer === 'TRUE') trueBtnClass += ' selected-wrong';
+                                }
+                            }
+
+                            const isCorrect = isAnswered && userAnswer === q.correct;
+                            const statusBadge = isAnswered 
+                                ? (isCorrect ? '<span style="color: #10b981; font-weight: 800; font-size: 0.85rem;">To\'g\'ri ✅</span>' : '<span style="color: #f43f5e; font-weight: 800; font-size: 0.85rem;">Noto\'g\'ri (Javob: ' + q.correct + ') ❌</span>')
+                                : '';
+
+                            questionsHtml += `
+                                <div class="quiz-question-item" id="qitem-${q.id}">
+                                    <div class="quiz-question-text">
+                                        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                            <span>${highlightText(q.statement, searchQuery)}</span>
+                                            ${statusBadge}
+                                        </div>
+                                        <span class="quiz-question-text-uz">(${highlightText(q.statement_uz || '', searchQuery)})</span>
+                                    </div>
+                                    <div class="tf-buttons-row">
+                                        <button class="${trueBtnClass}" data-qid="${q.id}" data-val="TRUE" ${isAnswered ? 'disabled' : ''}>
+                                            ✅ TRUE
+                                        </button>
+                                        <button class="${falseBtnClass}" data-qid="${q.id}" data-val="FALSE" ${isAnswered ? 'disabled' : ''}>
+                                            ❌ FALSE
+                                        </button>
+                                    </div>
+                                    <div class="question-explanation-box" id="exp-${q.id}" style="${isAnswered ? 'display: block;' : ''}">
+                                        💡 <strong>Izoh:</strong> ${q.explanation || ''}
+                                    </div>
+                                </div>
+                            `;
+                        });
+                    } else if (sec.type === 'fill_in_blank') {
+                        sec.questions.forEach(q => {
+                            const userAnswer = readingAnswers[q.id] ? readingAnswers[q.id].userVal : '';
+                            const isAnswered = readingAnswers[q.id] !== undefined && readingAnswers[q.id] !== null;
+                            const isCorrect = isAnswered && readingAnswers[q.id].isCorrect;
+
+                            const statusBadge = isAnswered 
+                                ? (isCorrect ? '<span style="color: #10b981; font-weight: 800; font-size: 0.85rem;">To\'g\'ri ✅ (' + q.correct + ')</span>' : '<span style="color: #f43f5e; font-weight: 800; font-size: 0.85rem;">Noto\'g\'ri (To\'g\'ri javob: ' + q.correct + ') ❌</span>')
+                                : '';
+
+                            questionsHtml += `
+                                <div class="quiz-question-item" id="qitem-${q.id}">
+                                    <div class="quiz-question-text">
+                                        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                            <span>${q.number}. ${highlightText(q.sentence, searchQuery)}</span>
+                                            ${statusBadge}
+                                        </div>
+                                        <span class="quiz-question-text-uz">(${highlightText(q.sentence_uz || '', searchQuery)})</span>
+                                    </div>
+                                    <div class="fib-input-box">
+                                        <input type="text" placeholder="Bitta so'z yozing..." value="${userAnswer}" id="inp-${q.id}" ${isAnswered ? 'disabled' : ''}>
+                                        <button class="fib-check-btn" data-qid="${q.id}" ${isAnswered ? 'disabled style="opacity: 0.5;"' : ''}>Tekshirish</button>
+                                    </div>
+                                    <div class="question-explanation-box" id="exp-${q.id}" style="${isAnswered ? 'display: block;' : ''}">
+                                        💡 <strong>To'g'ri javob:</strong> <span style="color: #10b981; font-weight: 800;">${q.correct}</span>. ${q.explanation || ''}
+                                    </div>
+                                </div>
+                            `;
+                        });
+                    }
+
+                    sectionsHtml += `
+                        <div class="quiz-section">
+                            <div class="quiz-section-title">
+                                <span>📝 ${sec.title}</span>
+                                <span style="font-size: 0.85rem; font-weight: 500; color: var(--text-sub);">(${sec.title_uz || ''})</span>
+                            </div>
+                            ${sec.instruction ? `<p style="font-size: 0.9rem; color: var(--text-sub); margin-bottom: 12px; font-style: italic;">${sec.instruction}</p>` : ''}
+                            ${questionsHtml}
+                        </div>
+                    `;
+                });
+            }
+
+            cardEl.innerHTML = `
+                ${headerHtml}
+                ${passageHtml}
+                ${sectionsHtml}
+            `;
+
+            // Event Listeners for translation and audio
+            const toggleUzBtn = cardEl.querySelector('.passage-toggle-uz-btn');
+            const uzBox = cardEl.querySelector(`#uz-${item.id}`);
+            toggleUzBtn.addEventListener('click', () => {
+                if (uzBox.style.display === 'block') {
+                    uzBox.style.display = 'none';
+                    toggleUzBtn.innerHTML = '<span>🌐</span> O\'zbekcha tarjima';
+                } else {
+                    uzBox.style.display = 'block';
+                    toggleUzBtn.innerHTML = '<span>🙈</span> Tarjimani yashirish';
+                }
+            });
+
+            const audioStreamBtn = cardEl.querySelector('.audio-play-stream-btn');
+            audioStreamBtn.addEventListener('click', () => {
+                const textToRead = isListening ? item.audio_transcript : item.passage;
+                speak(textToRead);
+            });
+
+            // Handle Multiple Choice & True/False clicks
+            const choiceButtons = cardEl.querySelectorAll('.quiz-option-btn, .tf-btn');
+            choiceButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const qid = btn.getAttribute('data-qid');
+                    const selectedVal = btn.getAttribute('data-val');
+                    
+                    // Find question object
+                    let foundQ = null;
+                    item.sections.forEach(s => {
+                        s.questions.forEach(q => {
+                            if (q.id === qid) foundQ = q;
+                        });
+                    });
+
+                    if (!foundQ) return;
+
+                    const isCorrect = (selectedVal.toUpperCase() === foundQ.correct.toUpperCase());
+                    readingAnswers[qid] = {
+                        userVal: selectedVal,
+                        isCorrect: isCorrect
+                    };
+                    localStorage.setItem('readingAnswers', JSON.stringify(readingAnswers));
+
+                    // Re-render
+                    renderReadingContent(searchQuery);
+                });
+            });
+
+            // Handle Fill in blank check
+            const fibButtons = cardEl.querySelectorAll('.fib-check-btn');
+            fibButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const qid = btn.getAttribute('data-qid');
+                    const inp = cardEl.querySelector(`#inp-${qid}`);
+                    if (!inp) return;
+
+                    const val = inp.value.trim().toUpperCase();
+                    if (!val) {
+                        alert("Iltimos, javobni kiriting!");
+                        return;
+                    }
+
+                    // Find question object
+                    let foundQ = null;
+                    item.sections.forEach(s => {
+                        s.questions.forEach(q => {
+                            if (q.id === qid) foundQ = q;
+                        });
+                    });
+
+                    if (!foundQ) return;
+
+                    const acceptableList = (foundQ.acceptable || [foundQ.correct]).map(a => a.trim().toUpperCase());
+                    const isCorrect = acceptableList.includes(val) || val === foundQ.correct.toUpperCase();
+
+                    readingAnswers[qid] = {
+                        userVal: val,
+                        isCorrect: isCorrect
+                    };
+                    localStorage.setItem('readingAnswers', JSON.stringify(readingAnswers));
+
+                    // Re-render
+                    renderReadingContent(searchQuery);
+                });
+            });
+
+            moduleContainer.appendChild(cardEl);
+        });
+
+        contentArea.appendChild(moduleContainer);
+        updateProgress(totalCorrectCount, totalQuestionsCount || 1);
     }
 
     function renderContent(card, part, searchQuery = '') {
