@@ -60,8 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function adjustStudyToolsVisibility() {
         if (!flashcardToggleBtn || !studyToolsBar) return;
         
-        // Hide flashcards in writing and reading modes
-        if (currentMode === 'writing' || currentMode === 'reading') {
+        // Hide flashcards in writing, reading and listening modes
+        if (currentMode === 'writing' || currentMode === 'reading' || currentMode === 'listening') {
             flashcardToggleBtn.style.display = 'none';
         } else {
             flashcardToggleBtn.style.display = 'flex';
@@ -84,31 +84,10 @@ document.addEventListener('DOMContentLoaded', () => {
             'because', 'through', 'between', 'during', 'without', 'against'
         ]);
         
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = text;
-        
-        function traverseAndBlur(node) {
-            if (node.nodeType === Node.TEXT_NODE) {
-                const words = node.nodeValue.split(/(\s+)/);
-                const blurredWords = words.map(w => {
-                    const cleanWord = w.toLowerCase().replace(/[.,!?;:()]/g, "");
-                    if (cleanWord.length >= 5 && !stopwords.has(cleanWord) && /[a-z]/i.test(cleanWord)) {
-                        return `<span class="blurred-keyword" onclick="event.stopPropagation(); this.classList.toggle('revealed')" title="Bosing va oching">${w}</span>`;
-                    }
-                    return w;
-                });
-                const tempSpan = document.createElement('span');
-                tempSpan.innerHTML = blurredWords.join('');
-                node.parentNode.replaceChild(tempSpan, node);
-            } else if (node.nodeType === Node.ELEMENT_NODE) {
-                if (!node.classList.contains('answer-label') && !node.classList.contains('blurred-keyword')) {
-                    Array.from(node.childNodes).forEach(traverseAndBlur);
-                }
-            }
-        }
-        
-        Array.from(tempDiv.childNodes).forEach(traverseAndBlur);
-        return tempDiv.innerHTML;
+        return text.replace(/\b[a-zA-Z]{4,}\b/g, (match) => {
+            if (stopwords.has(match.toLowerCase())) return match;
+            return `<span class="blurred-keyword" title="Bosing: ko'rish/yashirish" onclick="this.classList.toggle('revealed')">${match}</span>`;
+        });
     }
 
     const levelSelector = document.getElementById('level-selector');
@@ -155,7 +134,11 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (currentMode === 'reading') {
                 cardsWrapper.style.display = 'none';
                 partsWrapper.style.display = 'none';
-                renderReadingContent();
+                renderReadingContent('reading');
+            } else if (currentMode === 'listening') {
+                cardsWrapper.style.display = 'none';
+                partsWrapper.style.display = 'none';
+                renderReadingContent('listening');
             } else {
                 cardsWrapper.style.display = 'block';
                 partsWrapper.style.display = 'block';
@@ -192,7 +175,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentMode === 'writing') {
                 renderWritingContent();
             } else if (currentMode === 'reading') {
-                renderReadingContent();
+                renderReadingContent('reading');
+            } else if (currentMode === 'listening') {
+                renderReadingContent('listening');
             } else {
                 renderContent(currentCard, currentPart);
             }
@@ -206,7 +191,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentMode === 'writing') {
                 renderWritingContent();
             } else if (currentMode === 'reading') {
-                renderReadingContent();
+                renderReadingContent('reading');
+            } else if (currentMode === 'listening') {
+                renderReadingContent('listening');
             } else {
                 renderContent(currentCard, currentPart);
             }
@@ -214,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Initialize UI with current mode
-    cardsWrapper.style.display = (currentMode === 'writing' || currentMode === 'reading') ? 'none' : 'block';
+    cardsWrapper.style.display = (currentMode === 'writing' || currentMode === 'reading' || currentMode === 'listening') ? 'none' : 'block';
     partsWrapper.style.display = (currentMode === 'speaking') ? 'block' : 'none';
     modeButtons.forEach(b => {
         if (b.getAttribute('data-mode') === currentMode) b.classList.add('active');
@@ -231,7 +218,9 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (currentMode === 'writing') {
                 renderWritingContent(query);
             } else if (currentMode === 'reading') {
-                renderReadingContent(query);
+                renderReadingContent('reading', query);
+            } else if (currentMode === 'listening') {
+                renderReadingContent('listening', query);
             } else {
                 renderContent(currentCard, currentPart, query);
             }
@@ -245,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 exportToPDF();
             } else if (currentMode === 'writing') {
                 exportWritingToPDF();
-            } else if (currentMode === 'reading') {
+            } else if (currentMode === 'reading' || currentMode === 'listening') {
                 window.print();
             } else {
                 exportToPDF();
@@ -418,6 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Hide/show mode navigation and parts wrapper
             const lessonsBtn = document.getElementById('lessons-mode-btn');
             const readingBtn = document.getElementById('reading-mode-btn');
+            const listeningBtn = document.getElementById('listening-mode-btn');
 
             if (currentLevel === 'pre-intermediate') {
                 if (lessonsBtn) lessonsBtn.style.display = 'flex';
@@ -427,17 +417,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (currentLevel === 'intermediate') {
                 if (readingBtn) readingBtn.style.display = 'flex';
+                if (listeningBtn) listeningBtn.style.display = 'flex';
             } else {
                 if (readingBtn) readingBtn.style.display = 'none';
+                if (listeningBtn) listeningBtn.style.display = 'none';
             }
 
             if (currentMode === 'lessons') {
                 cardsWrapper.style.display = 'block';
                 partsWrapper.style.display = 'none';
-            } else if (currentMode === 'writing') {
-                cardsWrapper.style.display = 'none';
-                partsWrapper.style.display = 'none';
-            } else if (currentMode === 'reading') {
+            } else if (currentMode === 'writing' || currentMode === 'reading' || currentMode === 'listening') {
                 cardsWrapper.style.display = 'none';
                 partsWrapper.style.display = 'none';
             } else {
@@ -459,7 +448,9 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (currentMode === 'writing') {
                 renderWritingContent();
             } else if (currentMode === 'reading') {
-                renderReadingContent();
+                renderReadingContent('reading');
+            } else if (currentMode === 'listening') {
+                renderReadingContent('listening');
             } else {
                 renderContent(currentCard, currentPart);
             }
@@ -1026,7 +1017,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateProgress(100, 100);
     }
 
-    function renderReadingContent(searchQuery = '') {
+    function renderReadingContent(activeType = 'reading', searchQuery = '') {
         contentArea.innerHTML = '';
         
         if (!readingData || readingData.length === 0) {
@@ -1034,12 +1025,20 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Filter items by type ('reading' or 'listening')
+        let itemsForMode = readingData.filter(item => item.type === activeType);
+
+        if (itemsForMode.length === 0) {
+            contentArea.innerHTML = `<div class="loader">${activeType === 'listening' ? 'Listening' : 'Reading'} ma'lumotlari mavjud emas.</div>`;
+            return;
+        }
+
         let totalQuestionsCount = 0;
         let totalAnsweredCount = 0;
         let totalCorrectCount = 0;
 
-        // Calculate overall stats
-        readingData.forEach(item => {
+        // Calculate score for this active mode
+        itemsForMode.forEach(item => {
             if (item.sections) {
                 item.sections.forEach(sec => {
                     if (sec.questions) {
@@ -1057,11 +1056,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Filter items if search query
-        let filtered = readingData;
+        // Filter by search query if present
+        let filtered = itemsForMode;
         if (searchQuery) {
             const query = searchQuery.toLowerCase();
-            filtered = readingData.filter(item => {
+            filtered = itemsForMode.filter(item => {
                 const text = (item.title + ' ' + (item.title_uz || '') + ' ' + (item.passage || '') + ' ' + (item.audio_transcript || '')).toLowerCase();
                 return text.includes(query);
             });
@@ -1080,17 +1079,27 @@ document.addEventListener('DOMContentLoaded', () => {
         scoreBox.className = 'reading-score-summary';
         scoreBox.innerHTML = `
             <div class="reading-score-text">
-                🎯 Natijalar: ${totalCorrectCount} / ${totalQuestionsCount} to'g'ri (Javob berildi: ${totalAnsweredCount}/${totalQuestionsCount})
+                🎯 ${activeType === 'listening' ? '🎧 Listening' : '📖 Reading'} Natijalari: <strong>${totalCorrectCount} / ${totalQuestionsCount}</strong> to'g'ri (Javob berildi: ${totalAnsweredCount}/${totalQuestionsCount})
             </div>
-            <button class="reading-reset-btn" title="Barcha javoblarni tozalash">🔄 Qayta topshirish (Reset)</button>
+            <button class="reading-reset-btn" title="Ushbu bo'lim javoblarini tozalash">🔄 Qaytadan boshlash (Reset)</button>
         `;
 
         const resetBtn = scoreBox.querySelector('.reading-reset-btn');
         resetBtn.addEventListener('click', () => {
-            if (confirm("Haqiqatan ham barcha test javoblaringizni o'chirib, qaytadan topshirmoqchimisiz?")) {
-                readingAnswers = {};
+            if (confirm(`Haqiqatan ham ${activeType === 'listening' ? 'Listening' : 'Reading'} test javoblaringizni o'chirib, qaytadan topshirmoqchimisiz?`)) {
+                itemsForMode.forEach(item => {
+                    if (item.sections) {
+                        item.sections.forEach(sec => {
+                            if (sec.questions) {
+                                sec.questions.forEach(q => {
+                                    delete readingAnswers[q.id];
+                                });
+                            }
+                        });
+                    }
+                });
                 localStorage.setItem('readingAnswers', JSON.stringify(readingAnswers));
-                renderReadingContent(searchQuery);
+                renderReadingContent(activeType, searchQuery);
             }
         });
 
@@ -1102,22 +1111,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const isListening = item.type === 'listening';
             const badgeClass = isListening ? 'reading-type-badge listening' : 'reading-type-badge';
-            const badgeLabel = isListening ? '🎧 Listening Test' : '📖 Reading Passage';
+            const badgeLabel = isListening ? '🎧 Real Audio Listening Exam' : '📖 Academic Reading Passage';
 
-            // Top banner
+            // Top banner with modern interactive audio controls
             const headerHtml = `
                 <div class="reading-header-banner">
                     <div class="reading-title-box">
-                        <span style="font-size: 1.6rem;">${item.topic_icon || (isListening ? '🎧' : '🤖')}</span>
+                        <span style="font-size: 1.8rem;">${item.topic_icon || (isListening ? '🎧' : '🤖')}</span>
                         <div>
                             <span class="${badgeClass}">${badgeLabel}</span>
-                            <h3 style="margin: 4px 0 2px 0; font-size: 1.25rem; font-weight: 800; color: var(--text-main);">${highlightText(item.title, searchQuery)}</h3>
-                            <span style="font-size: 0.85rem; color: var(--text-sub); font-style: italic;">(${item.title_uz || ''})</span>
+                            <h3 style="margin: 4px 0 2px 0; font-size: 1.3rem; font-weight: 800; color: var(--text-main);">${highlightText(item.title, searchQuery)}</h3>
+                            <span style="font-size: 0.88rem; color: var(--text-sub); font-style: italic;">(${item.title_uz || ''})</span>
                         </div>
                     </div>
                     <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
                         <button class="audio-play-stream-btn" data-id="${item.id}">
-                            <span>🔊</span> ${isListening ? "Audio eshitish" : "Matnni o'qish (Audio)"}
+                            <span>🔊</span> ${isListening ? "Audioni tinglash" : "Matnni o'qish (Audio)"}
                         </button>
                         <button class="passage-toggle-uz-btn" data-id="${item.id}">
                             <span>🌐</span> O'zbekcha tarjima
@@ -1131,7 +1140,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isListening) {
                 passageHtml = `
                     <div class="reading-passage-box">
-                        <div style="font-weight: 700; color: var(--primary); margin-bottom: 8px;">🎙️ Audio Transcript:</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <div style="font-weight: 800; color: #f43f5e; display: flex; align-items: center; gap: 6px;">
+                                <span>🎙️</span> Audio Transcript (Suhbat matni):
+                            </div>
+                            <span style="font-size: 0.8rem; color: var(--text-sub);">Ingliz tilida tinglang va savollarga javob bering</span>
+                        </div>
                         <div class="passage-en-content">${highlightText(item.audio_transcript, searchQuery)}</div>
                         <div class="reading-passage-uz" id="uz-${item.id}">
                             <div style="font-weight: 700; color: var(--text-sub); margin-bottom: 6px;">O'zbekcha tarjimasi:</div>
@@ -1142,6 +1156,12 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 passageHtml = `
                     <div class="reading-passage-box">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <div style="font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 6px;">
+                                <span>📄</span> Matn (Passage):
+                            </div>
+                            <span style="font-size: 0.8rem; color: var(--text-sub);">Matnni diqqat bilan o'qing va testlarni yeching</span>
+                        </div>
                         <div class="passage-en-content">${highlightText(item.passage, searchQuery)}</div>
                         <div class="reading-passage-uz" id="uz-${item.id}">
                             <div style="font-weight: 700; color: var(--text-sub); margin-bottom: 6px;">O'zbekcha tarjimasi:</div>
@@ -1346,7 +1366,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem('readingAnswers', JSON.stringify(readingAnswers));
 
                     // Re-render
-                    renderReadingContent(searchQuery);
+                    renderReadingContent(activeType, searchQuery);
                 });
             });
 
@@ -1384,7 +1404,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem('readingAnswers', JSON.stringify(readingAnswers));
 
                     // Re-render
-                    renderReadingContent(searchQuery);
+                    renderReadingContent(activeType, searchQuery);
                 });
             });
 
