@@ -1892,5 +1892,247 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ==========================================
+    // INTERACTIVE WORD POPUP DICTIONARY & AUDIO
+    // ==========================================
+    const wordPopup = document.createElement('div');
+    wordPopup.className = 'word-popup-card';
+    wordPopup.innerHTML = `
+        <div class="wp-header">
+            <div class="wp-text-box">
+                <span class="wp-word" id="wp-word">Word</span>
+                <span class="wp-trans" id="wp-trans">Yuklanmoqda...</span>
+            </div>
+            <button class="wp-close-btn" id="wp-close-btn" title="Yopish">✕</button>
+        </div>
+        <div class="wp-actions">
+            <button class="wp-btn" id="wp-audio-btn" title="Talaffuzni eshitish">
+                <span>🔊</span> Ovoz
+            </button>
+            <button class="wp-btn" id="wp-copy-btn" title="Nusxalash">
+                <span>📋</span> Nusxa
+            </button>
+            <button class="wp-btn" id="wp-fav-btn" title="Lug'atga saqlash">
+                <span>⭐</span> Saqlash
+            </button>
+        </div>
+        <div class="wp-colors">
+            <span class="wp-dot" style="background: #8b5cf6;" data-color="#8b5cf6"></span>
+            <span class="wp-dot" style="background: #f43f5e;" data-color="#f43f5e"></span>
+            <span class="wp-dot" style="background: #3b82f6;" data-color="#3b82f6"></span>
+            <span class="wp-dot" style="background: #10b981;" data-color="#10b981"></span>
+            <span class="wp-dot" style="background: #f59e0b;" data-color="#f59e0b"></span>
+        </div>
+    `;
+    document.body.appendChild(wordPopup);
+
+    let activeSelectedWord = '';
+    let currentTranslation = '';
+
+    const wpWordEl = document.getElementById('wp-word');
+    const wpTransEl = document.getElementById('wp-trans');
+    const wpCloseBtn = document.getElementById('wp-close-btn');
+    const wpAudioBtn = document.getElementById('wp-audio-btn');
+    const wpCopyBtn = document.getElementById('wp-copy-btn');
+    const wpFavBtn = document.getElementById('wp-fav-btn');
+
+    function hideWordPopup() {
+        wordPopup.classList.remove('active');
+        activeSelectedWord = '';
+    }
+
+    if (wpCloseBtn) wpCloseBtn.addEventListener('click', hideWordPopup);
+
+    if (wpAudioBtn) {
+        wpAudioBtn.addEventListener('click', () => {
+            if (activeSelectedWord) speak(activeSelectedWord);
+        });
+    }
+
+    if (wpCopyBtn) {
+        wpCopyBtn.addEventListener('click', () => {
+            if (activeSelectedWord) {
+                const textToCopy = `${activeSelectedWord} - ${currentTranslation}`;
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    wpCopyBtn.innerHTML = '<span>✅</span> Nusxalandi!';
+                    setTimeout(() => {
+                        wpCopyBtn.innerHTML = '<span>📋</span> Nusxa';
+                    }, 1500);
+                });
+            }
+        });
+    }
+
+    if (wpFavBtn) {
+        wpFavBtn.addEventListener('click', () => {
+            if (activeSelectedWord) {
+                let savedVocab = JSON.parse(localStorage.getItem('savedVocabulary')) || [];
+                const exists = savedVocab.find(v => v.word.toLowerCase() === activeSelectedWord.toLowerCase());
+                if (!exists) {
+                    savedVocab.push({ word: activeSelectedWord, trans: currentTranslation, date: new Date().toLocaleDateString() });
+                    localStorage.setItem('savedVocabulary', JSON.stringify(savedVocab));
+                    wpFavBtn.innerHTML = '<span>⭐</span> Saqlandi!';
+                } else {
+                    savedVocab = savedVocab.filter(v => v.word.toLowerCase() !== activeSelectedWord.toLowerCase());
+                    localStorage.setItem('savedVocabulary', JSON.stringify(savedVocab));
+                    wpFavBtn.innerHTML = '<span>☆</span> Saqlash';
+                }
+            }
+        });
+    }
+
+    // Quick built-in translation mapping for instant offline response
+    const quickDictionary = {
+        "happy": "baxtli, xursand",
+        "unhappy": "baxtsiz, xafa",
+        "introvert": "odamovi, o‘ziga berilgan",
+        "extravert": "ochiqko‘ngil, kirishimli",
+        "ambivert": "o‘rtacha, vaziyatga qarab ochiq yoki yopiq",
+        "patient": "sabrli, toqatli",
+        "patience": "sabr-toqat",
+        "temptation": "vasvasa, nafs istagi",
+        "business": "tadbirkorlik, biznes",
+        "competition": "raqobat, musobaqa",
+        "cooperation": "hamkorlik, birgalikda ishlash",
+        "competitive": "raqobatbardosh, raqobatli",
+        "technology": "texnologiya, texnika",
+        "gadget": "elektron qurilma, moslama",
+        "crime": "jinoyat",
+        "cybercrime": "kiberjinoyat, internet orqali qilingan jinoyat",
+        "weather": "ob-havo",
+        "climate": "iqlim",
+        "challenge": "qiyinchilik, sinov",
+        "traditional": "an’anaviy, milliy",
+        "crucial": "o‘ta muhim, hal qiluvchi",
+        "indispensable": "ajralmas, zarur",
+        "transformative": "o‘zgartiruvchi, inqilobiy",
+        "sustainable": "barqaror, tejamkor",
+        "resilience": "matonat, chidamlilik",
+        "profound": "chuqur, teran",
+        "immersion": "to‘liq sho‘ng‘ish, chuqur kirishish",
+        "accomplish": "amalga oshirmoq, erishmoq",
+        "optimistic": "nekbin, umidbaxsh",
+        "overcome": "yengib o‘tmoq, yengmoq",
+        "there": "u yerda, u yerga",
+        "here": "bu yerda, bu yerga",
+        "because": "chunki, sababli",
+        "example": "misol, namuna",
+        "reason": "sabab, asos",
+        "however": "biroq, ammo, lekin",
+        "therefore": "shuning uchun, natijada",
+        "furthermore": "bundan tashqari, shuningdek",
+        "essential": "muhim, zarur",
+        "significant": "sezilarli, muhim"
+    };
+
+    async function fetchTranslation(text) {
+        const clean = text.trim().toLowerCase();
+        if (quickDictionary[clean]) {
+            return quickDictionary[clean];
+        }
+
+        // Online Google / MyMemory translate API fallback
+        try {
+            const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|uz`);
+            const data = await res.json();
+            if (data && data.responseData && data.responseData.translatedText) {
+                return data.responseData.translatedText;
+            }
+        } catch (e) {
+            console.log("Translation fetch error:", e);
+        }
+        return "Tarjima topilmadi";
+    }
+
+    async function showTranslationPopup(text, posX, posY) {
+        if (!text || text.length < 2) return;
+        activeSelectedWord = text;
+        wpWordEl.textContent = text;
+        wpTransEl.textContent = "Tarjima qilinmoqda...";
+        
+        let savedVocab = JSON.parse(localStorage.getItem('savedVocabulary')) || [];
+        const isAlreadySaved = savedVocab.some(v => v.word.toLowerCase() === text.toLowerCase());
+        wpFavBtn.innerHTML = isAlreadySaved ? '<span>⭐</span> Saqlangan' : '<span>⭐</span> Saqlash';
+
+        // Position popup nicely on screen
+        const popupWidth = Math.min(window.innerWidth - 30, 290);
+        let left = posX - (popupWidth / 2);
+        let top = posY - 150;
+
+        if (left < 15) left = 15;
+        if (left + popupWidth > window.innerWidth - 15) left = window.innerWidth - popupWidth - 15;
+        if (top < 70) top = posY + 35;
+
+        wordPopup.style.left = `${left}px`;
+        wordPopup.style.top = `${top}px`;
+        wordPopup.classList.add('active');
+
+        currentTranslation = await fetchTranslation(text);
+        wpTransEl.textContent = currentTranslation;
+    }
+
+    // Handle Desktop Selection & Double Click
+    document.addEventListener('mouseup', (e) => {
+        // If clicked inside popup, do nothing
+        if (wordPopup.contains(e.target)) return;
+
+        const selection = window.getSelection();
+        const selectedText = selection ? selection.toString().trim() : '';
+
+        if (selectedText.length >= 2 && selectedText.length <= 60 && !selectedText.includes('\n')) {
+            const range = selection.getRangeAt(0);
+            const rect = range.getBoundingClientRect();
+            showTranslationPopup(selectedText, rect.left + (rect.width / 2), rect.top + window.scrollY);
+        }
+    });
+
+    // Handle Mobile Long-Press / Tap
+    let touchTimeout = null;
+    let touchStartPos = { x: 0, y: 0 };
+
+    document.addEventListener('touchstart', (e) => {
+        if (wordPopup.contains(e.target)) return;
+        const touch = e.touches[0];
+        touchStartPos = { x: touch.clientX, y: touch.clientY };
+
+        touchTimeout = setTimeout(() => {
+            const target = document.elementFromPoint(touch.clientX, touch.clientY);
+            if (target && (target.classList.contains('en-text') || target.classList.contains('passage-en-content') || target.classList.contains('reading-passage-box') || target.tagName === 'P' || target.tagName === 'SPAN')) {
+                const selection = window.getSelection();
+                const selectedText = selection ? selection.toString().trim() : '';
+                if (selectedText.length >= 2) {
+                    showTranslationPopup(selectedText, touch.clientX, touch.clientY + window.scrollY);
+                }
+            }
+        }, 550);
+    }, { passive: true });
+
+    document.addEventListener('touchmove', () => {
+        if (touchTimeout) clearTimeout(touchTimeout);
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+        if (touchTimeout) clearTimeout(touchTimeout);
+        if (wordPopup.contains(e.target)) return;
+
+        setTimeout(() => {
+            const selection = window.getSelection();
+            const selectedText = selection ? selection.toString().trim() : '';
+            if (selectedText.length >= 2 && selectedText.length <= 60) {
+                const range = selection.getRangeAt(0);
+                const rect = range.getBoundingClientRect();
+                showTranslationPopup(selectedText, rect.left + (rect.width / 2), rect.top + window.scrollY);
+            }
+        }, 150);
+    });
+
+    // Close on outside click
+    document.addEventListener('mousedown', (e) => {
+        if (!wordPopup.contains(e.target) && !window.getSelection().toString().trim()) {
+            hideWordPopup();
+        }
+    });
+
     initLevelSelection();
 });
+
