@@ -2022,52 +2022,88 @@ document.addEventListener('DOMContentLoaded', () => {
         "therefore": "shuning uchun, natijada",
         "furthermore": "bundan tashqari, shuningdek",
         "essential": "muhim, zarur",
-        "significant": "sezilarli, muhim"
+        "significant": "sezilarli, muhim",
+        "abundant": "mo‘l-ko‘l, serob",
+        "abundance": "mo‘l-ko‘llik, to‘kinlik",
+        "distinct": "aniq, ajralib turuvchi",
+        "boast": "faxrlanmoq, ega bo‘lmoq",
+        "delightfully": "juda yoqimli tarzda",
+        "tranquil": "osuda, sokin",
+        "contemplative": "chuqur o‘yga cho‘mgan",
+        "adversity": "qiyinchilik, kulfat",
+        "spectacle": "tomosha, ajoyib manzara",
+        "seamless": "uzluksiz, bir maromdagi"
     };
 
+    function decodeHtmlEntities(str) {
+        const txt = document.createElement("textarea");
+        txt.innerHTML = str;
+        return txt.value;
+    }
+
     async function fetchTranslation(text) {
-        const clean = text.trim().toLowerCase();
+        const clean = text.trim().toLowerCase().replace(/^[.,/#!$%^&*;:{}=\-_`~()?"'«»]+|[.,/#!$%^&*;:{}=\-_`~()?"'«»]+$/g, "");
         if (quickDictionary[clean]) {
             return quickDictionary[clean];
         }
 
-        // Online Google / MyMemory translate API fallback
+        // 1. Try Google Translate GTx API
         try {
-            const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|uz`);
+            const gUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=uz&dt=t&q=${encodeURIComponent(clean)}`;
+            const res = await fetch(gUrl);
             const data = await res.json();
-            if (data && data.responseData && data.responseData.translatedText) {
-                return data.responseData.translatedText;
+            if (data && data[0] && data[0][0] && data[0][0][0]) {
+                return decodeHtmlEntities(data[0][0][0]);
             }
         } catch (e) {
-            console.log("Translation fetch error:", e);
+            console.log("Google translate fallback error:", e);
         }
+
+        // 2. Try MyMemory API with proper HTML entity decode
+        try {
+            const mUrl = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(clean)}&langpair=en|uz`;
+            const res = await fetch(mUrl);
+            const data = await res.json();
+            if (data && data.responseData && data.responseData.translatedText) {
+                let trans = decodeHtmlEntities(data.responseData.translatedText);
+                // If it returns uppercase identical or error, handle cleanly
+                if (trans.toLowerCase() !== clean.toLowerCase() && !trans.includes("MYMEMORY WARNING")) {
+                    return trans;
+                }
+            }
+        } catch (e) {
+            console.log("MyMemory fetch error:", e);
+        }
+
         return "Tarjima topilmadi";
     }
 
     async function showTranslationPopup(text, posX, posY) {
-        if (!text || text.length < 2) return;
-        activeSelectedWord = text;
-        wpWordEl.textContent = text;
+        const cleanWord = text.trim().replace(/^[.,/#!$%^&*;:{}=\-_`~()?"'«»]+|[.,/#!$%^&*;:{}=\-_`~()?"'«»]+$/g, "");
+        if (!cleanWord || cleanWord.length < 2) return;
+
+        activeSelectedWord = cleanWord;
+        wpWordEl.textContent = cleanWord;
         wpTransEl.textContent = "Tarjima qilinmoqda...";
         
         let savedVocab = JSON.parse(localStorage.getItem('savedVocabulary')) || [];
-        const isAlreadySaved = savedVocab.some(v => v.word.toLowerCase() === text.toLowerCase());
+        const isAlreadySaved = savedVocab.some(v => v.word.toLowerCase() === cleanWord.toLowerCase());
         wpFavBtn.innerHTML = isAlreadySaved ? '<span>⭐</span> Saqlangan' : '<span>⭐</span> Saqlash';
 
-        // Position popup nicely on screen
+        // Position popup nicely on screen (fixed or absolute)
         const popupWidth = Math.min(window.innerWidth - 30, 290);
         let left = posX - (popupWidth / 2);
-        let top = posY - 150;
+        let top = posY - 175;
 
         if (left < 15) left = 15;
         if (left + popupWidth > window.innerWidth - 15) left = window.innerWidth - popupWidth - 15;
-        if (top < 70) top = posY + 35;
+        if (top < 75) top = posY + 30;
 
         wordPopup.style.left = `${left}px`;
         wordPopup.style.top = `${top}px`;
         wordPopup.classList.add('active');
 
-        currentTranslation = await fetchTranslation(text);
+        currentTranslation = await fetchTranslation(cleanWord);
         wpTransEl.textContent = currentTranslation;
     }
 
