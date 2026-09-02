@@ -1551,25 +1551,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 headingEn = item["Sovollar"] || '';
                 headingUz = item["Sovollar (UZ)"] || '';
 
-                const parts = [
-                    { label: "Answer", en: item["FullAnswer_EN"], uz: item["FullAnswer_UZ"] },
-                    { label: "Reason", en: item["Reason_EN"], uz: item["Reason_UZ"] },
-                    { label: "Example", en: item["Example_EN"], uz: item["Example_UZ"] },
-                    { label: "Extra Info", en: item["ExtraInfo_EN"], uz: item["ExtraInfo_UZ"] }
-                ];
-                textToSpeak = parts.map(p => p.en).filter(Boolean).join('. ');
-                answerHTML = parts.map(p => {
-                    if (!p.en) return '';
-                    const highlightedEn = highlightText(p.en, searchQuery);
-                    const blurredEn = isKeywordBlurActive ? blurKeywords(highlightedEn) : highlightedEn;
-                    return `
-                        <div class="answer-block">
-                            <span class="answer-label">${p.label}:</span>
-                            <span class="en-text highlight">${blurredEn}</span>
-                            <span class="uz-text small">(${highlightText(p.uz, searchQuery)})</span>
-                        </div>
-                    `;
-                }).join('');
+                textToSpeak = item["FullAnswer_EN"] || "";
+                const highlightedEn = highlightText(item["FullAnswer_EN"], searchQuery);
+                const blurredEn = isKeywordBlurActive ? blurKeywords(highlightedEn) : highlightedEn;
+                answerHTML = `
+                    <div class="answer-content">
+                        <span class="en-text" style="color: var(--primary); font-weight: 600; font-size: 1.05rem; line-height: 1.6;">${blurredEn}</span>
+                        <span class="uz-text" style="display: block; margin-top: 8px; color: var(--text-sub); font-size: 0.95rem;">(${highlightText(item["FullAnswer_UZ"] || "Tarjima yo'q", searchQuery)})</span>
+                    </div>
+                `;
             } else {
                 headingEn = item["Sovollar"] || '';
                 headingUz = item["Sovollar (UZ)"] || '';
