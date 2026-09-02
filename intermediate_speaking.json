@@ -4,9 +4,9 @@
     "Mavzular nomi": "Card A",
     "Qism": "Part 1",
     "Sovollar": "1. Are you a happy person?",
-    "Sovollar (UZ)": "Siz baxtli insonmisiz?",
-    "FullAnswer_EN": "Yes, I consider myself a truly happy person. I always try to maintain an optimistic mindset, appreciate what I have in life, and spend meaningful time with my family and supportive friends.",
-    "FullAnswer_UZ": "Ha, men o‘zimni chinakam baxtli inson deb bilaman. Men doimo nekbin (ijobiy) fikrlashga, hayotda bor narsalarimni qadrlashga va oilam hamda qo‘llab-quvvatlovchi do‘stlarim bilan mazmunli vaqt o‘tkazishga harakat qilaman."
+    "Sovollar (UZ)": "Siz baxtli odammisiz?",
+    "FullAnswer_EN": "Yes, I consider myself a happy person because I try to appreciate the good things in my life. I enjoy spending time with my family and friends. Of course, I have bad days, but I usually try to stay positive.",
+    "FullAnswer_UZ": "Ha, men o‘zimni baxtli inson deb hisoblayman, chunki hayotimdagi yaxshi narsalarni qadrlashga harakat qilaman. Oilam va do‘stlarim bilan vaqt o‘tkazish menga yoqadi. Albatta, yomon kunlarim ham bo‘ladi, lekin odatda ijobiy bo‘lishga harakat qilaman."
   },
   {
     "Mavzular": "A",
@@ -14,8 +14,8 @@
     "Qism": "Part 1",
     "Sovollar": "2. When do you feel unhappy?",
     "Sovollar (UZ)": "Qachon o‘zingizni baxtsiz his qilasiz?",
-    "FullAnswer_EN": "I usually feel unhappy when I encounter unexpected failures, face overwhelming stress, or when I see my loved ones struggling with difficult situations and illnesses.",
-    "FullAnswer_UZ": "Men odatda kutilmagan muvaffaqiyatsizliklarga duch kelganimda, og‘ir stress holatida qolganimda yoki yaqinlarimning qiyin vaziyatlar va kasalliklar bilan kurashayotganini ko‘rganimda o‘zimni baxtsiz his qilaman."
+    "FullAnswer_EN": "I usually feel unhappy when I have too many problems or when something does not go as planned. I also feel bad when I argue with someone close to me. However, I try to solve my problems instead of thinking about them for too long.",
+    "FullAnswer_UZ": "Odatda juda ko‘p muammolarim bo‘lsa yoki ishlar rejalashtirganimdek ketmasa, o‘zimni baxtsiz his qilaman. Yaqin insonim bilan janjallashib qolsam ham o‘zimni yomon his qilaman. Biroq muammolar haqida uzoq o‘ylashdan ko‘ra, ularni hal qilishga harakat qilaman."
   },
   {
     "Mavzular": "A",
@@ -23,8 +23,8 @@
     "Qism": "Part 1",
     "Sovollar": "3. What makes you happy?",
     "Sovollar (UZ)": "Sizni nima baxtli qiladi?",
-    "FullAnswer_EN": "Accomplishing my personal goals, helping people in need, travelling to new destinations, and having heartfelt conversations with my close friends bring immense joy to my life.",
-    "FullAnswer_UZ": "Shaxsiy maqsadlarimga erishish, muhtoj insonlarga yordam berish, yangi joylarga sayohat qilish va yaqin do‘stlarim bilan samimiy suhbatlar qurish hayotimga cheksiz quvonch bag‘ishlaydi."
+    "FullAnswer_EN": "Spending time with people I love makes me happy. I also feel good when I achieve something that I have worked hard for. Simple things like listening to music or having a relaxing evening can also improve my mood.",
+    "FullAnswer_UZ": "Men sevgan insonlarim bilan vaqt o‘tkazish meni baxtli qiladi. Ko‘p mehnat qilgan narsamga erishsam ham o‘zimni yaxshi his qilaman. Musiqa tinglash yoki tinch oqshom o‘tkazish kabi oddiy narsalar ham kayfiyatimni ko‘taradi."
   },
   {
     "Mavzular": "A",
@@ -32,26 +32,26 @@
     "Qism": "Part 1",
     "Sovollar": "4. Are you introvert or extravert?",
     "Sovollar (UZ)": "Siz introvertmisiz yoki ekstravert?",
-    "FullAnswer_EN": "I would say I am an ambivert. While I thoroughly enjoy socializing with people and collaborating in teams, I also need regular quiet moments alone to recharge my mental energy.",
-    "FullAnswer_UZ": "Men o‘zimni ambivert (ikkala xususiyatga ega inson) deb aytgan bo‘lardim. Men insonlar bilan muloqot qilishni va jamoada ishlashni yoqtirsam-da, ruhiy quvvatimni tiklash uchun yolg‘iz sokin daqiqalarga ham muhtojman."
+    "FullAnswer_EN": "I think I am more of an introvert, although I can be social when I feel comfortable. I enjoy spending time alone and thinking about my plans. However, I also like talking to close friends and meeting new people.",
+    "FullAnswer_UZ": "Menimcha, men ko‘proq introvertman, garchi o‘zimni qulay his qilganimda odamlar bilan muloqot qila olsam ham. Yolg‘iz vaqt o‘tkazish va rejalarim haqida o‘ylash menga yoqadi. Shu bilan birga, yaqin do‘stlarim bilan gaplashishni va yangi odamlar bilan tanishishni ham yaxshi ko‘raman."
   },
   {
     "Mavzular": "A",
     "Mavzular nomi": "Card A",
     "Qism": "Part 2",
     "Sovollar": "1. Are kids patient nowadays? What things can’t they wait for?",
-    "Sovollar (UZ)": "Hozirgi bolalar sabrlimi? Ular nimalarni kuta olishmaydi?",
-    "FullAnswer_EN": "Generally speaking, modern children are less patient due to instant digital technology. They constantly expect immediate results, especially when downloading mobile games, receiving fast food, or waiting for their parents to buy them new gadgets.",
-    "FullAnswer_UZ": "Umuman olganda, zamonaviy bolalar tezkor raqamli texnologiyalar sababli sabrsizroqdir. Ular doimo tezkor natijalarni kutishadi, ayniqsa mobil o‘yinlarni yuklab olishda, tez tayyor bo‘ladigan taomlarni olishda yoki ota-onalaridan yangi gadjetlar sotib berishni kutishda."
+    "Sovollar (UZ)": "Hozirgi kunda bolalar sabrlimi? Ular qaysi narsalarni kuta olmaydilar?",
+    "FullAnswer_EN": "I don't think many children are very patient nowadays because they are used to getting things quickly. For example, they often want new toys, games, or videos immediately. Technology has made waiting more difficult for them.",
+    "FullAnswer_UZ": "Menimcha, hozirgi kunda ko‘p bolalar juda sabrli emas, chunki ular narsalarni tez olishga o‘rganib qolishgan. Masalan, ular yangi o‘yinchoq, o‘yin yoki videoni darhol xohlashadi. Texnologiya ular uchun kutishni qiyinlashtirdi."
   },
   {
     "Mavzular": "A",
     "Mavzular nomi": "Card A",
     "Qism": "Part 2",
     "Sovollar": "2. Should parents buy their kids whatever they want?",
-    "Sovollar (UZ)": "Ota-onalar farzandlariga ular xohlagan hamma narsani sotib berishlari kerakmi?",
-    "FullAnswer_EN": "No, absolutely not. Buying everything spoils children and prevents them from understanding the true value of hard-earned money and patience. Parents should teach them discipline and prioritize real necessities over impulse wishes.",
-    "FullAnswer_UZ": "Yo‘q, aslo unday emas. Hamma narsani sotib berish bolalarni erkalatib yuboradi va ularga mehnat bilan topilgan pulning va sabrning haqiqiy qadrini tushunishga to‘sqinlik qiladi. Ota-onalar ularga tartib-intizomni o‘rgatishlari va injiqliklardan ko‘ra haqiqiy ehtiyojlarni ustun qo‘yishlari kerak."
+    "Sovollar (UZ)": "Ota-onalar farzandlariga ular xohlagan hamma narsani olib berishlari kerakmi?",
+    "FullAnswer_EN": "No, I don't think parents should buy everything their children want. Children need to understand that money and things have value. Sometimes saying no can teach them to be more responsible and patient.",
+    "FullAnswer_UZ": "Yo‘q, menimcha, ota-onalar farzandlari xohlagan hamma narsani olib bermasliklari kerak. Bolalar pul va narsalarning qadrini tushunishlari kerak. Ba’zan yo‘q deyish ularga mas’uliyatli va sabrli bo‘lishni o‘rgatishi mumkin."
   },
   {
     "Mavzular": "A",
@@ -59,26 +59,27 @@
     "Qism": "Part 2",
     "Sovollar": "3. Do parents need to teach their children to be patient?",
     "Sovollar (UZ)": "Ota-onalar farzandlariga sabrli bo‘lishni o‘rgatishlari kerakmi?",
-    "FullAnswer_EN": "Yes, definitely. Patience is an indispensable life skill that helps individuals overcome obstacles, make thoughtful long-term decisions, and build healthy relationships throughout their adult lives.",
-    "FullAnswer_UZ": "Ha, albatta. Sabr-toqat — bu insonlarga qiyinchiliklarni yengishga, o‘ylab uzoq muddatli qarorlar qabul qilishga va butun ulg‘aygan hayotlari davomida sog‘lom munosabatlar o‘rnatishga yordam beradigan ajralmas hayotiy ko‘nikmadir."
+    "FullAnswer_EN": "Yes, definitely, because patience is an important skill in life. Children need to learn that good things sometimes take time. Parents can teach patience by asking their children to wait and complete tasks step by step.",
+    "FullAnswer_UZ": "Ha, albatta, chunki sabr hayotdagi muhim ko‘nikmalardan biridir. Bolalar yaxshi narsalarga ba’zan vaqt kerakligini o‘rganishlari lozim. Ota-onalar farzandlaridan kutishni va vazifalarni bosqichma-bosqich bajarishni so‘rab, sabrni o‘rgatishlari mumkin."
   },
   {
     "Mavzular": "A",
     "Mavzular nomi": "Card A",
     "Qism": "Part 2",
     "Sovollar": "4. How do you manage to resist your temptation?",
-    "Sovollar (UZ)": "Siz vasvasa va vasvasaga tushishga qarshi qanday kurashasiz?",
-    "FullAnswer_EN": "I resist temptations by practicing self-control and focusing on my ultimate long-term objectives. For instance, when I feel tempted to waste time on social media, I remind myself of my academic priorities and immediately eliminate distractions.",
-    "FullAnswer_UZ": "Men o‘z-o‘zimni nazorat qilishni mashq qilib, asosiy uzoq muddatli maqsadlarimga diqqatimni qaratish orqali vasvasalarni yengaman. Masalan, ijtimoiy tarmoqlarda vaqtni behuda sarflash vasvasasi paydo bo‘lganda, o‘qishdagi ustuvor vazifalarimni eslayman va chalg‘ituvchi omillarni darhol bartaraf qilaman."
+    "Sovollar (UZ)": "Vasvasalaringizga qanday qarshi turasiz?",
+    "FullAnswer_EN": "I usually remind myself of my goals when I feel tempted to do something unnecessary. I try to think about the long-term results instead of my immediate feelings. Keeping myself busy also helps me avoid unnecessary temptations.",
+    "FullAnswer_UZ": "Keraksiz biror narsa qilish istagi paydo bo‘lsa, odatda o‘z maqsadlarimni eslayman. Men hozirgi his-tuyg‘ularimdan ko‘ra uzoq muddatli natijalar haqida o‘ylashga harakat qilaman. O‘zimni band qilish ham keraksiz vasvasalardan qochishga yordam beradi."
   },
+
   {
     "Mavzular": "B",
     "Mavzular nomi": "Card B",
     "Qism": "Part 1",
     "Sovollar": "1. Are you interested in doing business?",
-    "Sovollar (UZ)": "Siz biznes qilishga qiziqasizmi?",
-    "FullAnswer_EN": "Yes, I am deeply interested in entrepreneurship because it offers financial independence, fosters creative innovation, and provides the opportunity to create valuable jobs for other people.",
-    "FullAnswer_UZ": "Ha, men tadbirkorlikka juda qiziqaman, chunki u moliyaviy mustaqillik beradi, ijodiy innovatsiyalarni rivojlantiradi va boshqa insonlar uchun qadrli ish o‘rinlarini yaratish imkoniyatini taqdim etadi."
+    "Sovollar (UZ)": "Siz biznes bilan shug‘ullanishga qiziqasizmi?",
+    "FullAnswer_EN": "Yes, I am interested in business because it can give people independence and new opportunities. I would like to learn how businesses work and how successful companies grow. I think business also teaches useful skills such as communication and problem-solving.",
+    "FullAnswer_UZ": "Ha, men biznesga qiziqaman, chunki u odamlarga mustaqillik va yangi imkoniyatlar berishi mumkin. Biznes qanday ishlashi va muvaffaqiyatli kompaniyalar qanday rivojlanishini o‘rganishni xohlardim. Menimcha, biznes muloqot va muammolarni hal qilish kabi foydali ko‘nikmalarni ham o‘rgatadi."
   },
   {
     "Mavzular": "B",
@@ -86,98 +87,99 @@
     "Qism": "Part 1",
     "Sovollar": "2. Is it easy to set up a business in Uzbekistan?",
     "Sovollar (UZ)": "O‘zbekistonda biznes boshlash osonmi?",
-    "FullAnswer_EN": "Recently, it has become significantly easier due to government reforms, digital tax services, and online registration portals, although securing substantial starting capital and finding skilled employees remain challenging.",
-    "FullAnswer_UZ": "So‘nggi paytlarda hukumat islohotlari, raqamli soliq xizmatlari va onlayn ro‘yxatdan o‘tish portallari tufayli bu ancha osonlashdi, garchi yetarli boshlang‘ich kapital topish va malakali xodimlarni jalb qilish qiyinligicha qolmoqda."
+    "FullAnswer_EN": "I think starting a business in Uzbekistan is possible, but it is not always easy. People need money, a good plan, and knowledge about the market and laws. However, modern technology and online services have made some parts of the process easier.",
+    "FullAnswer_UZ": "Menimcha, O‘zbekistonda biznes boshlash mumkin, lekin bu har doim ham oson emas. Odamlarga pul, yaxshi reja va bozor hamda qonunlar haqida bilim kerak. Biroq zamonaviy texnologiyalar va onlayn xizmatlar jarayonning ayrim qismlarini osonlashtirdi."
   },
   {
     "Mavzular": "B",
     "Mavzular nomi": "Card B",
     "Qism": "Part 1",
     "Sovollar": "3. Do you have any business people in your family?",
-    "Sovollar (UZ)": "Oilangizda biznes bilan shug‘ullanuvchi insonlar bormi?",
-    "FullAnswer_EN": "Yes, my uncle successfully runs a commercial trading company, and his determination, strategic thinking, and strong work ethic have always inspired my career aspirations.",
-    "FullAnswer_UZ": "Ha, mening tog‘am tijorat savdo kompaniyasini muvaffaqiyatli boshqaradi va uning qat’iyati, strategik fikrlashi hamda kuchli mehnatsevarligi har doim mening kasbiy maqsadlarimga ilhom berib kelgan."
+    "Sovollar (UZ)": "Oilangizda biznes bilan shug‘ullanuvchi odamlar bormi?",
+    "FullAnswer_EN": "Yes, there are some people in my family who have experience in business. I have learned from them that running a business requires patience and responsibility. Their experience has made me more interested in entrepreneurship.",
+    "FullAnswer_UZ": "Ha, oilamda biznesda tajribaga ega bo‘lgan insonlar bor. Ulardan biznes yuritish sabr va mas’uliyat talab qilishini o‘rganganman. Ularning tajribasi menda tadbirkorlikka qiziqishni yanada oshirdi."
   },
   {
     "Mavzular": "B",
     "Mavzular nomi": "Card B",
     "Qism": "Part 1",
     "Sovollar": "4. What successful companies do you know?",
-    "Sovollar (UZ)": "Qanday muvaffaqiyatli kompaniyalarni bilasiz?",
-    "FullAnswer_EN": "Globally, I admire tech giants like Apple, Google, and Amazon, while in Uzbekistan, innovative enterprises such as Korzinka, Payme, and Uzum have achieved remarkable market success.",
-    "FullAnswer_UZ": "Dunyo miqyosida men Apple, Google va Amazon kabi texnologiya gigantlarini qadrlayman, O‘zbekistonda esa Korzinka, Payme va Uzum kabi innovatsion korxonalar ajoyib bozor muvaffaqiyatiga erishdi."
+    "Sovollar (UZ)": "Qaysi muvaffaqiyatli kompaniyalarni bilasiz?",
+    "FullAnswer_EN": "I know companies such as Apple, Microsoft, Google, and Amazon. They became successful by creating useful products and adapting to changes in technology. I think their success also comes from strong brands and good management.",
+    "FullAnswer_UZ": "Men Apple, Microsoft, Google va Amazon kabi kompaniyalarni bilaman. Ular foydali mahsulotlar yaratish va texnologiyadagi o‘zgarishlarga moslashish orqali muvaffaqiyatga erishgan. Menimcha, ularning muvaffaqiyatiga kuchli brend va yaxshi boshqaruv ham sabab bo‘lgan."
   },
   {
     "Mavzular": "B",
     "Mavzular nomi": "Card B",
     "Qism": "Part 2",
     "Sovollar": "1. If you wanted to set up a business, what business would you start?",
-    "Sovollar (UZ)": "Agar biznes boshlamoqchi bo‘lsangiz, qanday biznes boshlagan bo‘lardingiz?",
-    "FullAnswer_EN": "I would launch an educational technology startup that provides affordable online courses and interactive English learning tools for students across remote regions of our country.",
-    "FullAnswer_UZ": "Men mamlakatimizning chekka hududlaridagi talabalar uchun hamyonbop onlayn kurslar va interaktiv ingliz tili o‘rganish vositalarini taqdim etuvchi ta’lim texnologiyalari (EdTech) startapini ishga tushirgan bo‘lardim."
+    "Sovollar (UZ)": "Agar biznes boshlamoqchi bo‘lsangiz, qanday biznes boshlardingiz?",
+    "FullAnswer_EN": "If I started a business, I would probably create an online education company. I would provide affordable courses for people who want to improve their English and professional skills. I think this type of business could be useful because many people want to learn online.",
+    "FullAnswer_UZ": "Agar biznes boshlasam, ehtimol onlayn ta’lim kompaniyasini tashkil qilardim. Ingliz tili va kasbiy ko‘nikmalarini rivojlantirmoqchi bo‘lganlar uchun hamyonbop kurslar taklif qilardim. Menimcha, bunday biznes foydali bo‘lishi mumkin, chunki ko‘p odamlar onlayn o‘qishni xohlashadi."
   },
   {
     "Mavzular": "B",
     "Mavzular nomi": "Card B",
     "Qism": "Part 2",
     "Sovollar": "2. What are the challenges of starting a business?",
-    "Sovollar (UZ)": "Biznes boshlashning qanday qiyinchiliklari bor?",
-    "FullAnswer_EN": "The primary challenges include securing sufficient funding, managing financial risks, navigating fierce market competition, and attracting loyal, high-performing employees.",
-    "FullAnswer_UZ": "Asosiy qiyinchiliklar qatoriga yetarli mablag‘ni jalb qilish, moliyaviy xatarlarni boshqarish, shiddatli bozor raqobatiga bardosh berish hamda sadoqatli, yuqori malakali xodimlarni jalb qilish kiradi."
+    "Sovollar (UZ)": "Biznes boshlashda qanday qiyinchiliklar mavjud?",
+    "FullAnswer_EN": "One of the biggest challenges is finding enough money to start the business. Another problem is competition because there may already be many similar companies. Business owners also need to make good decisions and accept the possibility of failure.",
+    "FullAnswer_UZ": "Eng katta qiyinchiliklardan biri biznesni boshlash uchun yetarli pul topishdir. Yana bir muammo raqobat, chunki bozorda shunga o‘xshash ko‘plab kompaniyalar bo‘lishi mumkin. Biznes egalari yaxshi qarorlar qabul qilishlari va muvaffaqiyatsizlik ehtimolini ham qabul qilishlari kerak."
   },
   {
     "Mavzular": "B",
     "Mavzular nomi": "Card B",
     "Qism": "Part 2",
     "Sovollar": "3. How can you advertise your products or service?",
-    "Sovollar (UZ)": "Mahsulot yoki xizmatingizni qanday reklama qila olasiz?",
-    "FullAnswer_EN": "The most effective method today is digital marketing, including targeted social media campaigns on Instagram and Telegram, collaborating with credible influencers, and optimizing search engines.",
-    "FullAnswer_UZ": "Bugungi kunda eng samarali usul bu raqamli marketingdir, jumladan Instagram va Telegramda maqsadli reklama kampaniyalari, ishonchli blogerlar bilan hamkorlik qilish va qidiruv tizimlarini optimallashtirish (SEO)."
+    "Sovollar (UZ)": "Mahsulot yoki xizmatingizni qanday reklama qilishingiz mumkin?",
+    "FullAnswer_EN": "I would mainly use social media because it is relatively cheap and can reach many people. I would create useful and interesting content to attract potential customers. I would also use recommendations and special offers to build a strong customer base.",
+    "FullAnswer_UZ": "Men asosan ijtimoiy tarmoqlardan foydalanardim, chunki ular nisbatan arzon va ko‘p odamlarga yetib borish imkonini beradi. Potensial mijozlarni jalb qilish uchun foydali va qiziqarli kontent yaratardim. Kuchli mijozlar bazasini yaratish uchun tavsiyalar va maxsus takliflardan ham foydalanardim."
   },
   {
     "Mavzular": "B",
     "Mavzular nomi": "Card B",
     "Qism": "Part 2",
     "Sovollar": "4. If you needed some financial support, how would you attract some investors?",
-    "Sovollar (UZ)": "Agar sizga moliyaviy yordam kerak bo‘lsa, investorlarni qanday jalb qilgan bo‘lardingiz?",
-    "FullAnswer_EN": "I would prepare a comprehensive business plan with clear financial projections, demonstrate a viable prototype, and present a compelling pitch highlighting the unique competitive edge of the project.",
-    "FullAnswer_UZ": "Men aniq moliyaviy hisob-kitoblarga ega puxta biznes-rejani tayyorlagan, ishchi prototipni namoyish etgan va loyihaning o‘ziga xos raqobatdosh ustunligini ko‘rsatib beruvchi jozibador taqdimot (pitch) o‘tkazgan bo‘lardim."
+    "Sovollar (UZ)": "Agar moliyaviy yordam kerak bo‘lsa, investorlarni qanday jalb qilardingiz?",
+    "FullAnswer_EN": "First, I would create a clear business plan and explain how the business could make a profit. I would show investors the market, potential customers, and my plans for growth. I would also try to show confidence and explain why my idea is different from competitors.",
+    "FullAnswer_UZ": "Avvalo, aniq biznes-reja tuzib, biznes qanday foyda keltirishi mumkinligini tushuntirardim. Investorlar uchun bozor, potensial mijozlar va rivojlanish rejalarimni ko‘rsatardim. Shuningdek, o‘zimga bo‘lgan ishonchimni ko‘rsatib, g‘oyam raqobatchilardan nimasi bilan farq qilishini tushuntirardim."
   },
+
   {
     "Mavzular": "C",
     "Mavzular nomi": "Card C",
     "Qism": "Part 1",
     "Sovollar": "1. Do you like competitions?",
-    "Sovollar (UZ)": "Siz musobaqa va raqobatlarni yoqtirasizmi?",
-    "FullAnswer_EN": "Yes, I enjoy healthy competitions because they motivate me to push beyond my limits, stay fully focused, and continually refine my skills.",
-    "FullAnswer_UZ": "Ha, men sog‘lom raqobatni yoqtiraman, chunki u meni o‘z imkoniyatlarim chegarasidan chiqishga, to‘liq diqqatni jamlashga va ko‘nikmalarimni doimiy ravishda takomillashtirishga undaydi."
+    "Sovollar (UZ)": "Musobaqalarni yoqtirasizmi?",
+    "FullAnswer_EN": "Yes, I like competitions because they motivate me to work harder. I enjoy competing with others when the competition is friendly. It can also help me understand my strengths and weaknesses.",
+    "FullAnswer_UZ": "Ha, men musobaqalarni yoqtiraman, chunki ular meni ko‘proq harakat qilishga undaydi. Raqobat do‘stona bo‘lsa, boshqalar bilan bellashish menga yoqadi. Bu menga kuchli va zaif tomonlarimni tushunishga ham yordam beradi."
   },
   {
     "Mavzular": "C",
     "Mavzular nomi": "Card C",
     "Qism": "Part 1",
     "Sovollar": "2. Have you ever taken part in a competition?",
-    "Sovollar (UZ)": "Siz hech musobaqada qatnashganmisiz?",
-    "FullAnswer_EN": "Yes, during my high school years, I took part in regional academic Olympiads and chess tournaments, which taught me great discipline and emotional resilience.",
-    "FullAnswer_UZ": "Ha, maktab yillarimda men mintaqaviy fan olimpiadalari va shaxmat turnirlarida qatnashganman, bu menga kuchli intizom va ruhiy matonatni o‘rgatgan."
+    "Sovollar (UZ)": "Hech qachon musobaqada qatnashganmisiz?",
+    "FullAnswer_EN": "Yes, I have taken part in several competitions at school and university. Some of them were difficult, but they gave me useful experience. Even when I did not win, I learned something from the experience.",
+    "FullAnswer_UZ": "Ha, maktab va universitetda bir nechta musobaqalarda qatnashganman. Ularning ayrimlari qiyin bo‘lgan, lekin menga foydali tajriba bergan. Hatto g‘alaba qozonmagan paytlarimda ham bu tajribadan nimanidir o‘rganganman."
   },
   {
     "Mavzular": "C",
     "Mavzular nomi": "Card C",
     "Qism": "Part 1",
     "Sovollar": "3. Which is more important: competition or cooperation?",
-    "Sovollar (UZ)": "Qaysi biri muhimroq: raqobatmi yoki hamkorlik?",
-    "FullAnswer_EN": "Both are crucial, but I believe cooperation is fundamentally more important because solving major global and community problems requires teamwork, empathy, and collective harmony.",
-    "FullAnswer_UZ": "Ikkalasi ham juda muhim, ammo men hamkorlikni asosiy jihatdan muhimroq deb hisoblayman, chunki katta global va jamiyat muammolarini hal qilish jamoaviy ish, empatiya va o‘zaro hamjihatlikni talab qiladi."
+    "Sovollar (UZ)": "Qaysi biri muhimroq: raqobatmi yoki hamkorlikmi?",
+    "FullAnswer_EN": "I think cooperation is more important because people can achieve bigger goals by working together. Competition is also useful because it encourages people to improve. In my opinion, the best situation is to cooperate while still trying to improve yourself.",
+    "FullAnswer_UZ": "Menimcha, hamkorlik muhimroq, chunki odamlar birgalikda ishlash orqali kattaroq maqsadlarga erisha oladilar. Raqobat ham foydali, chunki u odamlarni rivojlanishga undaydi. Menimcha, eng yaxshi yo‘l hamkorlik qilish va shu bilan birga o‘z ustingda ishlashdir."
   },
   {
     "Mavzular": "C",
     "Mavzular nomi": "Card C",
     "Qism": "Part 1",
     "Sovollar": "4. Do you like competitive sports?",
-    "Sovollar (UZ)": "Siz raqobatli sport turlarini yoqtirasizmi?",
-    "FullAnswer_EN": "Yes, I am a passionate fan of competitive sports like football and boxing because the intense spirit, strategic gameplay, and unpredictable drama are truly thrilling.",
-    "FullAnswer_UZ": "Ha, men futbol va boks kabi raqobatli sport turlarining ashaddiy muxlisiman, chunki ulardagi shiddatli ruh, strategik o‘yin va oldindan aytib bo‘lmaydigan qiziqarli lahzalar chinakam hayajon bag‘ishlaydi."
+    "Sovollar (UZ)": "Raqobatli sport turlarini yoqtirasizmi?",
+    "FullAnswer_EN": "Yes, I enjoy watching and sometimes playing competitive sports. They are exciting because the result is not always predictable. I especially like sports where teamwork and strategy are important.",
+    "FullAnswer_UZ": "Ha, men raqobatli sport turlarini tomosha qilishni va ba’zan o‘ynashni yoqtiraman. Ular qiziqarli, chunki natijani har doim ham oldindan bilib bo‘lmaydi. Ayniqsa, jamoaviy ish va strategiya muhim bo‘lgan sport turlarini yoqtiraman."
   },
   {
     "Mavzular": "C",
@@ -185,17 +187,17 @@
     "Qism": "Part 2",
     "Sovollar": "1. What competitive sports do you know?",
     "Sovollar (UZ)": "Qanday raqobatli sport turlarini bilasiz?",
-    "FullAnswer_EN": "I am familiar with many competitive sports, ranging from team games such as football, basketball, and volleyball to individual disciplines like tennis, swimming, and martial arts.",
-    "FullAnswer_UZ": "Men futbol, basketbol va voleybol kabi jamoaviy o‘yinlardan tortib, tennis, suzish va yakkakurash san’atlari kabi individual sport turlarigacha bo‘lgan ko‘plab raqobatli sportlarni bilaman."
+    "FullAnswer_EN": "There are many competitive sports, such as football, basketball, tennis, boxing, and athletics. Some of them are individual sports, while others require a team. Each sport has different rules and requires different skills.",
+    "FullAnswer_UZ": "Futbol, basketbol, tennis, boks va yengil atletika kabi ko‘plab raqobatli sport turlari mavjud. Ularning ayrimlari individual sport bo‘lsa, boshqalari jamoaviy mehnatni talab qiladi. Har bir sportning o‘z qoidalari va turli ko‘nikmalari mavjud."
   },
   {
     "Mavzular": "C",
     "Mavzular nomi": "Card C",
     "Qism": "Part 2",
     "Sovollar": "2. Should children do competitive sports at school?",
-    "Sovollar (UZ)": "Bolalar maktabda raqobatli sport bilan shug‘ullanishlari kerakmi?",
-    "FullAnswer_EN": "Yes, definitely. Participating in sports teaches young students essential values such as teamwork, mutual respect, dealing with defeat gracefully, and maintaining physical fitness.",
-    "FullAnswer_UZ": "Ha, albatta. Sport bilan shug‘ullanish yosh o‘quvchilarga jamoada ishlash, o‘zaro hurmat, mag‘lubiyatni munosib qabul qilish va jismoniy sog‘lomlikni saqlash kabi muhim qadriyatlarni o‘rgatadi."
+    "Sovollar (UZ)": "Bolalar maktabda raqobatli sport turlari bilan shug‘ullanishlari kerakmi?",
+    "FullAnswer_EN": "Yes, I think children should take part in competitive sports at school. It can teach them teamwork, discipline, and how to deal with both success and failure. However, teachers should make sure that the competition is healthy and enjoyable.",
+    "FullAnswer_UZ": "Ha, menimcha, bolalar maktabda raqobatli sport turlari bilan shug‘ullanishlari kerak. Bu ularga jamoada ishlash, intizom va g‘alaba hamda mag‘lubiyatni qabul qilishni o‘rgatadi. Biroq o‘qituvchilar musobaqa sog‘lom va qiziqarli bo‘lishini ta’minlashlari kerak."
   },
   {
     "Mavzular": "C",
@@ -203,8 +205,8 @@
     "Qism": "Part 2",
     "Sovollar": "3. What are the advantages of competitive sports?",
     "Sovollar (UZ)": "Raqobatli sportning qanday afzalliklari bor?",
-    "FullAnswer_EN": "The primary advantages include improved cardiovascular health, reduced mental stress, heightened discipline, and the development of strong leadership and communication capabilities.",
-    "FullAnswer_UZ": "Asosiy afzalliklar qatoriga yurak-qon tomir salomatligining yaxshilanishi, ruhiy stressning kamayishi, yuqori intizom hamda kuchli yetakchilik va muloqot qobiliyatlarining rivojlanishi kiradi."
+    "FullAnswer_EN": "Competitive sports can improve physical health and teach people to work hard. They also develop discipline, confidence, and teamwork. Another advantage is that people learn how to deal with pressure.",
+    "FullAnswer_UZ": "Raqobatli sport jismoniy salomatlikni yaxshilashi va odamlarni qattiq mehnat qilishga o‘rgatishi mumkin. Ular intizom, o‘ziga ishonch va jamoada ishlash ko‘nikmalarini ham rivojlantiradi. Yana bir afzalligi shundaki, odamlar bosim bilan kurashishni o‘rganadilar."
   },
   {
     "Mavzular": "C",
@@ -212,44 +214,45 @@
     "Qism": "Part 2",
     "Sovollar": "4. What are the disadvantages of competitive sports?",
     "Sovollar (UZ)": "Raqobatli sportning qanday kamchiliklari bor?",
-    "FullAnswer_EN": "The main drawbacks are the risk of severe physical injuries, excessive psychological pressure to win at all costs, and potential conflicts between aggressive opponents.",
-    "FullAnswer_UZ": "Asosiy kamchiliklar bu og‘ir jismoniy jarohatlar xavfi, har qanday yo‘l bilan g‘alaba qozonish uchun ortiqcha psixologik bosim va raqiblar o‘rtasidagi yuzaga kelishi mumkin bo‘lgan agressiv nizolardir."
+    "FullAnswer_EN": "One disadvantage is that some people become too focused on winning. This can create stress and make sports less enjoyable. There is also a risk of injuries, especially when athletes train too hard.",
+    "FullAnswer_UZ": "Kamchiliklardan biri shundaki, ba’zi odamlar faqat g‘alaba qozonishga juda ko‘p e’tibor berishadi. Bu stress keltirib chiqarishi va sportni kamroq qiziqarli qilishi mumkin. Ayniqsa, sportchilar haddan tashqari ko‘p mashq qilganda jarohatlanish xavfi ham mavjud."
   },
+
   {
     "Mavzular": "D",
     "Mavzular nomi": "Card D",
     "Qism": "Part 1",
     "Sovollar": "1. What do you do in your free time?",
     "Sovollar (UZ)": "Bo‘sh vaqtingizda nima qilasiz?",
-    "FullAnswer_EN": "In my leisure time, I enjoy reading insightful books, practicing spoken English, going for refreshing outdoor walks, and exploring new technology trends on the internet.",
-    "FullAnswer_UZ": "Bo‘sh vaqtimda men mazmunli kitoblarni o‘qishni, ingliz tilida so‘zlashuvni mashq qilishni, ochiq havoda sayr qilishni va internetda yangi texnologiya tendensiyalarini o‘rganishni yoqtiraman."
+    "FullAnswer_EN": "In my free time, I usually watch films, listen to music, or meet my friends. I also spend some time learning new things online. When I am tired, I prefer simply relaxing at home.",
+    "FullAnswer_UZ": "Bo‘sh vaqtimda odatda filmlar tomosha qilaman, musiqa tinglayman yoki do‘stlarim bilan uchrashaman. Shuningdek, internet orqali yangi narsalarni o‘rganishga ham vaqt ajrataman. Charchaganimda esa uyda shunchaki dam olishni afzal ko‘raman."
   },
   {
     "Mavzular": "D",
     "Mavzular nomi": "Card D",
     "Qism": "Part 1",
     "Sovollar": "2. Have you ever participated in any sport competitions?",
-    "Sovollar (UZ)": "Siz hech sport musobaqalarida qatnashganmisiz?",
-    "FullAnswer_EN": "Yes, I have competed in local football tournaments and sprint running events at school, which proved to be an exhilarating and character-building experience.",
-    "FullAnswer_UZ": "Ha, men maktabda mahalliy futbol turnirlarida va qisqa masofaga yugurish musobaqalarida qatnashganman, bu juda hayajonli va xarakterni shakllantiruvchi tajriba bo‘lgan."
+    "Sovollar (UZ)": "Hech qachon sport musobaqalarida qatnashganmisiz?",
+    "FullAnswer_EN": "Yes, I have participated in a few sports competitions. They were not professional competitions, but they were still exciting and challenging. I learned that preparation and teamwork are very important.",
+    "FullAnswer_UZ": "Ha, bir nechta sport musobaqalarida qatnashganman. Ular professional musobaqalar emas edi, lekin baribir qiziqarli va qiyin bo‘lgan. Men tayyorgarlik va jamoaviy ish juda muhimligini tushundim."
   },
   {
     "Mavzular": "D",
     "Mavzular nomi": "Card D",
     "Qism": "Part 1",
     "Sovollar": "3. Do you like travelling across your country?",
-    "Sovollar (UZ)": "O‘z mamlakatingiz bo‘ylab sayohat qilishni yoqtirasizmi?",
-    "FullAnswer_EN": "Yes, absolutely. Uzbekistan has a rich historical heritage, and I truly love exploring legendary ancient cities such as Samarkand, Bukhara, and Khiva.",
-    "FullAnswer_UZ": "Ha, albatta. O‘zbekiston boy tarixiy merosga ega va men Samarqand, Buxoro va Xiva kabi afsonaviy qadimiy shaharlarni ziyorat qilishni va o‘rganishni juda yaxshi ko‘raman."
+    "Sovollar (UZ)": "Mamlakatingiz bo‘ylab sayohat qilishni yoqtirasizmi?",
+    "FullAnswer_EN": "Yes, I really enjoy travelling around my country because there are many interesting places to visit. I like seeing different landscapes and learning about local culture. Travelling also helps me relax and forget about my daily routine.",
+    "FullAnswer_UZ": "Ha, mamlakatim bo‘ylab sayohat qilishni juda yoqtiraman, chunki tashrif buyurishga arziydigan ko‘plab qiziqarli joylar bor. Turli manzaralarni ko‘rish va mahalliy madaniyat haqida bilish menga yoqadi. Sayohat qilish menga dam olish va kundalik hayotimni bir muddat unutishga yordam beradi."
   },
   {
     "Mavzular": "D",
     "Mavzular nomi": "Card D",
     "Qism": "Part 1",
     "Sovollar": "4. Do you prefer to spend time indoors or outdoors?",
-    "Sovollar (UZ)": "Vaqtingizni bino ichida o‘tkazishni afzal ko‘rasizmi yoki ochiq havoda?",
-    "FullAnswer_EN": "I prefer spending time outdoors because fresh air and scenic natural surroundings help relieve mental fatigue and keep me physically energized.",
-    "FullAnswer_UZ": "Men vaqtimni ochiq havoda o‘tkazishni afzal ko‘raman, chunki toza havo va chiroyli tabiiy manzara aqliy charchoqni ketkazishga va jismonan baquvvat bo‘lishimga yordam beradi."
+    "Sovollar (UZ)": "Vaqtingizni uyda yoki tashqarida o‘tkazishni afzal ko‘rasizmi?",
+    "FullAnswer_EN": "I prefer spending time outdoors because I feel more energetic when I am outside. I enjoy walking, travelling, and meeting friends in different places. However, I also like staying indoors when I need to rest.",
+    "FullAnswer_UZ": "Men vaqtimni tashqarida o‘tkazishni afzal ko‘raman, chunki tashqarida bo‘lganimda o‘zimni faolroq his qilaman. Sayr qilish, sayohat qilish va turli joylarda do‘stlarim bilan uchrashishni yoqtiraman. Biroq dam olishim kerak bo‘lsa, uyda qolishni ham yaxshi ko‘raman."
   },
   {
     "Mavzular": "D",
@@ -257,17 +260,17 @@
     "Qism": "Part 2",
     "Sovollar": "1. Describe your dream job.",
     "Sovollar (UZ)": "Orzuingizdagi kasbni tasvirlab bering.",
-    "FullAnswer_EN": "My dream job is to work as an international software engineer or data analyst at a world-class tech company, where I can build impactful digital products and work flexibly from anywhere in the world.",
-    "FullAnswer_UZ": "Mening orzuyimdagi kasbim — jahon darajasidagi texnologiya kompaniyasida xalqaro dasturiy ta’minot muhandisi yoki ma’lumotlar tahlilchisi bo‘lib ishlashdir, u yerda men foydali raqamli mahsulotlar yaratishim va dunyoning istalgan nuqtasidan erkin ishlay olishim mumkin."
+    "FullAnswer_EN": "My dream job would be a career where I can use my creativity and work with interesting people. I would like to have a good salary, but a friendly working environment is also important to me. Most importantly, I want to enjoy my work and continue learning.",
+    "FullAnswer_UZ": "Mening orzuimdagi ish ijodkorligimdan foydalanish va qiziqarli insonlar bilan ishlash imkonini beradigan kasb bo‘lardi. Yaxshi maosh men uchun muhim, lekin do‘stona ish muhiti ham katta ahamiyatga ega. Eng muhimi, ishimdan zavq olish va o‘rganishda davom etishni xohlayman."
   },
   {
     "Mavzular": "D",
     "Mavzular nomi": "Card D",
     "Qism": "Part 2",
     "Sovollar": "2. What job will be popular in the future?",
-    "Sovollar (UZ)": "Kelajakda qaysi kasb ommabop bo‘ladi?",
-    "FullAnswer_EN": "Professions related to Artificial Intelligence, cybersecurity, renewable green energy engineering, and digital healthcare will be in exceptionally high demand in the coming decades.",
-    "FullAnswer_UZ": "Kelgusi o‘n yilliklarda Sun’iy Intellekt, kiberxavfsizlik, qayta tiklanuvchi yashil energiya muhandisligi va raqamli sog‘liqni saqlash bilan bog‘liq kasblarga talab favqulodda yuqori bo‘ladi."
+    "Sovollar (UZ)": "Kelajakda qaysi kasblar mashhur bo‘ladi?",
+    "FullAnswer_EN": "I think technology-related jobs will become even more popular in the future. For example, software developers, data analysts, and artificial intelligence specialists may be in high demand. At the same time, people with strong communication and creative skills will also be needed.",
+    "FullAnswer_UZ": "Menimcha, kelajakda texnologiya bilan bog‘liq kasblar yanada mashhur bo‘ladi. Masalan, dasturchilar, ma’lumotlar tahlilchilari va sun’iy intellekt mutaxassislariga talab yuqori bo‘lishi mumkin. Shu bilan birga, kuchli muloqot va ijodiy ko‘nikmalarga ega insonlar ham kerak bo‘ladi."
   },
   {
     "Mavzular": "D",
@@ -275,26 +278,27 @@
     "Qism": "Part 2",
     "Sovollar": "3. Explain profession that is getting popular in your country now.",
     "Sovollar (UZ)": "Hozir mamlakatingizda ommalashib borayotgan kasbni tushuntiring.",
-    "FullAnswer_EN": "Information Technology and digital programming are rapidly booming in Uzbekistan today because the government is actively supporting modern IT parks and creating tremendous high-paying opportunities for young specialists.",
-    "FullAnswer_UZ": "Bugungi kunda O‘zbekistonda Axborot Texnologiyalari va raqamli dasturlash jadal rivojlanmoqda, chunki davlat zamonaviy IT-parklarni faol qo‘llab-quvvatlamoqda va yosh mutaxassislar uchun juda ko‘p yuqori maoshli imkoniyatlar yaratmoqda."
+    "FullAnswer_EN": "One profession that is becoming popular in Uzbekistan is software development. Many young people are learning programming because they can work for international companies from their home country. It is attractive because it can offer good career opportunities and flexible working conditions.",
+    "FullAnswer_UZ": "O‘zbekistonda ommalashib borayotgan kasblardan biri dasturchilikdir. Ko‘plab yoshlar dasturlashni o‘rganmoqda, chunki ular o‘z mamlakatidan turib xalqaro kompaniyalarda ishlashlari mumkin. Bu kasb yaxshi karyera imkoniyatlari va moslashuvchan ish sharoitlarini taklif qilishi bilan jozibali."
   },
   {
     "Mavzular": "D",
     "Mavzular nomi": "Card D",
     "Qism": "Part 2",
     "Sovollar": "4. How will technology help people to do business that is more successful?",
-    "Sovollar (UZ)": "Texnologiya odamlarga biznesni yanada muvaffaqiyatli qilishda qanday yordam beradi?",
-    "FullAnswer_EN": "Technology enables businesses to automate repetitive operations, analyze complex customer data, deliver rapid worldwide delivery, and reach millions of potential clients through international e-commerce channels.",
-    "FullAnswer_UZ": "Texnologiya bizneslarga takrorlanuvchi jarayonlarni avtomatlashtirish, mijozlarning murakkab ma’lumotlarini tahlil qilish, tezkor xalqaro yetkazib berishni ta’minlash va xalqaro elektron tijorat kanallari orqali millionlab potensial mijozlarga yetib borish imkonini beradi."
+    "Sovollar (UZ)": "Texnologiya odamlarga biznesni yanada muvaffaqiyatli yuritishda qanday yordam beradi?",
+    "FullAnswer_EN": "Technology helps businesses communicate with customers quickly and sell products online. Companies can also use data to understand what customers want. As a result, businesses can save time, reduce costs, and make better decisions.",
+    "FullAnswer_UZ": "Texnologiya bizneslarga mijozlar bilan tez muloqot qilish va mahsulotlarni onlayn sotishga yordam beradi. Kompaniyalar mijozlar nimani xohlashini tushunish uchun ma’lumotlardan ham foydalanishlari mumkin. Natijada bizneslar vaqtni tejashi, xarajatlarni kamaytirishi va yaxshiroq qarorlar qabul qilishi mumkin."
   },
+
   {
     "Mavzular": "E",
     "Mavzular nomi": "Card E",
     "Qism": "Part 1",
     "Sovollar": "1. Is it safe to live in your city?",
-    "Sovollar (UZ)": "Sizning shahringizda yashash xavfsizmi?",
-    "FullAnswer_EN": "Yes, my city is exceptionally safe. The streets are well-lit at night, police patrols are active, and violent crime rates are remarkably low compared to many global capitals.",
-    "FullAnswer_UZ": "Ha, mening shahrim favqulodda xavfsiz. Kechasi ko‘chalar yaxshi yoritilgan, politsiya patrullari faol ishlaydi va zo‘ravonlik bilan bog‘liq jinoyatlar darajasi ko‘plab jahon poytaxtlariga qaraganda ancha past."
+    "Sovollar (UZ)": "Shaharingizda yashash xavfsizmi?",
+    "FullAnswer_EN": "Yes, I think my city is generally a safe place to live. Most people can go to work, study, and travel around the city without serious problems. However, it is still important to be careful, especially at night.",
+    "FullAnswer_UZ": "Ha, menimcha, mening shahrim umuman olganda yashash uchun xavfsiz joy. Ko‘pchilik odamlar jiddiy muammolarsiz ishga, o‘qishga va shahar bo‘ylab yurishlari mumkin. Biroq ayniqsa tunda ehtiyot bo‘lish baribir muhim."
   },
   {
     "Mavzular": "E",
@@ -302,44 +306,44 @@
     "Qism": "Part 1",
     "Sovollar": "2. What types of crimes do you know?",
     "Sovollar (UZ)": "Qanday jinoyat turlarini bilasiz?",
-    "FullAnswer_EN": "I am aware of various crimes, including petty theft, burglary, and vandalism, as well as modern digital offences like internet fraud, identity theft, and hacking.",
-    "FullAnswer_UZ": "Men mayda o‘g‘rilik, xonadonga bostirib kirish va mulkni buzish kabi jinoyatlar bilan bir qatorda internet firibgarligi, shaxsiy ma’lumotlarni o‘g‘irlash va xakerlik kabi zamonaviy raqamli jinoyatlarni ham bilaman."
+    "FullAnswer_EN": "There are many types of crime, such as theft, robbery, fraud, and cybercrime. Some crimes happen physically, while others happen online. I think people should understand basic safety rules to protect themselves.",
+    "FullAnswer_UZ": "O‘g‘rilik, talonchilik, firibgarlik va kiberjinoyat kabi ko‘plab jinoyat turlari mavjud. Ba’zi jinoyatlar jismoniy tarzda, boshqalari esa internet orqali sodir bo‘ladi. Menimcha, odamlar o‘zlarini himoya qilish uchun asosiy xavfsizlik qoidalarini bilishlari kerak."
   },
   {
     "Mavzular": "E",
     "Mavzular nomi": "Card E",
     "Qism": "Part 1",
     "Sovollar": "3. Is the nightlife dangerous in your city?",
-    "Sovollar (UZ)": "Shahringizda tungi hayot xavflimi?",
-    "FullAnswer_EN": "No, it is generally very peaceful and secure. People of all ages can comfortably stroll in public parks, dine at late-night cafes, and use reliable public transport without fearing for their safety.",
-    "FullAnswer_UZ": "Yo‘q, u umuman olganda juda tinch va xavfsiz. Barcha yoshdagi insonlar jamoat bog‘larida bemalol sayr qilishlari, tungi kafelarda ovqatlanishlari va o‘z xavfsizliklaridan qo‘rqmasdan ishonchli jamoat transportidan foydalanishlari mumkin."
+    "Sovollar (UZ)": "Shaharingizdagi tungi hayot xavflimi?",
+    "FullAnswer_EN": "I would not say that nightlife in my city is very dangerous. There are many places where people can spend time safely with friends. However, people should avoid isolated areas and be careful when travelling home late at night.",
+    "FullAnswer_UZ": "Shahrimdagi tungi hayotni juda xavfli deb aytmagan bo‘lardim. Odamlar do‘stlari bilan xavfsiz vaqt o‘tkazishlari mumkin bo‘lgan ko‘plab joylar mavjud. Biroq odamlar kimsasiz joylardan qochishlari va kechasi uyga qaytayotganda ehtiyot bo‘lishlari kerak."
   },
   {
     "Mavzular": "E",
     "Mavzular nomi": "Card E",
     "Qism": "Part 1",
     "Sovollar": "4. Have you ever witnessed any type of crime?",
-    "Sovollar (UZ)": "Siz hech qanday jinoyatning guvohi bo‘lganmisiz?",
-    "FullAnswer_EN": "Fortunately, I have never witnessed any violent crimes in person, although I have occasionally heard about minor pickpocketing incidents on crowded public buses.",
-    "FullAnswer_UZ": "Baxtimga, men shaxsan hech qachon jiddiy zo‘ravonlik jinoyatining guvohi bo‘lmaganman, garchi gavjum jamoat avtobuslarida mayda cho‘ntakkesarlik holatlari haqida ba’zan eshitgan bo‘lsam-da."
+    "Sovollar (UZ)": "Hech qachon biror jinoyatga guvoh bo‘lganmisiz?",
+    "FullAnswer_EN": "I have never witnessed a very serious crime directly. However, I have seen small incidents such as people arguing or someone trying to steal something. In such situations, I think it is better to stay safe and contact the appropriate authorities.",
+    "FullAnswer_UZ": "Men hech qachon juda jiddiy jinoyatga bevosita guvoh bo‘lmaganman. Biroq odamlarning janjallashgani yoki kimdir biror narsani o‘g‘irlashga urinayotganini ko‘rganman. Bunday vaziyatlarda xavfsizlikni saqlash va tegishli organlarga murojaat qilish yaxshiroq deb o‘ylayman."
   },
   {
     "Mavzular": "E",
     "Mavzular nomi": "Card E",
     "Qism": "Part 2",
     "Sovollar": "1. What would you do to decrease the crime rate if you worked as a police officer?",
-    "Sovollar (UZ)": "Agar politsiya xodimi bo‘lib ishlasangiz, jinoyatchilik darajasini kamaytirish uchun nima qilgan bo‘lardingiz?",
-    "FullAnswer_EN": "If I were a police officer, I would install comprehensive modern surveillance cameras, increase community patrols in vulnerable neighborhoods, and organize youth awareness campaigns about legal consequences.",
-    "FullAnswer_UZ": "Agar men politsiya xodimi bo‘lganimda, zamonaviy kuzatuv kameralarini o‘rnatgan, xavfli mahallalarda jamoat patrullarini ko‘paytirgan va yoshlar o‘rtasida qonuniy oqibatlar haqida tushuntirish kampaniyalarini tashkil qilgan bo‘lardim."
+    "Sovollar (UZ)": "Agar politsiya xodimi bo‘lib ishlaganingizda, jinoyatchilik darajasini kamaytirish uchun nima qilardingiz?",
+    "FullAnswer_EN": "I would focus on preventing crime instead of only reacting after crimes happen. I would support better street lighting, community programs, and cooperation between police and local residents. I would also make sure that young people have educational and social opportunities.",
+    "FullAnswer_UZ": "Men jinoyat sodir bo‘lgandan keyin javob berishdan ko‘ra, jinoyatlarning oldini olishga e’tibor qaratardim. Ko‘chalarni yaxshiroq yoritish, jamoat dasturlari va politsiya hamda mahalliy aholi o‘rtasidagi hamkorlikni qo‘llab-quvvatlardim. Yoshlar uchun ta’lim va ijtimoiy imkoniyatlar bo‘lishini ham ta’minlashga harakat qilardim."
   },
   {
     "Mavzular": "E",
     "Mavzular nomi": "Card E",
     "Qism": "Part 2",
     "Sovollar": "2. Why do you think crime rates are higher in cities?",
-    "Sovollar (UZ)": "Nega shaharlarda jinoyatchilik darajasi yuqoriroq deb o‘ylaysiz?",
-    "FullAnswer_EN": "Cities experience higher crime rates due to high population density, economic inequalities, social anonymity, and greater opportunities for illegal financial gains.",
-    "FullAnswer_UZ": "Shaharlarda jinoyatchilik darajasining yuqoriligi aholi zichligining kattaligi, iqtisodiy tengsizlik, insonlarning bir-birini tanimasligi (anonimlik) va noqonuniy moliyaviy daromad olish imkoniyatlarining ko‘pligi bilan bog‘liq."
+    "Sovollar (UZ)": "Nima uchun shaharlarda jinoyatchilik darajasi yuqoriroq deb o‘ylaysiz?",
+    "FullAnswer_EN": "Cities have large populations, so there are simply more people and more opportunities for crime. Some cities also have problems such as unemployment, poverty, and overcrowding. These social problems can sometimes increase criminal activity.",
+    "FullAnswer_UZ": "Shaharlarda aholi juda ko‘p bo‘ladi, shuning uchun odamlar va jinoyat sodir bo‘lishi mumkin bo‘lgan imkoniyatlar ham ko‘proq. Ayrim shaharlarda ishsizlik, qashshoqlik va aholining haddan tashqari zichligi kabi muammolar ham mavjud. Bunday ijtimoiy muammolar ba’zan jinoyatchilikni oshirishi mumkin."
   },
   {
     "Mavzular": "E",
@@ -347,116 +351,118 @@
     "Qism": "Part 2",
     "Sovollar": "3. What is cybercrime?",
     "Sovollar (UZ)": "Kiberjinoyat nima?",
-    "FullAnswer_EN": "Cybercrime refers to illegal activities conducted via computers and the internet, such as unauthorized data hacking, phishing scams, credit card fraud, and distributing malicious software.",
-    "FullAnswer_UZ": "Kiberjinoyat — bu kompyuterlar va internet orqali amalga oshiriladigan noqonuniy harakatlar, masalan, ruxsatsiz ma’lumotlarni buzib kirish (xakerlik), fishing firibgarligi, kredit karta o‘g‘riligi va zararli virus dasturlarini tarqatishdir."
+    "FullAnswer_EN": "Cybercrime is a crime that involves computers, phones, or the internet. For example, criminals may steal personal information, hack accounts, or use fake websites to take people's money. People should use strong passwords and be careful with suspicious messages.",
+    "FullAnswer_UZ": "Kiberjinoyat kompyuter, telefon yoki internet bilan bog‘liq jinoyatdir. Masalan, jinoyatchilar shaxsiy ma’lumotlarni o‘g‘irlashi, akkauntlarni buzishi yoki odamlarning pullarini olish uchun soxta saytlardan foydalanishi mumkin. Odamlar kuchli parollardan foydalanishlari va shubhali xabarlardan ehtiyot bo‘lishlari kerak."
   },
   {
     "Mavzular": "E",
     "Mavzular nomi": "Card E",
     "Qism": "Part 2",
     "Sovollar": "4. Would you help a person if he/she were being attacked??",
-    "Sovollar (UZ)": "Agar kimdir hujumga uchragan bo‘lsa, siz unga yordam berarmidingiz?",
-    "FullAnswer_EN": "Yes, I would definitely help, but in a smart and secure way. I would immediately call the emergency police hotline and attract the attention of nearby people to intervene safely without risking lives unnecessarily.",
-    "FullAnswer_UZ": "Ha, men albatta yordam berardim, lekin oqilona va xavfsiz yo‘l bilan. Men darhol favqulodda politsiya xizmatiga qo‘ng‘iroq qilgan va insonlar hayotini xavf ostiga qo‘ymasdan xavfsiz yordam berish uchun atrofdagilarning e’tiborini jalb qilgan bo‘lardim."
+    "Sovollar (UZ)": "Agar biror odamga hujum qilinayotganini ko‘rsangiz, unga yordam berarmidingiz?",
+    "FullAnswer_EN": "Yes, I would try to help, but I would first make sure that I was safe. I would call the police or emergency services and ask other people nearby for help. I would not directly confront a dangerous attacker if it could put me or the victim in greater danger.",
+    "FullAnswer_UZ": "Ha, yordam berishga harakat qilardim, lekin avvalo o‘zimning xavfsizligimga ishonch hosil qilardim. Politsiya yoki tez yordam xizmatlariga qo‘ng‘iroq qilib, yaqin atrofdagi odamlardan yordam so‘rardim. Agar hujumchi xavfli bo‘lsa va bu meni yoki jabrlanuvchini yanada katta xavfga qo‘ysa, unga to‘g‘ridan-to‘g‘ri qarshi chiqmasdim."
   },
+
   {
     "Mavzular": "F",
     "Mavzular nomi": "Card F",
     "Qism": "Part 1",
     "Sovollar": "1. Do you watch films?",
-    "Sovollar (UZ)": "Siz filmlar tomosha qilasizmi?",
-    "FullAnswer_EN": "Yes, I regularly watch movies on weekends because they offer great entertainment, help broaden my cultural horizons, and serve as an effective way to improve my English listening comprehension.",
-    "FullAnswer_UZ": "Ha, men dam olish kunlari muntazam ravishda filmlar ko‘raman, chunki ular ajoyib hordiq bag‘ishlaydi, madaniy dunyoqarashimni kengaytiradi va ingliz tilida tinglab tushunish ko‘nikmamni oshirishning samarali usuli hisoblanadi."
+    "Sovollar (UZ)": "Filmlar tomosha qilasizmi?",
+    "FullAnswer_EN": "Yes, I watch films quite often, especially when I have free time. I enjoy films because they help me relax and sometimes teach me something new. I usually watch them at home.",
+    "FullAnswer_UZ": "Ha, men filmlarni tez-tez tomosha qilaman, ayniqsa bo‘sh vaqtim bo‘lganda. Filmlar menga dam olishga va ba’zan yangi narsalarni o‘rganishga yordam beradi. Odatda ularni uyda tomosha qilaman."
   },
   {
     "Mavzular": "F",
     "Mavzular nomi": "Card F",
     "Qism": "Part 1",
     "Sovollar": "2. Do you prefer watching movies at home or in the cinema? Why?",
-    "Sovollar (UZ)": "Filmlarni uyda ko‘rishni afzal ko‘rasizmi yoki kinoteatrdami? Nega?",
-    "FullAnswer_EN": "I prefer watching films in the cinema because the colossal screen, surround sound systems, and collective audience atmosphere deliver an unmatched immersive cinematic experience.",
-    "FullAnswer_UZ": "Men kinolarni kinoteatrda ko‘rishni afzal ko‘raman, chunki ulkan ekran, ajoyib ovoz tizimlari va tomoshabinlarning umumiy muhiti tengsiz va ta’sirchan kino tajribasini taqdim etadi."
+    "Sovollar (UZ)": "Filmlarni uyda yoki kinoteatrda tomosha qilishni afzal ko‘rasizmi? Nima uchun?",
+    "FullAnswer_EN": "I prefer watching movies at home because it is more comfortable and convenient. I can pause the film, choose my own food, and watch it whenever I want. However, big action films can be more exciting in a cinema.",
+    "FullAnswer_UZ": "Men filmlarni uyda tomosha qilishni afzal ko‘raman, chunki bu qulayroq. Filmni to‘xtatish, o‘zim xohlagan taomni tanlash va istagan paytimda tomosha qilishim mumkin. Biroq katta aksion filmlar kinoteatrda yanada qiziqarli bo‘lishi mumkin."
   },
   {
     "Mavzular": "F",
     "Mavzular nomi": "Card F",
     "Qism": "Part 1",
     "Sovollar": "3. What is your favorite film? Why?",
-    "Sovollar (UZ)": "Sizning sevimli filmingiz qaysi? Nega?",
-    "FullAnswer_EN": "My favorite film is 'Interstellar' directed by Christopher Nolan because of its profound scientific themes, breathtaking visuals, emotional father-daughter bond, and phenomenal musical soundtrack.",
-    "FullAnswer_UZ": "Mening sevimli filmim — Kristofer Nolan tomonidan suratga olingan 'Interstellar' filmi, chunki unda chuqur ilmiy mavzular, ajoyib vizual effektlar, ota va qiz o‘rtasidagi ta’sirchan rishta va aqlbovar qilmas musiqa mujassamlashgan."
+    "Sovollar (UZ)": "Sevimli filmingiz qaysi? Nima uchun?",
+    "FullAnswer_EN": "One of my favorite films is The Pursuit of Happyness. I like it because it shows how a person can continue fighting for his goals even when life is difficult. It also teaches an important lesson about patience and determination.",
+    "FullAnswer_UZ": "Mening sevimli filmlarimdan biri The Pursuit of Happyness filmidir. Menga bu film yoqadi, chunki u hayot qiyin bo‘lsa ham inson o‘z maqsadlari uchun kurashishda davom etishi mumkinligini ko‘rsatadi. Shuningdek, u sabr va qat’iyat haqida muhim saboq beradi."
   },
   {
     "Mavzular": "F",
     "Mavzular nomi": "Card F",
     "Qism": "Part 1",
     "Sovollar": "4. Who is your favorite actor or actress?",
-    "Sovollar (UZ)": "Sizning sevimli aktyoringiz yoki aktrisangiz kim?",
-    "FullAnswer_EN": "My favorite actor is Leonardo DiCaprio because of his extraordinary versatility, charismatic screen presence, and masterclass performances in legendary films like 'Inception' and 'The Revenant'.",
-    "FullAnswer_UZ": "Mening sevimli aktyorim — Leonardo Di Kaprio, chunki u favqulodda ko‘p qirrali mahoratga, jozibador ko‘rinishga va 'Inception' hamda 'The Revenant' kabi afsonaviy filmlarda yuksak darajadagi ijroga ega."
+    "Sovollar (UZ)": "Sevimli aktyoringiz yoki aktrisangiz kim?",
+    "FullAnswer_EN": "My favorite actor is Leonardo DiCaprio because he is very talented and can play different types of characters. I have watched several of his films and enjoyed his performances. I also like the fact that he takes challenging roles.",
+    "FullAnswer_UZ": "Mening sevimli aktyorim Leonardo DiCaprio, chunki u juda iste’dodli va turli xil qahramonlarni ijro eta oladi. Uning bir nechta filmlarini ko‘rganman va ijrolari menga yoqqan. Shuningdek, uning murakkab rollarni tanlashini ham yoqtiraman."
   },
   {
     "Mavzular": "F",
     "Mavzular nomi": "Card F",
     "Qism": "Part 2",
     "Sovollar": "1. Do you play video games?",
-    "Sovollar (UZ)": "Siz video o‘yinlar o‘ynaysizmi?",
-    "FullAnswer_EN": "Yes, I occasionally play video games on my computer or smartphone during holidays to unwind, test my tactical reflexes, and enjoy interactive storytelling.",
-    "FullAnswer_UZ": "Ha, men dam olish kunlarida charchoqni chiqarish, taktik reflekslarimni sinab ko‘rish va interaktiv hikoyalardan zavqlanish uchun kompyuterimda yoki smartfonimda video o‘yinlar o‘ynab turaman."
+    "Sovollar (UZ)": "Video o‘yinlar o‘ynaysizmi?",
+    "FullAnswer_EN": "Yes, I sometimes play video games when I have enough free time. I see them as a way to relax and have fun. However, I try not to spend too many hours playing.",
+    "FullAnswer_UZ": "Ha, bo‘sh vaqtim yetarli bo‘lsa, ba’zan video o‘yinlar o‘ynayman. Men ularni dam olish va ko‘ngil ochish usuli deb bilaman. Biroq o‘yin o‘ynashga juda ko‘p soat sarflamaslikka harakat qilaman."
   },
   {
     "Mavzular": "F",
     "Mavzular nomi": "Card F",
     "Qism": "Part 2",
     "Sovollar": "2. What kind of video games do you like playing? Why?",
-    "Sovollar (UZ)": "Qanday video o‘yinlarni o‘ynashni yoqtirasizmi? Nega?",
-    "FullAnswer_EN": "I particularly enjoy strategic and puzzle-solving games like chess and Minecraft because they stimulate logical thinking, spatial awareness, and creative problem-solving skills.",
-    "FullAnswer_UZ": "Men ayniqsa shaxmat va Minecraft kabi strategik va jumboqli o‘yinlarni yoqtiraman, chunki ular mantiqiy fikrlashni, fazoviy tasavvurni va ijodiy muammolarni hal qilish qobiliyatini rag‘batlantiradi."
+    "Sovollar (UZ)": "Qanday video o‘yinlarni o‘ynashni yoqtirasiz? Nima uchun?",
+    "FullAnswer_EN": "I enjoy strategy and adventure games because they require thinking and decision-making. I like games that have interesting stories and challenging levels. They are more enjoyable for me than games that are only about fighting.",
+    "FullAnswer_UZ": "Men strategiya va sarguzasht o‘yinlarini yoqtiraman, chunki ular fikrlash va qaror qabul qilishni talab qiladi. Qiziqarli hikoya va murakkab bosqichlarga ega o‘yinlar menga yoqadi. Ular faqat jang qilishga asoslangan o‘yinlarga qaraganda qiziqarliroq."
   },
   {
     "Mavzular": "F",
     "Mavzular nomi": "Card F",
     "Qism": "Part 2",
     "Sovollar": "3. Do you think video games can be educational? Why?",
-    "Sovollar (UZ)": "Video o‘yinlar ta’limiy (foydali) bo‘lishi mumkin deb o‘ylaysizmi? Nega?",
-    "FullAnswer_EN": "Yes, definitely. Many modern games teach foreign languages, historical events, economics, and teamwork, proving that gamified learning can be far more effective than traditional rote memorization.",
-    "FullAnswer_UZ": "Ha, albatta. Ko‘plab zamonaviy o‘yinlar chet tillarini, tarixiy voqealarni, iqtisodiyotni va jamoaviy ishlashni o‘rgatadi va o‘yinlashtirilgan ta’lim an’anaviy quruq yodlashdan ko‘ra ancha samaraliroq ekanligini isbotlaydi."
+    "Sovollar (UZ)": "Sizningcha, video o‘yinlar ta’limiy bo‘lishi mumkinmi? Nima uchun?",
+    "FullAnswer_EN": "Yes, some video games can be educational if they are designed well. They can improve problem-solving, memory, language skills, and logical thinking. However, children should balance gaming with studying and other activities.",
+    "FullAnswer_UZ": "Ha, agar yaxshi yaratilgan bo‘lsa, ayrim video o‘yinlar ta’limiy bo‘lishi mumkin. Ular muammolarni hal qilish, xotira, til va mantiqiy fikrlash ko‘nikmalarini rivojlantirishi mumkin. Biroq bolalar o‘yinlarni o‘qish va boshqa faoliyatlar bilan muvozanatlashlari kerak."
   },
   {
     "Mavzular": "F",
     "Mavzular nomi": "Card F",
     "Qism": "Part 2",
     "Sovollar": "4. Do you like playing video games alone or with friends? Why?",
-    "Sovollar (UZ)": "Video o‘yinlarni yolg‘iz o‘ynashni yoqtirasizmi yoki do‘stlar bilanmi? Nega?",
-    "FullAnswer_EN": "I prefer multiplayer gaming with friends because communicating via voice chat, coordinating strategies, and celebrating victories together makes the experience vastly more entertaining.",
-    "FullAnswer_UZ": "Men do‘stlarim bilan ko‘p kishilik (multiplayer) o‘yinlarni o‘ynashni afzal ko‘raman, chunki ovozli chat orqali muloqot qilish, strategiyalarni kelishish va g‘alabalarni birga nishonlash o‘yinni ancha qiziqarli qiladi."
+    "Sovollar (UZ)": "Video o‘yinlarni yolg‘iz yoki do‘stlaringiz bilan o‘ynashni yoqtirasizmi? Nima uchun?",
+    "FullAnswer_EN": "I usually prefer playing with friends because it is more social and exciting. We can communicate, make plans, and laugh together while playing. However, I sometimes play alone when I want to relax.",
+    "FullAnswer_UZ": "Men odatda do‘stlarim bilan o‘ynashni afzal ko‘raman, chunki bu ijtimoiyroq va qiziqarliroq. O‘yin davomida muloqot qilishimiz, rejalar tuzishimiz va birga kulishimiz mumkin. Biroq dam olishni xohlaganimda ba’zan yolg‘iz ham o‘ynayman."
   },
+
   {
     "Mavzular": "G",
     "Mavzular nomi": "Card G",
     "Qism": "Part 1",
     "Sovollar": "1. How do you use technology every day?",
     "Sovollar (UZ)": "Har kuni texnologiyadan qanday foydalanasiz?",
-    "FullAnswer_EN": "I use technology continuously throughout the day for attending online classes, reading global news, navigating maps, managing financial payments, and communicating with my peers.",
-    "FullAnswer_UZ": "Men texnologiyadan kun davomida onlayn darslarda qatnashish, jahon yangiliklarini o‘qish, xaritalardan foydalanish, moliyaviy to‘lovlarni boshqarish va tengdoshlarim bilan muloqot qilish uchun doimiy ravishda foydalanaman."
+    "FullAnswer_EN": "I use technology every day for studying, communication, and entertainment. I often use my phone and computer to search for information and communicate with people. Technology helps me complete many tasks faster.",
+    "FullAnswer_UZ": "Men texnologiyadan har kuni o‘qish, muloqot va ko‘ngilochar maqsadlarda foydalanaman. Ko‘pincha telefonim va kompyuterimdan ma’lumot izlash va odamlar bilan muloqot qilish uchun foydalanaman. Texnologiya ko‘plab vazifalarni tezroq bajarishimga yordam beradi."
   },
   {
     "Mavzular": "G",
     "Mavzular nomi": "Card G",
     "Qism": "Part 1",
     "Sovollar": "2. Does technology make life easier or harder? Why?",
-    "Sovollar (UZ)": "Texnologiya hayotni osonlashtiradimi yoki qiyinlashtiradimi? Nega?",
-    "FullAnswer_EN": "Undoubtedly, technology makes life substantially easier by automating tedious everyday tasks, delivering instant access to knowledge, and facilitating seamless global communication.",
-    "FullAnswer_UZ": "Shubhasiz, texnologiya zerikarli kundalik vazifalarni avtomatlashtirish, bilimlarga bir lahzada ega bo‘lish va uzluksiz global muloqotni ta’minlash orqali hayotni sezilarli darajada osonlashtiradi."
+    "Sovollar (UZ)": "Texnologiya hayotni osonlashtiradimi yoki qiyinlashtiradimi? Nima uchun?",
+    "FullAnswer_EN": "I think technology makes life easier in many ways. We can communicate quickly, find information, and do many things online. However, using technology too much can create stress and make people dependent on their devices.",
+    "FullAnswer_UZ": "Menimcha, texnologiya hayotni ko‘p jihatdan osonlashtiradi. Biz tez muloqot qilishimiz, ma’lumot topishimiz va ko‘plab ishlarni onlayn bajarishimiz mumkin. Biroq texnologiyadan ortiqcha foydalanish stress keltirib chiqarishi va odamlarni qurilmalarga qaram qilib qo‘yishi mumkin."
   },
   {
     "Mavzular": "G",
     "Mavzular nomi": "Card G",
     "Qism": "Part 1",
     "Sovollar": "3. What is your favorite gadget or device? Why?",
-    "Sovollar (UZ)": "Sizning sevimli gadjetingiz yoki qurilmangiz qaysi? Nega?",
-    "FullAnswer_EN": "My favorite device is my smartphone because it acts as an indispensable pocket computer, combining communication, education, high-resolution photography, and productivity tools in one portable gadget.",
-    "FullAnswer_UZ": "Mening sevimli qurilmam — bu smartfonim, chunki u bitta ixcham moslamada muloqot, ta’lim, sifatli fotosurat va ish unumdorligi vositalarini birlashtirgan holda ajralmas cho‘ntak kompyuteri vazifasini bajaradi."
+    "Sovollar (UZ)": "Sevimli gadjetingiz yoki qurilmangiz qaysi? Nima uchun?",
+    "FullAnswer_EN": "My favorite device is my smartphone because it is useful for many different things. I can communicate with people, study, take photos, and manage my daily tasks with it. It is basically a small computer that I can carry everywhere.",
+    "FullAnswer_UZ": "Mening sevimli qurilmam smartfonim, chunki undan juda ko‘p turli maqsadlarda foydalanish mumkin. U orqali odamlar bilan muloqot qilaman, o‘qiyman, suratga olaman va kundalik vazifalarimni boshqaraman. Aslida, u hamma joyga olib yurish mumkin bo‘lgan kichik kompyuterga o‘xshaydi."
   },
   {
     "Mavzular": "G",
@@ -464,26 +470,26 @@
     "Qism": "Part 1",
     "Sovollar": "4. How do you use technology to talk to your friends and family?",
     "Sovollar (UZ)": "Do‘stlaringiz va oilangiz bilan gaplashish uchun texnologiyadan qanday foydalanasiz?",
-    "FullAnswer_EN": "I primarily rely on instant messaging applications like Telegram and WhatsApp, along with high-definition video calls on Zoom to stay closely connected with relatives and friends worldwide.",
-    "FullAnswer_UZ": "Men dunyo bo‘ylab qarindoshlarim va do‘stlarim bilan yaqin aloqada bo‘lish uchun asosan Telegram va WhatsApp kabi tezkor xabar almashish ilovalaridan hamda Zoom orqali yuqori sifatli videoqo‘ng‘iroqlardan foydalanaman."
+    "FullAnswer_EN": "I mainly use messaging apps and social media to stay in touch with my friends and family. When someone is far away, I can also make video calls. Technology makes it much easier to communicate with people who live in different places.",
+    "FullAnswer_UZ": "Do‘stlarim va oilam bilan aloqada bo‘lish uchun asosan messenjerlar va ijtimoiy tarmoqlardan foydalanaman. Kimdir uzoqda bo‘lsa, video qo‘ng‘iroqlar ham qilaman. Texnologiya turli joylarda yashaydigan odamlar bilan muloqot qilishni ancha osonlashtiradi."
   },
   {
     "Mavzular": "G",
     "Mavzular nomi": "Card G",
     "Qism": "Part 2",
     "Sovollar": "1. Do people depend too much on technology? Why or why not?",
-    "Sovollar (UZ)": "Odamlar texnologiyaga haddan tashqari bog‘lanib qolganmi? Nega?",
-    "FullAnswer_EN": "Yes, people have become excessively dependent on devices for basic mental calculations, navigation, and entertainment, which sometimes weakens critical thinking and reduces face-to-face interpersonal interactions.",
-    "FullAnswer_UZ": "Ha, insonlar oddiy aqliy hisob-kitoblar, manzilni topish va hordiq chiqarishda qurilmalarga haddan tashqari qaram bo‘lib qolishdi, bu esa ba’zan tanqidiy fikrlashni susaytiradi va yuzma-yuz muloqotni kamaytiradi."
+    "Sovollar (UZ)": "Odamlar texnologiyaga haddan tashqari ko‘p bog‘lanib qolishganmi? Nima uchun?",
+    "FullAnswer_EN": "Yes, I think many people depend too much on technology. For example, some people cannot spend even a short time without checking their phones. Technology is useful, but people should also learn to live comfortably without it.",
+    "FullAnswer_UZ": "Ha, menimcha, ko‘p odamlar texnologiyaga haddan tashqari bog‘lanib qolishgan. Masalan, ayrim odamlar telefonlarini tekshirmasdan qisqa vaqt ham o‘tkaza olmaydilar. Texnologiya foydali, lekin odamlar usiz ham bemalol yashashni o‘rganishlari kerak."
   },
   {
     "Mavzular": "G",
     "Mavzular nomi": "Card G",
     "Qism": "Part 2",
     "Sovollar": "2. What are the most important inventions in technology? Why?",
-    "Sovollar (UZ)": "Texnologiyadagi eng muhim ixtirolar qaysilar? Nega?",
-    "FullAnswer_EN": "The internet, modern personal computers, and artificial intelligence are the most transformative inventions in history because they revolutionized human communication, science, and global industry completely.",
-    "FullAnswer_UZ": "Internet, zamonaviy shaxsiy kompyuterlar va sun’iy intellekt insoniyat tarixidagi eng inqilobiy ixtirolar hisoblanadi, chunki ular insonlar muloqotini, ilm-fanni va jahon sanoatini butunlay o‘zgartirib yubordi."
+    "Sovollar (UZ)": "Texnologiyadagi eng muhim ixtirolar qaysilar? Nima uchun?",
+    "FullAnswer_EN": "I think the internet, smartphones, and computers are among the most important inventions. They have completely changed how people work, study, and communicate. These technologies have also made information much easier to access.",
+    "FullAnswer_UZ": "Menimcha, internet, smartfonlar va kompyuterlar eng muhim ixtirolar qatoriga kiradi. Ular odamlarning ishlashi, o‘qishi va muloqot qilish usullarini butunlay o‘zgartirdi. Bu texnologiyalar ma’lumotlarga kirishni ham ancha osonlashtirdi."
   },
   {
     "Mavzular": "G",
@@ -491,125 +497,127 @@
     "Qism": "Part 2",
     "Sovollar": "3. What are some bad things about modern technology?",
     "Sovollar (UZ)": "Zamonaviy texnologiyaning qanday salbiy tomonlari bor?",
-    "FullAnswer_EN": "Major drawbacks include sedentary lifestyle habits, severe digital eye strain, privacy breaches, cyberbullying, and the proliferation of fake news across social networks.",
-    "FullAnswer_UZ": "Asosiy kamchiliklar bu kamharakat turmush tarzi, ko‘zning qattiq toliqishi, shaxsiy ma’lumotlar xavfsizligining buzilishi, kiber-bezorilik va ijtimoiy tarmoqlarda yolg‘on xabarlarning ko‘payishidir."
+    "FullAnswer_EN": "One major problem is that people can spend too much time on their devices. This can reduce face-to-face communication and affect their health. Technology can also create privacy and security problems.",
+    "FullAnswer_UZ": "Asosiy muammolardan biri odamlar qurilmalariga juda ko‘p vaqt sarflashidir. Bu yuzma-yuz muloqotni kamaytirishi va sog‘liqqa ta’sir qilishi mumkin. Texnologiya maxfiylik va xavfsizlik bilan bog‘liq muammolarni ham keltirib chiqarishi mumkin."
   },
   {
     "Mavzular": "G",
     "Mavzular nomi": "Card G",
     "Qism": "Part 2",
     "Sovollar": "4. How do you think technology will change in the future?",
-    "Sovollar (UZ)": "Kelajakda texnologiya qanday o‘zgaradi deb o‘ylaysiz?",
-    "FullAnswer_EN": "In the future, we will witness autonomous flying vehicles, highly intelligent AI humanoid assistants, advanced space exploration, and revolutionary breakthroughs in quantum computing and medicine.",
-    "FullAnswer_UZ": "Kelajakda biz haydovchisiz uchar transport vositalariga, yuqori intellektli gumanoid robot yordamchilarga, koinotni keng o‘rganishga hamda kvant kompyuterlari va tibbiyotdagi ulkan inqiloblarga guvoh bo‘lamiz."
+    "Sovollar (UZ)": "Sizningcha, kelajakda texnologiya qanday o‘zgaradi?",
+    "FullAnswer_EN": "I think technology will become smarter and more connected in the future. Artificial intelligence may become a normal part of education, work, and everyday life. At the same time, people will need to learn how to use new technology responsibly.",
+    "FullAnswer_UZ": "Menimcha, kelajakda texnologiya yanada aqlli va o‘zaro bog‘langan bo‘ladi. Sun’iy intellekt ta’lim, ish va kundalik hayotning odatiy qismiga aylanishi mumkin. Shu bilan birga, odamlar yangi texnologiyalardan mas’uliyat bilan foydalanishni o‘rganishlari kerak bo‘ladi."
   },
+
   {
     "Mavzular": "H",
     "Mavzular nomi": "Card H",
     "Qism": "Part 1",
     "Sovollar": "1. What is your favorite type of weather? Why?",
-    "Sovollar (UZ)": "Sizning sevimli ob-havo turingiz qaysi? Nega?",
-    "FullAnswer_EN": "My favorite weather is a crisp, sunny autumn day with a gentle cool breeze because it feels refreshing, comfortable, and aesthetically pleasant for walking outdoors.",
-    "FullAnswer_UZ": "Mening sevimli ob-havom — mayin salqin shabada esib turgan musaffo, quyoshli kuz kuni, chunki u ochiq havoda sayr qilish uchun juda yoqimli, qulay va estetik jihatdan go‘zaldir."
+    "Sovollar (UZ)": "Qanday ob-havoni eng ko‘p yoqtirasiz? Nima uchun?",
+    "FullAnswer_EN": "My favorite weather is warm and sunny weather with a light wind. It makes me feel energetic and gives me a chance to spend more time outside. I especially enjoy walking when the weather is like this.",
+    "FullAnswer_UZ": "Menga yengil shamolli iliq va quyoshli ob-havo eng ko‘p yoqadi. Bunday ob-havo menga energiya beradi va ko‘proq vaqtni tashqarida o‘tkazish imkonini yaratadi. Ayniqsa, shunday paytda sayr qilishni yoqtiraman."
   },
   {
     "Mavzular": "H",
     "Mavzular nomi": "Card H",
     "Qism": "Part 1",
     "Sovollar": "2. What is your favorite season of the year? Why do you like it?",
-    "Sovollar (UZ)": "Yilning qaysi fasli sizga eng yoqadi? Nega uni yoqtirasiz?",
-    "FullAnswer_EN": "Spring is my favorite season because nature awakens with blooming flowers, temperatures become delightfully mild, and the entire atmosphere feels full of renewed hope and energy.",
-    "FullAnswer_UZ": "Bahor — mening sevimli faslim, chunki tabiat gullar bilan uyg‘onadi, havo harorati yoqimli darajada iliq bo‘ladi va butun atrof-muhit yangilangan umid va quvvatga to‘ladi."
+    "Sovollar (UZ)": "Yilning qaysi faslini eng ko‘p yoqtirasiz? Nima uchun?",
+    "FullAnswer_EN": "My favorite season is spring because the weather becomes warmer and nature becomes greener. I like seeing flowers and spending more time outdoors. Spring also gives me a fresh and positive feeling.",
+    "FullAnswer_UZ": "Mening sevimli faslim bahor, chunki ob-havo iliqlashadi va tabiat yashil rangga kiradi. Gullarni ko‘rish va ko‘proq vaqtni tashqarida o‘tkazish menga yoqadi. Bahor menga yangilik va ijobiy kayfiyat beradi."
   },
   {
     "Mavzular": "H",
     "Mavzular nomi": "Card H",
     "Qism": "Part 1",
     "Sovollar": "3. How does the weather affect your mood and activities?",
-    "Sovollar (UZ)": "Ob-havo sizning kayfiyatingiz va mashg‘ulotlaringizga qanday ta’sir qiladi?",
-    "FullAnswer_EN": "Bright and sunny weather makes me remarkably energetic and motivated to participate in outdoor sports, while gloomy, rainy days make me feel calm, contemplative, and inclined to study indoors.",
-    "FullAnswer_UZ": "Yorqin va quyoshli ob-havo meni juda baquvvat qiladi va ochiq havoda sport bilan shug‘ullanishga undaydi, bulutli va yomg‘irli kunlar esa meni xotirjam qilib, uyda dars qilishga undaydi."
+    "Sovollar (UZ)": "Ob-havo kayfiyatingiz va faoliyatingizga qanday ta’sir qiladi?",
+    "FullAnswer_EN": "Sunny weather usually improves my mood and makes me more active. When it is cold or rainy, I prefer staying indoors and relaxing. Good weather also encourages me to walk, exercise, or meet friends outside.",
+    "FullAnswer_UZ": "Quyoshli ob-havo odatda kayfiyatimni yaxshilaydi va meni faolroq qiladi. Havo sovuq yoki yomg‘irli bo‘lsa, uyda qolib dam olishni afzal ko‘raman. Yaxshi ob-havo meni sayr qilish, sport bilan shug‘ullanish yoki do‘stlarim bilan tashqarida uchrashishga undaydi."
   },
   {
     "Mavzular": "H",
     "Mavzular nomi": "Card H",
     "Qism": "Part 1",
     "Sovollar": "4. Do you think your country has good weather? Why or why not?",
-    "Sovollar (UZ)": "Sizningcha mamlakatingizda ob-havo yaxshimi? Nega?",
-    "FullAnswer_EN": "Yes, Uzbekistan boasts wonderful weather with over three hundred days of abundant sunshine, distinct four seasons, and ideal climatic conditions for producing delicious organic fruits and vegetables.",
-    "FullAnswer_UZ": "Ha, O‘zbekiston uch yuz kundan ortiq quyoshli kunlari, to‘rtta faslning aniq namoyon bo‘lishi hamda mazali meva va sabzavotlar yetishtirish uchun ideal iqlimi bilan ajoyib ob-havoga ega."
+    "Sovollar (UZ)": "Sizningcha, mamlakatingizda ob-havo yaxshimi? Nima uchun?",
+    "FullAnswer_EN": "Yes, I think my country has generally good weather because we experience different seasons. Summers can be very hot, but spring and autumn are usually comfortable. I especially enjoy the mild weather during these seasons.",
+    "FullAnswer_UZ": "Ha, menimcha, mamlakatimizda umuman olganda ob-havo yaxshi, chunki biz turli fasllarni boshdan kechiramiz. Yoz juda issiq bo‘lishi mumkin, lekin bahor va kuz odatda yoqimli bo‘ladi. Ayniqsa, shu fasllardagi mo‘tadil ob-havoni yoqtiraman."
   },
   {
     "Mavzular": "H",
     "Mavzular nomi": "Card H",
     "Qism": "Part 2",
     "Sovollar": "1. How do you feel about climate change?",
-    "Sovollar (UZ)": "Iqlim o‘zgarishiga munosabatingiz qanday?",
-    "FullAnswer_EN": "I am deeply concerned about climate change because accelerating global warming causes dangerous droughts, glaciers melting, and severe ecological imbalances that threaten future generations.",
-    "FullAnswer_UZ": "Men iqlim o‘zgarishidan juda xavotirdaman, chunki global isish xavfli qurg‘oqchiliklarga, muzliklarning erishiga va kelajak avlodlarga tahdid soluvchi og‘ir ekologik nomutanosibliklarga sabab bo‘lmoqda."
+    "Sovollar (UZ)": "Iqlim o‘zgarishi haqida qanday fikrdasiz?",
+    "FullAnswer_EN": "I think climate change is a serious global problem. It can cause higher temperatures, extreme weather, and problems for nature and agriculture. I believe governments and ordinary people should both take action to protect the environment.",
+    "FullAnswer_UZ": "Menimcha, iqlim o‘zgarishi jiddiy global muammodir. U haroratning oshishi, ekstremal ob-havo va tabiat hamda qishloq xo‘jaligi uchun muammolarni keltirib chiqarishi mumkin. Menimcha, hukumatlar ham, oddiy odamlar ham atrof-muhitni himoya qilish uchun harakat qilishlari kerak."
   },
   {
     "Mavzular": "H",
     "Mavzular nomi": "Card H",
     "Qism": "Part 2",
     "Sovollar": "2. Have you ever experienced extreme weather? What happened?",
-    "Sovollar (UZ)": "Siz hech ekstremal (g‘ayritabiiy) ob-havoni boshdan kechirganmisiz? Nima bo‘lgan?",
-    "FullAnswer_EN": "Yes, a few winters ago, we experienced an unusually harsh cold wave with record freezing temperatures, which disrupted public heating systems and paralyzed traffic across the city.",
-    "FullAnswer_UZ": "Ha, bir necha qish oldin biz rekord darajadagi g‘ayritabiiy qattiq sovuqqa duch keldik, bu isitish tizimlarida uzilishlarga va shahar bo‘ylab transport harakatining to‘xtab qolishiga olib kelgan edi."
+    "Sovollar (UZ)": "Hech qachon ekstremal ob-havoni boshdan kechirganmisiz? Nima bo‘lgan?",
+    "FullAnswer_EN": "Yes, I have experienced extremely hot weather during summer. Sometimes the temperature was so high that it was uncomfortable to stay outside for a long time. I usually stayed indoors, drank plenty of water, and avoided going outside during the hottest hours.",
+    "FullAnswer_UZ": "Ha, yozda juda issiq ob-havoni boshdan kechirganman. Ba’zan harorat shu qadar yuqori bo‘lganki, uzoq vaqt tashqarida qolish noqulay bo‘lgan. Odatda uyda qolganman, ko‘p suv ichganman va kunning eng issiq vaqtida tashqariga chiqmaganman."
   },
   {
     "Mavzular": "H",
     "Mavzular nomi": "Card H",
     "Qism": "Part 2",
     "Sovollar": "3. What kind of natural landscapes do you like the most (e.g., mountains, beaches, forests)? Why?",
-    "Sovollar (UZ)": "Qaysi tabiiy landshaftlar sizga ko‘proq yoqadi (masalan, tog‘lar, sohillar, o‘rmonlar)? Nega?",
-    "FullAnswer_EN": "I am captivated by majestic mountains because their towering peaks, crystal-clear streams, and tranquil silence provide absolute mental peace and excellent hiking opportunities.",
-    "FullAnswer_UZ": "Meni muhtasham tog‘lar o‘ziga rom etadi, chunki ularning baland cho‘qqilari, zilol soylari va osoyishta sukunati ruhiy xotirjamlik va ajoyib tog‘ sayohati imkoniyatlarini beradi."
+    "Sovollar (UZ)": "Qanday tabiiy manzaralarni eng ko‘p yoqtirasiz? Masalan, tog‘lar, plyajlar yoki o‘rmonlar. Nima uchun?",
+    "FullAnswer_EN": "I like mountains the most because they are beautiful and peaceful. I enjoy looking at the scenery and breathing fresh air there. Mountains also give me a chance to escape from the noise of the city.",
+    "FullAnswer_UZ": "Men eng ko‘p tog‘larni yoqtiraman, chunki ular chiroyli va sokin. U yerdagi manzaralarni tomosha qilish va toza havodan nafas olish menga yoqadi. Tog‘lar menga shahar shovqinidan uzoqlashish imkonini ham beradi."
   },
   {
     "Mavzular": "H",
     "Mavzular nomi": "Card H",
     "Qism": "Part 2",
     "Sovollar": "4. What are some things people can do to help protect nature and the environment?",
-    "Sovollar (UZ)": "Insonlar tabiat va atrof-muhitni himoya qilish uchun nimalar qila oladilar?",
-    "FullAnswer_EN": "Individuals can plant trees, conserve freshwater, minimize single-use plastics, recycle waste responsibly, and transition toward public transportation and eco-friendly renewable energy.",
-    "FullAnswer_UZ": "Insonlar ko‘chatlar ekishlari, toza suvni tejashlari, bir martalik plastiklardan foydalanishni kamaytirishlari, chiqindilarni qayta ishlashlari hamda jamoat transporti va ekologik toza energiyaga o‘tishlari mumkin."
+    "Sovollar (UZ)": "Odamlar tabiat va atrof-muhitni himoya qilish uchun nimalar qilishlari mumkin?",
+    "FullAnswer_EN": "People can reduce plastic use, recycle waste, and save water and electricity. They can also use public transport or walk instead of using cars for short distances. Small actions from many people can make a big difference.",
+    "FullAnswer_UZ": "Odamlar plastikdan foydalanishni kamaytirishlari, chiqindilarni qayta ishlashlari va suv hamda elektr energiyasini tejashlari mumkin. Shuningdek, qisqa masofalarda mashina o‘rniga jamoat transportidan foydalanishlari yoki piyoda yurishlari mumkin. Ko‘p odamlarning kichik harakatlari katta o‘zgarishlarga olib kelishi mumkin."
   },
+
   {
     "Mavzular": "I",
     "Mavzular nomi": "Card I",
     "Qism": "Part 1",
     "Sovollar": "1. What is your favorite traditional dish from your country?",
-    "Sovollar (UZ)": "Mamlakatingizning sevimli an’anaviy taomi qaysi?",
-    "FullAnswer_EN": "My absolute favorite dish is authentic Uzbek Palov, cooked with tender meat, fragrant rice, sweet carrots, raisins, and exotic aromatic spices in a traditional cast-iron cauldron.",
-    "FullAnswer_UZ": "Mening eng sevimli taomim — an’anaviy cho‘yan qozonda mayin go‘sht, xushbo‘y guruch, shirin sabzi, mayiz va xushbo‘y ziravorlar bilan pishirilgan haqiqiy o‘zbekcha palovdir."
+    "Sovollar (UZ)": "Mamlakatingizdagi eng sevimli milliy taomingiz qaysi?",
+    "FullAnswer_EN": "My favorite traditional dish is plov because it is delicious and filling. It is usually made with rice, meat, carrots, and onions. I especially enjoy eating it with my family during special occasions.",
+    "FullAnswer_UZ": "Mening sevimli milliy taomim palov, chunki u mazali va to‘yimli. U odatda guruch, go‘sht, sabzi va piyozdan tayyorlanadi. Ayniqsa, uni oilam bilan maxsus kunlarda yeyishni yaxshi ko‘raman."
   },
   {
     "Mavzular": "I",
     "Mavzular nomi": "Card I",
     "Qism": "Part 1",
     "Sovollar": "2. How does food bring people together?",
-    "Sovollar (UZ)": "Taom insonlarni qanday qilib birlashtiradi?",
-    "FullAnswer_EN": "Sharing delicious meals around a common dinner table fosters meaningful conversations, strengthens familial bonds, and serves as an enduring symbol of hospitality and unity across cultures.",
-    "FullAnswer_UZ": "Dasturxon atrofida mazali taomlarni birgalikda baham ko‘rish samimiy suhbatlarga yo‘l ochadi, oilaviy rishtalarni mustahkamlaydi va barcha madaniyatlarda mehmondo‘stlik hamda hamjihatlikning boqiy ramzi bo‘lib xizmat qiladi."
+    "Sovollar (UZ)": "Ovqat odamlarni qanday birlashtiradi?",
+    "FullAnswer_EN": "Food brings people together because families and friends often eat and talk together. Traditional meals are also an important part of celebrations and special events. Sharing food can make relationships stronger.",
+    "FullAnswer_UZ": "Ovqat odamlarni birlashtiradi, chunki oila va do‘stlar ko‘pincha birga ovqatlanib, suhbatlashadilar. Milliy taomlar bayramlar va maxsus tadbirlarning ham muhim qismidir. Ovqatni birga baham ko‘rish munosabatlarni mustahkamlashi mumkin."
   },
   {
     "Mavzular": "I",
     "Mavzular nomi": "Card I",
     "Qism": "Part 1",
     "Sovollar": "3. Who usually cooks dinner in your culture?",
-    "Sovollar (UZ)": "Sizning madaniyatingizda odatda kechki ovqatni kim pishiradi?",
-    "FullAnswer_EN": "In Uzbek households, mothers and grandmothers traditionally prepare everyday dinners with great care, while men often take pride in preparing ceremonial Palov during festive gatherings.",
-    "FullAnswer_UZ": "O‘zbek xonadonlarida onalar va buvilar odatda kundalik kechki ovqatlarni mehr bilan tayyorlaydilar, erkaklar esa bayramona yig‘inlarda tantanali to‘y oshi (palov) damlashdan faxrlanadilar."
+    "Sovollar (UZ)": "Sizning madaniyatingizda odatda kechki ovqatni kim tayyorlaydi?",
+    "FullAnswer_EN": "Traditionally, women often cook at home, especially mothers. However, this is changing, and many men also help with cooking nowadays. I think cooking should be a shared responsibility in a family.",
+    "FullAnswer_UZ": "An’anaviy tarzda uyda, ayniqsa, onalar ko‘pincha ovqat tayyorlaydilar. Biroq bu o‘zgarib bormoqda va hozir ko‘plab erkaklar ham ovqat tayyorlashga yordam berishadi. Menimcha, ovqat tayyorlash oiladagi umumiy mas’uliyat bo‘lishi kerak."
   },
   {
     "Mavzular": "I",
     "Mavzular nomi": "Card I",
     "Qism": "Part 1",
     "Sovollar": "4. Do you enjoy trying food from different countries?",
-    "Sovollar (UZ)": "Turli mamlakatlar taomlarini tatib ko‘rishni yoqtirasizmi?",
-    "FullAnswer_EN": "Yes, I am an adventurous food lover and greatly enjoy exploring international culinary traditions, especially authentic Italian pastas, Turkish kebabs, and Japanese sushi.",
-    "FullAnswer_UZ": "Ha, men yangi taomlarni tatib ko‘rishni juda yaxshi ko‘raman va xalqaro oshpazlik an’analarini, ayniqsa haqiqiy italyancha pasta, turkcha kabob va yaponcha sushilarni tatib ko‘rishdan zavqlanaman."
+    "Sovollar (UZ)": "Turli mamlakatlarning taomlarini tatib ko‘rishni yoqtirasizmi?",
+    "FullAnswer_EN": "Yes, I really enjoy trying food from different countries. It is interesting because every culture has its own flavors and cooking traditions. I would especially like to try more Asian and European dishes.",
+    "FullAnswer_UZ": "Ha, turli mamlakatlarning taomlarini tatib ko‘rishni juda yoqtiraman. Bu qiziqarli, chunki har bir madaniyatning o‘ziga xos ta’mlari va ovqat tayyorlash an’analari bor. Ayniqsa, Osiyo va Yevropaning ko‘proq taomlarini tatib ko‘rishni xohlardim."
   },
   {
     "Mavzular": "I",
@@ -617,26 +625,26 @@
     "Qism": "Part 2",
     "Sovollar": "1. What is a challenge you have recently faced?",
     "Sovollar (UZ)": "Yaqinda qanday qiyinchilikka duch keldingiz?",
-    "FullAnswer_EN": "Recently, I faced the challenge of preparing for intense academic English exams while simultaneously managing tight deadlines for university assignments.",
-    "FullAnswer_UZ": "Yaqinda men universitet topshiriqlarining qisqa muddatlarini bajarish bilan bir vaqtda qizg‘in akademik ingliz tili imtihonlariga tayyorgarlik ko‘rish qiyinchiligiga duch keldim."
+    "FullAnswer_EN": "Recently, one of my biggest challenges was managing my time between different responsibilities. I had several important things to do at the same time, so I had to organize my schedule carefully. It taught me to plan ahead and focus on priorities.",
+    "FullAnswer_UZ": "Yaqinda duch kelgan eng katta qiyinchiliklarimdan biri turli mas’uliyatlar orasida vaqtimni to‘g‘ri taqsimlash bo‘ldi. Bir vaqtning o‘zida bir nechta muhim ishlarim bor edi, shuning uchun jadvalimni ehtiyotkorlik bilan rejalashtirishim kerak edi. Bu menga oldindan rejalashtirish va muhim vazifalarga e’tibor berishni o‘rgatdi."
   },
   {
     "Mavzular": "I",
     "Mavzular nomi": "Card I",
     "Qism": "Part 2",
     "Sovollar": "2. How do you usually overcome challenges?",
-    "Sovollar (UZ)": "Siz qiyinchiliklarni odatda qanday yengasiz?",
-    "FullAnswer_EN": "I overcome obstacles by breaking daunting tasks into manageable daily steps, adhering strictly to a structured schedule, maintaining calm focus, and seeking guidance from experienced mentors.",
-    "FullAnswer_UZ": "Men qiyin vazifalarni kundalik kichik qismlarga bo‘lish, qat’iy jadvalga amal qilish, xotirjamlikni saqlash va tajribali ustozlardan maslahat olish orqali qiyinchiliklarni yengaman."
+    "Sovollar (UZ)": "Odatda qiyinchiliklarni qanday yengasiz?",
+    "FullAnswer_EN": "First, I try to understand the problem and divide it into smaller tasks. Then I make a plan and work on each part step by step. If I cannot solve it alone, I ask someone experienced for advice.",
+    "FullAnswer_UZ": "Avvalo, muammoni tushunishga va uni kichik vazifalarga bo‘lishga harakat qilaman. Keyin reja tuzib, har bir qism ustida bosqichma-bosqich ishlayman. Agar uni o‘zim hal qila olmasam, tajribali insondan maslahat so‘rayman."
   },
   {
     "Mavzular": "I",
     "Mavzular nomi": "Card I",
     "Qism": "Part 2",
     "Sovollar": "3. Do you think challenges are important for growth? Why?",
-    "Sovollar (UZ)": "Qiyinchiliklar insonning o‘sishi uchun muhim deb o‘ylaysizmi? Nega?",
-    "FullAnswer_EN": "Yes, indispensable. Adversity forces individuals out of their comfort zones, tests their determination, and builds valuable problem-solving capabilities that comfort and ease can never teach.",
-    "FullAnswer_UZ": "Ha, juda muhim. Qiyinchiliklar insonni o‘z qulaylik hududidan chiqishga majbur qiladi, irodasini sinaydi va qulaylik hech qachon o‘rgata olmaydigan qimmatli muammolarni hal qilish qobiliyatlarini shakllantiradi."
+    "Sovollar (UZ)": "Sizningcha, qiyinchiliklar rivojlanish uchun muhimmi? Nima uchun?",
+    "FullAnswer_EN": "Yes, I think challenges are very important for personal growth. They force us to learn new skills and become more confident. Without challenges, people may not discover what they are really capable of.",
+    "FullAnswer_UZ": "Ha, menimcha, qiyinchiliklar shaxsiy rivojlanish uchun juda muhim. Ular bizni yangi ko‘nikmalarni o‘rganishga va o‘zimizga bo‘lgan ishonchimizni oshirishga majbur qiladi. Qiyinchiliklarsiz odamlar nimalarga qodir ekanliklarini to‘liq anglamasliklari mumkin."
   },
   {
     "Mavzular": "I",
@@ -644,44 +652,45 @@
     "Qism": "Part 2",
     "Sovollar": "4. Can facing challenges make you stronger?",
     "Sovollar (UZ)": "Qiyinchiliklarga duch kelish sizni kuchliroq qila oladimi?",
-    "FullAnswer_EN": "Absolutely. Every challenge overcome strengthens mental resilience, instills profound self-confidence, and equips individuals with wisdom to handle future hardships successfully.",
-    "FullAnswer_UZ": "Albatta. Har bir yengib o‘tilgan qiyinchilik ruhiy matonatni mustahkamlaydi, insonga yuksak o‘ziga ishonch bag‘ishlaydi va kelajakdagi sinovlarni muvaffaqiyatli yengish uchun donolik beradi."
+    "FullAnswer_EN": "Yes, facing challenges can make people mentally stronger. When we solve difficult problems, we become more confident in our abilities. We also learn how to stay calm and continue working when things are difficult.",
+    "FullAnswer_UZ": "Ha, qiyinchiliklarga duch kelish odamni ruhiy jihatdan kuchliroq qilishi mumkin. Qiyin muammolarni hal qilganimizda, o‘z qobiliyatlarimizga bo‘lgan ishonchimiz ortadi. Shuningdek, ishlar qiyin bo‘lganda xotirjam qolish va davom etishni o‘rganamiz."
   },
+
   {
     "Mavzular": "J",
     "Mavzular nomi": "Card J",
     "Qism": "Part 1",
     "Sovollar": "1. What is your favorite film genre and why?",
-    "Sovollar (UZ)": "Sizning sevimli kino janringiz qaysi va nega?",
-    "FullAnswer_EN": "My favorite genre is science fiction because it explores futuristic technological ideas, poses philosophical questions about humanity, and showcases stunning imaginative worlds.",
-    "FullAnswer_UZ": "Mening sevimli janrim — ilmiy fantastika (sci-fi), chunki u kelajakdagi texnologik g‘oyalarni o‘rganadi, insoniyat haqida falsafiy savollarni o‘rtaga tashlaydi va ajoyib tasavvur olamlarini namoyish etadi."
+    "Sovollar (UZ)": "Sevimli film janringiz qaysi va nima uchun?",
+    "FullAnswer_EN": "My favorite film genre is science fiction because I enjoy stories about the future and new technology. These films often make me imagine how the world might change. I also like the combination of action and interesting ideas.",
+    "FullAnswer_UZ": "Mening sevimli film janrim fantastika, chunki kelajak va yangi texnologiyalar haqidagi hikoyalar menga yoqadi. Bunday filmlar ko‘pincha dunyo qanday o‘zgarishi mumkinligi haqida tasavvur qilishimga yordam beradi. Shuningdek, aksiya va qiziqarli g‘oyalar uyg‘unligini yoqtiraman."
   },
   {
     "Mavzular": "J",
     "Mavzular nomi": "Card J",
     "Qism": "Part 1",
     "Sovollar": "2. Do you prefer watching movies at home or at the cinema?",
-    "Sovollar (UZ)": "Filmlarni uyda ko‘rishni afzal ko‘rasizmi yoki kinoteatrdami?",
-    "FullAnswer_EN": "I prefer the cinema for blockbuster visual spectacles, but for thoughtful dramas, I prefer the quiet comfort and flexibility of watching at home with subtitles.",
-    "FullAnswer_UZ": "Men katta vizual filmlar uchun kinoteatrni afzal ko‘raman, ammo chuqur dramatik filmlar uchun uyda subtitrlar bilan sokin va qulay sharoitda tomosha qilishni ma’qul ko‘raman."
+    "Sovollar (UZ)": "Filmlarni uyda yoki kinoteatrda tomosha qilishni afzal ko‘rasizmi?",
+    "FullAnswer_EN": "I generally prefer watching movies at home because it is more comfortable and convenient. I can choose the time and watch the film in a relaxed environment. However, watching a new blockbuster at the cinema can be a great experience.",
+    "FullAnswer_UZ": "Umuman olganda, filmlarni uyda tomosha qilishni afzal ko‘raman, chunki bu qulayroq. Vaqtni o‘zim tanlashim va filmni tinch muhitda ko‘rishim mumkin. Biroq yangi mashhur filmni kinoteatrda tomosha qilish ham ajoyib tajriba bo‘lishi mumkin."
   },
   {
     "Mavzular": "J",
     "Mavzular nomi": "Card J",
     "Qism": "Part 1",
     "Sovollar": "3. How has Netflix changed the way you watch films?",
-    "Sovollar (UZ)": "Netflix filmlarni tomosha qilish tarzingizni qanday o‘zgartirdi?",
-    "FullAnswer_EN": "Streaming platforms like Netflix revolutionized media consumption by offering on-demand access to global cinema, personalized recommendations, and the ability to watch anywhere without commercial interruptions.",
-    "FullAnswer_UZ": "Netflix kabi striming platformalari jahon kinosiga istalgan vaqtda kirish, shaxsiy tavsiyalar hamda reklama tanaffuslarisiz istalgan joyda tomosha qilish imkonini berish orqali tomosha qilish madaniyatini tubdan o‘zgartirdi."
+    "Sovollar (UZ)": "Netflix filmlarni tomosha qilish uslubingizni qanday o‘zgartirdi?",
+    "FullAnswer_EN": "Streaming services like Netflix have made watching films much more convenient. I no longer have to wait for a film to appear on television because I can choose what I want to watch. It has also made it easier to discover films and series from different countries.",
+    "FullAnswer_UZ": "Netflix kabi striming xizmatlari filmlarni tomosha qilishni ancha qulaylashtirdi. Endi film televizorda namoyish etilishini kutishim shart emas, chunki xohlagan narsamni tanlab ko‘rishim mumkin. Bu turli mamlakatlarning filmlari va seriallarini topishni ham osonlashtirdi."
   },
   {
     "Mavzular": "J",
     "Mavzular nomi": "Card J",
     "Qism": "Part 1",
     "Sovollar": "4. What are some classic films everyone should watch?",
-    "Sovollar (UZ)": "Hamma tomosha qilishi kerak bo‘lgan qanday klassik filmlar bor?",
-    "FullAnswer_EN": "Masterpieces like 'The Godfather', 'The Shawshank Redemption', and 'Schindler’s List' are timeless classics that everyone should watch for their exceptional storytelling and profound human themes.",
-    "FullAnswer_UZ": "'The Godfather' (Cho‘qintirgan ota), 'The Shawshank Redemption' (Shoushenkdan qochish) va 'Schindler’s List' (Shindler ro‘yxati) kabi durdona filmlar o‘zlarining ajoyib hikoyasi va chuqur insoniy mavzulari tufayli hamma ko‘rishi kerak bo‘lgan boqiy klassikadir."
+    "Sovollar (UZ)": "Hamma tomosha qilishi kerak bo‘lgan klassik filmlar qaysilar?",
+    "FullAnswer_EN": "I think films such as The Godfather, Forrest Gump, and The Shawshank Redemption are worth watching. They have strong stories and memorable characters. Watching classic films can also help people understand how cinema has developed.",
+    "FullAnswer_UZ": "Menimcha, The Godfather, Forrest Gump va The Shawshank Redemption kabi filmlarni tomosha qilishga arziydi. Ularning kuchli hikoyalari va unutilmas qahramonlari bor. Klassik filmlarni tomosha qilish odamlar kino qanday rivojlanganini tushunishlariga ham yordam beradi."
   },
   {
     "Mavzular": "J",
@@ -689,8 +698,8 @@
     "Qism": "Part 2",
     "Sovollar": "1. How do you use technology in your daily life?",
     "Sovollar (UZ)": "Kundalik hayotingizda texnologiyadan qanday foydalanasiz?",
-    "FullAnswer_EN": "I utilize smart devices daily to organize my academic study schedule, conduct research, manage cashless payments, navigate city routes, and stay socially connected.",
-    "FullAnswer_UZ": "Men o‘qish jadvalimni tashkil qilish, ilmiy izlanishlar olib borish, naqdsiz to‘lovlarni amalga oshirish, shahar marshrutlarini aniqlash va doimo aloqada bo‘lish uchun har kuni aqlli qurilmalardan foydalanaman."
+    "FullAnswer_EN": "I use technology for studying, working, communicating, and entertainment. My smartphone and computer are especially important because I use them almost every day. They help me save time and stay organized.",
+    "FullAnswer_UZ": "Men texnologiyadan o‘qish, ishlash, muloqot va ko‘ngil ochish uchun foydalanaman. Smartfonim va kompyuterim ayniqsa muhim, chunki ulardan deyarli har kuni foydalanaman. Ular vaqtimni tejash va tartibli bo‘lishimga yordam beradi."
   },
   {
     "Mavzular": "J",
@@ -698,8 +707,8 @@
     "Qism": "Part 2",
     "Sovollar": "2. What are the advantages of using smart devices?",
     "Sovollar (UZ)": "Aqlli qurilmalardan foydalanishning qanday afzalliklari bor?",
-    "FullAnswer_EN": "Smart devices dramatically boost personal productivity, save time through instant automation, provide immediate access to global knowledge, and enable smooth multimedia communication.",
-    "FullAnswer_UZ": "Aqlli qurilmalar shaxsiy ish unumdorligini sezilarli darajada oshiradi, tezkor avtomatlashtirish orqali vaqtni tejaydi, jahon bilimlariga bir zumda kirishni ta’minlaydi va qulay multimedia muloqotini yaratadi."
+    "FullAnswer_EN": "Smart devices are convenient because they allow us to do many things in one place. We can communicate, study, work, make payments, and find information using one device. They can save a lot of time in our daily lives.",
+    "FullAnswer_UZ": "Aqlli qurilmalar qulay, chunki ular bir joyning o‘zida ko‘plab ishlarni bajarish imkonini beradi. Biz bitta qurilma orqali muloqot qilishimiz, o‘qishimiz, ishlashimiz, to‘lov qilishimiz va ma’lumot topishimiz mumkin. Ular kundalik hayotimizda ko‘p vaqtni tejashi mumkin."
   },
   {
     "Mavzular": "J",
@@ -707,8 +716,8 @@
     "Qism": "Part 2",
     "Sovollar": "3. Can you imagine your life without technology?",
     "Sovollar (UZ)": "Hayotingizni texnologiyasiz tasavvur qila olasizmi?",
-    "FullAnswer_EN": "Honestly, it is almost impossible in the modern era because our education, banking, healthcare, and daily communication infrastructure are entirely integrated with digital systems.",
-    "FullAnswer_UZ": "Rostini aytsam, zamonaviy davrda buni tasavvur qilish deyarli imkonsiz, chunki bizning ta’lim, bank, tibbiyot va kundalik muloqot infratuzilmamiz to‘liq raqamli tizimlar bilan uzviy bog‘langan."
+    "FullAnswer_EN": "It would be very difficult for me to imagine my life without technology. I use it for education, communication, work, and many everyday tasks. I could live without some devices, but living completely without modern technology would be extremely difficult.",
+    "FullAnswer_UZ": "Hayotimni texnologiyasiz tasavvur qilish men uchun juda qiyin. Men undan ta’lim, muloqot, ish va ko‘plab kundalik vazifalar uchun foydalanaman. Ayrim qurilmalarsiz yashashim mumkin, lekin zamonaviy texnologiyalarsiz to‘liq yashash juda qiyin bo‘lardi."
   },
   {
     "Mavzular": "J",
@@ -716,7 +725,7 @@
     "Qism": "Part 2",
     "Sovollar": "4. How do you stay safe online?",
     "Sovollar (UZ)": "Internetda o‘zingizni qanday xavfsiz saqlaysiz?",
-    "FullAnswer_EN": "I ensure my online security by creating complex unique passwords, enabling two-factor authentication, avoiding suspicious links, and never sharing sensitive personal data on untrusted websites.",
-    "FullAnswer_UZ": "Men murakkab va noyob parollarni yaratish, ikki bosqichli autentifikatsiyani (2FA) yoqish, shubhali havolalarga kirmaslik va ishonchsiz saytlarda shaxsiy maxfiy ma’lumotlarni ulashmaslik orqali onlayn xavfsizligimni ta’minlayman."
+    "FullAnswer_EN": "I use strong and different passwords for my important accounts. I also avoid clicking on suspicious links or sharing personal information with unknown people. In addition, I try to keep my devices and apps updated.",
+    "FullAnswer_UZ": "Muhim akkauntlarim uchun kuchli va turli xil parollardan foydalanaman. Shuningdek, shubhali havolalarni bosmaslikka yoki notanish odamlarga shaxsiy ma’lumotlarimni bermaslikka harakat qilaman. Bundan tashqari, qurilmalarim va ilovalarimni yangilab turaman."
   }
 ]
