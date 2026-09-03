@@ -2019,11 +2019,18 @@ document.addEventListener('DOMContentLoaded', () => {
         "transformative": { trans: "o‘zgartiruvchi, inqilobiy", read: "transformeytiv", ipa: "/trænsˈfɔː.mə.tɪv/" },
         "sustainable": { trans: "barqaror, tejamkor", read: "sasteynabl", ipa: "/səˈsteɪ.nə.bəl/" },
         "resilience": { trans: "matonat, chidamlilik", read: "rezilyens", ipa: "/rɪˈzɪl.jəns/" },
-        "profound": "chuqur, teran",
+        "profound": { trans: "chuqur, teran", read: "profaund", ipa: "/prəˈfaʊnd/" },
         "immersion": { trans: "to‘liq sho‘ng‘ish, chuqur kirishish", read: "immershn", ipa: "/ɪˈmɜː.ʃən/" },
         "accomplish": { trans: "amalga oshirmoq, erishmoq", read: "akomplish", ipa: "/əˈkʌm.plɪʃ/" },
         "optimistic": { trans: "nekbin, umidbaxsh", read: "optimistik", ipa: "/ˌɒp.tɪˈmɪs.tɪk/" },
         "overcome": { trans: "yengib o‘tmoq, yengmoq", read: "overkam", ipa: "/ˌəʊ.vəˈkʌm/" },
+        "consider": { trans: "hisoblamoq, deb bilmoq", read: "konsider", ipa: "/kənˈsɪd.ər/" },
+        "considering": { trans: "hisobga olgan holda", read: "konsidering", ipa: "/kənˈsɪd.ər.ɪŋ/" },
+        "considered": { trans: "hisoblangan, o'ylangan", read: "konsiderd", ipa: "/kənˈsɪd.əd/" },
+        "appreciate": { trans: "qadrlamoq, minnatdor bo'lmoq", read: "aprishey-eyt", ipa: "/əˈpriː.ʃi.eɪt/" },
+        "myself": { trans: "o'zim, o'zimni", read: "mayself", ipa: "/maɪˈself/" },
+        "positive": { trans: "ijobiy, nekbin", read: "pozitiv", ipa: "/ˈpɒz.ə.tɪv/" },
+        "usually": { trans: "odatda, aksar hollarda", read: "yujuali", ipa: "/ˈjuː.ʒu.ə.li/" },
         "there": { trans: "u yerda, u yerga", read: "zer", ipa: "/ðeər/" },
         "here": { trans: "bu yerda, bu yerga", read: "hiyer", ipa: "/hɪər/" },
         "because": { trans: "chunki, sababli", read: "bikoz", ipa: "/bɪˈkɒz/" },
@@ -2043,13 +2050,94 @@ document.addEventListener('DOMContentLoaded', () => {
         "contemplative": { trans: "chuqur o‘yga cho‘mgan", read: "kontempleytiv", ipa: "/kənˈtem.plə.tɪv/" },
         "adversity": { trans: "qiyinchilik, kulfat", read: "advyorsiti", ipa: "/ədˈvɜː.sə.ti/" },
         "spectacle": { trans: "tomosha, ajoyib manzara", read: "spektakl", ipa: "/ˈspek.tə.kəl/" },
-        "seamless": { trans: "uzluksiz, bir maromdagi", read: "siymles", ipa: "/ˈsiːm.ləs/" }
+        "seamless": { trans: "uzluksiz, bir maromdagi", read: "siymles", ipa: "/ˈsiːm.ləs/" },
+        "comfortable": { trans: "qulay, bemalol", read: "kamftebl", ipa: "/ˈkʌm.fə.tə.bəl/" },
+        "interesting": { trans: "qiziqarli, ajoyib", read: "intresting", ipa: "/ˈɪn.trəs.tɪŋ/" },
+        "different": { trans: "turli, har xil, boshqacha", read: "difrent", ipa: "/ˈdɪf.ər.ənt/" },
+        "difficult": { trans: "qiyin, murakkab", read: "difikalt", ipa: "/ˈdɪf.ɪ.kəlt/" },
+        "important": { trans: "muhim, ahamiyatli", read: "important", ipa: "/ɪmˈpɔː.tənt/" },
+        "education": { trans: "ta'lim, o'qish", read: "edukey-shn", ipa: "/ˌedʒ.uˈkeɪ.ʃən/" },
+        "experience": { trans: "tajriba, boshdan kechirmoq", read: "ekspiriens", ipa: "/ɪkˈspɪə.ri.əns/" },
+        "opportunity": { trans: "imkoniyat, qulay vaziyat", read: "oportyuniti", ipa: "/ˌɒp.əˈtʃuː.nə.ti/" },
+        "successful": { trans: "muvaffaqiyatli, omadli", read: "saksesful", ipa: "/səkˈses.fəl/" },
+        "development": { trans: "rivojlanish, taraqqiyot", read: "development", ipa: "/dɪˈvel.əp.mənt/" },
+        "environment": { trans: "atrof-muhit", read: "envayrment", ipa: "/ɪnˈvaɪ.rən.mənt/" },
+        "government": { trans: "hukumat, davlat", read: "gaverment", ipa: "/ˈɡʌv.ən.mənt/" },
+        "individual": { trans: "shaxs, alohida inson", read: "individyual", ipa: "/ˌɪn.dɪˈvɪdʒ.u.əl/" },
+        "international": { trans: "xalqaro", read: "interneshnal", ipa: "/ˌɪn.təˈnæʃ.ən.əl/" }
     };
 
     function decodeHtmlEntities(str) {
+        if (!str) return '';
         const txt = document.createElement("textarea");
         txt.innerHTML = str;
         return txt.value;
+    }
+
+    // Instant English to Uzbek Phonetic Rule Generator
+    function generateInstantUzbekReading(word) {
+        if (!word) return '';
+        let w = word.toLowerCase().trim();
+
+        // Common word overrides
+        const map = {
+            'the': 'ze', 'they': 'zey', 'them': 'zem', 'their': 'zeir', 'there': 'zer',
+            'this': 'zis', 'that': 'zet', 'these': 'ziyz', 'those': 'zouz',
+            'with': 'viz', 'without': 'vizaut', 'other': 'azer', 'another': 'anazer',
+            'mother': 'mazer', 'father': 'fazer', 'brother': 'brazer', 'weather': 'vezer',
+            'together': 'tugezer', 'think': 'sink', 'thought': 'sot', 'through': 'sru',
+            'what': 'vot', 'who': 'xu', 'whose': 'xuz', 'whom': 'xum', 'where': 'ver',
+            'when': 'ven', 'why': 'vay', 'which': 'vich', 'how': 'xau',
+            'have': 'xev', 'has': 'xez', 'had': 'xed', 'do': 'du', 'does': 'daz',
+            'give': 'giv', 'live': 'liv', 'life': 'layf', 'love': 'lav', 'move': 'muv',
+            'could': 'kud', 'would': 'vud', 'should': 'shud', 'people': 'pipl',
+            'friend': 'frend', 'busy': 'bizi', 'business': 'biznes', 'build': 'bild',
+            'heart': 'xart', 'learn': 'lyorn', 'earth': 'yors', 'enough': 'inaf',
+            'daughter': 'doter', 'water': 'voter', 'great': 'greyt', 'break': 'breyk',
+            'eye': 'ay', 'eyes': 'ayz', 'island': 'aylend', 'sure': 'shur',
+            'machine': 'mashiyn', 'police': 'polis', 'listen': 'lisn', 'talk': 'tok',
+            'walk': 'vok', 'half': 'xaf', 'calm': 'kam', 'answer': 'anser',
+            'knowledge': 'nolidj', 'knee': 'niy', 'knife': 'nayf', 'write': 'rayt',
+            'wrong': 'rong', 'hour': 'aur', 'honest': 'onest', 'vehicle': 'viyikl',
+            'consider': 'konsider', 'myself': 'mayself', 'because': 'bikoz',
+            'appreciate': 'aprishey-eyt', 'enjoy': 'indjoy', 'usually': 'yujuali',
+            'positive': 'pozitiv', 'technology': 'teknoloji', 'patient': 'peyshent',
+            'patience': 'peyshens', 'challenge': 'chellendj', 'abundant': 'abandant',
+            'comfortable': 'kamftebl', 'interesting': 'intresting', 'different': 'difrent'
+        };
+
+        if (map[w]) return map[w];
+
+        // Suffix handling
+        let stem = w;
+        let suffix = '';
+        if (stem.endsWith('ing') && stem.length > 5) {
+            suffix = 'ing';
+            stem = stem.slice(0, -3);
+        } else if (stem.endsWith('ed') && stem.length > 4) {
+            suffix = 'd';
+            stem = stem.slice(0, -2);
+        } else if (stem.endsWith('ly') && stem.length > 4) {
+            suffix = 'li';
+            stem = stem.slice(0, -2);
+        }
+
+        if (map[stem]) return map[stem] + suffix;
+
+        let res = w;
+        res = res.replace(/^kn/, 'n').replace(/^wr/, 'r').replace(/^ps/, 's');
+        res = res.replace(/tion/g, 'shn').replace(/sion/g, 'jhn').replace(/ture/g, 'cher').replace(/sure/g, 'jer');
+        res = res.replace(/ee/g, 'iy').replace(/ea/g, 'iy').replace(/oo/g, 'u').replace(/ou/g, 'au');
+        res = res.replace(/ow/g, 'ou').replace(/oa/g, 'ou').replace(/ai/g, 'ey').replace(/ay/g, 'ey');
+        res = res.replace(/ph/g, 'f').replace(/ch/g, 'ch').replace(/sh/g, 'sh').replace(/th/g, 'z');
+        res = res.replace(/wh/g, 'v').replace(/ck/g, 'k').replace(/qu/g, 'kv');
+        res = res.replace(/c([eiy])/g, 's$1').replace(/c/g, 'k').replace(/g([eiy])/g, 'j$1');
+        res = res.replace(/x/g, 'ks').replace(/w/g, 'v');
+
+        if (res.length > 3 && res.endsWith('e') && !res.endsWith('ee')) {
+            res = res.slice(0, -1);
+        }
+        return res;
     }
 
     // Convert IPA to intuitive Uzbek phonetic reading
@@ -2070,74 +2158,128 @@ document.addEventListener('DOMContentLoaded', () => {
         return clean.trim();
     }
 
-    async function fetchWordDetails(word) {
-        const clean = word.trim().toLowerCase().replace(/^[.,/#!$%^&*;:{}=\-_`~()?"'«»]+|[.,/#!$%^&*;:{}=\-_`~()?"'«»]+$/g, "");
-        let result = {
-            trans: "Tarjima topilmadi",
-            read: "",
-            ipa: ""
-        };
+    // Fast Translation fetch with timeout and fallback
+    async function fetchWordTranslation(cleanWord) {
+        // Direct MyMemory call with fast 3.5s timeout
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 3500);
 
-        if (quickDictionary[clean]) {
-            const entry = quickDictionary[clean];
-            if (typeof entry === 'string') {
-                result.trans = entry;
-            } else {
-                result.trans = entry.trans;
-                result.read = entry.read || "";
-                result.ipa = entry.ipa || "";
+        try {
+            const mUrl = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(cleanWord)}&langpair=en|uz`;
+            const res = await fetch(mUrl, { signal: controller.signal });
+            clearTimeout(timeoutId);
+            const data = await res.json();
+            if (data && data.responseData && data.responseData.translatedText) {
+                let trans = decodeHtmlEntities(data.responseData.translatedText).trim();
+                if (trans.toLowerCase() !== cleanWord.toLowerCase() && !trans.includes("MYMEMORY WARNING")) {
+                    return trans;
+                }
             }
-        }
-
-        // Fetch Phonetics from Free Dictionary API if not in quick dictionary
-        if (!result.ipa) {
-            try {
-                const dictRes = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(clean)}`);
-                const dictData = await dictRes.json();
-                if (Array.isArray(dictData) && dictData[0]) {
-                    const phoneticText = dictData[0].phonetic || (dictData[0].phonetics && dictData[0].phonetics.find(p => p.text)?.text) || '';
-                    if (phoneticText) {
-                        result.ipa = phoneticText;
-                        result.read = ipaToUzbekReading(phoneticText);
+            if (data && data.matches && data.matches.length > 0) {
+                for (const m of data.matches) {
+                    if (m.translation && !m.translation.toLowerCase().includes(cleanWord.toLowerCase())) {
+                        return decodeHtmlEntities(m.translation).trim();
                     }
                 }
-            } catch (e) {
-                console.log("Dictionary phonetic fetch error:", e);
             }
+        } catch (e) {
+            // Timeout or network issue
+        }
+        return "Tarjima topilmadi";
+    }
+
+    async function fetchWordPhonetics(cleanWord) {
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 3000);
+            const dictRes = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(cleanWord)}`, { signal: controller.signal });
+            clearTimeout(timeoutId);
+            const dictData = await dictRes.json();
+            if (Array.isArray(dictData) && dictData[0]) {
+                const phoneticText = dictData[0].phonetic || (dictData[0].phonetics && dictData[0].phonetics.find(p => p.text)?.text) || '';
+                return phoneticText;
+            }
+        } catch (e) {
+            // silent fallback
+        }
+        return '';
+    }
+
+    async function showTranslationPopup(text, posX, posY) {
+        const cleanWord = text.trim().replace(/^[.,/#!$%^&*;:{}=\-_`~()?"'«»]+|[.,/#!$%^&*;:{}=\-_`~()?"'«»]+$/g, "");
+        if (!cleanWord || cleanWord.length < 2) return;
+
+        activeSelectedWord = cleanWord;
+        wpWordEl.textContent = cleanWord;
+        wpPhoneticEl.textContent = '';
+        wpReadTextEl.textContent = '';
+
+        // Immediate Instant Phonetic Reading (0ms latency!)
+        let instantRead = '';
+        let instantTrans = '';
+        let instantIpa = '';
+
+        if (quickDictionary[cleanWord.toLowerCase()]) {
+            const entry = quickDictionary[cleanWord.toLowerCase()];
+            instantTrans = entry.trans || '';
+            instantRead = entry.read || '';
+            instantIpa = entry.ipa || '';
+        } else {
+            instantRead = generateInstantUzbekReading(cleanWord);
         }
 
-        // 1. Google Translate GTx API for translation if not yet translated
-        if (result.trans === "Tarjima topilmadi") {
-            try {
-                const gUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=uz&dt=t&q=${encodeURIComponent(clean)}`;
-                const res = await fetch(gUrl);
-                const data = await res.json();
-                if (data && data[0] && data[0][0] && data[0][0][0]) {
-                    result.trans = decodeHtmlEntities(data[0][0][0]);
+        if (instantRead) {
+            wpReadingRow.style.display = 'flex';
+            wpReadTextEl.textContent = `[ ${instantRead} ]`;
+        } else {
+            wpReadingRow.style.display = 'none';
+        }
+
+        if (instantIpa) {
+            wpPhoneticEl.textContent = instantIpa;
+        }
+
+        wpTransEl.textContent = instantTrans ? instantTrans : "Yuklanmoqda...";
+
+        let savedVocab = JSON.parse(localStorage.getItem('savedVocabulary')) || [];
+        const isAlreadySaved = savedVocab.some(v => v.word.toLowerCase() === cleanWord.toLowerCase());
+        wpFavBtn.innerHTML = isAlreadySaved ? '<span>⭐</span> Saqlangan' : '<span>⭐</span> Saqlash';
+
+        // Position popup nicely on screen
+        const popupWidth = Math.min(window.innerWidth - 30, 300);
+        let left = posX - (popupWidth / 2);
+        let top = posY - 190;
+
+        if (left < 15) left = 15;
+        if (left + popupWidth > window.innerWidth - 15) left = window.innerWidth - popupWidth - 15;
+        if (top < 75) top = posY + 30;
+
+        wordPopup.style.left = `${left}px`;
+        wordPopup.style.top = `${top}px`;
+        wordPopup.classList.add('active');
+
+        // Parallel background fetch if not already in dictionary
+        if (!instantTrans || !instantIpa) {
+            Promise.allSettled([
+                !instantTrans ? fetchWordTranslation(cleanWord) : Promise.resolve(instantTrans),
+                !instantIpa ? fetchWordPhonetics(cleanWord) : Promise.resolve(instantIpa)
+            ]).then(([transRes, ipaRes]) => {
+                if (transRes.status === 'fulfilled' && transRes.value) {
+                    currentTranslation = transRes.value;
+                    wpTransEl.textContent = transRes.value;
                 }
-            } catch (e) {
-                console.log("Google translate error:", e);
-            }
-        }
-
-        // 2. MyMemory fallback
-        if (result.trans === "Tarjima topilmadi") {
-            try {
-                const mUrl = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(clean)}&langpair=en|uz`;
-                const res = await fetch(mUrl);
-                const data = await res.json();
-                if (data && data.responseData && data.responseData.translatedText) {
-                    let trans = decodeHtmlEntities(data.responseData.translatedText);
-                    if (trans.toLowerCase() !== clean.toLowerCase() && !trans.includes("MYMEMORY WARNING")) {
-                        result.trans = trans;
+                if (ipaRes.status === 'fulfilled' && ipaRes.value) {
+                    wpPhoneticEl.textContent = ipaRes.value;
+                    const betterReading = ipaToUzbekReading(ipaRes.value);
+                    if (betterReading) {
+                        wpReadingRow.style.display = 'flex';
+                        wpReadTextEl.textContent = `[ ${betterReading} ]`;
                     }
                 }
-            } catch (e) {
-                console.log("MyMemory error:", e);
-            }
+            });
+        } else {
+            currentTranslation = instantTrans;
         }
-
-        return result;
     }
 
     async function showTranslationPopup(text, posX, posY) {
