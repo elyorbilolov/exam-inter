@@ -1,0 +1,1072 @@
+{
+  "happy": {
+    "trans": "baxtli, xursand",
+    "read": "xeppi",
+    "ipa": "/ˈhæp.i/"
+  },
+  "unhappy": {
+    "trans": "baxtsiz, xafa",
+    "read": "anxeppi",
+    "ipa": "/ʌnˈhæp.i/"
+  },
+  "happiness": {
+    "trans": "baxt, saodat",
+    "read": "xeppines",
+    "ipa": "/ˈhæp.i.nəs/"
+  },
+  "person": {
+    "trans": "inson, odam",
+    "read": "pyorsn",
+    "ipa": "/ˈpɜː.sən/"
+  },
+  "people": {
+    "trans": "odamlar, insonlar",
+    "read": "pipl",
+    "ipa": "/ˈpiː.pəl/"
+  },
+  "feel": {
+    "trans": "his qilmoq",
+    "read": "fiyl",
+    "ipa": "/fiːl/"
+  },
+  "feeling": {
+    "trans": "tuyg'u, his-tuyg'u",
+    "read": "fiyling",
+    "ipa": "/ˈfiː.lɪŋ/"
+  },
+  "introvert": {
+    "trans": "odamovi, o‘ziga berilgan",
+    "read": "introvyort",
+    "ipa": "/ˈɪn.trə.vɜːt/"
+  },
+  "extravert": {
+    "trans": "ochiqko‘ngil, kirishimli",
+    "read": "ekstravyort",
+    "ipa": "/ˈek.strə.vɜːt/"
+  },
+  "extrovert": {
+    "trans": "ochiqko‘ngil, kirishimli",
+    "read": "ekstravyort",
+    "ipa": "/ˈek.strə.vɜːt/"
+  },
+  "ambivert": {
+    "trans": "vaziyatga qarab ochiq yoki yopiq",
+    "read": "ambivyort",
+    "ipa": "/ˈæm.bɪ.vɜːt/"
+  },
+  "patient": {
+    "trans": "sabrli; bemor",
+    "read": "peyshent",
+    "ipa": "/ˈpeɪ.ʃənt/"
+  },
+  "patience": {
+    "trans": "sabr-toqat, chidam",
+    "read": "peyshens",
+    "ipa": "/ˈpeɪ.ʃəns/"
+  },
+  "impatient": {
+    "trans": "sabrsiz, chidamsiz",
+    "read": "impeyshent",
+    "ipa": "/ɪmˈpeɪ.ʃənt/"
+  },
+  "temptation": {
+    "trans": "vasvasa, nafs istagi",
+    "read": "tempteyshn",
+    "ipa": "/tempˈteɪ.ʃən/"
+  },
+  "resist": {
+    "trans": "qarshilik ko'rsatmoq, tiyilmoq",
+    "read": "rezist",
+    "ipa": "/rɪˈzɪst/"
+  },
+  "manage": {
+    "trans": "boshqarmoq, uddalamoq",
+    "read": "menedj",
+    "ipa": "/ˈmæn.ɪdʒ/"
+  },
+  "consider": {
+    "trans": "hisoblamoq, deb bilmoq",
+    "read": "konsider",
+    "ipa": "/kənˈsɪd.ər/"
+  },
+  "considering": {
+    "trans": "hisobga olgan holda",
+    "read": "konsidering",
+    "ipa": "/kənˈsɪd.ər.ɪŋ/"
+  },
+  "considered": {
+    "trans": "o'ylangan, hisoblangan",
+    "read": "konsiderd",
+    "ipa": "/kənˈsɪd.əd/"
+  },
+  "appreciate": {
+    "trans": "qadrlamoq, minnatdor bo'lmoq",
+    "read": "aprishey-eyt",
+    "ipa": "/əˈpriː.ʃi.eɪt/"
+  },
+  "myself": {
+    "trans": "o'zim, o'zimni",
+    "read": "mayself",
+    "ipa": "/maɪˈself/"
+  },
+  "yourself": {
+    "trans": "o'zingiz",
+    "read": "yorself",
+    "ipa": "/jɔːˈself/"
+  },
+  "positive": {
+    "trans": "ijobiy, nekbin",
+    "read": "pozitiv",
+    "ipa": "/ˈpɒz.ə.tɪv/"
+  },
+  "negative": {
+    "trans": "salbiy",
+    "read": "negativ",
+    "ipa": "/ˈneɡ.ə.tɪv/"
+  },
+  "usually": {
+    "trans": "odatda",
+    "read": "yujuali",
+    "ipa": "/ˈjuː.ʒu.ə.li/"
+  },
+  "always": {
+    "trans": "doimo, har doim",
+    "read": "olveys",
+    "ipa": "/ˈɔːl.weɪz/"
+  },
+  "sometimes": {
+    "trans": "ba'zan, gohida",
+    "read": "sam-tayms",
+    "ipa": "/ˈsʌm.taɪmz/"
+  },
+  "never": {
+    "trans": "hech qachon",
+    "read": "never",
+    "ipa": "/ˈnev.ər/"
+  },
+  "often": {
+    "trans": "tez-tez, ko'pincha",
+    "read": "ofn",
+    "ipa": "/ˈɒf.ən/"
+  },
+  "rarely": {
+    "trans": "kamdan-kam",
+    "read": "rerli",
+    "ipa": "/ˈreə.li/"
+  },
+  "business": {
+    "trans": "biznes, tadbirkorlik",
+    "read": "biznes",
+    "ipa": "/ˈbɪz.nɪs/"
+  },
+  "businessman": {
+    "trans": "tadbirkor, ishbilarmon",
+    "read": "biznesmen",
+    "ipa": "/ˈbɪz.nɪs.mæn/"
+  },
+  "entrepreneur": {
+    "trans": "tadbirkor, asoschi",
+    "read": "ontreprener",
+    "ipa": "/ˌɒn.trə.prəˈnɜːr/"
+  },
+  "company": {
+    "trans": "kompaniya, korxona",
+    "read": "kampani",
+    "ipa": "/ˈkʌm.pə.ni/"
+  },
+  "companies": {
+    "trans": "kompaniyalar",
+    "read": "kampaniz",
+    "ipa": "/ˈkʌm.pə.niz/"
+  },
+  "successful": {
+    "trans": "muvaffaqiyatli, omadli",
+    "read": "saksesful",
+    "ipa": "/səkˈses.fəl/"
+  },
+  "success": {
+    "trans": "muvaffaqiyat, yutuq",
+    "read": "sakses",
+    "ipa": "/səkˈses/"
+  },
+  "challenge": {
+    "trans": "qiyinchilik, sinov",
+    "read": "chellendj",
+    "ipa": "/ˈtʃæl.ɪndʒ/"
+  },
+  "challenges": {
+    "trans": "qiyinchiliklar, sinovlar",
+    "read": "chellendjez",
+    "ipa": "/ˈtʃæl.ɪn.dʒɪz/"
+  },
+  "advertise": {
+    "trans": "reklama qilmoq",
+    "read": "advertayz",
+    "ipa": "/ˈæd.və.taɪz/"
+  },
+  "advertising": {
+    "trans": "reklama faoliyati",
+    "read": "advertayzing",
+    "ipa": "/ˈæd.və.taɪ.zɪŋ/"
+  },
+  "advertisement": {
+    "trans": "reklama, e'lon",
+    "read": "advertisment",
+    "ipa": "/ədˈvɜː.tɪs.mənt/"
+  },
+  "product": {
+    "trans": "mahsulot, buyum",
+    "read": "prodakt",
+    "ipa": "/ˈprɒd.ʌkt/"
+  },
+  "products": {
+    "trans": "mahsulotlar",
+    "read": "prodakts",
+    "ipa": "/ˈprɒd.ʌkts/"
+  },
+  "service": {
+    "trans": "xizmat, xizmat ko'rsatish",
+    "read": "servis",
+    "ipa": "/ˈsɜː.vɪs/"
+  },
+  "services": {
+    "trans": "xizmatlar",
+    "read": "servisez",
+    "ipa": "/ˈsɜː.vɪ.sɪz/"
+  },
+  "investor": {
+    "trans": "sarmoyador, investor",
+    "read": "investor",
+    "ipa": "/ɪnˈves.tər/"
+  },
+  "investors": {
+    "trans": "investorlar",
+    "read": "investorz",
+    "ipa": "/ɪnˈves.təz/"
+  },
+  "financial": {
+    "trans": "moliyaviy",
+    "read": "faynenshl",
+    "ipa": "/faɪˈnæn.ʃəl/"
+  },
+  "support": {
+    "trans": "qo'llab-quvvatlash, yordam",
+    "read": "saport",
+    "ipa": "/səˈpɔːt/"
+  },
+  "competition": {
+    "trans": "raqobat, musobaqa",
+    "read": "kompetishn",
+    "ipa": "/ˌkɒm.pəˈtɪʃ.ən/"
+  },
+  "competitions": {
+    "trans": "musobaqalar",
+    "read": "kompetishnz",
+    "ipa": "/ˌkɒm.pəˈtɪʃ.ənz/"
+  },
+  "cooperation": {
+    "trans": "hamkorlik, birga ishlash",
+    "read": "kooperayshn",
+    "ipa": "/kəʊˌɒp.ərˈeɪ.ʃən/"
+  },
+  "competitive": {
+    "trans": "raqobatbardosh, raqobatli",
+    "read": "kompetitiv",
+    "ipa": "/kəmˈpet.ə.tɪv/"
+  },
+  "sports": {
+    "trans": "sport turlari",
+    "read": "sports",
+    "ipa": "/spɔːts/"
+  },
+  "sport": {
+    "trans": "sport",
+    "read": "sport",
+    "ipa": "/spɔːt/"
+  },
+  "advantage": {
+    "trans": "afzallik, ustunlik",
+    "read": "adventij",
+    "ipa": "/ədˈvɑːn.tɪdʒ/"
+  },
+  "advantages": {
+    "trans": "afzalliklar",
+    "read": "adventijez",
+    "ipa": "/ədˈvɑːn.tɪ.dʒɪz/"
+  },
+  "disadvantage": {
+    "trans": "kamchilik, zarar",
+    "read": "disadventij",
+    "ipa": "/ˌdɪs.ədˈvɑːn.tɪdʒ/"
+  },
+  "disadvantages": {
+    "trans": "kamchiliklar",
+    "read": "disadventijez",
+    "ipa": "/ˌdɪs.ədˈvɑːn.tɪ.dʒɪz/"
+  },
+  "technology": {
+    "trans": "texnologiya, texnika",
+    "read": "teknoloji",
+    "ipa": "/tekˈnɒl.ə.dʒi/"
+  },
+  "gadget": {
+    "trans": "elektron qurilma, moslama",
+    "read": "gadjit",
+    "ipa": "/ˈɡædʒ.ɪt/"
+  },
+  "gadgets": {
+    "trans": "gadjetlar, qurilmalar",
+    "read": "gadjits",
+    "ipa": "/ˈɡædʒ.ɪts/"
+  },
+  "device": {
+    "trans": "qurilma, asbob",
+    "read": "devays",
+    "ipa": "/dɪˈvaɪs/"
+  },
+  "devices": {
+    "trans": "qurilmalar",
+    "read": "devaysez",
+    "ipa": "/dɪˈvaɪ.sɪz/"
+  },
+  "smart": {
+    "trans": "aqlli, zukko",
+    "read": "smart",
+    "ipa": "/smɑːt/"
+  },
+  "smartphone": {
+    "trans": "smartfon, telefon",
+    "read": "smartfoun",
+    "ipa": "/ˈsmɑːt.fəʊn/"
+  },
+  "computer": {
+    "trans": "kompyuter",
+    "read": "kompyuter",
+    "ipa": "/kəmˈpjuː.tər/"
+  },
+  "internet": {
+    "trans": "internet tarmog'i",
+    "read": "internet",
+    "ipa": "/ˈɪn.tə.net/"
+  },
+  "online": {
+    "trans": "onlayn, internet orqali",
+    "read": "onlayn",
+    "ipa": "/ˌɒnˈlaɪn/"
+  },
+  "offline": {
+    "trans": "oftlayn, internetsiz",
+    "read": "offlayn",
+    "ipa": "/ˌɒfˈlaɪn/"
+  },
+  "crime": {
+    "trans": "jinoyat",
+    "read": "kraym",
+    "ipa": "/kraɪm/"
+  },
+  "crimes": {
+    "trans": "jinoyatlar",
+    "read": "kraymz",
+    "ipa": "/kraɪmz/"
+  },
+  "cybercrime": {
+    "trans": "kiberjinoyat, internet jinoyati",
+    "read": "sayberkraym",
+    "ipa": "/ˈsaɪ.bə.kraɪm/"
+  },
+  "criminal": {
+    "trans": "jinoyatchi",
+    "read": "kriminal",
+    "ipa": "/ˈkrɪm.ɪ.nəl/"
+  },
+  "police": {
+    "trans": "politsiya, ichki ishlar",
+    "read": "polis",
+    "ipa": "/pəˈliːs/"
+  },
+  "officer": {
+    "trans": "xodim, ofitser",
+    "read": "ofiser",
+    "ipa": "/ˈɒf.ɪ.sər/"
+  },
+  "safety": {
+    "trans": "xavfsizlik",
+    "read": "seyfti",
+    "ipa": "/ˈseɪf.ti/"
+  },
+  "safe": {
+    "trans": "xavfsiz, bexatar",
+    "read": "seyf",
+    "ipa": "/seɪf/"
+  },
+  "danger": {
+    "trans": "xavf, xatar",
+    "read": "deyndjer",
+    "ipa": "/ˈdeɪn.dʒər/"
+  },
+  "dangerous": {
+    "trans": "xavfli, xatarli",
+    "read": "deyndjeras",
+    "ipa": "/ˈdeɪn.dʒər.əs/"
+  },
+  "witness": {
+    "trans": "guvoh bo'lmoq; guvoh",
+    "read": "vitnes",
+    "ipa": "/ˈwɪt.nəs/"
+  },
+  "attack": {
+    "trans": "hujum qilmoq; hujum",
+    "read": "atek",
+    "ipa": "/əˈtæk/"
+  },
+  "attacked": {
+    "trans": "hujumga uchragan",
+    "read": "atekt",
+    "ipa": "/əˈtækt/"
+  },
+  "weather": {
+    "trans": "ob-havo",
+    "read": "vezer",
+    "ipa": "/ˈweð.ər/"
+  },
+  "climate": {
+    "trans": "iqlim",
+    "read": "klaymit",
+    "ipa": "/ˈklaɪ.mət/"
+  },
+  "change": {
+    "trans": "o'zgarish; o'zgartirmoq",
+    "read": "cheyndj",
+    "ipa": "/tʃeɪndʒ/"
+  },
+  "season": {
+    "trans": "fasl, mavsum",
+    "read": "siyzn",
+    "ipa": "/ˈsiː.zən/"
+  },
+  "seasons": {
+    "trans": "fasllar",
+    "read": "siyznz",
+    "ipa": "/ˈsiː.zənz/"
+  },
+  "spring": {
+    "trans": "bahor fasli",
+    "read": "spring",
+    "ipa": "/sprɪŋ/"
+  },
+  "summer": {
+    "trans": "yoz fasli",
+    "read": "samer",
+    "ipa": "/ˈsʌm.ər/"
+  },
+  "autumn": {
+    "trans": "kuz fasli",
+    "read": "otom",
+    "ipa": "/ˈɔː.təm/"
+  },
+  "winter": {
+    "trans": "qish fasli",
+    "read": "vinter",
+    "ipa": "/ˈwɪn.tər/"
+  },
+  "sunny": {
+    "trans": "quyoshli, ochiq havo",
+    "read": "sanni",
+    "ipa": "/ˈsʌn.i/"
+  },
+  "rainy": {
+    "trans": "yomg'irli",
+    "read": "reyni",
+    "ipa": "/ˈreɪ.ni/"
+  },
+  "cloudy": {
+    "trans": "bulutli",
+    "read": "klaudi",
+    "ipa": "/ˈklaʊ.di/"
+  },
+  "windy": {
+    "trans": "shamolli",
+    "read": "vindi",
+    "ipa": "/ˈwɪn.di/"
+  },
+  "cold": {
+    "trans": "sovuq",
+    "read": "kould",
+    "ipa": "/kəʊld/"
+  },
+  "hot": {
+    "trans": "issiq",
+    "read": "xot",
+    "ipa": "/hɒt/"
+  },
+  "warm": {
+    "trans": "iliq",
+    "read": "vorm",
+    "ipa": "/wɔːm/"
+  },
+  "cool": {
+    "trans": "salqin; ajoyib",
+    "read": "kuwl",
+    "ipa": "/kuːl/"
+  },
+  "nature": {
+    "trans": "tabiat",
+    "read": "neycher",
+    "ipa": "/ˈneɪ.tʃər/"
+  },
+  "environment": {
+    "trans": "atrof-muhit",
+    "read": "envayrment",
+    "ipa": "/ɪnˈvaɪ.rən.mənt/"
+  },
+  "protect": {
+    "trans": "himoya qilmoq, asramoq",
+    "read": "protekt",
+    "ipa": "/prəˈtekt/"
+  },
+  "mountain": {
+    "trans": "tog'",
+    "read": "maunten",
+    "ipa": "/ˈmaʊn.tɪn/"
+  },
+  "mountains": {
+    "trans": "tog'lar",
+    "read": "mauntenz",
+    "ipa": "/ˈmaʊn.tɪnz/"
+  },
+  "forest": {
+    "trans": "o'rmon",
+    "read": "forest",
+    "ipa": "/ˈfɒr.ɪst/"
+  },
+  "forests": {
+    "trans": "o'rmonlar",
+    "read": "forests",
+    "ipa": "/ˈfɒr.ɪsts/"
+  },
+  "beach": {
+    "trans": "sohil, qumloq qirg'oq",
+    "read": "biych",
+    "ipa": "/biːtʃ/"
+  },
+  "beaches": {
+    "trans": "sohillar",
+    "read": "biychez",
+    "ipa": "/biː.tʃɪz/"
+  },
+  "landscape": {
+    "trans": "tabiiy manzara, landshaft",
+    "read": "lendskeyp",
+    "ipa": "/ˈlænd.skeɪp/"
+  },
+  "landscapes": {
+    "trans": "manzaralar",
+    "read": "lendskeyps",
+    "ipa": "/ˈlænd.skeɪps/"
+  },
+  "extreme": {
+    "trans": "ekstremal, favqulodda",
+    "read": "ekstriym",
+    "ipa": "/ɪkˈstriːm/"
+  },
+  "dish": {
+    "trans": "taom, ovqat",
+    "read": "dish",
+    "ipa": "/dɪʃ/"
+  },
+  "traditional": {
+    "trans": "an’anaviy, milliy",
+    "read": "tredishnal",
+    "ipa": "/trəˈdɪʃ.ən.əl/"
+  },
+  "food": {
+    "trans": "taom, ovqat, oziq-ovqat",
+    "read": "fuwd",
+    "ipa": "/fuːd/"
+  },
+  "cook": {
+    "trans": "pishirmoq; oshpaz",
+    "read": "kuk",
+    "ipa": "/kʊk/"
+  },
+  "cooking": {
+    "trans": "ovqat pishirish",
+    "read": "kuking",
+    "ipa": "/ˈkʊk.ɪŋ/"
+  },
+  "dinner": {
+    "trans": "kechki ovqat",
+    "read": "diner",
+    "ipa": "/ˈdɪn.ər/"
+  },
+  "culture": {
+    "trans": "madaniyat",
+    "read": "kalcher",
+    "ipa": "/ˈkʌl.tʃər/"
+  },
+  "cultural": {
+    "trans": "madaniy",
+    "read": "kalcheral",
+    "ipa": "/ˈkʌl.tʃər.əl/"
+  },
+  "growth": {
+    "trans": "o'sish, rivojlanish",
+    "read": "grous",
+    "ipa": "/ɡrəʊθ/"
+  },
+  "stronger": {
+    "trans": "kuchliroq",
+    "read": "stronger",
+    "ipa": "/strɒŋ.ɡər/"
+  },
+  "strong": {
+    "trans": "kuchli, baquvvat",
+    "read": "strong",
+    "ipa": "/strɒŋ/"
+  },
+  "overcome": {
+    "trans": "yengib o‘tmoq, yengmoq",
+    "read": "overkam",
+    "ipa": "/ˌəʊ.vəˈkʌm/"
+  },
+  "faced": {
+    "trans": "duch kelgan",
+    "read": "feyst",
+    "ipa": "/feɪst/"
+  },
+  "film": {
+    "trans": "film, kino",
+    "read": "film",
+    "ipa": "/fɪlm/"
+  },
+  "films": {
+    "trans": "filmlar",
+    "read": "filmz",
+    "ipa": "/fɪlmz/"
+  },
+  "movie": {
+    "trans": "film, kino",
+    "read": "muvi",
+    "ipa": "/ˈmuː.vi/"
+  },
+  "movies": {
+    "trans": "kinolar",
+    "read": "muviz",
+    "ipa": "/ˈmuː.viz/"
+  },
+  "cinema": {
+    "trans": "kinoteatr",
+    "read": "sinema",
+    "ipa": "/ˈsɪn.ə.mə/"
+  },
+  "actor": {
+    "trans": "aktyor",
+    "read": "aktor",
+    "ipa": "/ˈæk.tər/"
+  },
+  "actress": {
+    "trans": "aktrisa",
+    "read": "aktres",
+    "ipa": "/ˈæk.trəs/"
+  },
+  "favorite": {
+    "trans": "sevimli",
+    "read": "feyvorit",
+    "ipa": "/ˈfeɪ.vər.ɪt/"
+  },
+  "genre": {
+    "trans": "janr, yo'nalish",
+    "read": "janr",
+    "ipa": "/ˈʒɑ̃ːn.rə/"
+  },
+  "classic": {
+    "trans": "mumtoz, klassik",
+    "read": "klassik",
+    "ipa": "/ˈklæs.ɪk/"
+  },
+  "video": {
+    "trans": "video",
+    "read": "video",
+    "ipa": "/ˈvɪd.i.əʊ/"
+  },
+  "game": {
+    "trans": "o'yin",
+    "read": "geym",
+    "ipa": "/ɡeɪm/"
+  },
+  "games": {
+    "trans": "o'yinlar",
+    "read": "geymz",
+    "ipa": "/ɡeɪmz/"
+  },
+  "educational": {
+    "trans": "ta'limiy, tarbiyaviy",
+    "read": "edukey-shnal",
+    "ipa": "/ˌedʒ.uˈkeɪ.ʃən.əl/"
+  },
+  "alone": {
+    "trans": "yolg'iz, yakka",
+    "read": "aloun",
+    "ipa": "/əˈləʊn/"
+  },
+  "friends": {
+    "trans": "do'stlar",
+    "read": "frendz",
+    "ipa": "/frendz/"
+  },
+  "friend": {
+    "trans": "do'st, oshna",
+    "read": "frend",
+    "ipa": "/frend/"
+  },
+  "family": {
+    "trans": "oila",
+    "read": "femili",
+    "ipa": "/ˈfæm.əl.i/"
+  },
+  "robot": {
+    "trans": "robot, avtomat mexanizm",
+    "read": "roubot",
+    "ipa": "/ˈrəʊ.bɒt/"
+  },
+  "robots": {
+    "trans": "robotlar",
+    "read": "roubots",
+    "ipa": "/ˈrəʊ.bɒts/"
+  },
+  "teacher": {
+    "trans": "o'qituvchi, ustoz",
+    "read": "tiycher",
+    "ipa": "/ˈtiː.tʃər/"
+  },
+  "teachers": {
+    "trans": "o'qituvchilar",
+    "read": "tiycherz",
+    "ipa": "/ˈtiː.tʃəz/"
+  },
+  "doctor": {
+    "trans": "shifokor, doktor",
+    "read": "doktor",
+    "ipa": "/ˈdɒk.tər/"
+  },
+  "doctors": {
+    "trans": "shifokorlar",
+    "read": "doktorz",
+    "ipa": "/ˈdɒk.təz/"
+  },
+  "worker": {
+    "trans": "xodim, ishchi",
+    "read": "vyorker",
+    "ipa": "/ˈwɜː.kər/"
+  },
+  "workers": {
+    "trans": "ishchilar",
+    "read": "vyorkerz",
+    "ipa": "/ˈwɜː.kəz/"
+  },
+  "classroom": {
+    "trans": "sinfxona",
+    "read": "klasruwm",
+    "ipa": "/ˈklɑːs.ruːm/"
+  },
+  "transfer": {
+    "trans": "o'tkazmoq, yetkazmoq",
+    "read": "transfer",
+    "ipa": "/trænsˈfɜːr/"
+  },
+  "transferring": {
+    "trans": "uzatish, yetkazish",
+    "read": "transfering",
+    "ipa": "/trænsˈfɜː.rɪŋ/"
+  },
+  "information": {
+    "trans": "ma'lumot, axborot",
+    "read": "informeyshn",
+    "ipa": "/ˌɪn.fəˈmeɪ.ʃən/"
+  },
+  "assistant": {
+    "trans": "yordamchi",
+    "read": "asistent",
+    "ipa": "/əˈsɪs.tənt/"
+  },
+  "intelligent": {
+    "trans": "aqlli, zakovatli",
+    "read": "intelidjent",
+    "ipa": "/ɪnˈtel.ɪ.dʒənt/"
+  },
+  "intelligence": {
+    "trans": "aql-zakovat",
+    "read": "intelidjens",
+    "ipa": "/ɪnˈtel.ɪ.dʒəns/"
+  },
+  "signals": {
+    "trans": "signallar, belgilar",
+    "read": "signalz",
+    "ipa": "/ˈsɪɡ.nəlz/"
+  },
+  "brain": {
+    "trans": "miya, aql",
+    "read": "breyn",
+    "ipa": "/breɪn/"
+  },
+  "empathy": {
+    "trans": "hamdardlik, empatiya",
+    "read": "empasi",
+    "ipa": "/ˈem.pə.θi/"
+  },
+  "human": {
+    "trans": "inson, odam",
+    "read": "xyuman",
+    "ipa": "/ˈhjuː.mən/"
+  },
+  "humans": {
+    "trans": "insonlar",
+    "read": "xyumanz",
+    "ipa": "/ˈhjuː.mənz/"
+  },
+  "workload": {
+    "trans": "ish hajmi, yuklama",
+    "read": "vyorkloud",
+    "ipa": "/ˈwɜːk.ləʊd/"
+  },
+  "homework": {
+    "trans": "uy vazifasi",
+    "read": "xoumvork",
+    "ipa": "/ˈhəʊm.wɜːk/"
+  },
+  "report": {
+    "trans": "hisobot",
+    "read": "riport",
+    "ipa": "/rɪˈpɔːt/"
+  },
+  "reports": {
+    "trans": "hisobotlar",
+    "read": "riports",
+    "ipa": "/rɪˈpɔːts/"
+  },
+  "software": {
+    "trans": "dasturiy ta'minot",
+    "read": "softver",
+    "ipa": "/ˈsɒft.weər/"
+  },
+  "hardware": {
+    "trans": "texnik vositalar",
+    "read": "xardver",
+    "ipa": "/ˈhɑːd.weər/"
+  },
+  "creativity": {
+    "trans": "ijodkorlik, yaratuvchanlik",
+    "read": "krieytiviti",
+    "ipa": "/ˌkriː.eɪˈtɪv.ə.ti/"
+  },
+  "creative": {
+    "trans": "ijodiy, ijodkor",
+    "read": "krieytiv",
+    "ipa": "/kriˈeɪ.tɪv/"
+  },
+  "diagnose": {
+    "trans": "tashxis qo'ymoq",
+    "read": "dayagnoz",
+    "ipa": "/ˈdaɪ.əɡ.nəʊz/"
+  },
+  "diagnosing": {
+    "trans": "tashxis qo'yish",
+    "read": "dayagnozing",
+    "ipa": "/ˈdaɪ.əɡ.nəʊz.ɪŋ/"
+  },
+  "illness": {
+    "trans": "kasallik, xastalik",
+    "read": "ilnes",
+    "ipa": "/ˈɪl.nəs/"
+  },
+  "patients": {
+    "trans": "bemorlar",
+    "read": "peyshents",
+    "ipa": "/ˈpeɪ.ʃənts/"
+  },
+  "machine": {
+    "trans": "mashina, uskuna",
+    "read": "mashiyn",
+    "ipa": "/məˈʃiːn/"
+  },
+  "machines": {
+    "trans": "mashinalar",
+    "read": "mashiynz",
+    "ipa": "/məˈʃiːnz/"
+  },
+  "education": {
+    "trans": "ta'lim, o'qish",
+    "read": "edukey-shn",
+    "ipa": "/ˌedʒ.uˈkeɪ.ʃən/"
+  },
+  "replace": {
+    "trans": "o'rnini bosmoq, almashtirmoq",
+    "read": "ripleys",
+    "ipa": "/rɪˈpleɪs/"
+  },
+  "replacing": {
+    "trans": "o'rnini egallash",
+    "read": "ripleysing",
+    "ipa": "/rɪˈpleɪ.sɪŋ/"
+  },
+  "stress": {
+    "trans": "stress, asabiylashish",
+    "read": "stress",
+    "ipa": "/stres/"
+  },
+  "stressed": {
+    "trans": "stressga tushgan",
+    "read": "strest",
+    "ipa": "/strest/"
+  },
+  "tired": {
+    "trans": "charchagan, toliqqan",
+    "read": "tayerd",
+    "ipa": "/taɪəd/"
+  },
+  "energy": {
+    "trans": "quvvat, kuch-g'ayrat",
+    "read": "enerji",
+    "ipa": "/ˈen.ə.dʒi/"
+  },
+  "energetic": {
+    "trans": "g'ayratli, baquvvat",
+    "read": "enerjetik",
+    "ipa": "/ˌen.əˈdʒet.ɪk/"
+  },
+  "abundant": {
+    "trans": "mo‘l-ko‘l, serob",
+    "read": "abandant",
+    "ipa": "/əˈbʌn.dənt/"
+  },
+  "abundance": {
+    "trans": "mo‘l-ko‘llik, to‘kinlik",
+    "read": "abandans",
+    "ipa": "/əˈbʌn.dəns/"
+  },
+  "distinct": {
+    "trans": "aniq, ajralib turuvchi",
+    "read": "distinkt",
+    "ipa": "/dɪˈstɪŋkt/"
+  },
+  "boast": {
+    "trans": "faxrlanmoq, ega bo‘lmoq",
+    "read": "boust",
+    "ipa": "/bəʊst/"
+  },
+  "delightfully": {
+    "trans": "juda yoqimli tarzda",
+    "read": "delaytfulli",
+    "ipa": "/dɪˈlaɪt.fəl.i/"
+  },
+  "tranquil": {
+    "trans": "osuda, sokin",
+    "read": "trankvil",
+    "ipa": "/ˈtræŋ.kwɪl/"
+  },
+  "contemplative": {
+    "trans": "chuqur o‘yga cho‘mgan",
+    "read": "kontempleytiv",
+    "ipa": "/kənˈtem.plə.tɪv/"
+  },
+  "adversity": {
+    "trans": "qiyinchilik, kulfat",
+    "read": "advyorsiti",
+    "ipa": "/ədˈvɜː.sə.ti/"
+  },
+  "spectacle": {
+    "trans": "tomosha, ajoyib manzara",
+    "read": "spektakl",
+    "ipa": "/ˈspek.tə.kəl/"
+  },
+  "seamless": {
+    "trans": "uzluksiz, bir maromdagi",
+    "read": "siymles",
+    "ipa": "/ˈsiːm.ləs/"
+  },
+  "essential": {
+    "trans": "muhim, zarur",
+    "read": "esenshl",
+    "ipa": "/ɪˈsen.ʃəl/"
+  },
+  "significant": {
+    "trans": "sezilarli, muhim",
+    "read": "signifikant",
+    "ipa": "/sɪɡˈnɪf.ɪ.kənt/"
+  },
+  "crucial": {
+    "trans": "o‘ta muhim, hal qiluvchi",
+    "read": "krushl",
+    "ipa": "/ˈkruː.ʃəl/"
+  },
+  "indispensable": {
+    "trans": "ajralmas, zarur",
+    "read": "indispensabl",
+    "ipa": "/ˌɪn.dɪˈspen.sə.bəl/"
+  },
+  "transformative": {
+    "trans": "o‘zgartiruvchi, inqilobiy",
+    "read": "transformeytiv",
+    "ipa": "/trænsˈfɔː.mə.tɪv/"
+  },
+  "sustainable": {
+    "trans": "barqaror, tejamkor",
+    "read": "sasteynabl",
+    "ipa": "/səˈsteɪ.nə.bəl/"
+  },
+  "resilience": {
+    "trans": "matonat, chidamlilik",
+    "read": "rezilyens",
+    "ipa": "/rɪˈzɪl.jəns/"
+  },
+  "profound": {
+    "trans": "chuqur, teran",
+    "read": "profaund",
+    "ipa": "/prəˈfaʊnd/"
+  },
+  "immersion": {
+    "trans": "to‘liq sho‘ng‘ish, chuqur kirishish",
+    "read": "immershn",
+    "ipa": "/ɪˈmɜː.ʃən/"
+  },
+  "accomplish": {
+    "trans": "amalga oshirmoq, erishmoq",
+    "read": "akomplish",
+    "ipa": "/əˈkʌm.plɪʃ/"
+  },
+  "optimistic": {
+    "trans": "nekbin, umidbaxsh",
+    "read": "optimistik",
+    "ipa": "/ˌɒp.tɪˈmɪs.tɪk/"
+  },
+  "because": {
+    "trans": "chunki, sababli",
+    "read": "bikoz",
+    "ipa": "/bɪˈkɒz/"
+  },
+  "example": {
+    "trans": "misol, namuna",
+    "read": "igzampl",
+    "ipa": "/ɪɡˈzɑːm.pəl/"
+  },
+  "reason": {
+    "trans": "sabab, asos",
+    "read": "rizn",
+    "ipa": "/ˈriː.zən/"
+  },
+  "however": {
+    "trans": "biroq, ammo, lekin",
+    "read": "xavever",
+    "ipa": "/haʊˈev.ər/"
+  },
+  "therefore": {
+    "trans": "shuning uchun, natijada",
+    "read": "zerfor",
+    "ipa": "/ˈðeə.fɔːr/"
+  },
+  "furthermore": {
+    "trans": "bundan tashqari, shuningdek",
+    "read": "fyozer-mor",
+    "ipa": "/ˌfɜː.ðəˈmɔːr/"
+  }
+}

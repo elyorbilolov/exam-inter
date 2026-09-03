@@ -2067,6 +2067,14 @@ document.addEventListener('DOMContentLoaded', () => {
         "international": { trans: "xalqaro", read: "interneshnal", ipa: "/ˌɪn.təˈnæʃ.ən.əl/" }
     };
 
+    // Load offline dictionary dynamically
+    fetch('./offline_dictionary.json')
+        .then(r => r.json())
+        .then(data => {
+            Object.assign(quickDictionary, data);
+        })
+        .catch(e => console.log('Offline dict loaded from memory'));
+
     function decodeHtmlEntities(str) {
         if (!str) return '';
         const txt = document.createElement("textarea");
@@ -2279,47 +2287,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } else {
             currentTranslation = instantTrans;
-        }
-    }
-
-    async function showTranslationPopup(text, posX, posY) {
-        const cleanWord = text.trim().replace(/^[.,/#!$%^&*;:{}=\-_`~()?"'«»]+|[.,/#!$%^&*;:{}=\-_`~()?"'«»]+$/g, "");
-        if (!cleanWord || cleanWord.length < 2) return;
-
-        activeSelectedWord = cleanWord;
-        wpWordEl.textContent = cleanWord;
-        wpPhoneticEl.textContent = '';
-        wpReadingRow.style.display = 'none';
-        wpReadTextEl.textContent = '';
-        wpTransEl.textContent = "Yuklanmoqda...";
-        
-        let savedVocab = JSON.parse(localStorage.getItem('savedVocabulary')) || [];
-        const isAlreadySaved = savedVocab.some(v => v.word.toLowerCase() === cleanWord.toLowerCase());
-        wpFavBtn.innerHTML = isAlreadySaved ? '<span>⭐</span> Saqlangan' : '<span>⭐</span> Saqlash';
-
-        // Position popup nicely on screen
-        const popupWidth = Math.min(window.innerWidth - 30, 300);
-        let left = posX - (popupWidth / 2);
-        let top = posY - 190;
-
-        if (left < 15) left = 15;
-        if (left + popupWidth > window.innerWidth - 15) left = window.innerWidth - popupWidth - 15;
-        if (top < 75) top = posY + 30;
-
-        wordPopup.style.left = `${left}px`;
-        wordPopup.style.top = `${top}px`;
-        wordPopup.classList.add('active');
-
-        const details = await fetchWordDetails(cleanWord);
-        currentTranslation = details.trans;
-        wpTransEl.textContent = details.trans;
-
-        if (details.ipa) {
-            wpPhoneticEl.textContent = details.ipa;
-        }
-        if (details.read) {
-            wpReadingRow.style.display = 'flex';
-            wpReadTextEl.textContent = `[ ${details.read} ]`;
         }
     }
 
