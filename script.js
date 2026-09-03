@@ -1900,7 +1900,14 @@ document.addEventListener('DOMContentLoaded', () => {
     wordPopup.innerHTML = `
         <div class="wp-header">
             <div class="wp-text-box">
-                <span class="wp-word" id="wp-word">Word</span>
+                <div class="wp-word-row">
+                    <span class="wp-word" id="wp-word">Word</span>
+                    <span class="wp-phonetic" id="wp-phonetic"></span>
+                </div>
+                <div class="wp-reading-row" id="wp-reading-row" style="display: none;">
+                    <span class="wp-read-tag">O'qilishi:</span>
+                    <span class="wp-read-text" id="wp-read-text"></span>
+                </div>
                 <span class="wp-trans" id="wp-trans">Yuklanmoqda...</span>
             </div>
             <button class="wp-close-btn" id="wp-close-btn" title="Yopish">✕</button>
@@ -1930,6 +1937,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentTranslation = '';
 
     const wpWordEl = document.getElementById('wp-word');
+    const wpPhoneticEl = document.getElementById('wp-phonetic');
+    const wpReadingRow = document.getElementById('wp-reading-row');
+    const wpReadTextEl = document.getElementById('wp-read-text');
     const wpTransEl = document.getElementById('wp-trans');
     const wpCloseBtn = document.getElementById('wp-close-btn');
     const wpAudioBtn = document.getElementById('wp-audio-btn');
@@ -1952,7 +1962,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (wpCopyBtn) {
         wpCopyBtn.addEventListener('click', () => {
             if (activeSelectedWord) {
-                const textToCopy = `${activeSelectedWord} - ${currentTranslation}`;
+                const readHint = wpReadTextEl.textContent ? ` [${wpReadTextEl.textContent}]` : '';
+                const textToCopy = `${activeSelectedWord}${readHint} - ${currentTranslation}`;
                 navigator.clipboard.writeText(textToCopy).then(() => {
                     wpCopyBtn.innerHTML = '<span>✅</span> Nusxalandi!';
                     setTimeout(() => {
@@ -1981,58 +1992,58 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Quick built-in translation mapping for instant offline response
+    // Quick built-in translation and phonetic reading mapping
     const quickDictionary = {
-        "happy": "baxtli, xursand",
-        "unhappy": "baxtsiz, xafa",
-        "introvert": "odamovi, o‘ziga berilgan",
-        "extravert": "ochiqko‘ngil, kirishimli",
-        "ambivert": "o‘rtacha, vaziyatga qarab ochiq yoki yopiq",
-        "patient": "sabrli, toqatli",
-        "patience": "sabr-toqat",
-        "temptation": "vasvasa, nafs istagi",
-        "business": "tadbirkorlik, biznes",
-        "competition": "raqobat, musobaqa",
-        "cooperation": "hamkorlik, birgalikda ishlash",
-        "competitive": "raqobatbardosh, raqobatli",
-        "technology": "texnologiya, texnika",
-        "gadget": "elektron qurilma, moslama",
-        "crime": "jinoyat",
-        "cybercrime": "kiberjinoyat, internet orqali qilingan jinoyat",
-        "weather": "ob-havo",
-        "climate": "iqlim",
-        "challenge": "qiyinchilik, sinov",
-        "traditional": "an’anaviy, milliy",
-        "crucial": "o‘ta muhim, hal qiluvchi",
-        "indispensable": "ajralmas, zarur",
-        "transformative": "o‘zgartiruvchi, inqilobiy",
-        "sustainable": "barqaror, tejamkor",
-        "resilience": "matonat, chidamlilik",
+        "happy": { trans: "baxtli, xursand", read: "xeppi", ipa: "/ˈhæp.i/" },
+        "unhappy": { trans: "baxtsiz, xafa", read: "anxeppi", ipa: "/ʌnˈhæp.i/" },
+        "introvert": { trans: "odamovi, o‘ziga berilgan", read: "introvyort", ipa: "/ˈɪn.trə.vɜːt/" },
+        "extravert": { trans: "ochiqko‘ngil, kirishimli", read: "ekstravyort", ipa: "/ˈek.strə.vɜːt/" },
+        "ambivert": { trans: "o‘rtacha, vaziyatga qarab ochiq yoki yopiq", read: "ambivyort", ipa: "/ˈæm.bɪ.vɜːt/" },
+        "patient": { trans: "sabrli, toqatli", read: "peyshent", ipa: "/ˈpeɪ.ʃənt/" },
+        "patience": { trans: "sabr-toqat", read: "peyshens", ipa: "/ˈpeɪ.ʃəns/" },
+        "temptation": { trans: "vasvasa, nafs istagi", read: "tempteyshn", ipa: "/tempˈteɪ.ʃən/" },
+        "business": { trans: "tadbirkorlik, biznes", read: "biznes", ipa: "/ˈbɪz.nɪs/" },
+        "competition": { trans: "raqobat, musobaqa", read: "kompetishn", ipa: "/ˌkɒm.pəˈtɪʃ.ən/" },
+        "cooperation": { trans: "hamkorlik, birgalikda ishlash", read: "kooperayshn", ipa: "/kəʊˌɒp.ərˈeɪ.ʃən/" },
+        "competitive": { trans: "raqobatbardosh, raqobatli", read: "kompetitiv", ipa: "/kəmˈpet.ə.tɪv/" },
+        "technology": { trans: "texnologiya, texnika", read: "teknoloji", ipa: "/tekˈnɒl.ə.dʒi/" },
+        "gadget": { trans: "elektron qurilma, moslama", read: "gadjit", ipa: "/ˈɡædʒ.ɪt/" },
+        "crime": { trans: "jinoyat", read: "kraym", ipa: "/kraɪm/" },
+        "cybercrime": { trans: "kiberjinoyat, internet jinoyati", read: "sayberkraym", ipa: "/ˈsaɪ.bə.kraɪm/" },
+        "weather": { trans: "ob-havo", read: "vezer", ipa: "/ˈweð.ər/" },
+        "climate": { trans: "iqlim", read: "klaymit", ipa: "/ˈklaɪ.mət/" },
+        "challenge": { trans: "qiyinchilik, sinov", read: "chellendj", ipa: "/ˈtʃæl.ɪndʒ/" },
+        "traditional": { trans: "an’anaviy, milliy", read: "tredishnal", ipa: "/trəˈdɪʃ.ən.əl/" },
+        "crucial": { trans: "o‘ta muhim, hal qiluvchi", read: "krushl", ipa: "/ˈkruː.ʃəl/" },
+        "indispensable": { trans: "ajralmas, zarur", read: "indispensabl", ipa: "/ˌɪn.dɪˈspen.sə.bəl/" },
+        "transformative": { trans: "o‘zgartiruvchi, inqilobiy", read: "transformeytiv", ipa: "/trænsˈfɔː.mə.tɪv/" },
+        "sustainable": { trans: "barqaror, tejamkor", read: "sasteynabl", ipa: "/səˈsteɪ.nə.bəl/" },
+        "resilience": { trans: "matonat, chidamlilik", read: "rezilyens", ipa: "/rɪˈzɪl.jəns/" },
         "profound": "chuqur, teran",
-        "immersion": "to‘liq sho‘ng‘ish, chuqur kirishish",
-        "accomplish": "amalga oshirmoq, erishmoq",
-        "optimistic": "nekbin, umidbaxsh",
-        "overcome": "yengib o‘tmoq, yengmoq",
-        "there": "u yerda, u yerga",
-        "here": "bu yerda, bu yerga",
-        "because": "chunki, sababli",
-        "example": "misol, namuna",
-        "reason": "sabab, asos",
-        "however": "biroq, ammo, lekin",
-        "therefore": "shuning uchun, natijada",
-        "furthermore": "bundan tashqari, shuningdek",
-        "essential": "muhim, zarur",
-        "significant": "sezilarli, muhim",
-        "abundant": "mo‘l-ko‘l, serob",
-        "abundance": "mo‘l-ko‘llik, to‘kinlik",
-        "distinct": "aniq, ajralib turuvchi",
-        "boast": "faxrlanmoq, ega bo‘lmoq",
-        "delightfully": "juda yoqimli tarzda",
-        "tranquil": "osuda, sokin",
-        "contemplative": "chuqur o‘yga cho‘mgan",
-        "adversity": "qiyinchilik, kulfat",
-        "spectacle": "tomosha, ajoyib manzara",
-        "seamless": "uzluksiz, bir maromdagi"
+        "immersion": { trans: "to‘liq sho‘ng‘ish, chuqur kirishish", read: "immershn", ipa: "/ɪˈmɜː.ʃən/" },
+        "accomplish": { trans: "amalga oshirmoq, erishmoq", read: "akomplish", ipa: "/əˈkʌm.plɪʃ/" },
+        "optimistic": { trans: "nekbin, umidbaxsh", read: "optimistik", ipa: "/ˌɒp.tɪˈmɪs.tɪk/" },
+        "overcome": { trans: "yengib o‘tmoq, yengmoq", read: "overkam", ipa: "/ˌəʊ.vəˈkʌm/" },
+        "there": { trans: "u yerda, u yerga", read: "zer", ipa: "/ðeər/" },
+        "here": { trans: "bu yerda, bu yerga", read: "hiyer", ipa: "/hɪər/" },
+        "because": { trans: "chunki, sababli", read: "bikoz", ipa: "/bɪˈkɒz/" },
+        "example": { trans: "misol, namuna", read: "igzampl", ipa: "/ɪɡˈzɑːm.pəl/" },
+        "reason": { trans: "sabab, asos", read: "rizn", ipa: "/ˈriː.zən/" },
+        "however": { trans: "biroq, ammo, lekin", read: "xavever", ipa: "/haʊˈev.ər/" },
+        "therefore": { trans: "shuning uchun, natijada", read: "zerfor", ipa: "/ˈðeə.fɔːr/" },
+        "furthermore": { trans: "bundan tashqari, shuningdek", read: "fyozer-mor", ipa: "/ˌfɜː.ðəˈmɔːr/" },
+        "essential": { trans: "muhim, zarur", read: "esenshl", ipa: "/ɪˈsen.ʃəl/" },
+        "significant": { trans: "sezilarli, muhim", read: "signifikant", ipa: "/sɪɡˈnɪf.ɪ.kənt/" },
+        "abundant": { trans: "mo‘l-ko‘l, serob", read: "abandant", ipa: "/əˈbʌn.dənt/" },
+        "abundance": { trans: "mo‘l-ko‘llik, to‘kinlik", read: "abandans", ipa: "/əˈbʌn.dəns/" },
+        "distinct": { trans: "aniq, ajralib turuvchi", read: "distinkt", ipa: "/dɪˈstɪŋkt/" },
+        "boast": { trans: "faxrlanmoq, ega bo‘lmoq", read: "boust", ipa: "/bəʊst/" },
+        "delightfully": { trans: "juda yoqimli tarzda", read: "delaytfulli", ipa: "/dɪˈlaɪt.fəl.i/" },
+        "tranquil": { trans: "osuda, sokin", read: "trankvil", ipa: "/ˈtræŋ.kwɪl/" },
+        "contemplative": { trans: "chuqur o‘yga cho‘mgan", read: "kontempleytiv", ipa: "/kənˈtem.plə.tɪv/" },
+        "adversity": { trans: "qiyinchilik, kulfat", read: "advyorsiti", ipa: "/ədˈvɜː.sə.ti/" },
+        "spectacle": { trans: "tomosha, ajoyib manzara", read: "spektakl", ipa: "/ˈspek.tə.kəl/" },
+        "seamless": { trans: "uzluksiz, bir maromdagi", read: "siymles", ipa: "/ˈsiːm.ləs/" }
     };
 
     function decodeHtmlEntities(str) {
@@ -2041,41 +2052,92 @@ document.addEventListener('DOMContentLoaded', () => {
         return txt.value;
     }
 
-    async function fetchTranslation(text) {
-        const clean = text.trim().toLowerCase().replace(/^[.,/#!$%^&*;:{}=\-_`~()?"'«»]+|[.,/#!$%^&*;:{}=\-_`~()?"'«»]+$/g, "");
+    // Convert IPA to intuitive Uzbek phonetic reading
+    function ipaToUzbekReading(ipa) {
+        if (!ipa) return '';
+        let clean = ipa.replace(/[/ˈˌ.]/g, '');
+        const map = [
+            [/æ/g, 'e'], [/ʌ/g, 'a'], [/ɑː/g, 'a'], [/ɒ/g, 'o'], [/ɔː/g, 'o'],
+            [/əʊ/g, 'ou'], [/eɪ/g, 'ey'], [/aɪ/g, 'ay'], [/aʊ/g, 'au'], [/ɔɪ/g, 'oy'],
+            [/ɪə/g, 'ia'], [/eə/g, 'ea'], [/ʊə/g, 'ua'], [/ɜː/g, 'yo'], [/iː/g, 'iy'],
+            [/uː/g, 'u'], [/ɪ/g, 'i'], [/ʊ/g, 'u'], [/e/g, 'e'], [/ə/g, 'a'],
+            [/θ/g, 's'], [/ð/g, 'z'], [/ʃ/g, 'sh'], [/ʒ/g, 'j'], [/tʃ/g, 'ch'],
+            [/dʒ/g, 'j'], [/ŋ/g, 'ng'], [/j/g, 'y'], [/w/g, 'v'], [/r/g, 'r']
+        ];
+        map.forEach(([reg, rep]) => {
+            clean = clean.replace(reg, rep);
+        });
+        return clean.trim();
+    }
+
+    async function fetchWordDetails(word) {
+        const clean = word.trim().toLowerCase().replace(/^[.,/#!$%^&*;:{}=\-_`~()?"'«»]+|[.,/#!$%^&*;:{}=\-_`~()?"'«»]+$/g, "");
+        let result = {
+            trans: "Tarjima topilmadi",
+            read: "",
+            ipa: ""
+        };
+
         if (quickDictionary[clean]) {
-            return quickDictionary[clean];
-        }
-
-        // 1. Try Google Translate GTx API
-        try {
-            const gUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=uz&dt=t&q=${encodeURIComponent(clean)}`;
-            const res = await fetch(gUrl);
-            const data = await res.json();
-            if (data && data[0] && data[0][0] && data[0][0][0]) {
-                return decodeHtmlEntities(data[0][0][0]);
+            const entry = quickDictionary[clean];
+            if (typeof entry === 'string') {
+                result.trans = entry;
+            } else {
+                result.trans = entry.trans;
+                result.read = entry.read || "";
+                result.ipa = entry.ipa || "";
             }
-        } catch (e) {
-            console.log("Google translate fallback error:", e);
         }
 
-        // 2. Try MyMemory API with proper HTML entity decode
-        try {
-            const mUrl = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(clean)}&langpair=en|uz`;
-            const res = await fetch(mUrl);
-            const data = await res.json();
-            if (data && data.responseData && data.responseData.translatedText) {
-                let trans = decodeHtmlEntities(data.responseData.translatedText);
-                // If it returns uppercase identical or error, handle cleanly
-                if (trans.toLowerCase() !== clean.toLowerCase() && !trans.includes("MYMEMORY WARNING")) {
-                    return trans;
+        // Fetch Phonetics from Free Dictionary API if not in quick dictionary
+        if (!result.ipa) {
+            try {
+                const dictRes = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(clean)}`);
+                const dictData = await dictRes.json();
+                if (Array.isArray(dictData) && dictData[0]) {
+                    const phoneticText = dictData[0].phonetic || (dictData[0].phonetics && dictData[0].phonetics.find(p => p.text)?.text) || '';
+                    if (phoneticText) {
+                        result.ipa = phoneticText;
+                        result.read = ipaToUzbekReading(phoneticText);
+                    }
                 }
+            } catch (e) {
+                console.log("Dictionary phonetic fetch error:", e);
             }
-        } catch (e) {
-            console.log("MyMemory fetch error:", e);
         }
 
-        return "Tarjima topilmadi";
+        // 1. Google Translate GTx API for translation if not yet translated
+        if (result.trans === "Tarjima topilmadi") {
+            try {
+                const gUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=uz&dt=t&q=${encodeURIComponent(clean)}`;
+                const res = await fetch(gUrl);
+                const data = await res.json();
+                if (data && data[0] && data[0][0] && data[0][0][0]) {
+                    result.trans = decodeHtmlEntities(data[0][0][0]);
+                }
+            } catch (e) {
+                console.log("Google translate error:", e);
+            }
+        }
+
+        // 2. MyMemory fallback
+        if (result.trans === "Tarjima topilmadi") {
+            try {
+                const mUrl = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(clean)}&langpair=en|uz`;
+                const res = await fetch(mUrl);
+                const data = await res.json();
+                if (data && data.responseData && data.responseData.translatedText) {
+                    let trans = decodeHtmlEntities(data.responseData.translatedText);
+                    if (trans.toLowerCase() !== clean.toLowerCase() && !trans.includes("MYMEMORY WARNING")) {
+                        result.trans = trans;
+                    }
+                }
+            } catch (e) {
+                console.log("MyMemory error:", e);
+            }
+        }
+
+        return result;
     }
 
     async function showTranslationPopup(text, posX, posY) {
@@ -2084,16 +2146,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         activeSelectedWord = cleanWord;
         wpWordEl.textContent = cleanWord;
-        wpTransEl.textContent = "Tarjima qilinmoqda...";
+        wpPhoneticEl.textContent = '';
+        wpReadingRow.style.display = 'none';
+        wpReadTextEl.textContent = '';
+        wpTransEl.textContent = "Yuklanmoqda...";
         
         let savedVocab = JSON.parse(localStorage.getItem('savedVocabulary')) || [];
         const isAlreadySaved = savedVocab.some(v => v.word.toLowerCase() === cleanWord.toLowerCase());
         wpFavBtn.innerHTML = isAlreadySaved ? '<span>⭐</span> Saqlangan' : '<span>⭐</span> Saqlash';
 
-        // Position popup nicely on screen (fixed or absolute)
-        const popupWidth = Math.min(window.innerWidth - 30, 290);
+        // Position popup nicely on screen
+        const popupWidth = Math.min(window.innerWidth - 30, 300);
         let left = posX - (popupWidth / 2);
-        let top = posY - 175;
+        let top = posY - 190;
 
         if (left < 15) left = 15;
         if (left + popupWidth > window.innerWidth - 15) left = window.innerWidth - popupWidth - 15;
@@ -2103,8 +2168,17 @@ document.addEventListener('DOMContentLoaded', () => {
         wordPopup.style.top = `${top}px`;
         wordPopup.classList.add('active');
 
-        currentTranslation = await fetchTranslation(cleanWord);
-        wpTransEl.textContent = currentTranslation;
+        const details = await fetchWordDetails(cleanWord);
+        currentTranslation = details.trans;
+        wpTransEl.textContent = details.trans;
+
+        if (details.ipa) {
+            wpPhoneticEl.textContent = details.ipa;
+        }
+        if (details.read) {
+            wpReadingRow.style.display = 'flex';
+            wpReadTextEl.textContent = `[ ${details.read} ]`;
+        }
     }
 
     // Handle Desktop Selection & Double Click
