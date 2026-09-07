@@ -1,5 +1,5 @@
 // =========================================================
-// DEVICE-BASED ACCESS CONTROL & ADMIN APPROVAL SYSTEM (v9.0)
+// DEVICE-BASED ACCESS CONTROL & ADMIN APPROVAL SYSTEM (v9.1)
 // Modern Glassmorphism Design & Anti-Alert-Loop Protection
 // =========================================================
 
@@ -226,77 +226,93 @@ function showAccessRequestModal(existingRequest) {
         document.body.appendChild(modal);
     }
 
+    const devId = getOrCreateDeviceId();
+    const devInfo = detectDeviceInfo();
     const isPending = existingRequest && existingRequest.status === 'pending';
     const isRejected = existingRequest && existingRequest.status === 'rejected';
 
+    // 1. KUTILAYOTGAN HOLAT (SODDA VA IXCHAM)
+    if (isPending) {
+        modal.innerHTML = `
+            <div class="auth-modal-card">
+                <div class="auth-logo">
+                    <span class="auth-lock-icon">⏳</span>
+                    <h2>Ruxsat Kutilmoqda...</h2>
+                    <p>
+                        Hurmatli <strong>${escapeQuotes(existingRequest.fullName)}</strong>, so'rovingiz adminga yuborildi.<br>
+                        Admin tasdiqlashi bilan sahifa avtomatik ochiladi.
+                    </p>
+                </div>
+
+                <div class="pulse-loader"></div>
+
+                <button type="button" id="cancel-req-btn" class="auth-cancel-btn">
+                    ✏️ Ismni o'zgartirish
+                </button>
+
+                <div style="margin-top: 4px; text-align: center;">
+                    <button id="admin-login-secret-btn" class="admin-secret-link">
+                        🔑 Admin
+                    </button>
+                </div>
+            </div>
+        `;
+
+        startPollingForApproval(devId, existingRequest.fullName, devInfo, existingRequest.requestedAt || Date.now());
+
+        const cancelBtn = document.getElementById('cancel-req-btn');
+        if (cancelBtn) {
+            cancelBtn.addEventListener('click', () => {
+                if (pollTimer) clearInterval(pollTimer);
+                localStorage.removeItem('exam_student_request');
+                showAccessRequestModal(null);
+            });
+        }
+
+        const secretBtn = document.getElementById('admin-login-secret-btn');
+        if (secretBtn) {
+            secretBtn.addEventListener('click', promptAdminPassword);
+        }
+
+        return;
+    }
+
+    // 2. SO'ROV YUBORISH FORMASI (SODDA VA ANIQLIK)
     modal.innerHTML = `
         <div class="auth-modal-card">
             <div class="auth-logo">
-                <span class="auth-lock-icon">${isPending ? '⏳' : '📱'}</span>
-                <h2>${isPending ? 'Ruxsat Kutilmoqda...' : 'Kirish Uchun Ruxsat'}</h2>
-                <p id="access-subtext">
-                    ${isPending 
-                        ? `Hurmatli <strong>${existingRequest.fullName}</strong>, sizning ushbu gadjetingizdan kirish so'rovingiz adminga yuborildi. Administrator tasdiqlashini kuting.`
-                        : "Ushbu gadjetdan kirish uchun ism va familiyangizni yozib so'rov yuboring."
-                    }
-                </p>
+                <span class="auth-lock-icon">📱</span>
+                <h2>Kirish Uchun Ruxsat</h2>
+                <p>Ism va familiyangizni kiriting:</p>
             </div>
 
-            <!-- Agar rad etilgan bo'lsa -->
             ${isRejected ? `
-                <div class="auth-error-msg" style="margin-bottom: 15px;">
-                    ❌ Sizning so'rovingiz admin tomonidan rad etildi. Qaytadan so'rov yuborishingiz mumkin.
+                <div class="auth-error-msg">
+                    ❌ So'rovingiz rad etildi. Qaytadan kiritishingiz mumkin.
                 </div>
             ` : ''}
 
-            <!-- Request Form (Visible if not pending) -->
-            <form id="access-request-form" class="auth-form" style="${isPending ? 'display: none;' : 'display: flex;'}">
+            <form id="access-request-form" class="auth-form">
                 <div class="auth-input-group">
-                    <label for="req-fullname">Familiya va Ismingiz</label>
-                    <input type="text" id="req-fullname" required placeholder="Masalan: Karimov Jasur" value="${existingRequest ? existingRequest.fullName || '' : ''}">
+                    <input type="text" id="req-fullname" required placeholder="Masalan: Karimov Jasur" value="${existingRequest ? escapeQuotes(existingRequest.fullName) || '' : ''}" autofocus>
                 </div>
                 <div class="device-detected-badge">
                     <span>Gadjetingiz:</span>
-                    <strong>${detectDeviceInfo()}</strong>
+                    <strong>${devInfo}</strong>
                 </div>
                 <button type="submit" id="send-req-btn" class="auth-submit-btn">
-                    🚀 Admindan Ruxsat So'rash
+                    🚀 Ruxsat So'rash
                 </button>
             </form>
 
-            <!-- Waiting Status (Visible if pending) -->
-            <div id="waiting-status-box" class="waiting-box" style="${isPending ? 'display: flex;' : 'display: none;'}">
-                <div class="pulse-loader"></div>
-                <p class="waiting-title">Administrator tasdiqlashi kutilmoqda...</p>
-                <p class="waiting-hint">Admin ruxsat bergach, ushbu sahifa <strong>avtomatik ochiladi</strong>. Qayta so'rov yuborishingiz shart emas.</p>
-                
-                <div class="waiting-actions">
-                    <button type="button" id="re-send-btn" class="auth-submit-btn" style="padding: 11px 16px; font-size: 0.92rem;">
-                        🔄 So'rovni Qayta Yuborish
-                    </button>
-                    <button type="button" id="cancel-req-btn" class="auth-cancel-btn">
-                        ✏️ Ismni o'zgartirish / Qaytadan yozish
-                    </button>
-                </div>
-            </div>
-
-            <div style="margin-top: 14px; text-align: center;">
+            <div style="margin-top: 4px; text-align: center;">
                 <button id="admin-login-secret-btn" class="admin-secret-link">
-                    🔑 Administrator Kirishi
+                    🔑 Admin
                 </button>
             </div>
         </div>
     `;
 
-    const devId = getOrCreateDeviceId();
-    const devInfo = detectDeviceInfo();
-
-    // If already pending, start listening for approval
-    if (isPending) {
-        startPollingForApproval(devId, existingRequest.fullName, devInfo, existingRequest.requestedAt || Date.now());
-    }
-
-    // Submit Request
     const form = document.getElementById('access-request-form');
     if (form) {
         form.addEventListener('submit', async (e) => {
@@ -328,61 +344,16 @@ function showAccessRequestModal(existingRequest) {
             // Send to cloud requests channel
             await Cloud.publish(ACCESS_CONFIG.CHANNEL_REQUESTS, reqData);
 
-            // Switch to waiting state
-            form.style.display = 'none';
-            document.getElementById('waiting-status-box').style.display = 'flex';
-            document.getElementById('access-subtext').innerHTML = `Hurmatli <strong>${fullName}</strong>, sizning ushbu gadjetingizdan kirish so'rovingiz adminga yuborildi. Administrator tasdiqlashini kuting.`;
-
-            startPollingForApproval(devId, fullName, devInfo, now);
-        });
-    }
-
-    // Re-Send Button Handler
-    const reSendBtn = document.getElementById('re-send-btn');
-    if (reSendBtn) {
-        reSendBtn.addEventListener('click', async () => {
-            reSendBtn.disabled = true;
-            reSendBtn.textContent = "Yuborilmoqda...";
-            const reqData = JSON.parse(localStorage.getItem('exam_student_request') || '{}');
-            const fullName = reqData.fullName || "Foydalanuvchi";
-            const now = Date.now();
-
-            reqData.requestedAt = now;
-            localStorage.setItem('exam_student_request', JSON.stringify(reqData));
-
-            await Cloud.publish(ACCESS_CONFIG.CHANNEL_REQUESTS, {
-                action: 'request',
-                deviceId: devId,
+            // Immediately switch to the clean waiting card
+            showAccessRequestModal({
+                status: 'pending',
                 fullName: fullName,
                 deviceInfo: devInfo,
                 requestedAt: now
             });
-
-            setTimeout(() => {
-                reSendBtn.disabled = false;
-                reSendBtn.textContent = "✅ So'rov Adminga Yuborildi!";
-                setTimeout(() => { reSendBtn.textContent = "🔄 So'rovni Qayta Yuborish"; }, 2500);
-            }, 500);
         });
     }
 
-    // Cancel / Edit Name Handler
-    const cancelBtn = document.getElementById('cancel-req-btn');
-    if (cancelBtn) {
-        cancelBtn.addEventListener('click', () => {
-            if (pollTimer) clearInterval(pollTimer);
-            localStorage.removeItem('exam_student_request');
-            document.getElementById('waiting-status-box').style.display = 'none';
-            form.style.display = 'flex';
-            const btn = document.getElementById('send-req-btn');
-            if (btn) {
-                btn.disabled = false;
-                btn.textContent = "🚀 Admindan Ruxsat So'rash";
-            }
-        });
-    }
-
-    // Secret Admin Login
     const secretBtn = document.getElementById('admin-login-secret-btn');
     if (secretBtn) {
         secretBtn.addEventListener('click', promptAdminPassword);

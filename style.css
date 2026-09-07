@@ -2089,8 +2089,8 @@ h1 {
   box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.04) !important;
   border-radius: 24px !important;
   width: 100% !important;
-  max-width: 440px !important;
-  padding: 30px 24px !important;
+  max-width: 390px !important;
+  padding: 26px 20px !important;
   display: flex !important;
   flex-direction: column !important;
   gap: 16px !important;
@@ -2148,7 +2148,7 @@ h1 {
 }
 
 .auth-form {
-  display: flex !important;
+  display: flex;
   flex-direction: column !important;
   gap: 14px !important;
   text-align: left !important;
@@ -2244,7 +2244,7 @@ h1 {
 
 /* Waiting Box - Strict Column Layout */
 .waiting-box {
-  display: flex !important;
+  display: flex;
   flex-direction: column !important;
   align-items: center !important;
   text-align: center !important;
