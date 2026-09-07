@@ -1,9 +1,11 @@
-const CACHE_NAME = 'exam-cache-v75';
+const CACHE_NAME = 'exam-cache-v76';
 const ASSETS = [
   './',
   './index.html',
   './style.css',
   './script.js',
+  './security.js',
+  './auth.js',
   './offline_dictionary.json',
   './beginer_speaking.json',
   './beginer_writing.json',
