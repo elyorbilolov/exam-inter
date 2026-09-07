@@ -1,6 +1,6 @@
 // =========================================================
-// DEVICE-BASED ACCESS CONTROL & ADMIN APPROVAL SYSTEM (v8.6)
-// Restored Modern Glassmorphism Design & Instant Real-Time Sync
+// DEVICE-BASED ACCESS CONTROL & ADMIN APPROVAL SYSTEM (v8.8)
+// Modern Glassmorphism Design & Anti-Alert-Loop Protection
 // =========================================================
 
 const ACCESS_CONFIG = {
@@ -177,9 +177,13 @@ function showBlockedModal(fullName, devId) {
     modal.innerHTML = `
         <div class="auth-modal-card" style="text-align: center;">
             <span style="font-size: 3.2rem;">🚫</span>
-            <h2>Kirish To'xtatilgan</h2>
-            <p>Hurmatli <strong>${escapeQuotes(fullName)}</strong>, ushbu gadjetingiz uchun kirish administrator tomonidan vaqtincha to'xtatilgan.</p>
-            <p style="font-size: 0.85rem; color: var(--text-sub); margin-top: 14px;">Administrator qayta yoqqanida sahifa avtomatik ochiladi.</p>
+            <h2 style="color: #f87171; margin: 10px 0;">Kirish To'xtatilgan</h2>
+            <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.5;">
+                Hurmatli <strong>${escapeQuotes(fullName)}</strong>, ushbu gadjetingiz uchun kirish administrator tomonidan vaqtincha to'xtatilgan.
+            </p>
+            <p style="font-size: 0.85rem; color: var(--text-sub); margin-top: 14px;">
+                Administrator qayta yoqqanida sahifa avtomatik ochiladi.
+            </p>
         </div>
     `;
     document.body.appendChild(modal);
@@ -212,11 +216,13 @@ function showBlockedModal(fullName, devId) {
 // ACCESS REQUEST MODAL (FOR STUDENTS)
 // ==========================================
 function showAccessRequestModal(existingRequest) {
-    if (document.getElementById('access-modal-overlay')) return;
-
-    const modal = document.createElement('div');
-    modal.id = 'access-modal-overlay';
-    modal.className = 'auth-modal-overlay';
+    let modal = document.getElementById('access-modal-overlay');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'access-modal-overlay';
+        modal.className = 'auth-modal-overlay';
+        document.body.appendChild(modal);
+    }
 
     const isPending = existingRequest && existingRequest.status === 'pending';
     const isRejected = existingRequest && existingRequest.status === 'rejected';
@@ -234,142 +240,165 @@ function showAccessRequestModal(existingRequest) {
                 </p>
             </div>
 
+            <!-- Agar rad etilgan bo'lsa -->
+            ${isRejected ? `
+                <div class="auth-error-msg" style="margin-bottom: 15px;">
+                    ❌ Sizning so'rovingiz admin tomonidan rad etildi. Qaytadan so'rov yuborishingiz mumkin.
+                </div>
+            ` : ''}
+
             <!-- Request Form (Visible if not pending) -->
             <form id="access-request-form" class="auth-form" style="${isPending ? 'display: none;' : 'display: flex;'}">
-                <div class="input-group">
+                <div class="auth-input-group">
                     <label for="req-fullname">Familiya va Ismingiz</label>
                     <input type="text" id="req-fullname" required placeholder="Masalan: Karimov Jasur" value="${existingRequest ? existingRequest.fullName || '' : ''}">
                 </div>
-                <div class="device-auto-info">
-                    <small>Gadjetingiz: <strong>${detectDeviceInfo()}</strong></small>
+                <div class="device-detected-badge">
+                    <span>Gadjetingiz:</span>
+                    <strong>${detectDeviceInfo()}</strong>
                 </div>
-                <button type="submit" id="send-req-btn" class="auth-btn-primary">
+                <button type="submit" id="send-req-btn" class="auth-submit-btn">
                     🚀 Admindan Ruxsat So'rash
                 </button>
             </form>
 
             <!-- Waiting Status (Visible if pending) -->
             <div id="waiting-status-box" class="waiting-box" style="${isPending ? 'display: flex;' : 'display: none;'}">
-                <div class="pulsing-spinner"></div>
+                <div class="pulse-loader"></div>
                 <p class="waiting-title">Administrator tasdiqlashi kutilmoqda...</p>
                 <p class="waiting-hint">Admin ruxsat bergach, ushbu sahifa <strong>avtomatik ochiladi</strong>. Qayta so'rov yuborishingiz shart emas.</p>
-                <button type="button" id="re-send-btn" class="auth-btn-primary" style="margin-top: 12px; font-size: 0.85rem; padding: 8px 14px;">
-                    🔄 So'rovni Qayta Yuborish
-                </button>
-                <button type="button" id="cancel-req-btn" class="auth-btn-secondary" style="margin-top: 8px;">
-                    ✏️ Ismni o'zgartirish / Qayta yuborish
-                </button>
+                
+                <div class="waiting-actions">
+                    <button type="button" id="re-send-btn" class="auth-submit-btn" style="padding: 11px 16px; font-size: 0.92rem;">
+                        🔄 So'rovni Qayta Yuborish
+                    </button>
+                    <button type="button" id="cancel-req-btn" class="auth-cancel-btn">
+                        ✏️ Ismni o'zgartirish / Qaytadan yozish
+                    </button>
+                </div>
             </div>
 
-            ${isRejected ? `
-                <div class="auth-error-msg" style="margin-top: 15px;">
-                    ❌ Sizning oxirgi so'rovingiz admin tomonidan rad etildi. Qaytadan so'rov yuborishingiz mumkin.
-                </div>
-            ` : ''}
-
-            <div class="admin-login-secret-link" style="margin-top: 20px; text-align: center;">
-                <button id="admin-login-secret-btn" class="link-btn" style="background: none; border: none; color: var(--text-sub); font-size: 0.8rem; cursor: pointer; text-decoration: underline;">
+            <div style="margin-top: 14px; text-align: center;">
+                <button id="admin-login-secret-btn" class="admin-secret-link">
                     🔑 Administrator Kirishi
                 </button>
             </div>
         </div>
     `;
 
-    document.body.appendChild(modal);
-
     const devId = getOrCreateDeviceId();
     const devInfo = detectDeviceInfo();
 
     // If already pending, start listening for approval
     if (isPending) {
-        startPollingForApproval(devId, existingRequest.fullName, devInfo);
+        startPollingForApproval(devId, existingRequest.fullName, devInfo, existingRequest.requestedAt || Date.now());
     }
 
     // Submit Request
     const form = document.getElementById('access-request-form');
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const fullName = document.getElementById('req-fullname').value.trim();
-        if (!fullName) return;
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const fullName = document.getElementById('req-fullname').value.trim();
+            if (!fullName) return;
 
-        const btn = document.getElementById('send-req-btn');
-        btn.disabled = true;
-        btn.textContent = "Yuborilmoqda...";
+            const btn = document.getElementById('send-req-btn');
+            btn.disabled = true;
+            btn.textContent = "Yuborilmoqda...";
 
-        const reqData = {
-            action: 'request',
-            deviceId: devId,
-            fullName: fullName,
-            deviceInfo: devInfo,
-            requestedAt: Date.now()
-        };
+            const now = Date.now();
+            const reqData = {
+                action: 'request',
+                deviceId: devId,
+                fullName: fullName,
+                deviceInfo: devInfo,
+                requestedAt: now
+            };
 
-        // Save locally
-        localStorage.setItem('exam_student_request', JSON.stringify({
-            status: 'pending',
-            fullName: fullName,
-            deviceInfo: devInfo,
-            requestedAt: Date.now()
-        }));
+            // Save locally
+            localStorage.setItem('exam_student_request', JSON.stringify({
+                status: 'pending',
+                fullName: fullName,
+                deviceInfo: devInfo,
+                requestedAt: now
+            }));
 
-        // Send to cloud requests channel
-        await Cloud.publish(ACCESS_CONFIG.CHANNEL_REQUESTS, reqData);
+            // Send to cloud requests channel
+            await Cloud.publish(ACCESS_CONFIG.CHANNEL_REQUESTS, reqData);
 
-        // Switch to waiting state
-        form.style.display = 'none';
-        document.getElementById('waiting-status-box').style.display = 'flex';
-        document.getElementById('access-subtext').innerHTML = `Hurmatli <strong>${fullName}</strong>, sizning ushbu gadjetingizdan kirish so'rovingiz adminga yuborildi. Administrator tasdiqlashini kuting.`;
+            // Switch to waiting state
+            form.style.display = 'none';
+            document.getElementById('waiting-status-box').style.display = 'flex';
+            document.getElementById('access-subtext').innerHTML = `Hurmatli <strong>${fullName}</strong>, sizning ushbu gadjetingizdan kirish so'rovingiz adminga yuborildi. Administrator tasdiqlashini kuting.`;
 
-        startPollingForApproval(devId, fullName, devInfo);
-    });
+            startPollingForApproval(devId, fullName, devInfo, now);
+        });
+    }
 
-    // Cancel / Edit Name
+    // Re-Send Button Handler
     const reSendBtn = document.getElementById('re-send-btn');
     if (reSendBtn) {
         reSendBtn.addEventListener('click', async () => {
             reSendBtn.disabled = true;
             reSendBtn.textContent = "Yuborilmoqda...";
-            const devId = getOrCreateDeviceId();
-            const devInfo = detectDeviceInfo();
-            const fullName = (existingRequest && existingRequest.fullName) || document.getElementById('req-fullname').value.trim() || "Foydalanuvchi";
+            const reqData = JSON.parse(localStorage.getItem('exam_student_request') || '{}');
+            const fullName = reqData.fullName || "Foydalanuvchi";
+            const now = Date.now();
+
+            reqData.requestedAt = now;
+            localStorage.setItem('exam_student_request', JSON.stringify(reqData));
+
             await Cloud.publish(ACCESS_CONFIG.CHANNEL_REQUESTS, {
                 action: 'request',
                 deviceId: devId,
                 fullName: fullName,
                 deviceInfo: devInfo,
-                requestedAt: Date.now()
+                requestedAt: now
             });
+
             setTimeout(() => {
                 reSendBtn.disabled = false;
-                reSendBtn.textContent = "✅ So'rov Yuborildi!";
+                reSendBtn.textContent = "✅ So'rov Adminga Yuborildi!";
                 setTimeout(() => { reSendBtn.textContent = "🔄 So'rovni Qayta Yuborish"; }, 2500);
-            }, 600);
+            }, 500);
         });
     }
 
-    document.getElementById('cancel-req-btn').addEventListener('click', () => {
-        if (pollTimer) clearInterval(pollTimer);
-        localStorage.removeItem('exam_student_request');
-        document.getElementById('waiting-status-box').style.display = 'none';
-        form.style.display = 'flex';
-        const btn = document.getElementById('send-req-btn');
-        btn.disabled = false;
-        btn.textContent = "🚀 Admindan Ruxsat So'rash";
-    });
+    // Cancel / Edit Name Handler
+    const cancelBtn = document.getElementById('cancel-req-btn');
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', () => {
+            if (pollTimer) clearInterval(pollTimer);
+            localStorage.removeItem('exam_student_request');
+            document.getElementById('waiting-status-box').style.display = 'none';
+            form.style.display = 'flex';
+            const btn = document.getElementById('send-req-btn');
+            if (btn) {
+                btn.disabled = false;
+                btn.textContent = "🚀 Admindan Ruxsat So'rash";
+            }
+        });
+    }
 
     // Secret Admin Login
-    document.getElementById('admin-login-secret-btn').addEventListener('click', promptAdminPassword);
+    const secretBtn = document.getElementById('admin-login-secret-btn');
+    if (secretBtn) {
+        secretBtn.addEventListener('click', promptAdminPassword);
+    }
 }
 
-// Student waiting for approval
-function startPollingForApproval(devId, fullName, devInfo) {
+// Student waiting for approval (Protected against alert loops!)
+function startPollingForApproval(devId, fullName, devInfo, requestedAt) {
     if (pollTimer) clearInterval(pollTimer);
 
+    const reqTime = requestedAt || Date.now();
     let pollTicks = 0;
+
     pollTimer = setInterval(async () => {
         pollTicks++;
-        // Har 15 soniyada (5 ta tekshiruvda) so'rovni bulutga qayta uzatamiz
-        if (pollTicks % 5 === 0) {
+
+        // Har 18 soniyada (6 ta tick) so'rovni yangilab turamiz
+        if (pollTicks % 6 === 0) {
             Cloud.publish(ACCESS_CONFIG.CHANNEL_REQUESTS, {
                 action: 'request',
                 deviceId: devId,
@@ -383,15 +412,21 @@ function startPollingForApproval(devId, fullName, devInfo) {
             const msgs = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + devId, 10);
             for (let i = msgs.length - 1; i >= 0; i--) {
                 const msg = msgs[i];
-                if (msg && msg.action === 'approve') {
+                if (!msg) continue;
+                
+                const msgTime = msg.timestamp || msg.approvedAt || msg.time || 0;
+
+                // FAQAT joriy so'rov yuborilgandan KEYIN kelgan xabarlarga qaraymiz!
+                if (msgTime < reqTime) continue;
+
+                if (msg.action === 'approve') {
                     clearInterval(pollTimer);
-                    // Ruxsat berildi! LocalStorage ga doimiy saqlaymiz
                     localStorage.setItem('exam_student_approved', JSON.stringify({
                         status: 'active',
                         deviceId: devId,
                         fullName: msg.fullName || fullName,
                         deviceInfo: msg.deviceInfo || devInfo,
-                        approvedAt: msg.approvedAt || Date.now()
+                        approvedAt: msgTime || Date.now()
                     }));
                     localStorage.removeItem('exam_student_request');
 
@@ -399,22 +434,31 @@ function startPollingForApproval(devId, fullName, devInfo) {
                     if (modal) {
                         modal.innerHTML = `
                             <div class="auth-modal-card" style="text-align: center;">
-                                <span style="font-size: 3rem;">🎉</span>
-                                <h2>Ruxsat Berildi!</h2>
-                                <p>Xush kelibsiz! Ushbu gadjetingiz uchun sayt to'liq ochildi.</p>
+                                <span style="font-size: 3.5rem;">🎉</span>
+                                <h2 style="color: #34d399; margin: 10px 0;">Ruxsat Berildi!</h2>
+                                <p style="color: rgba(255,255,255,0.85); font-size: 1rem;">
+                                    Xush kelibsiz! Ushbu gadjetingiz uchun sayt to'liq ochildi.
+                                </p>
                             </div>
                         `;
-                        setTimeout(() => {
-                            location.reload();
-                        }, 1200);
+                        setTimeout(() => { location.reload(); }, 1200);
                     }
                     return;
-                } else if (msg && (msg.action === 'reject' || msg.action === 'delete')) {
+                } else if (msg.action === 'reject') {
+                    clearInterval(pollTimer);
+                    // Alert bermasdan, kartani to'g'ridan-to'g'ri rad etilgan holatga o'tkazamiz
+                    localStorage.setItem('exam_student_request', JSON.stringify({
+                        status: 'rejected',
+                        fullName: fullName,
+                        deviceInfo: devInfo
+                    }));
+                    showAccessRequestModal({ status: 'rejected', fullName: fullName });
+                    return;
+                } else if (msg.action === 'delete') {
                     clearInterval(pollTimer);
                     localStorage.removeItem('exam_student_approved');
                     localStorage.removeItem('exam_student_request');
-                    alert(msg.action === 'delete' ? "Ushbu gadjet uchun ruxsat o'chirildi!" : "So'rovingiz admin tomonidan rad etildi.");
-                    location.reload();
+                    showAccessRequestModal(null);
                     return;
                 }
             }
@@ -457,9 +501,9 @@ function injectAdminBadge() {
     badge.id = 'user-profile-badge';
     badge.className = 'user-profile-badge admin-badge';
     badge.innerHTML = `
-        <span class="user-badge-name" style="color: #f59e0b; font-weight: 800;">👑 <span class="badge-role-text">ADMIN</span></span>
+        <span class="user-badge-name" style="color: #f59e0b; font-weight: 800;">👑 ADMIN</span>
         <button id="open-admin-btn" class="admin-panel-btn" title="Admin Paneli">
-            ⚙️<span class="admin-btn-text"> Boshqaruv</span>
+            ⚙️ Boshqaruv
             <span id="header-req-badge" class="admin-req-badge" style="display: none;">0</span>
         </button>
         <button id="auth-logout-btn" class="logout-btn" title="Chiqish">🚪</button>
@@ -472,7 +516,7 @@ function injectAdminBadge() {
     startAdminRequestMonitor();
 }
 
-// Live monitor: Har 5 soniyada yangi so'rov bor-yo'qligini tekshirib, qizil raqam bilan ko'rsatish
+// Live monitor: Har 4 soniyada yangi so'rov bor-yo'qligini tekshirib, qizil raqam bilan ko'rsatish
 function startAdminRequestMonitor() {
     if (adminMonitorTimer) clearInterval(adminMonitorTimer);
 
@@ -547,13 +591,13 @@ function injectUserBadge(name) {
     badge.id = 'user-profile-badge';
     badge.className = 'user-profile-badge student-badge';
     badge.innerHTML = `
-        <span class="user-badge-name" title="${escapeQuotes(name)}">👤 <span class="student-name-text">${name}</span></span>
+        <span class="user-badge-name" title="${escapeQuotes(name)}">👤 ${name}</span>
         <span class="online-indicator" title="Faol">🟢</span>
     `;
     headerActions.prepend(badge);
 }
 
-// Doimiy onlayn tekshiruvi (Heartbeat va revoke tekshiruvi)
+// Doimiy onlayn tekshiruvi (Heartbeat)
 function startDeviceHeartbeat(devId, fullName, deviceInfo) {
     const ping = () => {
         const approved = localStorage.getItem('exam_student_approved');
@@ -571,10 +615,9 @@ function startDeviceHeartbeat(devId, fullName, deviceInfo) {
         });
     };
 
-    // Sahifa ochilganda yuborish
     ping();
 
-    // Har 12 soniyada tekshirish va ping yuborish
+    // Har 15 soniyada status tekshirish
     setInterval(async () => {
         try {
             const msgs = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + devId, 5);
@@ -583,14 +626,12 @@ function startDeviceHeartbeat(devId, fullName, deviceInfo) {
                 if (msg && msg.action === 'delete') {
                     localStorage.removeItem('exam_student_approved');
                     localStorage.removeItem('exam_student_request');
-                    alert("Ushbu gadjet uchun ruxsat administrator tomonidan butunlay o'chirildi!");
                     location.reload();
                     return;
                 } else if (msg && msg.action === 'block') {
                     let app = JSON.parse(localStorage.getItem('exam_student_approved') || '{}');
                     app.status = 'blocked';
                     localStorage.setItem('exam_student_approved', JSON.stringify(app));
-                    alert("Ushbu gadjet uchun ruxsat administrator tomonidan vaqtincha to'xtatildi!");
                     location.reload();
                     return;
                 }
@@ -598,7 +639,7 @@ function startDeviceHeartbeat(devId, fullName, deviceInfo) {
         } catch(e) {}
 
         ping();
-    }, 12000);
+    }, 15000);
 
     document.addEventListener('visibilitychange', () => {
         if (!document.hidden) ping();
@@ -657,7 +698,7 @@ async function openAdminPanel() {
                                     <th>Ism-Familiya</th>
                                     <th>Gadjet Nomi</th>
                                     <th>So'ralgan Vaqt</th>
-                                    <th>Qaror (Tasdiqlash)</th>
+                                    <th style="text-align: right;">Qaror (Tasdiqlash)</th>
                                 </tr>
                             </thead>
                             <tbody id="pending-requests-tbody">
@@ -681,7 +722,7 @@ async function openAdminPanel() {
                                     <th>Gadjet</th>
                                     <th>Holat</th>
                                     <th>Ruxsat Berilgan Sana</th>
-                                    <th>Boshqaruv</th>
+                                    <th style="text-align: right;">Boshqaruv</th>
                                 </tr>
                             </thead>
                             <tbody id="approved-devices-tbody">
@@ -830,8 +871,8 @@ async function loadAdminDashboard() {
                 <td><strong>${r.fullName}</strong></td>
                 <td>📱 ${r.deviceInfo}</td>
                 <td><small>${new Date(r.requestedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</small></td>
-                <td>
-                    <div class="admin-actions-cell">
+                <td style="text-align: right;">
+                    <div class="admin-actions-cell" style="justify-content: flex-end;">
                         <button class="tbl-btn btn-approve" onclick="approveDevice('${r.deviceId}', '${escapeQuotes(r.fullName)}', '${escapeQuotes(r.deviceInfo)}')">
                             ✅ Ruxsat berish
                         </button>
@@ -860,8 +901,8 @@ async function loadAdminDashboard() {
                     <td>📱 ${d.deviceInfo}</td>
                     <td>${statusBadge}</td>
                     <td><small>${new Date(d.approvedAt).toLocaleDateString()}</small></td>
-                    <td>
-                        <div class="admin-actions-cell">
+                    <td style="text-align: right;">
+                        <div class="admin-actions-cell" style="justify-content: flex-end;">
                             <button class="tbl-btn btn-pause" onclick="toggleDeviceBlock('${d.deviceId}', '${d.status}')" title="${d.status === 'active' ? 'Vaqtincha to\'xtatish' : 'Qayta yoqish'}">
                                 ${d.status === 'active' ? '⏸️ To\'xtatish' : '▶️ Yoqish'}
                             </button>
@@ -917,7 +958,6 @@ window.approveDevice = async function(deviceId, fullName, deviceInfo) {
         timestamp: now
     });
 
-    alert(`✅ ${fullName} ning gadjetiga ruxsat berildi! Uning ekrani darhol ochiladi.`);
     await loadAdminDashboard();
 };
 
@@ -974,21 +1014,18 @@ window.deleteDevice = async function(deviceId, fullName) {
 
         const now = Date.now();
 
-        // 1. Shaxsiy kanalga "delete" xabarini yuboramiz (talaba ekrani darhol yopilishi uchun)
         await Cloud.publish(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + deviceId, {
             action: 'delete',
             deviceId: deviceId,
             timestamp: now
         });
 
-        // 2. Barcha admin qurilmalariga "delete" xabarini yuboramiz
         await Cloud.publish(ACCESS_CONFIG.CHANNEL_APPROVALS, {
             action: 'delete',
             deviceId: deviceId,
             timestamp: now
         });
 
-        alert(`🗑️ ${fullName} ning gadjet ruxsati butunlay o'chirildi!`);
         await loadAdminDashboard();
     }
 };
