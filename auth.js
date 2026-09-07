@@ -3,28 +3,28 @@
 // =========================================================
 
 const AUTH_CONFIG = {
-    // Cloud Firebase Realtime Database for Live Sync & Device Enforcement
-    // Default fallback to high-reliability encrypted cloud sync
-    DB_ENDPOINT: "https://exam-inter-auth-default-rtdb.firebaseio.com",
-    ADMIN_DEFAULT_KEY: "admin777", // Sizning shaxsiy admin parolingiz
-    SESSION_TIMEOUT_MINS: 120, // 2 soat faoliyatsizlikdan so'ng sessiyani yopish
+    // Cloud Live Database (Global Sync across all devices, phones, and PCs)
+    CLOUD_STORE_ID: "ff808181a067127101a07b81e99d3485",
+    CLOUD_API_URL: "https://api.restful-api.dev/objects/ff808181a067127101a07b81e99d3485",
+    ADMIN_DEFAULT_KEY: "admin777", // Shaxsiy admin parolingiz
+    SESSION_TIMEOUT_DAYS: 365, // Bir marta kirsa, 1 yil davomida qayta so'ramaydi
     HEARTBEAT_INTERVAL_MS: 15000 // Har 15 soniyada boshqa qurilma tekshiruvi
 };
 
-// Generates unique device fingerprint
+// Generates stable unique device fingerprint
 function generateDeviceFingerprint() {
     let fp = localStorage.getItem('device_fingerprint_id');
     if (!fp) {
         const screenData = `${window.screen.width}x${window.screen.height}x${window.screen.colorDepth}`;
-        const navData = `${navigator.userAgent}-${navigator.language}-${navigator.hardwareConcurrency || 2}`;
-        const randomPart = Math.random().toString(36).substring(2, 15) + Date.now().toString(36);
-        fp = 'dev_' + btoa(screenData + '|' + navData + '|' + randomPart).replace(/[^a-zA-Z0-9]/g, '').substring(0, 24);
+        const navData = `${navigator.userAgent}-${navigator.language}`;
+        const randomPart = Math.random().toString(36).substring(2, 12) + Date.now().toString(36);
+        fp = 'dev_' + btoa(screenData + '|' + navData + '|' + randomPart).replace(/[^a-zA-Z0-9]/g, '').substring(0, 20);
         localStorage.setItem('device_fingerprint_id', fp);
     }
     return fp;
 }
 
-// Get readable device title (e.g. "iPhone / Safari" or "Windows / Chrome")
+// Get readable device title (e.g. "iPhone", "Android Telefon", "Windows PC")
 function getDeviceName() {
     const ua = navigator.userAgent;
     let os = "Noma'lum Qurilma";
@@ -41,73 +41,92 @@ function getDeviceName() {
 window.CurrentUser = null;
 let heartbeatTimer = null;
 
-// Database helper using REST API (Zero setup needed, instant live sync)
+// Database helper with Real-time Cloud Synchronization
 const AuthDB = {
     async getUsers() {
         try {
-            const res = await fetch(`${AUTH_CONFIG.DB_ENDPOINT}/users.json`);
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 4000);
+            const res = await fetch(AUTH_CONFIG.CLOUD_API_URL, { signal: controller.signal });
+            clearTimeout(timeout);
             if (res.ok) {
-                const data = await res.json();
-                return data || {};
+                const result = await res.json();
+                if (result && result.data) {
+                    // Update local mirror
+                    localStorage.setItem('sys_users_store', JSON.stringify(result.data));
+                    return result.data;
+                }
             }
         } catch(e) {
-            console.warn("Cloud DB unavailable, checking local storage...");
+            console.warn("Cloud read timeout/error, using local cache:", e);
         }
-        // Fallback to local storage if cloud is unreachable
         return JSON.parse(localStorage.getItem('sys_users_store') || '{}');
     },
 
     async saveUser(username, userData) {
         const uKey = username.toLowerCase().trim().replace(/[^a-z0-9_]/g, '');
-        // 1. Try Cloud
+        const allUsers = await this.getUsers();
+        allUsers[uKey] = userData;
+        localStorage.setItem('sys_users_store', JSON.stringify(allUsers));
+
+        // Save to global cloud
         try {
-            await fetch(`${AUTH_CONFIG.DB_ENDPOINT}/users/${uKey}.json`, {
+            await fetch(AUTH_CONFIG.CLOUD_API_URL, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(userData)
+                body: JSON.stringify({
+                    name: 'exam_inter_users',
+                    data: allUsers
+                })
             });
-        } catch(e) {}
-
-        // 2. Sync Local
-        const localUsers = JSON.parse(localStorage.getItem('sys_users_store') || '{}');
-        localUsers[uKey] = userData;
-        localStorage.setItem('sys_users_store', JSON.stringify(localUsers));
+        } catch(e) {
+            console.error("Cloud user save error:", e);
+        }
     },
 
     async deleteUser(username) {
         const uKey = username.toLowerCase().trim().replace(/[^a-z0-9_]/g, '');
+        const allUsers = await this.getUsers();
+        delete allUsers[uKey];
+        localStorage.setItem('sys_users_store', JSON.stringify(allUsers));
+
         try {
-            await fetch(`${AUTH_CONFIG.DB_ENDPOINT}/users/${uKey}.json`, {
-                method: 'DELETE'
+            await fetch(AUTH_CONFIG.CLOUD_API_URL, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: 'exam_inter_users',
+                    data: allUsers
+                })
             });
         } catch(e) {}
-        const localUsers = JSON.parse(localStorage.getItem('sys_users_store') || '{}');
-        delete localUsers[uKey];
-        localStorage.setItem('sys_users_store', JSON.stringify(localUsers));
     },
 
     async getUser(username) {
         const uKey = username.toLowerCase().trim().replace(/[^a-z0-9_]/g, '');
-        try {
-            const res = await fetch(`${AUTH_CONFIG.DB_ENDPOINT}/users/${uKey}.json`);
-            if (res.ok) {
-                const data = await res.json();
-                if (data) return data;
-            }
-        } catch(e) {}
-        const localUsers = JSON.parse(localStorage.getItem('sys_users_store') || '{}');
-        return localUsers[uKey] || null;
+        const allUsers = await this.getUsers();
+        return allUsers[uKey] || null;
     },
 
     async updatePresence(username, sessionId) {
         const uKey = username.toLowerCase().trim().replace(/[^a-z0-9_]/g, '');
-        const now = Date.now();
-        try {
-            await fetch(`${AUTH_CONFIG.DB_ENDPOINT}/users/${uKey}/lastHeartbeat.json`, {
-                method: 'PUT',
-                body: JSON.stringify(now)
-            });
-        } catch(e) {}
+        const allUsers = await this.getUsers();
+        if (allUsers[uKey]) {
+            allUsers[uKey].lastHeartbeat = Date.now();
+            localStorage.setItem('sys_users_store', JSON.stringify(allUsers));
+            // Lightweight update every minute
+            if (!this._lastCloudHeartbeat || Date.now() - this._lastCloudHeartbeat > 40000) {
+                this._lastCloudHeartbeat = Date.now();
+                fetch(AUTH_CONFIG.CLOUD_API_URL, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: 'exam_inter_users',
+                        data: allUsers
+                    })
+                }).catch(() => {});
+            }
+        }
     }
 };
 
@@ -359,9 +378,9 @@ function injectUserBadge() {
     }
 }
 
-// Check on page load
+// Check on page load with Persistent Device Auto-Login
 async function checkAuthOnLoad() {
-    const sessionStr = localStorage.getItem('exam_session') || sessionStorage.getItem('exam_session');
+    const sessionStr = localStorage.getItem('exam_session');
     if (!sessionStr) {
         setupAuthUI();
         return;
@@ -375,16 +394,26 @@ async function checkAuthOnLoad() {
             return;
         }
 
-        // Verify with database
-        const user = await AuthDB.getUser(session.username);
         const currentDevice = generateDeviceFingerprint();
+        const user = await AuthDB.getUser(session.username);
 
-        if (user && user.status !== 'blocked' && user.activeSessionId === session.sessionId && user.lockedDeviceId === currentDevice) {
+        // Auto-login: If user exists, active, not blocked, and belongs to this device
+        if (user && user.status === 'active' && (!user.lockedDeviceId || user.lockedDeviceId === currentDevice)) {
+            // Update session for this device
+            if (!user.lockedDeviceId) {
+                user.lockedDeviceId = currentDevice;
+                user.deviceInfo = getDeviceName();
+            }
+            user.activeSessionId = session.sessionId;
+            user.lastLogin = Date.now();
+            user.lastHeartbeat = Date.now();
+            AuthDB.saveUser(session.username, user);
+
             window.CurrentUser = session;
             injectUserBadge();
             startHeartbeatCheck();
         } else {
-            // Invalid session
+            // Only prompt if blocked or explicitly mismatched to another device
             localStorage.removeItem('exam_session');
             sessionStorage.removeItem('exam_session');
             setupAuthUI();
