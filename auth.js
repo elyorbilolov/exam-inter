@@ -1,5 +1,5 @@
 // =========================================================
-// DEVICE-BASED ACCESS CONTROL & ADMIN APPROVAL SYSTEM (v9.2)
+// DEVICE-BASED ACCESS CONTROL & ADMIN APPROVAL SYSTEM (v9.3)
 // Modern Glassmorphism Design & Anti-Alert-Loop Protection
 // =========================================================
 
@@ -884,14 +884,14 @@ async function loadAdminDashboard() {
 
     // 5. Render Pending Requests Table
     if (pendingRequests.length === 0) {
-        pendingTbody.innerHTML = `<tr><td colspan="4" style="text-align: center; padding: 20px; color: #64748b;">Yangi so'rovlar yo'q. Barcha gadjetlar tasdiqlangan.</td></tr>`;
+        pendingTbody.innerHTML = `<tr><td colspan="4" class="empty-cell" style="text-align: center; padding: 20px; color: #64748b;">Yangi so'rovlar yo'q. Barcha gadjetlar tasdiqlangan.</td></tr>`;
     } else {
         pendingTbody.innerHTML = pendingRequests.map(r => `
             <tr>
-                <td><strong>${r.fullName}</strong></td>
-                <td>📱 ${r.deviceInfo}</td>
-                <td><small>${new Date(r.requestedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</small></td>
-                <td style="text-align: right;">
+                <td class="col-user"><strong>${r.fullName}</strong></td>
+                <td class="col-device">📱 ${r.deviceInfo}</td>
+                <td class="col-time"><small>${new Date(r.requestedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</small></td>
+                <td class="col-actions" style="text-align: right;">
                     <div class="admin-actions-cell" style="justify-content: flex-end;">
                         <button class="tbl-btn btn-approve" onclick="approveDevice('${r.deviceId}', '${escapeQuotes(r.fullName)}', '${escapeQuotes(r.deviceInfo)}')">
                             ✅ Ruxsat berish
@@ -907,7 +907,7 @@ async function loadAdminDashboard() {
 
     // 6. Render Approved Devices Table
     if (approvedList.length === 0) {
-        approvedTbody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 20px; color: var(--text-sub);">Hozircha tasdiqlangan gadjetlar yo'q.</td></tr>`;
+        approvedTbody.innerHTML = `<tr><td colspan="5" class="empty-cell" style="text-align: center; padding: 20px; color: #64748b;">Hozircha tasdiqlangan gadjetlar yo'q.</td></tr>`;
     } else {
         approvedTbody.innerHTML = approvedList.map(d => {
             const isOnline = onlineMap.has(d.deviceId) && d.status === 'active';
@@ -917,11 +917,11 @@ async function loadAdminDashboard() {
 
             return `
                 <tr>
-                    <td><strong>${d.fullName}</strong></td>
-                    <td>📱 ${d.deviceInfo}</td>
-                    <td>${statusBadge}</td>
-                    <td><small>${new Date(d.approvedAt).toLocaleDateString()}</small></td>
-                    <td style="text-align: right;">
+                    <td class="col-user"><strong>${d.fullName}</strong></td>
+                    <td class="col-device">📱 ${d.deviceInfo}</td>
+                    <td class="col-status">${statusBadge}</td>
+                    <td class="col-date"><small>${new Date(d.approvedAt).toLocaleDateString()}</small></td>
+                    <td class="col-actions" style="text-align: right;">
                         <div class="admin-actions-cell" style="justify-content: flex-end;">
                             <button class="tbl-btn btn-pause" onclick="toggleDeviceBlock('${d.deviceId}', '${d.status}')" title="${d.status === 'active' ? 'Vaqtincha to\'xtatish' : 'Qayta yoqish'}">
                                 ${d.status === 'active' ? '⏸️ To\'xtatish' : '▶️ Yoqish'}
