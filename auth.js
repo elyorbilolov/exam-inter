@@ -253,7 +253,10 @@ function showAccessRequestModal(existingRequest) {
                 <div class="pulsing-spinner"></div>
                 <p class="waiting-title">Administrator tasdiqlashi kutilmoqda...</p>
                 <p class="waiting-hint">Admin ruxsat bergach, ushbu sahifa <strong>avtomatik ochiladi</strong>. Qayta so'rov yuborishingiz shart emas.</p>
-                <button id="cancel-req-btn" class="auth-btn-secondary" style="margin-top: 15px;">
+                <button type="button" id="re-send-btn" class="auth-btn-primary" style="margin-top: 12px; font-size: 0.85rem; padding: 8px 14px;">
+                    🔄 So'rovni Qayta Yuborish
+                </button>
+                <button type="button" id="cancel-req-btn" class="auth-btn-secondary" style="margin-top: 8px;">
                     ✏️ Ismni o'zgartirish / Qayta yuborish
                 </button>
             </div>
@@ -321,6 +324,29 @@ function showAccessRequestModal(existingRequest) {
     });
 
     // Cancel / Edit Name
+    const reSendBtn = document.getElementById('re-send-btn');
+    if (reSendBtn) {
+        reSendBtn.addEventListener('click', async () => {
+            reSendBtn.disabled = true;
+            reSendBtn.textContent = "Yuborilmoqda...";
+            const devId = getOrCreateDeviceId();
+            const devInfo = detectDeviceInfo();
+            const fullName = (existingRequest && existingRequest.fullName) || document.getElementById('req-fullname').value.trim() || "Foydalanuvchi";
+            await Cloud.publish(ACCESS_CONFIG.CHANNEL_REQUESTS, {
+                action: 'request',
+                deviceId: devId,
+                fullName: fullName,
+                deviceInfo: devInfo,
+                requestedAt: Date.now()
+            });
+            setTimeout(() => {
+                reSendBtn.disabled = false;
+                reSendBtn.textContent = "✅ So'rov Yuborildi!";
+                setTimeout(() => { reSendBtn.textContent = "🔄 So'rovni Qayta Yuborish"; }, 2500);
+            }, 600);
+        });
+    }
+
     document.getElementById('cancel-req-btn').addEventListener('click', () => {
         if (pollTimer) clearInterval(pollTimer);
         localStorage.removeItem('exam_student_request');
@@ -339,7 +365,20 @@ function showAccessRequestModal(existingRequest) {
 function startPollingForApproval(devId, fullName, devInfo) {
     if (pollTimer) clearInterval(pollTimer);
 
+    let pollTicks = 0;
     pollTimer = setInterval(async () => {
+        pollTicks++;
+        // Har 15 soniyada (5 ta tekshiruvda) so'rovni bulutga qayta uzatamiz
+        if (pollTicks % 5 === 0) {
+            Cloud.publish(ACCESS_CONFIG.CHANNEL_REQUESTS, {
+                action: 'request',
+                deviceId: devId,
+                fullName: fullName,
+                deviceInfo: devInfo,
+                requestedAt: Date.now()
+            });
+        }
+
         try {
             const msgs = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + devId, 10);
             for (let i = msgs.length - 1; i >= 0; i--) {
@@ -419,7 +458,7 @@ function injectAdminBadge() {
     badge.className = 'user-profile-badge admin-badge';
     badge.innerHTML = `
         <span class="user-badge-name" style="color: #f59e0b; font-weight: 800;">👑 <span class="badge-role-text">ADMIN</span></span>
-        <button id="open-admin-btn" class="admin-open-shortcut" title="Admin Paneli">
+        <button id="open-admin-btn" class="admin-panel-btn" title="Admin Paneli">
             ⚙️<span class="admin-btn-text"> Boshqaruv</span>
             <span id="header-req-badge" class="admin-req-badge" style="display: none;">0</span>
         </button>
