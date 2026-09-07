@@ -1,4 +1,4 @@
-const CACHE_NAME = 'exam-cache-v89';
+const CACHE_NAME = 'exam-cache-v90';
 const ASSETS = [
   './',
   './index.html',
@@ -37,6 +37,11 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  // CRITICAL: NEVER intercept or cache external third-party API calls (e.g. PubNub ps.pndsn.com)
+  if (!event.request.url.startsWith(self.location.origin)) {
+    return;
+  }
+
   event.respondWith(
     fetch(event.request).then((response) => {
       if (response && response.status === 200) {

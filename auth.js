@@ -1,5 +1,5 @@
 // =========================================================
-// DEVICE-BASED ACCESS CONTROL & ADMIN APPROVAL SYSTEM (v8.9)
+// DEVICE-BASED ACCESS CONTROL & ADMIN APPROVAL SYSTEM (v9.0)
 // Modern Glassmorphism Design & Anti-Alert-Loop Protection
 // =========================================================
 
@@ -59,7 +59,8 @@ const Cloud = {
     async publish(channel, message) {
         try {
             const bodyStr = encodeURIComponent(JSON.stringify(message));
-            const url = `${ACCESS_CONFIG.BASE_URL}/publish/${ACCESS_CONFIG.PUB_KEY}/${ACCESS_CONFIG.SUB_KEY}/0/${channel}/0/${bodyStr}`;
+            const t = Date.now();
+            const url = `${ACCESS_CONFIG.BASE_URL}/publish/${ACCESS_CONFIG.PUB_KEY}/${ACCESS_CONFIG.SUB_KEY}/0/${channel}/0/${bodyStr}?_t=${t}`;
             const res = await fetch(url, { cache: 'no-store' });
             return res.ok;
         } catch(e) {
@@ -68,9 +69,10 @@ const Cloud = {
         }
     },
 
-    async getHistory(channel, count = 50) {
+    async getHistory(channel, count = 80) {
         try {
-            const url = `${ACCESS_CONFIG.BASE_URL}/v2/history/sub-key/${ACCESS_CONFIG.SUB_KEY}/channel/${channel}?count=${count}`;
+            const t = Date.now();
+            const url = `${ACCESS_CONFIG.BASE_URL}/v2/history/sub-key/${ACCESS_CONFIG.SUB_KEY}/channel/${channel}?count=${count}&_t=${t}`;
             const res = await fetch(url, { cache: 'no-store' });
             if (res.ok) {
                 const json = await res.json();
@@ -550,7 +552,7 @@ function startAdminRequestMonitor() {
             } catch(e) {}
 
             // 2. Kutilayotgan so'rovlarni hisoblash
-            const reqs = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_REQUESTS, 50);
+            const reqs = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_REQUESTS, 80);
             const reqMap = new Map();
             reqs.forEach(r => {
                 if (r && r.deviceId && r.action === 'request') {
@@ -661,15 +663,17 @@ async function openAdminPanel() {
     adminModal.innerHTML = `
         <div class="admin-modal-container">
             <div class="admin-header">
-                <div>
+                <div class="admin-header-title-box">
                     <h2>👑 Gadjetlarni Boshqarish Paneli</h2>
                     <p>Kirish so'rovlari, tasdiqlangan telefon/kompyuterlar va onlayn nazorat</p>
                 </div>
                 <button class="admin-close-btn" id="admin-close-btn" title="Yopish">✕</button>
             </div>
 
-            <!-- Statistics Summary -->
-            <div class="admin-stats-bar">
+            <!-- Scrollable Modal Body (Smooth touch scroll on mobile) -->
+            <div class="admin-modal-body">
+                <!-- Statistics Summary -->
+                <div class="admin-stats-bar">
                 <div class="stat-card stat-pending">
                     <span class="stat-num" id="stat-pending-reqs" style="color: #f59e0b;">0</span>
                     <span class="stat-label">🔔 Kutilayotgan So'rovlar</span>
@@ -732,6 +736,7 @@ async function openAdminPanel() {
                     </div>
                 </div>
             </div>
+            </div> <!-- end admin-modal-body -->
         </div>
     `;
 
@@ -743,10 +748,33 @@ async function openAdminPanel() {
         if (adminAutoRefreshTimer) clearInterval(adminAutoRefreshTimer);
     });
 
-    document.getElementById('refresh-requests-btn').addEventListener('click', loadAdminDashboard);
-    document.getElementById('refresh-approved-btn').addEventListener('click', loadAdminDashboard);
+    const triggerManualRefresh = async (btn) => {
+        if (!btn) return;
+        const oldText = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = "⏳...";
+        await loadAdminDashboard();
+        btn.textContent = "✅";
+        setTimeout(() => {
+            btn.disabled = false;
+            btn.textContent = oldText;
+        }, 600);
+    };
+
+    const rReqBtn = document.getElementById('refresh-requests-btn');
+    if (rReqBtn) rReqBtn.addEventListener('click', () => triggerManualRefresh(rReqBtn));
+    const rAppBtn = document.getElementById('refresh-approved-btn');
+    if (rAppBtn) rAppBtn.addEventListener('click', () => triggerManualRefresh(rAppBtn));
 
     await loadAdminDashboard();
+
+    // Auto-refresh when tab becomes active on mobile
+    const onVisibilityChange = () => {
+        if (!document.hidden && adminModal.style.display === 'flex') {
+            loadAdminDashboard();
+        }
+    };
+    document.addEventListener('visibilitychange', onVisibilityChange);
 
     // Auto-refresh every 3.5 seconds while modal is open
     if (adminAutoRefreshTimer) clearInterval(adminAutoRefreshTimer);
