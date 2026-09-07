@@ -1,5 +1,5 @@
 // =========================================================
-// DEVICE-BASED ACCESS CONTROL & ADMIN APPROVAL SYSTEM (v8.4)
+// DEVICE-BASED ACCESS CONTROL & ADMIN APPROVAL SYSTEM (v8.5)
 // High-Reliability Real-Time Pub/Sub & Presence Tracking
 // =========================================================
 
@@ -12,8 +12,8 @@ const ACCESS_CONFIG = {
     CHANNEL_PRESENCE: "exam_inter_v84_presence",
     CHANNEL_DEV_PREFIX: "exam_inter_v84_dev_",
     ADMIN_DEFAULT_KEY: "admin777",
-    PRESENCE_INTERVAL_MS: 30000, // Every 30 seconds student pings presence
-    POLL_INTERVAL_MS: 3000        // Polling interval while student waits
+    PRESENCE_INTERVAL_MS: 30000,
+    POLL_INTERVAL_MS: 3000
 };
 
 // Generates persistent stable device identifier
@@ -114,8 +114,40 @@ async function initAccessControl() {
         } catch(e) {}
     }
 
+    // Agar tasdiqlangan bo'lsa, bulutdan admin uni o'chirgani yoki bloklaganini tekshiramiz
+    if (approvedDevice) {
+        try {
+            const msgs = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + devId, 10);
+            for (let i = msgs.length - 1; i >= 0; i--) {
+                const msg = msgs[i];
+                if (msg) {
+                    if (msg.action === 'delete') {
+                        localStorage.removeItem('exam_student_approved');
+                        localStorage.removeItem('exam_student_request');
+                        approvedDevice = null;
+                        break;
+                    } else if (msg.action === 'block') {
+                        approvedDevice.status = 'blocked';
+                        localStorage.setItem('exam_student_approved', JSON.stringify(approvedDevice));
+                        break;
+                    } else if (msg.action === 'unblock' || msg.action === 'approve') {
+                        approvedDevice.status = 'active';
+                        localStorage.setItem('exam_student_approved', JSON.stringify(approvedDevice));
+                        break;
+                    }
+                }
+            }
+        } catch(e) {}
+    }
+
+    // Agar bloklangan bo'lsa
+    if (approvedDevice && approvedDevice.status === 'blocked') {
+        showBlockedModal(approvedDevice.fullName, devId);
+        return;
+    }
+
+    // Agar faol ruxsat berilgan bo'lsa
     if (approvedDevice && approvedDevice.status === 'active') {
-        // Ushbu qurilmaga ruxsat berilgan!
         window.CurrentAccess = {
             isAdmin: false,
             deviceId: devId,
@@ -134,6 +166,46 @@ async function initAccessControl() {
     } catch(e) {}
 
     showAccessRequestModal(existingRequest);
+}
+
+// Bloklangan holat modali
+function showBlockedModal(fullName, devId) {
+    if (document.getElementById('access-modal-overlay')) return;
+    const modal = document.createElement('div');
+    modal.id = 'access-modal-overlay';
+    modal.className = 'auth-modal-overlay';
+    modal.innerHTML = `
+        <div class="auth-modal-card" style="text-align: center;">
+            <span style="font-size: 3.2rem;">🚫</span>
+            <h2>Kirish To'xtatilgan</h2>
+            <p>Hurmatli <strong>${escapeQuotes(fullName)}</strong>, ushbu gadjetingiz uchun kirish administrator tomonidan vaqtincha to'xtatilgan.</p>
+            <p style="font-size: 0.85rem; color: var(--text-sub); margin-top: 14px;">Administrator qayta yoqqanida sahifa avtomatik ochiladi.</p>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    const checkTimer = setInterval(async () => {
+        try {
+            const msgs = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + devId, 5);
+            for (let i = msgs.length - 1; i >= 0; i--) {
+                const msg = msgs[i];
+                if (msg && (msg.action === 'unblock' || msg.action === 'approve')) {
+                    clearInterval(checkTimer);
+                    let app = JSON.parse(localStorage.getItem('exam_student_approved') || '{}');
+                    app.status = 'active';
+                    localStorage.setItem('exam_student_approved', JSON.stringify(app));
+                    location.reload();
+                    return;
+                } else if (msg && msg.action === 'delete') {
+                    clearInterval(checkTimer);
+                    localStorage.removeItem('exam_student_approved');
+                    localStorage.removeItem('exam_student_request');
+                    location.reload();
+                    return;
+                }
+            }
+        } catch(e) {}
+    }, 4000);
 }
 
 // ==========================================
@@ -162,40 +234,39 @@ function showAccessRequestModal(existingRequest) {
                 </p>
             </div>
 
-            ${isRejected ? `<div class="auth-error-msg">Sizning so'rovingiz admin tomonidan rad etilgan! Qaytadan so'rov yuborishingiz mumkin.</div>` : ''}
-
-            <!-- Form: agar so'rov hali yuborilmagan bo'lsa -->
-            <form id="access-request-form" class="auth-form" style="${isPending ? 'display: none;' : 'display: flex;'}">
-                <div class="auth-input-group">
-                    <label for="req-fullname">Ism va Familiyangiz</label>
-                    <input type="text" id="req-fullname" placeholder="Masalan: Jasur Rahimov" required value="${existingRequest ? existingRequest.fullName : ''}">
+            <!-- Request Form (Visible if not pending) -->
+            <form id="access-request-form" class="auth-form" style="${isPending ? 'display: none;' : ''}">
+                <div class="input-group">
+                    <label for="req-fullname">Familiya va Ismingiz</label>
+                    <input type="text" id="req-fullname" required placeholder="Masalan: Karimov Jasur" value="${existingRequest ? existingRequest.fullName || '' : ''}">
                 </div>
-
-                <div class="device-detected-badge">
-                    <span>📱 Gadjetingiz:</span>
-                    <strong>${detectDeviceInfo()}</strong>
+                <div class="device-auto-info">
+                    <small>Gadjetingiz: <strong>${detectDeviceInfo()}</strong></small>
                 </div>
-
-                <button type="submit" id="send-req-btn" class="auth-submit-btn">
+                <button type="submit" id="send-req-btn" class="auth-btn-primary">
                     🚀 Admindan Ruxsat So'rash
                 </button>
             </form>
 
-            <!-- Waiting Indicator: agar so'rov yuborilgan bo'lsa -->
-            <div id="waiting-status-box" style="${isPending ? 'display: flex;' : 'display: none;'}; flex-direction: column; gap: 12px; align-items: center;">
-                <div class="pulse-loader"></div>
-                <p style="font-size: 0.85rem; color: #10b981; font-weight: 600;">
-                    🟢 So'rov adminga yuborilgan. Tasdiqlanishi bilan sahifa o'z-o'zidan ochiladi...
-                </p>
-                <button type="button" id="cancel-req-btn" class="tbl-btn" style="padding: 6px 14px; margin-top: 5px;">
-                    Ismni o'zgartirish
+            <!-- Waiting Status (Visible if pending) -->
+            <div id="waiting-status-box" class="waiting-box" style="${isPending ? 'display: flex;' : 'display: none;'}">
+                <div class="pulsing-spinner"></div>
+                <p class="waiting-title">Administrator tasdiqlashi kutilmoqda...</p>
+                <p class="waiting-hint">Admin ruxsat bergach, ushbu sahifa <strong>avtomatik ochiladi</strong>. Qayta so'rov yuborishingiz shart emas.</p>
+                <button id="cancel-req-btn" class="auth-btn-secondary" style="margin-top: 15px;">
+                    ✏️ Ismni o'zgartirish / Qayta yuborish
                 </button>
             </div>
 
-            <div class="auth-footer-help" style="display: flex; justify-content: space-between; align-items: center;">
-                <span style="font-size: 0.78rem; color: var(--text-sub);">English Exam Himoyasi</span>
-                <button type="button" id="admin-login-secret-btn" class="admin-secret-link" title="Faqat Administrator uchun">
-                    🔒 Admin Kirish
+            ${isRejected ? `
+                <div class="reject-banner" style="margin-top: 15px; padding: 10px; background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; border-radius: 8px; color: #ef4444; text-align: center; font-size: 0.85rem;">
+                    ❌ Sizning oxirgi so'rovingiz admin tomonidan rad etildi. Qaytadan urinib ko'rishingiz mumkin.
+                </div>
+            ` : ''}
+
+            <div class="admin-login-secret-link" style="margin-top: 20px; text-align: center;">
+                <button id="admin-login-secret-btn" class="link-btn" style="background: none; border: none; color: var(--text-sub); font-size: 0.8rem; cursor: pointer; text-decoration: underline;">
+                    🔑 Administrator Kirishi
                 </button>
             </div>
         </div>
@@ -203,9 +274,12 @@ function showAccessRequestModal(existingRequest) {
 
     document.body.appendChild(modal);
 
-    // Agar so'rov kutilayotgan bo'lsa, tekshiruvni boshlaymiz
+    const devId = getOrCreateDeviceId();
+    const devInfo = detectDeviceInfo();
+
+    // If already pending, start listening for approval
     if (isPending) {
-        startPollingForApproval(getOrCreateDeviceId(), existingRequest.fullName, detectDeviceInfo());
+        startPollingForApproval(devId, existingRequest.fullName, devInfo);
     }
 
     // Submit Request
@@ -218,9 +292,6 @@ function showAccessRequestModal(existingRequest) {
         const btn = document.getElementById('send-req-btn');
         btn.disabled = true;
         btn.textContent = "Yuborilmoqda...";
-
-        const devId = getOrCreateDeviceId();
-        const devInfo = detectDeviceInfo();
 
         const reqData = {
             action: 'request',
@@ -263,7 +334,7 @@ function showAccessRequestModal(existingRequest) {
     document.getElementById('admin-login-secret-btn').addEventListener('click', promptAdminPassword);
 }
 
-// O'quvchi kutayotganda admin ruxsat berganini tekshirib turish
+// Student waiting for approval
 function startPollingForApproval(devId, fullName, devInfo) {
     if (pollTimer) clearInterval(pollTimer);
 
@@ -369,28 +440,43 @@ function startAdminRequestMonitor() {
 
     const checkRequests = async () => {
         try {
-            const { devices, rejected } = getLocalAdminData();
+            const { devices, rejected, deleted } = getLocalAdminData();
 
-            // 1. Bulutdagi tasdiqlangan qurilmalarni sinxronlashtirish
+            // 1. Bulutdagi tasdiqlash, to'xtatish va o'chirishlarni sinxronlashtirish
             try {
-                const approvals = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_APPROVALS, 50);
+                const approvals = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_APPROVALS, 60);
                 approvals.forEach(msg => {
-                    if (msg && msg.deviceId && msg.action === 'approve') {
-                        if (!devices[msg.deviceId]) {
-                            devices[msg.deviceId] = {
-                                deviceId: msg.deviceId,
+                    if (!msg || !msg.deviceId) return;
+                    const id = msg.deviceId;
+                    const msgTime = msg.timestamp || msg.approvedAt || 0;
+                    const delTime = deleted[id] || 0;
+
+                    if (msg.action === 'delete') {
+                        delete devices[id];
+                        if (msgTime >= delTime) {
+                            deleted[id] = msgTime || Date.now();
+                        }
+                    } else if (msg.action === 'block') {
+                        if (devices[id]) devices[id].status = 'blocked';
+                    } else if (msg.action === 'unblock') {
+                        if (devices[id]) devices[id].status = 'active';
+                    } else if (msg.action === 'approve') {
+                        if (!delTime || msgTime > delTime) {
+                            delete deleted[id];
+                            devices[id] = {
+                                deviceId: id,
                                 fullName: msg.fullName,
                                 deviceInfo: msg.deviceInfo,
-                                status: 'active',
-                                approvedAt: msg.approvedAt || Date.now()
+                                status: devices[id]?.status === 'blocked' ? 'blocked' : 'active',
+                                approvedAt: msg.approvedAt || msgTime || Date.now()
                             };
                         }
                     }
                 });
-                saveLocalAdminData(devices, rejected);
+                saveLocalAdminData(devices, rejected, deleted);
             } catch(e) {}
 
-            // 2. So'rovlarni olish va kutilayotganlarni hisoblash
+            // 2. So'rovlarni olish va faol kutilayotganlarni hisoblash
             const reqs = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_REQUESTS, 40);
             const reqMap = new Map();
             reqs.forEach(r => {
@@ -400,8 +486,11 @@ function startAdminRequestMonitor() {
             });
 
             let pendingCount = 0;
-            for (const [id] of reqMap.entries()) {
-                if (!devices[id] && !rejected[id]) {
+            for (const [id, req] of reqMap.entries()) {
+                const reqTime = req.requestedAt || 0;
+                const delTime = deleted[id] || 0;
+                const rejTime = rejected[id] || 0;
+                if (!devices[id] && (!delTime || reqTime > delTime) && (!rejTime || reqTime > rejTime)) {
                     pendingCount++;
                 }
             }
@@ -441,6 +530,13 @@ function injectUserBadge(name) {
 // Doimiy onlayn tekshiruvi (Heartbeat va revoke tekshiruvi)
 function startDeviceHeartbeat(devId, fullName, deviceInfo) {
     const ping = () => {
+        const approved = localStorage.getItem('exam_student_approved');
+        if (!approved) return;
+        try {
+            const data = JSON.parse(approved);
+            if (data.status !== 'active') return;
+        } catch(e) { return; }
+
         Cloud.publish(ACCESS_CONFIG.CHANNEL_PRESENCE, {
             devId: devId,
             fullName: fullName,
@@ -449,27 +545,34 @@ function startDeviceHeartbeat(devId, fullName, deviceInfo) {
         });
     };
 
-    // Sahifa ochilganda darhol yuborish
+    // Sahifa ochilganda yuborish
     ping();
 
-    // Har 30 soniyada takrorlash
+    // Har 12 soniyada tekshirish va ping yuborish
     setInterval(async () => {
-        ping();
-
-        // Admin tomonidan bloklangan yoki o'chirilganini tekshirish
         try {
             const msgs = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + devId, 5);
             for (let i = msgs.length - 1; i >= 0; i--) {
                 const msg = msgs[i];
-                if (msg && (msg.action === 'block' || msg.action === 'delete')) {
+                if (msg && msg.action === 'delete') {
                     localStorage.removeItem('exam_student_approved');
-                    alert("Ushbu gadjet uchun ruxsat bekor qilindi!");
+                    localStorage.removeItem('exam_student_request');
+                    alert("Ushbu gadjet uchun ruxsat administrator tomonidan butunlay o'chirildi!");
+                    location.reload();
+                    return;
+                } else if (msg && msg.action === 'block') {
+                    let app = JSON.parse(localStorage.getItem('exam_student_approved') || '{}');
+                    app.status = 'blocked';
+                    localStorage.setItem('exam_student_approved', JSON.stringify(app));
+                    alert("Ushbu gadjet uchun ruxsat administrator tomonidan vaqtincha to'xtatildi!");
                     location.reload();
                     return;
                 }
             }
         } catch(e) {}
-    }, ACCESS_CONFIG.PRESENCE_INTERVAL_MS);
+
+        ping();
+    }, 12000);
 
     document.addEventListener('visibilitychange', () => {
         if (!document.hidden) ping();
@@ -491,42 +594,43 @@ async function openAdminPanel() {
     adminModal.innerHTML = `
         <div class="admin-modal-container">
             <div class="admin-header">
-                <div>
-                    <h2>👑 Gadjetlarni Boshqarish</h2>
-                    <p>Kirish so'rovlari, tasdiqlangan gadjetlar va real-vaqt onlayn nazorat</p>
+                <div class="admin-header-title">
+                    <h2>⚙️ Administrator Boshqaruv Markazi</h2>
+                    <p>Gadjetlar orqali kirishni real-vaqtda boshqarish (v8.5)</p>
                 </div>
-                <button class="admin-close-btn" id="close-admin-panel-btn" title="Yopish">✕</button>
+                <button class="admin-close-btn" id="admin-close-btn" title="Yopish">✕</button>
             </div>
 
+            <!-- Statistics Summary -->
             <div class="admin-stats-bar">
-                <div class="stat-card stat-pending">
+                <div class="stat-card pending">
                     <span class="stat-num" id="stat-pending-reqs">0</span>
-                    <span class="stat-label">🔔 Kutilayotgan</span>
+                    <span class="stat-label">Kutilayotgan So'rovlar</span>
                 </div>
-                <div class="stat-card stat-approved">
+                <div class="stat-card approved">
                     <span class="stat-num" id="stat-approved-devices">0</span>
-                    <span class="stat-label">📱 Gadjetlar</span>
+                    <span class="stat-label">Tasdiqlangan Gadjetlar</span>
                 </div>
-                <div class="stat-card stat-online">
+                <div class="stat-card online">
                     <span class="stat-num" id="stat-online-now">0</span>
-                    <span class="stat-label">🟢 Online</span>
+                    <span class="stat-label">Hozir Saytda (Onlayn)</span>
                 </div>
             </div>
 
             <div class="admin-content-grid">
-                <!-- 1. Pending Requests Section -->
+                <!-- 1. Yangi Kirish So'rovlari -->
                 <div class="admin-card">
-                    <div class="table-header-row">
+                    <div class="admin-card-header">
                         <h3>🔔 Yangi Kirish So'rovlari</h3>
-                        <button id="refresh-admin-btn" class="refresh-btn">🔄 Yangilash</button>
+                        <button class="icon-refresh-btn" id="refresh-requests-btn" title="Yangilash">🔄</button>
                     </div>
                     <div class="table-responsive">
                         <table class="admin-table">
                             <thead>
                                 <tr>
-                                    <th>Foydalanuvchi va Gadjet</th>
-                                    <th>Vaqt</th>
-                                    <th style="text-align: right;">Qaror</th>
+                                    <th>Familiya Ism / Gadjet</th>
+                                    <th>Vaqti</th>
+                                    <th style="text-align: right;">Amal</th>
                                 </tr>
                             </thead>
                             <tbody id="pending-requests-tbody">
@@ -536,16 +640,19 @@ async function openAdminPanel() {
                     </div>
                 </div>
 
-                <!-- 2. Approved Devices Section -->
+                <!-- 2. Tasdiqlangan Gadjetlar Ro'yxati -->
                 <div class="admin-card">
-                    <h3>✅ Tasdiqlangan Gadjetlar Ro'yxati</h3>
+                    <div class="admin-card-header">
+                        <h3>📱 Tasdiqlangan Gadjetlar</h3>
+                        <button class="icon-refresh-btn" id="refresh-approved-btn" title="Yangilash">🔄</button>
+                    </div>
                     <div class="table-responsive">
                         <table class="admin-table">
                             <thead>
                                 <tr>
-                                    <th>Foydalanuvchi va Gadjet</th>
-                                    <th>Holat</th>
-                                    <th style="text-align: right;">Boshqaruv</th>
+                                    <th>Talaba / Gadjet</th>
+                                    <th>Holati</th>
+                                    <th style="text-align: right;">Boshqarish</th>
                                 </tr>
                             </thead>
                             <tbody id="approved-devices-tbody">
@@ -558,15 +665,17 @@ async function openAdminPanel() {
         </div>
     `;
 
-    document.getElementById('close-admin-panel-btn').addEventListener('click', () => {
+    adminModal.style.display = 'flex';
+
+    // Close Handler
+    document.getElementById('admin-close-btn').addEventListener('click', () => {
+        adminModal.style.display = 'none';
         if (adminAutoRefreshTimer) clearInterval(adminAutoRefreshTimer);
-        const m = document.getElementById('admin-modal-overlay');
-        if (m) m.remove();
     });
 
-    document.getElementById('refresh-admin-btn').addEventListener('click', loadAdminDashboard);
+    document.getElementById('refresh-requests-btn').addEventListener('click', loadAdminDashboard);
+    document.getElementById('refresh-approved-btn').addEventListener('click', loadAdminDashboard);
 
-    // Initial load
     await loadAdminDashboard();
 
     // Auto-refresh every 4 seconds while modal is open
@@ -578,18 +687,23 @@ async function openAdminPanel() {
 function getLocalAdminData() {
     let devices = {};
     let rejected = {};
+    let deleted = {};
     try {
         devices = JSON.parse(localStorage.getItem('exam_admin_devices_v84')) || {};
     } catch(e) {}
     try {
         rejected = JSON.parse(localStorage.getItem('exam_admin_rejected_v84')) || {};
     } catch(e) {}
-    return { devices, rejected };
+    try {
+        deleted = JSON.parse(localStorage.getItem('exam_admin_deleted_v84')) || {};
+    } catch(e) {}
+    return { devices, rejected, deleted };
 }
 
-function saveLocalAdminData(devices, rejected) {
+function saveLocalAdminData(devices, rejected, deleted) {
     if (devices) localStorage.setItem('exam_admin_devices_v84', JSON.stringify(devices));
     if (rejected) localStorage.setItem('exam_admin_rejected_v84', JSON.stringify(rejected));
+    if (deleted) localStorage.setItem('exam_admin_deleted_v84', JSON.stringify(deleted));
 }
 
 // Render Admin Data
@@ -598,25 +712,40 @@ async function loadAdminDashboard() {
     const approvedTbody = document.getElementById('approved-devices-tbody');
     if (!pendingTbody || !approvedTbody) return;
 
-    const { devices, rejected } = getLocalAdminData();
+    const { devices, rejected, deleted } = getLocalAdminData();
 
-    // 1. Bulutdan barcha tasdiqlangan gadjetlarni sinxronlashtirish
+    // 1. Bulutdan barcha tasdiqlash, to'xtatish va o'chirishlarni sinxronlashtirish
     try {
-        const approvals = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_APPROVALS, 50);
+        const approvals = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_APPROVALS, 60);
         approvals.forEach(msg => {
-            if (msg && msg.deviceId && msg.action === 'approve') {
-                if (!devices[msg.deviceId]) {
-                    devices[msg.deviceId] = {
-                        deviceId: msg.deviceId,
+            if (!msg || !msg.deviceId) return;
+            const id = msg.deviceId;
+            const msgTime = msg.timestamp || msg.approvedAt || 0;
+            const delTime = deleted[id] || 0;
+
+            if (msg.action === 'delete') {
+                delete devices[id];
+                if (msgTime >= delTime) {
+                    deleted[id] = msgTime || Date.now();
+                }
+            } else if (msg.action === 'block') {
+                if (devices[id]) devices[id].status = 'blocked';
+            } else if (msg.action === 'unblock') {
+                if (devices[id]) devices[id].status = 'active';
+            } else if (msg.action === 'approve') {
+                if (!delTime || msgTime > delTime) {
+                    delete deleted[id];
+                    devices[id] = {
+                        deviceId: id,
                         fullName: msg.fullName,
                         deviceInfo: msg.deviceInfo,
-                        status: 'active',
-                        approvedAt: msg.approvedAt || Date.now()
+                        status: devices[id]?.status === 'blocked' ? 'blocked' : 'active',
+                        approvedAt: msg.approvedAt || msgTime || Date.now()
                     };
                 }
             }
         });
-        saveLocalAdminData(devices, rejected);
+        saveLocalAdminData(devices, rejected, deleted);
     } catch(e) {}
 
     // 2. Real-vaqtda ONLAYN bo'lgan gadjetlarni aniqlash (oxirgi 2 daqiqa)
@@ -626,7 +755,9 @@ async function loadAdminDashboard() {
         const now = Date.now();
         presences.forEach(p => {
             if (p && p.devId && (now - p.time < 120000)) {
-                onlineMap.set(p.devId, p);
+                if (!deleted[p.devId]) {
+                    onlineMap.set(p.devId, p);
+                }
             }
         });
     } catch(e) {}
@@ -643,25 +774,14 @@ async function loadAdminDashboard() {
         });
 
         for (const [id, req] of reqMap.entries()) {
-            if (!devices[id] && !rejected[id]) {
+            const reqTime = req.requestedAt || 0;
+            const delTime = deleted[id] || 0;
+            const rejTime = rejected[id] || 0;
+            if (!devices[id] && (!delTime || reqTime > delTime) && (!rejTime || reqTime > rejTime)) {
                 pendingRequests.push(req);
             }
         }
     } catch(e) {}
-
-    // Agar onlineMap da bor bo'lsa, lekin hali devices da yo'q bo'lsa, avtomatik qo'shish
-    for (const [onlineDevId, onlineInfo] of onlineMap.entries()) {
-        if (!devices[onlineDevId] && !rejected[onlineDevId]) {
-            devices[onlineDevId] = {
-                deviceId: onlineDevId,
-                fullName: onlineInfo.fullName || "Foydalanuvchi",
-                deviceInfo: onlineInfo.deviceInfo || "Gadjet",
-                status: 'active',
-                approvedAt: onlineInfo.time || Date.now()
-            };
-        }
-    }
-    saveLocalAdminData(devices, rejected);
 
     // 4. Statistikani yangilash
     const approvedList = Object.values(devices);
@@ -758,87 +878,115 @@ function escapeQuotes(str) {
 
 // Action: Ruxsat berish
 window.approveDevice = async function(deviceId, fullName, deviceInfo) {
-    const { devices, rejected } = getLocalAdminData();
+    const { devices, rejected, deleted } = getLocalAdminData();
     delete rejected[deviceId];
+    delete deleted[deviceId];
 
+    const now = Date.now();
     const approvedData = {
         deviceId: deviceId,
         fullName: fullName,
         deviceInfo: deviceInfo,
         status: 'active',
-        approvedAt: Date.now()
+        approvedAt: now
     };
     devices[deviceId] = approvedData;
-    saveLocalAdminData(devices, rejected);
+    saveLocalAdminData(devices, rejected, deleted);
 
     // Direct student notification
-    Cloud.publish(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + deviceId, {
+    await Cloud.publish(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + deviceId, {
         action: 'approve',
         deviceId: deviceId,
         fullName: fullName,
         deviceInfo: deviceInfo,
-        approvedAt: Date.now()
+        approvedAt: now,
+        timestamp: now
     });
 
     // Broadcast approval for all admin sync
-    Cloud.publish(ACCESS_CONFIG.CHANNEL_APPROVALS, {
+    await Cloud.publish(ACCESS_CONFIG.CHANNEL_APPROVALS, {
         action: 'approve',
         deviceId: deviceId,
         fullName: fullName,
         deviceInfo: deviceInfo,
-        approvedAt: Date.now()
+        approvedAt: now,
+        timestamp: now
     });
 
     alert(`✅ ${fullName} ning gadjetiga ruxsat berildi! Uning ekrani darhol ochiladi.`);
-    loadAdminDashboard();
+    await loadAdminDashboard();
 };
 
 // Action: Rad etish
 window.rejectDevice = async function(deviceId) {
     if (confirm("Ushbu so'rovni rad etmoqchimisiz?")) {
-        const { devices, rejected } = getLocalAdminData();
-        rejected[deviceId] = true;
-        saveLocalAdminData(devices, rejected);
+        const { devices, rejected, deleted } = getLocalAdminData();
+        rejected[deviceId] = Date.now();
+        saveLocalAdminData(devices, rejected, deleted);
 
-        Cloud.publish(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + deviceId, {
+        await Cloud.publish(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + deviceId, {
             action: 'reject',
-            deviceId: deviceId
+            deviceId: deviceId,
+            timestamp: Date.now()
         });
 
-        loadAdminDashboard();
+        await loadAdminDashboard();
     }
 };
 
 // Action: Gadjetni vaqtincha bloklash yoki ochish
 window.toggleDeviceBlock = async function(deviceId, currentStatus) {
-    const { devices, rejected } = getLocalAdminData();
+    const { devices, rejected, deleted } = getLocalAdminData();
     if (devices[deviceId]) {
         const newStatus = currentStatus === 'active' ? 'blocked' : 'active';
         devices[deviceId].status = newStatus;
-        saveLocalAdminData(devices, rejected);
+        saveLocalAdminData(devices, rejected, deleted);
 
-        Cloud.publish(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + deviceId, {
-            action: newStatus === 'blocked' ? 'block' : 'unblock',
-            deviceId: deviceId
+        const action = newStatus === 'blocked' ? 'block' : 'unblock';
+        const now = Date.now();
+
+        await Cloud.publish(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + deviceId, {
+            action: action,
+            deviceId: deviceId,
+            timestamp: now
         });
 
-        loadAdminDashboard();
+        await Cloud.publish(ACCESS_CONFIG.CHANNEL_APPROVALS, {
+            action: action,
+            deviceId: deviceId,
+            timestamp: now
+        });
+
+        await loadAdminDashboard();
     }
 };
 
 // Action: Gadjetni butunlay o'chirish
 window.deleteDevice = async function(deviceId, fullName) {
     if (confirm(`Haqiqatan ham ${fullName} ning ushbu gadjet ruxsatini butunlay o'chirmoqchimisiz?`)) {
-        const { devices, rejected } = getLocalAdminData();
+        const { devices, rejected, deleted } = getLocalAdminData();
         delete devices[deviceId];
-        saveLocalAdminData(devices, rejected);
+        deleted[deviceId] = Date.now();
+        saveLocalAdminData(devices, rejected, deleted);
 
-        Cloud.publish(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + deviceId, {
+        const now = Date.now();
+
+        // 1. Shaxsiy kanalga "delete" xabarini yuboramiz (talaba ekrani darhol yopilishi uchun)
+        await Cloud.publish(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + deviceId, {
             action: 'delete',
-            deviceId: deviceId
+            deviceId: deviceId,
+            timestamp: now
         });
 
-        loadAdminDashboard();
+        // 2. Barcha admin qurilmalariga "delete" xabarini yuboramiz
+        await Cloud.publish(ACCESS_CONFIG.CHANNEL_APPROVALS, {
+            action: 'delete',
+            deviceId: deviceId,
+            timestamp: now
+        });
+
+        alert(`🗑️ ${fullName} ning gadjet ruxsati butunlay o'chirildi!`);
+        await loadAdminDashboard();
     }
 };
 
