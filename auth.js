@@ -1,5 +1,5 @@
 // =========================================================
-// DEVICE-BASED ACCESS CONTROL & ADMIN APPROVAL SYSTEM (v8.8)
+// DEVICE-BASED ACCESS CONTROL & ADMIN APPROVAL SYSTEM (v8.9)
 // Modern Glassmorphism Design & Anti-Alert-Loop Protection
 // =========================================================
 
@@ -178,10 +178,10 @@ function showBlockedModal(fullName, devId) {
         <div class="auth-modal-card" style="text-align: center;">
             <span style="font-size: 3.2rem;">🚫</span>
             <h2 style="color: #f87171; margin: 10px 0;">Kirish To'xtatilgan</h2>
-            <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.5;">
+            <p style="color: #334155; font-size: 0.95rem; line-height: 1.5;">
                 Hurmatli <strong>${escapeQuotes(fullName)}</strong>, ushbu gadjetingiz uchun kirish administrator tomonidan vaqtincha to'xtatilgan.
             </p>
-            <p style="font-size: 0.85rem; color: var(--text-sub); margin-top: 14px;">
+            <p style="font-size: 0.85rem; color: #64748b; margin-top: 14px;">
                 Administrator qayta yoqqanida sahifa avtomatik ochiladi.
             </p>
         </div>
@@ -436,7 +436,7 @@ function startPollingForApproval(devId, fullName, devInfo, requestedAt) {
                             <div class="auth-modal-card" style="text-align: center;">
                                 <span style="font-size: 3.5rem;">🎉</span>
                                 <h2 style="color: #34d399; margin: 10px 0;">Ruxsat Berildi!</h2>
-                                <p style="color: rgba(255,255,255,0.85); font-size: 1rem;">
+                                <p style="color: #334155; font-size: 1rem;">
                                     Xush kelibsiz! Ushbu gadjetingiz uchun sayt to'liq ochildi.
                                 </p>
                             </div>
@@ -670,15 +670,15 @@ async function openAdminPanel() {
 
             <!-- Statistics Summary -->
             <div class="admin-stats-bar">
-                <div class="stat-card">
+                <div class="stat-card stat-pending">
                     <span class="stat-num" id="stat-pending-reqs" style="color: #f59e0b;">0</span>
                     <span class="stat-label">🔔 Kutilayotgan So'rovlar</span>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card stat-approved">
                     <span class="stat-num" id="stat-approved-devices" style="color: #34d399;">0</span>
                     <span class="stat-label">📱 Ruxsat Berilgan Gadjetlar</span>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card stat-online">
                     <span class="stat-num" id="stat-online-now" style="color: #38bdf8;">0</span>
                     <span class="stat-label">🟢 Hozir Online</span>
                 </div>
@@ -702,7 +702,7 @@ async function openAdminPanel() {
                                 </tr>
                             </thead>
                             <tbody id="pending-requests-tbody">
-                                <tr><td colspan="4" style="text-align: center; padding: 20px;">Yuklanmoqda...</td></tr>
+                                <tr><td colspan="4" style="text-align: center; padding: 20px; color: #64748b;">Yuklanmoqda...</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -726,7 +726,7 @@ async function openAdminPanel() {
                                 </tr>
                             </thead>
                             <tbody id="approved-devices-tbody">
-                                <tr><td colspan="5" style="text-align: center; padding: 20px;">Yuklanmoqda...</td></tr>
+                                <tr><td colspan="5" style="text-align: center; padding: 20px; color: #64748b;">Yuklanmoqda...</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -864,7 +864,7 @@ async function loadAdminDashboard() {
 
     // 5. Render Pending Requests Table
     if (pendingRequests.length === 0) {
-        pendingTbody.innerHTML = `<tr><td colspan="4" style="text-align: center; padding: 20px; color: var(--text-sub);">Yangi so'rovlar yo'q. Barcha gadjetlar tasdiqlangan.</td></tr>`;
+        pendingTbody.innerHTML = `<tr><td colspan="4" style="text-align: center; padding: 20px; color: #64748b;">Yangi so'rovlar yo'q. Barcha gadjetlar tasdiqlangan.</td></tr>`;
     } else {
         pendingTbody.innerHTML = pendingRequests.map(r => `
             <tr>
