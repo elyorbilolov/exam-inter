@@ -1,5 +1,5 @@
 // =========================================================
-// DEVICE-BASED ACCESS CONTROL & ADMIN APPROVAL SYSTEM (v9.1)
+// DEVICE-BASED ACCESS CONTROL & ADMIN APPROVAL SYSTEM (v9.2)
 // Modern Glassmorphism Design & Anti-Alert-Loop Protection
 // =========================================================
 
@@ -247,7 +247,7 @@ function showAccessRequestModal(existingRequest) {
                 <div class="pulse-loader"></div>
 
                 <button type="button" id="cancel-req-btn" class="auth-cancel-btn">
-                    ✏️ Ismni o'zgartirish
+                    ✏️ Bekor qilish / Boshqa ism kiritish
                 </button>
 
                 <div style="margin-top: 4px; text-align: center;">
@@ -533,10 +533,18 @@ function startAdminRequestMonitor() {
 
             let pendingCount = 0;
             for (const [id, req] of reqMap.entries()) {
-                if (!devices[id] && !rejected[id]) {
+                const reqTime = req.requestedAt || 0;
+                const rejectTime = typeof rejected[id] === 'number' ? rejected[id] : (rejected[id] ? 1 : 0);
+
+                if (rejectTime > 0 && reqTime > rejectTime) {
+                    delete rejected[id];
+                }
+
+                if (!devices[id] && (!rejected[id] || reqTime > rejectTime)) {
                     pendingCount++;
                 }
             }
+            saveLocalAdminData(devices, rejected);
 
             const badgeEl = document.getElementById('header-req-badge');
             if (badgeEl) {
@@ -818,19 +826,32 @@ async function loadAdminDashboard() {
     // 3. Yangi kirish so'rovlarini olish (Kutilayotgan barcha faol so'rovlar)
     let pendingRequests = [];
     try {
-        const reqs = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_REQUESTS, 50);
+        const reqs = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_REQUESTS, 80);
         const reqMap = new Map();
         reqs.forEach(r => {
             if (r && r.deviceId && r.action === 'request') {
-                reqMap.set(r.deviceId, r);
+                const existing = reqMap.get(r.deviceId);
+                if (!existing || (r.requestedAt || 0) >= (existing.requestedAt || 0)) {
+                    reqMap.set(r.deviceId, r);
+                }
             }
         });
 
         for (const [id, req] of reqMap.entries()) {
-            if (!devices[id] && !rejected[id]) {
+            const reqTime = req.requestedAt || 0;
+            const rejectTime = typeof rejected[id] === 'number' ? rejected[id] : (rejected[id] ? 1 : 0);
+
+            // Agar rad etilganidan keyin yangi so'rov yuborgan bo'lsa:
+            if (rejectTime > 0 && reqTime > rejectTime) {
+                delete rejected[id];
+            }
+
+            // Agar tasdiqlanmagan bo'lsa va joriy so'rov rad etilganidan keyin bo'lsa:
+            if (!devices[id] && (!rejected[id] || reqTime > rejectTime)) {
                 pendingRequests.push(req);
             }
         }
+        saveLocalAdminData(devices, rejected);
     } catch(e) {}
 
     // 4. Statistikani yangilash
@@ -1009,6 +1030,7 @@ window.deleteDevice = async function(deviceId, fullName) {
     if (confirm(`Haqiqatan ham ${fullName} ning ushbu gadjet ruxsatini butunlay o'chirmoqchimisiz?`)) {
         const { devices, rejected } = getLocalAdminData();
         delete devices[deviceId];
+        delete rejected[deviceId];
         saveLocalAdminData(devices, rejected);
 
         const now = Date.now();
