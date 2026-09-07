@@ -2192,6 +2192,53 @@ h1 {
   padding: 4px 2px;
 }
 
+.device-detected-badge {
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  padding: 10px 14px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.86rem;
+  color: var(--text-main);
+}
+
+.device-detected-badge strong {
+  color: var(--primary);
+}
+
+.pulse-loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.2);
+  border: 3px solid #10b981;
+  border-top-color: transparent;
+  animation: pulseSpin 0.9s linear infinite;
+  margin: 10px 0;
+}
+
+@keyframes pulseSpin {
+  to { transform: rotate(360deg); }
+}
+
+.admin-secret-link {
+  background: none;
+  border: none;
+  color: var(--text-sub);
+  font-size: 0.78rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.admin-secret-link:hover {
+  color: var(--primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
 .auth-submit-btn {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: white;
