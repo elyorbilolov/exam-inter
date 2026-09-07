@@ -301,10 +301,10 @@ function injectAdminBadge() {
 
     const badge = document.createElement('div');
     badge.id = 'user-profile-badge';
-    badge.className = 'user-profile-badge';
+    badge.className = 'user-profile-badge admin-badge';
     badge.innerHTML = `
-        <span class="user-badge-name" style="color: #f59e0b;">👑 ADMIN</span>
-        <button id="open-admin-btn" class="admin-open-shortcut" title="Admin Panelini Ochish">⚙️ Boshqaruv</button>
+        <span class="user-badge-name" style="color: #f59e0b; font-weight: 800;">👑 <span class="badge-role-text">ADMIN</span></span>
+        <button id="open-admin-btn" class="admin-open-shortcut" title="Admin Paneli">⚙️<span class="admin-btn-text"> Boshqaruv</span></button>
         <button id="auth-logout-btn" class="logout-btn" title="Chiqish">🚪</button>
     `;
     headerActions.prepend(badge);
@@ -323,10 +323,10 @@ function injectUserBadge(name) {
 
     const badge = document.createElement('div');
     badge.id = 'user-profile-badge';
-    badge.className = 'user-profile-badge';
+    badge.className = 'user-profile-badge student-badge';
     badge.innerHTML = `
-        <span class="user-badge-name">👤 ${name}</span>
-        <span style="font-size: 0.75rem; color: #10b981; font-weight: 700;">🟢 Faol</span>
+        <span class="user-badge-name" title="${escapeQuotes(name)}">👤 <span class="student-name-text">${name}</span></span>
+        <span class="online-indicator" title="Faol">🟢</span>
     `;
     headerActions.prepend(badge);
 }
@@ -366,46 +366,45 @@ async function openAdminPanel() {
         <div class="admin-modal-container">
             <div class="admin-header">
                 <div>
-                    <h2>👑 Gadjetlarni Boshqarish Paneli</h2>
-                    <p>Kirish so'rovlari, tasdiqlangan telefon/kompyuterlar va onlayn nazorat</p>
+                    <h2>👑 Gadjetlarni Boshqarish</h2>
+                    <p>Kirish so'rovlari, tasdiqlangan gadjetlar va onlayn nazorat</p>
                 </div>
-                <button class="admin-close-btn" onclick="document.getElementById('admin-modal-overlay').remove()">✕</button>
+                <button class="admin-close-btn" onclick="document.getElementById('admin-modal-overlay').remove()" title="Yopish">✕</button>
             </div>
 
             <div class="admin-stats-bar">
-                <div class="stat-card">
-                    <span class="stat-num" id="stat-pending-reqs" style="color: #f59e0b;">0</span>
-                    <span class="stat-label">🔔 Kutilayotgan So'rovlar</span>
+                <div class="stat-card stat-pending">
+                    <span class="stat-num" id="stat-pending-reqs">0</span>
+                    <span class="stat-label">🔔 Kutilayotgan</span>
                 </div>
-                <div class="stat-card">
-                    <span class="stat-num" id="stat-approved-devices" style="color: #34d399;">0</span>
-                    <span class="stat-label">📱 Ruxsat Berilgan Gadjetlar</span>
+                <div class="stat-card stat-approved">
+                    <span class="stat-num" id="stat-approved-devices">0</span>
+                    <span class="stat-label">📱 Gadjetlar</span>
                 </div>
-                <div class="stat-card">
-                    <span class="stat-num" id="stat-online-now" style="color: #38bdf8;">0</span>
-                    <span class="stat-label">🟢 Hozir Online</span>
+                <div class="stat-card stat-online">
+                    <span class="stat-num" id="stat-online-now">0</span>
+                    <span class="stat-label">🟢 Online</span>
                 </div>
             </div>
 
-            <div class="admin-content-grid" style="grid-template-columns: 1fr;">
+            <div class="admin-content-grid">
                 <!-- 1. Pending Requests Section -->
                 <div class="admin-card">
                     <div class="table-header-row">
-                        <h3>🔔 Yangi Kirish So'rovlari (Ruxsat kutilmoqda)</h3>
+                        <h3>🔔 Yangi Kirish So'rovlari</h3>
                         <button id="refresh-admin-btn" class="refresh-btn">🔄 Yangilash</button>
                     </div>
                     <div class="table-responsive">
                         <table class="admin-table">
                             <thead>
                                 <tr>
-                                    <th>Ism-Familiya</th>
-                                    <th>Gadjet Nomi</th>
-                                    <th>So'ralgan Vaqt</th>
-                                    <th>Qaror (Tasdiqlash)</th>
+                                    <th>Foydalanuvchi va Gadjet</th>
+                                    <th>Vaqt</th>
+                                    <th style="text-align: right;">Qaror</th>
                                 </tr>
                             </thead>
                             <tbody id="pending-requests-tbody">
-                                <tr><td colspan="4" style="text-align: center; padding: 20px;">Yuklanmoqda...</td></tr>
+                                <tr><td colspan="3" style="text-align: center; padding: 20px;">Yuklanmoqda...</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -413,20 +412,18 @@ async function openAdminPanel() {
 
                 <!-- 2. Approved Devices Section -->
                 <div class="admin-card">
-                    <h3>✅ Ruxsat Berilgan Gadjetlar Ro'yxati</h3>
+                    <h3>✅ Tasdiqlangan Gadjetlar Ro'yxati</h3>
                     <div class="table-responsive">
                         <table class="admin-table">
                             <thead>
                                 <tr>
-                                    <th>Ism-Familiya</th>
-                                    <th>Gadjet</th>
+                                    <th>Foydalanuvchi va Gadjet</th>
                                     <th>Holat</th>
-                                    <th>Ruxsat Berilgan Sana</th>
-                                    <th>Boshqaruv</th>
+                                    <th style="text-align: right;">Boshqaruv</th>
                                 </tr>
                             </thead>
                             <tbody id="approved-devices-tbody">
-                                <tr><td colspan="5" style="text-align: center; padding: 20px;">Yuklanmoqda...</td></tr>
+                                <tr><td colspan="3" style="text-align: center; padding: 20px;">Yuklanmoqda...</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -457,20 +454,24 @@ async function loadAdminDashboard() {
     document.getElementById('stat-pending-reqs').textContent = pendingList.length;
 
     if (pendingList.length === 0) {
-        pendingTbody.innerHTML = `<tr><td colspan="4" style="text-align: center; padding: 18px; color: var(--text-sub);">Yangi so'rovlar yo'q.</td></tr>`;
+        pendingTbody.innerHTML = `<tr><td colspan="3" style="text-align: center; padding: 20px; color: var(--text-sub);">Yangi so'rovlar yo'q. Barcha gadjetlar tasdiqlangan.</td></tr>`;
     } else {
         pendingTbody.innerHTML = pendingList.map(r => `
             <tr>
-                <td><strong>${r.fullName}</strong></td>
-                <td>📱 ${r.deviceInfo}</td>
-                <td><small>${new Date(r.requestedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</small></td>
                 <td>
-                    <div class="admin-actions-cell">
-                        <button class="tbl-btn" style="background: rgba(16, 185, 129, 0.25); color: #34d399; font-weight: 700; padding: 6px 12px;" onclick="approveDevice('${r.deviceId}', '${r.fullName}', '${r.deviceInfo}')">
-                            ✅ Ruxsat berish
+                    <div style="font-weight: 700; font-size: 0.95rem;">${r.fullName}</div>
+                    <div class="device-subtext">📱 ${r.deviceInfo}</div>
+                </td>
+                <td>
+                    <span style="font-size: 0.82rem; font-weight: 600; opacity: 0.85;">${new Date(r.requestedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                </td>
+                <td>
+                    <div class="admin-actions-cell right-align">
+                        <button class="tbl-btn btn-approve" onclick="approveDevice('${r.deviceId}', '${escapeQuotes(r.fullName)}', '${escapeQuotes(r.deviceInfo)}')">
+                            ✅ Ruxsat
                         </button>
-                        <button class="tbl-btn del-btn" style="padding: 6px 10px;" onclick="rejectDevice('${r.deviceId}')">
-                            ❌ Rad etish
+                        <button class="tbl-btn btn-reject" onclick="rejectDevice('${r.deviceId}')">
+                            ❌ Rad
                         </button>
                     </div>
                 </td>
@@ -482,7 +483,7 @@ async function loadAdminDashboard() {
     document.getElementById('stat-approved-devices').textContent = devices.length;
 
     if (devices.length === 0) {
-        approvedTbody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 18px; color: var(--text-sub);">Hozircha ruxsat berilgan gadjetlar yo'q.</td></tr>`;
+        approvedTbody.innerHTML = `<tr><td colspan="3" style="text-align: center; padding: 20px; color: var(--text-sub);">Hozircha tasdiqlangan gadjetlar yo'q.</td></tr>`;
     } else {
         approvedTbody.innerHTML = devices.map(d => {
             const isOnline = d.lastHeartbeat && (now - d.lastHeartbeat < 45000);
@@ -494,16 +495,17 @@ async function loadAdminDashboard() {
 
             return `
                 <tr>
-                    <td><strong>${d.fullName}</strong></td>
-                    <td>📱 ${d.deviceInfo}</td>
-                    <td>${statusBadge}</td>
-                    <td><small>${new Date(d.approvedAt).toLocaleDateString()}</small></td>
                     <td>
-                        <div class="admin-actions-cell">
-                            <button class="tbl-btn" onclick="toggleDeviceBlock('${d.deviceId}', '${d.status}')" title="${d.status === 'active' ? 'Vaqtincha to\'xtatish' : 'Qayta yoqish'}">
+                        <div style="font-weight: 700; font-size: 0.95rem;">${d.fullName}</div>
+                        <div class="device-subtext">📱 ${d.deviceInfo} · <small style="opacity: 0.8;">${new Date(d.approvedAt).toLocaleDateString()}</small></div>
+                    </td>
+                    <td>${statusBadge}</td>
+                    <td>
+                        <div class="admin-actions-cell right-align">
+                            <button class="tbl-btn btn-pause" onclick="toggleDeviceBlock('${d.deviceId}', '${d.status}')" title="${d.status === 'active' ? 'Vaqtincha to\'xtatish' : 'Qayta yoqish'}">
                                 ${d.status === 'active' ? '⏸️ To\'xtatish' : '▶️ Yoqish'}
                             </button>
-                            <button class="tbl-btn del-btn" onclick="deleteDevice('${d.deviceId}', '${d.fullName}')" title="Butunlay o'chirish">
+                            <button class="tbl-btn btn-delete" onclick="deleteDevice('${d.deviceId}', '${escapeQuotes(d.fullName)}')" title="Butunlay o'chirish">
                                 🗑️ O'chirish
                             </button>
                         </div>
@@ -514,6 +516,11 @@ async function loadAdminDashboard() {
     }
 
     document.getElementById('stat-online-now').textContent = onlineCount;
+}
+
+function escapeQuotes(str) {
+    if (!str) return '';
+    return String(str).replace(/'/g, "\\'").replace(/"/g, '&quot;');
 }
 
 // Action: Ruxsat berish
