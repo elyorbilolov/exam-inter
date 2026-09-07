@@ -1,16 +1,19 @@
 // =========================================================
-// DEVICE-BASED ACCESS CONTROL & ADMIN APPROVAL SYSTEM (v8.3)
-// Real-time Pub/Sub & Presence Tracking Powered by ntfy.sh
+// DEVICE-BASED ACCESS CONTROL & ADMIN APPROVAL SYSTEM (v8.4)
+// High-Reliability Real-Time Pub/Sub & Presence Tracking
 // =========================================================
 
 const ACCESS_CONFIG = {
-    PRESENCE_TOPIC: "exam_inter_presence_v83",
-    REQUESTS_TOPIC: "exam_inter_requests_v83",
-    APPROVALS_TOPIC: "exam_inter_approvals_v83",
-    DEVICE_PREFIX: "exam_inter_dev_v83_",
+    PUB_KEY: "demo",
+    SUB_KEY: "demo",
+    BASE_URL: "https://ps.pndsn.com",
+    CHANNEL_REQUESTS: "exam_inter_v84_requests",
+    CHANNEL_APPROVALS: "exam_inter_v84_approvals",
+    CHANNEL_PRESENCE: "exam_inter_v84_presence",
+    CHANNEL_DEV_PREFIX: "exam_inter_v84_dev_",
     ADMIN_DEFAULT_KEY: "admin777",
-    HEARTBEAT_INTERVAL_MS: 20000, // Har 20 soniyada o'quvchi online ekanligini bildiradi
-    POLL_INTERVAL_MS: 3000        // Kutilayotganda tekshirish
+    PRESENCE_INTERVAL_MS: 30000, // Every 30 seconds student pings presence
+    POLL_INTERVAL_MS: 3000        // Polling interval while student waits
 };
 
 // Generates persistent stable device identifier
@@ -49,6 +52,36 @@ function detectDeviceInfo() {
 window.CurrentAccess = null;
 let pollTimer = null;
 let adminAutoRefreshTimer = null;
+let adminMonitorTimer = null;
+
+// Real-Time Cloud Communication Helper
+const Cloud = {
+    async publish(channel, message) {
+        try {
+            const bodyStr = encodeURIComponent(JSON.stringify(message));
+            const url = `${ACCESS_CONFIG.BASE_URL}/publish/${ACCESS_CONFIG.PUB_KEY}/${ACCESS_CONFIG.SUB_KEY}/0/${channel}/0/${bodyStr}`;
+            const res = await fetch(url, { cache: 'no-store' });
+            return res.ok;
+        } catch(e) {
+            console.warn("Cloud publish error:", e);
+            return false;
+        }
+    },
+
+    async getHistory(channel, count = 50) {
+        try {
+            const url = `${ACCESS_CONFIG.BASE_URL}/v2/history/sub-key/${ACCESS_CONFIG.SUB_KEY}/channel/${channel}?count=${count}`;
+            const res = await fetch(url, { cache: 'no-store' });
+            if (res.ok) {
+                const json = await res.json();
+                return Array.isArray(json) && Array.isArray(json[0]) ? json[0] : [];
+            }
+        } catch(e) {
+            console.warn("Cloud getHistory error:", e);
+        }
+        return [];
+    }
+};
 
 // ==========================================
 // CORE ACCESS CHECK (AUTO-LOGIN OR PROMPT)
@@ -70,7 +103,7 @@ async function initAccessControl() {
         approvedDevice = JSON.parse(localStorage.getItem('exam_student_approved'));
     } catch(e) {}
 
-    // Eski keshdan migratsiya (agar mavjud bo'lsa)
+    // Eski keshdan migratsiya
     if (!approvedDevice) {
         try {
             const oldCache = JSON.parse(localStorage.getItem('cached_access_data'));
@@ -205,16 +238,8 @@ function showAccessRequestModal(existingRequest) {
             requestedAt: Date.now()
         }));
 
-        // Send to ntfy requests topic
-        try {
-            await fetch(`https://ntfy.sh/${ACCESS_CONFIG.REQUESTS_TOPIC}`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(reqData)
-            });
-        } catch(err) {
-            console.warn("Request send error:", err);
-        }
+        // Send to cloud requests channel
+        await Cloud.publish(ACCESS_CONFIG.CHANNEL_REQUESTS, reqData);
 
         // Switch to waiting state
         form.style.display = 'none';
@@ -238,70 +263,60 @@ function showAccessRequestModal(existingRequest) {
     document.getElementById('admin-login-secret-btn').addEventListener('click', promptAdminPassword);
 }
 
-// O'quvchi kutayotganda admin ruxsat berganini avtomatik aniqlash
+// O'quvchi kutayotganda admin ruxsat berganini tekshirib turish
 function startPollingForApproval(devId, fullName, devInfo) {
     if (pollTimer) clearInterval(pollTimer);
 
     pollTimer = setInterval(async () => {
         try {
-            const res = await fetch(`https://ntfy.sh/${ACCESS_CONFIG.DEVICE_PREFIX}${devId}/json?poll=1&since=24h`, {
-                cache: 'no-store'
-            });
-            if (res.ok) {
-                const text = await res.text();
-                const lines = text.trim().split('\n').filter(Boolean);
-                for (let i = lines.length - 1; i >= 0; i--) {
-                    try {
-                        const parsed = JSON.parse(lines[i]);
-                        const msg = typeof parsed.message === 'string' ? JSON.parse(parsed.message) : parsed.message;
-                        
-                        if (msg && msg.action === 'approve') {
-                            clearInterval(pollTimer);
-                            // Save approved access locally forever
-                            localStorage.setItem('exam_student_approved', JSON.stringify({
-                                status: 'active',
-                                deviceId: devId,
-                                fullName: msg.fullName || fullName,
-                                deviceInfo: msg.deviceInfo || devInfo,
-                                approvedAt: msg.approvedAt || Date.now()
-                            }));
-                            localStorage.removeItem('exam_student_request');
+            const msgs = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + devId, 10);
+            for (let i = msgs.length - 1; i >= 0; i--) {
+                const msg = msgs[i];
+                if (msg && msg.action === 'approve') {
+                    clearInterval(pollTimer);
+                    // Ruxsat berildi! LocalStorage ga doimiy saqlaymiz
+                    localStorage.setItem('exam_student_approved', JSON.stringify({
+                        status: 'active',
+                        deviceId: devId,
+                        fullName: msg.fullName || fullName,
+                        deviceInfo: msg.deviceInfo || devInfo,
+                        approvedAt: msg.approvedAt || Date.now()
+                    }));
+                    localStorage.removeItem('exam_student_request');
 
-                            const modal = document.getElementById('access-modal-overlay');
-                            if (modal) {
-                                modal.innerHTML = `
-                                    <div class="auth-modal-card" style="text-align: center;">
-                                        <span style="font-size: 3rem;">🎉</span>
-                                        <h2>Ruxsat Berildi!</h2>
-                                        <p>Xush kelibsiz! Ushbu gadjetingiz uchun sayt to'liq ochildi.</p>
-                                    </div>
-                                `;
-                                setTimeout(() => {
-                                    location.reload();
-                                }, 1200);
-                            }
-                            return;
-                        } else if (msg && msg.action === 'reject') {
-                            clearInterval(pollTimer);
-                            localStorage.setItem('exam_student_request', JSON.stringify({
-                                status: 'rejected',
-                                fullName: fullName,
-                                deviceInfo: devInfo
-                            }));
+                    const modal = document.getElementById('access-modal-overlay');
+                    if (modal) {
+                        modal.innerHTML = `
+                            <div class="auth-modal-card" style="text-align: center;">
+                                <span style="font-size: 3rem;">🎉</span>
+                                <h2>Ruxsat Berildi!</h2>
+                                <p>Xush kelibsiz! Ushbu gadjetingiz uchun sayt to'liq ochildi.</p>
+                            </div>
+                        `;
+                        setTimeout(() => {
                             location.reload();
-                            return;
-                        }
-                    } catch(e) {}
+                        }, 1200);
+                    }
+                    return;
+                } else if (msg && msg.action === 'reject') {
+                    clearInterval(pollTimer);
+                    localStorage.setItem('exam_student_request', JSON.stringify({
+                        status: 'rejected',
+                        fullName: fullName,
+                        deviceInfo: devInfo
+                    }));
+                    location.reload();
+                    return;
                 }
             }
         } catch(err) {
-            // silent network retry
+            // silent retry
         }
     }, ACCESS_CONFIG.POLL_INTERVAL_MS);
 }
 
 // ==========================================
-// ADMIN LOGIN & MANAGEMENT
+// ADMIN LOGIN & MONITORING
 // ==========================================
 function promptAdminPassword() {
     const entered = prompt("Bosh Administrator Parolini kiriting:");
@@ -324,7 +339,7 @@ function adminLogout() {
     }
 }
 
-// Inject Admin Badge in Header
+// Inject Admin Badge in Header with Live Request Counter
 function injectAdminBadge() {
     const headerActions = document.querySelector('.header-actions');
     if (!headerActions || document.getElementById('user-profile-badge')) return;
@@ -334,13 +349,78 @@ function injectAdminBadge() {
     badge.className = 'user-profile-badge admin-badge';
     badge.innerHTML = `
         <span class="user-badge-name" style="color: #f59e0b; font-weight: 800;">👑 <span class="badge-role-text">ADMIN</span></span>
-        <button id="open-admin-btn" class="admin-open-shortcut" title="Admin Paneli">⚙️<span class="admin-btn-text"> Boshqaruv</span></button>
+        <button id="open-admin-btn" class="admin-open-shortcut" title="Admin Paneli">
+            ⚙️<span class="admin-btn-text"> Boshqaruv</span>
+            <span id="header-req-badge" class="admin-req-badge" style="display: none;">0</span>
+        </button>
         <button id="auth-logout-btn" class="logout-btn" title="Chiqish">🚪</button>
     `;
     headerActions.prepend(badge);
 
     document.getElementById('open-admin-btn').addEventListener('click', openAdminPanel);
     document.getElementById('auth-logout-btn').addEventListener('click', adminLogout);
+
+    startAdminRequestMonitor();
+}
+
+// Live monitor: Yangi so'rov kelganida nastroyka tugmasida bildirishnoma ko'rsatish
+function startAdminRequestMonitor() {
+    if (adminMonitorTimer) clearInterval(adminMonitorTimer);
+
+    const checkRequests = async () => {
+        try {
+            const { devices, rejected } = getLocalAdminData();
+
+            // 1. Bulutdagi tasdiqlangan qurilmalarni sinxronlashtirish
+            try {
+                const approvals = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_APPROVALS, 50);
+                approvals.forEach(msg => {
+                    if (msg && msg.deviceId && msg.action === 'approve') {
+                        if (!devices[msg.deviceId]) {
+                            devices[msg.deviceId] = {
+                                deviceId: msg.deviceId,
+                                fullName: msg.fullName,
+                                deviceInfo: msg.deviceInfo,
+                                status: 'active',
+                                approvedAt: msg.approvedAt || Date.now()
+                            };
+                        }
+                    }
+                });
+                saveLocalAdminData(devices, rejected);
+            } catch(e) {}
+
+            // 2. So'rovlarni olish va kutilayotganlarni hisoblash
+            const reqs = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_REQUESTS, 40);
+            const reqMap = new Map();
+            reqs.forEach(r => {
+                if (r && r.deviceId && r.action === 'request') {
+                    reqMap.set(r.deviceId, r);
+                }
+            });
+
+            let pendingCount = 0;
+            for (const [id] of reqMap.entries()) {
+                if (!devices[id] && !rejected[id]) {
+                    pendingCount++;
+                }
+            }
+
+            const badgeEl = document.getElementById('header-req-badge');
+            if (badgeEl) {
+                if (pendingCount > 0) {
+                    badgeEl.style.display = 'inline-flex';
+                    badgeEl.textContent = `${pendingCount}`;
+                    badgeEl.title = `${pendingCount} ta yangi kirish so'rovi bor!`;
+                } else {
+                    badgeEl.style.display = 'none';
+                }
+            }
+        } catch(e) {}
+    };
+
+    checkRequests();
+    adminMonitorTimer = setInterval(checkRequests, 8000);
 }
 
 // Inject Student Badge in Header
@@ -361,50 +441,36 @@ function injectUserBadge(name) {
 // Doimiy onlayn tekshiruvi (Heartbeat va revoke tekshiruvi)
 function startDeviceHeartbeat(devId, fullName, deviceInfo) {
     const ping = () => {
-        fetch(`https://ntfy.sh/${ACCESS_CONFIG.PRESENCE_TOPIC}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                devId: devId,
-                fullName: fullName,
-                deviceInfo: deviceInfo,
-                time: Date.now()
-            })
-        }).catch(() => {});
+        Cloud.publish(ACCESS_CONFIG.CHANNEL_PRESENCE, {
+            devId: devId,
+            fullName: fullName,
+            deviceInfo: deviceInfo,
+            time: Date.now()
+        });
     };
 
-    // Darhol birinchi pingni yuboramiz
+    // Sahifa ochilganda darhol yuborish
     ping();
 
-    // Har 20 soniyada takrorlaymiz
+    // Har 30 soniyada takrorlash
     setInterval(async () => {
         ping();
 
         // Admin tomonidan bloklangan yoki o'chirilganini tekshirish
         try {
-            const res = await fetch(`https://ntfy.sh/${ACCESS_CONFIG.DEVICE_PREFIX}${devId}/json?poll=1&since=5m`, {
-                cache: 'no-store'
-            });
-            if (res.ok) {
-                const text = await res.text();
-                const lines = text.trim().split('\n').filter(Boolean);
-                for (let i = lines.length - 1; i >= 0; i--) {
-                    try {
-                        const parsed = JSON.parse(lines[i]);
-                        const msg = typeof parsed.message === 'string' ? JSON.parse(parsed.message) : parsed.message;
-                        if (msg && (msg.action === 'block' || msg.action === 'delete')) {
-                            localStorage.removeItem('exam_student_approved');
-                            alert("Ushbu gadjet uchun ruxsat bekor qilindi!");
-                            location.reload();
-                            return;
-                        }
-                    } catch(e) {}
+            const msgs = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + devId, 5);
+            for (let i = msgs.length - 1; i >= 0; i--) {
+                const msg = msgs[i];
+                if (msg && (msg.action === 'block' || msg.action === 'delete')) {
+                    localStorage.removeItem('exam_student_approved');
+                    alert("Ushbu gadjet uchun ruxsat bekor qilindi!");
+                    location.reload();
+                    return;
                 }
             }
         } catch(e) {}
-    }, ACCESS_CONFIG.HEARTBEAT_INTERVAL_MS);
+    }, ACCESS_CONFIG.PRESENCE_INTERVAL_MS);
 
-    // Tabga qaytganda ham yangilash
     document.addEventListener('visibilitychange', () => {
         if (!document.hidden) ping();
     });
@@ -503,9 +569,9 @@ async function openAdminPanel() {
     // Initial load
     await loadAdminDashboard();
 
-    // Auto-refresh every 5 seconds while modal is open
+    // Auto-refresh every 4 seconds while modal is open
     if (adminAutoRefreshTimer) clearInterval(adminAutoRefreshTimer);
-    adminAutoRefreshTimer = setInterval(loadAdminDashboard, 5000);
+    adminAutoRefreshTimer = setInterval(loadAdminDashboard, 4000);
 }
 
 // Local Admin Storage Helper
@@ -513,17 +579,17 @@ function getLocalAdminData() {
     let devices = {};
     let rejected = {};
     try {
-        devices = JSON.parse(localStorage.getItem('exam_admin_devices_v83')) || {};
+        devices = JSON.parse(localStorage.getItem('exam_admin_devices_v84')) || {};
     } catch(e) {}
     try {
-        rejected = JSON.parse(localStorage.getItem('exam_admin_rejected_v83')) || {};
+        rejected = JSON.parse(localStorage.getItem('exam_admin_rejected_v84')) || {};
     } catch(e) {}
     return { devices, rejected };
 }
 
 function saveLocalAdminData(devices, rejected) {
-    if (devices) localStorage.setItem('exam_admin_devices_v83', JSON.stringify(devices));
-    if (rejected) localStorage.setItem('exam_admin_rejected_v83', JSON.stringify(rejected));
+    if (devices) localStorage.setItem('exam_admin_devices_v84', JSON.stringify(devices));
+    if (rejected) localStorage.setItem('exam_admin_rejected_v84', JSON.stringify(rejected));
 }
 
 // Render Admin Data
@@ -536,98 +602,54 @@ async function loadAdminDashboard() {
 
     // 1. Bulutdan barcha tasdiqlangan gadjetlarni sinxronlashtirish
     try {
-        const appRes = await fetch(`https://ntfy.sh/${ACCESS_CONFIG.APPROVALS_TOPIC}/json?poll=1&since=all`, {
-            cache: 'no-store'
-        });
-        if (appRes.ok) {
-            const text = await appRes.text();
-            const lines = text.trim().split('\n').filter(Boolean);
-            for (const line of lines) {
-                try {
-                    const parsed = JSON.parse(line);
-                    const msg = typeof parsed.message === 'string' ? JSON.parse(parsed.message) : parsed.message;
-                    if (msg && msg.deviceId && msg.action === 'approve') {
-                        if (!devices[msg.deviceId]) {
-                            devices[msg.deviceId] = {
-                                deviceId: msg.deviceId,
-                                fullName: msg.fullName,
-                                deviceInfo: msg.deviceInfo,
-                                status: 'active',
-                                approvedAt: msg.approvedAt || (parsed.time * 1000)
-                            };
-                        }
-                    }
-                } catch(e) {}
+        const approvals = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_APPROVALS, 50);
+        approvals.forEach(msg => {
+            if (msg && msg.deviceId && msg.action === 'approve') {
+                if (!devices[msg.deviceId]) {
+                    devices[msg.deviceId] = {
+                        deviceId: msg.deviceId,
+                        fullName: msg.fullName,
+                        deviceInfo: msg.deviceInfo,
+                        status: 'active',
+                        approvedAt: msg.approvedAt || Date.now()
+                    };
+                }
             }
-            saveLocalAdminData(devices, rejected);
+        });
+        saveLocalAdminData(devices, rejected);
+    } catch(e) {}
+
+    // 2. Real-vaqtda ONLAYN bo'lgan gadjetlarni aniqlash (oxirgi 2 daqiqa)
+    const onlineMap = new Map();
+    try {
+        const presences = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_PRESENCE, 50);
+        const now = Date.now();
+        presences.forEach(p => {
+            if (p && p.devId && (now - p.time < 120000)) {
+                onlineMap.set(p.devId, p);
+            }
+        });
+    } catch(e) {}
+
+    // 3. Yangi kirish so'rovlarini olish
+    let pendingRequests = [];
+    try {
+        const reqs = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_REQUESTS, 50);
+        const reqMap = new Map();
+        reqs.forEach(r => {
+            if (r && r.deviceId && r.action === 'request') {
+                reqMap.set(r.deviceId, r);
+            }
+        });
+
+        for (const [id, req] of reqMap.entries()) {
+            if (!devices[id] && !rejected[id]) {
+                pendingRequests.push(req);
+            }
         }
     } catch(e) {}
 
-    // 2. Real-vaqtda ONLAYN bo'lgan gadjetlarni aniqlash (so'nggi 2 daqiqadagi faollar)
-    const onlineMap = new Map();
-    try {
-        const presRes = await fetch(`https://ntfy.sh/${ACCESS_CONFIG.PRESENCE_TOPIC}/json?poll=1&since=2m`, {
-            cache: 'no-store'
-        });
-        if (presRes.ok) {
-            const text = await presRes.text();
-            const lines = text.trim().split('\n').filter(Boolean);
-            for (const line of lines) {
-                try {
-                    const parsed = JSON.parse(line);
-                    const msg = typeof parsed.message === 'string' ? JSON.parse(parsed.message) : parsed.message;
-                    if (msg && msg.devId) {
-                        onlineMap.set(msg.devId, {
-                            devId: msg.devId,
-                            fullName: msg.fullName,
-                            deviceInfo: msg.deviceInfo,
-                            lastSeen: msg.time || (parsed.time * 1000)
-                        });
-                    }
-                } catch(e) {}
-            }
-        }
-    } catch(e) {
-        console.warn("Presence check failed:", e);
-    }
-
-    // 3. Yangi kirish so'rovlarini olish (so'nggi 72 soat)
-    let pendingRequests = [];
-    try {
-        const reqRes = await fetch(`https://ntfy.sh/${ACCESS_CONFIG.REQUESTS_TOPIC}/json?poll=1&since=72h`, {
-            cache: 'no-store'
-        });
-        if (reqRes.ok) {
-            const text = await reqRes.text();
-            const lines = text.trim().split('\n').filter(Boolean);
-            const reqMap = new Map();
-            for (const line of lines) {
-                try {
-                    const parsed = JSON.parse(line);
-                    const msg = typeof parsed.message === 'string' ? JSON.parse(parsed.message) : parsed.message;
-                    if (msg && msg.deviceId && msg.action === 'request') {
-                        reqMap.set(msg.deviceId, {
-                            deviceId: msg.deviceId,
-                            fullName: msg.fullName,
-                            deviceInfo: msg.deviceInfo,
-                            requestedAt: msg.requestedAt || (parsed.time * 1000)
-                        });
-                    }
-                } catch(e) {}
-            }
-
-            // Tasdiqlangan yoki rad etilganlarni ajratish
-            for (const [id, req] of reqMap.entries()) {
-                if (!devices[id] && !rejected[id]) {
-                    pendingRequests.push(req);
-                }
-            }
-        }
-    } catch(e) {
-        console.warn("Requests fetch failed:", e);
-    }
-
-    // Agar onlineMap da bor bo'lsa, lekin hali devices ro'yxatida ko'rinmayotgan bo'lsa, avtomatik qo'shish
+    // Agar onlineMap da bor bo'lsa, lekin hali devices da yo'q bo'lsa, avtomatik qo'shish
     for (const [onlineDevId, onlineInfo] of onlineMap.entries()) {
         if (!devices[onlineDevId] && !rejected[onlineDevId]) {
             devices[onlineDevId] = {
@@ -635,7 +657,7 @@ async function loadAdminDashboard() {
                 fullName: onlineInfo.fullName || "Foydalanuvchi",
                 deviceInfo: onlineInfo.deviceInfo || "Gadjet",
                 status: 'active',
-                approvedAt: onlineInfo.lastSeen || Date.now()
+                approvedAt: onlineInfo.time || Date.now()
             };
         }
     }
@@ -657,6 +679,17 @@ async function loadAdminDashboard() {
     if (statPendingEl) statPendingEl.textContent = pendingRequests.length;
     if (statApprovedEl) statApprovedEl.textContent = approvedList.length;
     if (statOnlineEl) statOnlineEl.textContent = onlineCount;
+
+    // Headerdagi bildirishnoma belgisini ham yangilash
+    const badgeEl = document.getElementById('header-req-badge');
+    if (badgeEl) {
+        if (pendingRequests.length > 0) {
+            badgeEl.style.display = 'inline-flex';
+            badgeEl.textContent = `${pendingRequests.length}`;
+        } else {
+            badgeEl.style.display = 'none';
+        }
+    }
 
     // 5. Render Pending Requests Table
     if (pendingRequests.length === 0) {
@@ -738,31 +771,23 @@ window.approveDevice = async function(deviceId, fullName, deviceInfo) {
     devices[deviceId] = approvedData;
     saveLocalAdminData(devices, rejected);
 
-    // Direct student notification via private topic
-    fetch(`https://ntfy.sh/${ACCESS_CONFIG.DEVICE_PREFIX}${deviceId}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            action: 'approve',
-            deviceId: deviceId,
-            fullName: fullName,
-            deviceInfo: deviceInfo,
-            approvedAt: Date.now()
-        })
-    }).catch(() => {});
+    // Direct student notification
+    Cloud.publish(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + deviceId, {
+        action: 'approve',
+        deviceId: deviceId,
+        fullName: fullName,
+        deviceInfo: deviceInfo,
+        approvedAt: Date.now()
+    });
 
-    // Broadcast approval for cross-admin syncing
-    fetch(`https://ntfy.sh/${ACCESS_CONFIG.APPROVALS_TOPIC}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            action: 'approve',
-            deviceId: deviceId,
-            fullName: fullName,
-            deviceInfo: deviceInfo,
-            approvedAt: Date.now()
-        })
-    }).catch(() => {});
+    // Broadcast approval for all admin sync
+    Cloud.publish(ACCESS_CONFIG.CHANNEL_APPROVALS, {
+        action: 'approve',
+        deviceId: deviceId,
+        fullName: fullName,
+        deviceInfo: deviceInfo,
+        approvedAt: Date.now()
+    });
 
     alert(`✅ ${fullName} ning gadjetiga ruxsat berildi! Uning ekrani darhol ochiladi.`);
     loadAdminDashboard();
@@ -775,14 +800,10 @@ window.rejectDevice = async function(deviceId) {
         rejected[deviceId] = true;
         saveLocalAdminData(devices, rejected);
 
-        fetch(`https://ntfy.sh/${ACCESS_CONFIG.DEVICE_PREFIX}${deviceId}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                action: 'reject',
-                deviceId: deviceId
-            })
-        }).catch(() => {});
+        Cloud.publish(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + deviceId, {
+            action: 'reject',
+            deviceId: deviceId
+        });
 
         loadAdminDashboard();
     }
@@ -796,14 +817,10 @@ window.toggleDeviceBlock = async function(deviceId, currentStatus) {
         devices[deviceId].status = newStatus;
         saveLocalAdminData(devices, rejected);
 
-        fetch(`https://ntfy.sh/${ACCESS_CONFIG.DEVICE_PREFIX}${deviceId}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                action: newStatus === 'blocked' ? 'block' : 'unblock',
-                deviceId: deviceId
-            })
-        }).catch(() => {});
+        Cloud.publish(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + deviceId, {
+            action: newStatus === 'blocked' ? 'block' : 'unblock',
+            deviceId: deviceId
+        });
 
         loadAdminDashboard();
     }
@@ -816,14 +833,10 @@ window.deleteDevice = async function(deviceId, fullName) {
         delete devices[deviceId];
         saveLocalAdminData(devices, rejected);
 
-        fetch(`https://ntfy.sh/${ACCESS_CONFIG.DEVICE_PREFIX}${deviceId}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                action: 'delete',
-                deviceId: deviceId
-            })
-        }).catch(() => {});
+        Cloud.publish(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + deviceId, {
+            action: 'delete',
+            deviceId: deviceId
+        });
 
         loadAdminDashboard();
     }
