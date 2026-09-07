@@ -1,6 +1,6 @@
 // =========================================================
-// DEVICE-BASED ACCESS CONTROL & ADMIN APPROVAL SYSTEM (v8.5)
-// High-Reliability Real-Time Pub/Sub & Presence Tracking
+// DEVICE-BASED ACCESS CONTROL & ADMIN APPROVAL SYSTEM (v8.6)
+// Restored Modern Glassmorphism Design & Instant Real-Time Sync
 // =========================================================
 
 const ACCESS_CONFIG = {
@@ -146,7 +146,7 @@ async function initAccessControl() {
         return;
     }
 
-    // Agar faol ruxsat berilgan bo'lsa
+    // Agar ruxsat berilgan bo'lsa
     if (approvedDevice && approvedDevice.status === 'active') {
         window.CurrentAccess = {
             isAdmin: false,
@@ -235,7 +235,7 @@ function showAccessRequestModal(existingRequest) {
             </div>
 
             <!-- Request Form (Visible if not pending) -->
-            <form id="access-request-form" class="auth-form" style="${isPending ? 'display: none;' : ''}">
+            <form id="access-request-form" class="auth-form" style="${isPending ? 'display: none;' : 'display: flex;'}">
                 <div class="input-group">
                     <label for="req-fullname">Familiya va Ismingiz</label>
                     <input type="text" id="req-fullname" required placeholder="Masalan: Karimov Jasur" value="${existingRequest ? existingRequest.fullName || '' : ''}">
@@ -259,8 +259,8 @@ function showAccessRequestModal(existingRequest) {
             </div>
 
             ${isRejected ? `
-                <div class="reject-banner" style="margin-top: 15px; padding: 10px; background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; border-radius: 8px; color: #ef4444; text-align: center; font-size: 0.85rem;">
-                    ❌ Sizning oxirgi so'rovingiz admin tomonidan rad etildi. Qaytadan urinib ko'rishingiz mumkin.
+                <div class="auth-error-msg" style="margin-top: 15px;">
+                    ❌ Sizning oxirgi so'rovingiz admin tomonidan rad etildi. Qaytadan so'rov yuborishingiz mumkin.
                 </div>
             ` : ''}
 
@@ -323,6 +323,7 @@ function showAccessRequestModal(existingRequest) {
     // Cancel / Edit Name
     document.getElementById('cancel-req-btn').addEventListener('click', () => {
         if (pollTimer) clearInterval(pollTimer);
+        localStorage.removeItem('exam_student_request');
         document.getElementById('waiting-status-box').style.display = 'none';
         form.style.display = 'flex';
         const btn = document.getElementById('send-req-btn');
@@ -369,13 +370,11 @@ function startPollingForApproval(devId, fullName, devInfo) {
                         }, 1200);
                     }
                     return;
-                } else if (msg && msg.action === 'reject') {
+                } else if (msg && (msg.action === 'reject' || msg.action === 'delete')) {
                     clearInterval(pollTimer);
-                    localStorage.setItem('exam_student_request', JSON.stringify({
-                        status: 'rejected',
-                        fullName: fullName,
-                        deviceInfo: devInfo
-                    }));
+                    localStorage.removeItem('exam_student_approved');
+                    localStorage.removeItem('exam_student_request');
+                    alert(msg.action === 'delete' ? "Ushbu gadjet uchun ruxsat o'chirildi!" : "So'rovingiz admin tomonidan rad etildi.");
                     location.reload();
                     return;
                 }
@@ -434,50 +433,41 @@ function injectAdminBadge() {
     startAdminRequestMonitor();
 }
 
-// Live monitor: Yangi so'rov kelganida nastroyka tugmasida bildirishnoma ko'rsatish
+// Live monitor: Har 5 soniyada yangi so'rov bor-yo'qligini tekshirib, qizil raqam bilan ko'rsatish
 function startAdminRequestMonitor() {
     if (adminMonitorTimer) clearInterval(adminMonitorTimer);
 
     const checkRequests = async () => {
         try {
-            const { devices, rejected, deleted } = getLocalAdminData();
+            const { devices, rejected } = getLocalAdminData();
 
             // 1. Bulutdagi tasdiqlash, to'xtatish va o'chirishlarni sinxronlashtirish
             try {
-                const approvals = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_APPROVALS, 60);
+                const approvals = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_APPROVALS, 80);
                 approvals.forEach(msg => {
                     if (!msg || !msg.deviceId) return;
                     const id = msg.deviceId;
-                    const msgTime = msg.timestamp || msg.approvedAt || 0;
-                    const delTime = deleted[id] || 0;
-
                     if (msg.action === 'delete') {
                         delete devices[id];
-                        if (msgTime >= delTime) {
-                            deleted[id] = msgTime || Date.now();
-                        }
                     } else if (msg.action === 'block') {
                         if (devices[id]) devices[id].status = 'blocked';
                     } else if (msg.action === 'unblock') {
                         if (devices[id]) devices[id].status = 'active';
                     } else if (msg.action === 'approve') {
-                        if (!delTime || msgTime > delTime) {
-                            delete deleted[id];
-                            devices[id] = {
-                                deviceId: id,
-                                fullName: msg.fullName,
-                                deviceInfo: msg.deviceInfo,
-                                status: devices[id]?.status === 'blocked' ? 'blocked' : 'active',
-                                approvedAt: msg.approvedAt || msgTime || Date.now()
-                            };
-                        }
+                        devices[id] = {
+                            deviceId: id,
+                            fullName: msg.fullName,
+                            deviceInfo: msg.deviceInfo,
+                            status: devices[id]?.status === 'blocked' ? 'blocked' : 'active',
+                            approvedAt: msg.approvedAt || msg.timestamp || Date.now()
+                        };
                     }
                 });
-                saveLocalAdminData(devices, rejected, deleted);
+                saveLocalAdminData(devices, rejected);
             } catch(e) {}
 
-            // 2. So'rovlarni olish va faol kutilayotganlarni hisoblash
-            const reqs = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_REQUESTS, 40);
+            // 2. Kutilayotgan so'rovlarni hisoblash
+            const reqs = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_REQUESTS, 50);
             const reqMap = new Map();
             reqs.forEach(r => {
                 if (r && r.deviceId && r.action === 'request') {
@@ -487,10 +477,7 @@ function startAdminRequestMonitor() {
 
             let pendingCount = 0;
             for (const [id, req] of reqMap.entries()) {
-                const reqTime = req.requestedAt || 0;
-                const delTime = deleted[id] || 0;
-                const rejTime = rejected[id] || 0;
-                if (!devices[id] && (!delTime || reqTime > delTime) && (!rejTime || reqTime > rejTime)) {
+                if (!devices[id] && !rejected[id]) {
                     pendingCount++;
                 }
             }
@@ -509,7 +496,7 @@ function startAdminRequestMonitor() {
     };
 
     checkRequests();
-    adminMonitorTimer = setInterval(checkRequests, 8000);
+    adminMonitorTimer = setInterval(checkRequests, 4000);
 }
 
 // Inject Student Badge in Header
@@ -580,7 +567,7 @@ function startDeviceHeartbeat(devId, fullName, deviceInfo) {
 }
 
 // ==========================================
-// ADMIN DASHBOARD MODAL
+// ADMIN DASHBOARD MODAL (RESTORED MODERN DESIGN)
 // ==========================================
 async function openAdminPanel() {
     let adminModal = document.getElementById('admin-modal-overlay');
@@ -594,47 +581,48 @@ async function openAdminPanel() {
     adminModal.innerHTML = `
         <div class="admin-modal-container">
             <div class="admin-header">
-                <div class="admin-header-title">
-                    <h2>⚙️ Administrator Boshqaruv Markazi</h2>
-                    <p>Gadjetlar orqali kirishni real-vaqtda boshqarish (v8.5)</p>
+                <div>
+                    <h2>👑 Gadjetlarni Boshqarish Paneli</h2>
+                    <p>Kirish so'rovlari, tasdiqlangan telefon/kompyuterlar va onlayn nazorat</p>
                 </div>
                 <button class="admin-close-btn" id="admin-close-btn" title="Yopish">✕</button>
             </div>
 
             <!-- Statistics Summary -->
             <div class="admin-stats-bar">
-                <div class="stat-card pending">
-                    <span class="stat-num" id="stat-pending-reqs">0</span>
-                    <span class="stat-label">Kutilayotgan So'rovlar</span>
+                <div class="stat-card">
+                    <span class="stat-num" id="stat-pending-reqs" style="color: #f59e0b;">0</span>
+                    <span class="stat-label">🔔 Kutilayotgan So'rovlar</span>
                 </div>
-                <div class="stat-card approved">
-                    <span class="stat-num" id="stat-approved-devices">0</span>
-                    <span class="stat-label">Tasdiqlangan Gadjetlar</span>
+                <div class="stat-card">
+                    <span class="stat-num" id="stat-approved-devices" style="color: #34d399;">0</span>
+                    <span class="stat-label">📱 Ruxsat Berilgan Gadjetlar</span>
                 </div>
-                <div class="stat-card online">
-                    <span class="stat-num" id="stat-online-now">0</span>
-                    <span class="stat-label">Hozir Saytda (Onlayn)</span>
+                <div class="stat-card">
+                    <span class="stat-num" id="stat-online-now" style="color: #38bdf8;">0</span>
+                    <span class="stat-label">🟢 Hozir Online</span>
                 </div>
             </div>
 
-            <div class="admin-content-grid">
+            <div class="admin-content-grid" style="grid-template-columns: 1fr;">
                 <!-- 1. Yangi Kirish So'rovlari -->
                 <div class="admin-card">
-                    <div class="admin-card-header">
-                        <h3>🔔 Yangi Kirish So'rovlari</h3>
-                        <button class="icon-refresh-btn" id="refresh-requests-btn" title="Yangilash">🔄</button>
+                    <div class="table-header-row">
+                        <h3>🔔 Yangi Kirish So'rovlari (Ruxsat kutilmoqda)</h3>
+                        <button class="refresh-btn" id="refresh-requests-btn">🔄 Yangilash</button>
                     </div>
                     <div class="table-responsive">
                         <table class="admin-table">
                             <thead>
                                 <tr>
-                                    <th>Familiya Ism / Gadjet</th>
-                                    <th>Vaqti</th>
-                                    <th style="text-align: right;">Amal</th>
+                                    <th>Ism-Familiya</th>
+                                    <th>Gadjet Nomi</th>
+                                    <th>So'ralgan Vaqt</th>
+                                    <th>Qaror (Tasdiqlash)</th>
                                 </tr>
                             </thead>
                             <tbody id="pending-requests-tbody">
-                                <tr><td colspan="3" style="text-align: center; padding: 20px;">Yuklanmoqda...</td></tr>
+                                <tr><td colspan="4" style="text-align: center; padding: 20px;">Yuklanmoqda...</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -642,21 +630,23 @@ async function openAdminPanel() {
 
                 <!-- 2. Tasdiqlangan Gadjetlar Ro'yxati -->
                 <div class="admin-card">
-                    <div class="admin-card-header">
-                        <h3>📱 Tasdiqlangan Gadjetlar</h3>
-                        <button class="icon-refresh-btn" id="refresh-approved-btn" title="Yangilash">🔄</button>
+                    <div class="table-header-row">
+                        <h3>✅ Ruxsat Berilgan Gadjetlar Ro'yxati</h3>
+                        <button class="refresh-btn" id="refresh-approved-btn">🔄 Yangilash</button>
                     </div>
                     <div class="table-responsive">
                         <table class="admin-table">
                             <thead>
                                 <tr>
-                                    <th>Talaba / Gadjet</th>
-                                    <th>Holati</th>
-                                    <th style="text-align: right;">Boshqarish</th>
+                                    <th>Ism-Familiya</th>
+                                    <th>Gadjet</th>
+                                    <th>Holat</th>
+                                    <th>Ruxsat Berilgan Sana</th>
+                                    <th>Boshqaruv</th>
                                 </tr>
                             </thead>
                             <tbody id="approved-devices-tbody">
-                                <tr><td colspan="3" style="text-align: center; padding: 20px;">Yuklanmoqda...</td></tr>
+                                <tr><td colspan="5" style="text-align: center; padding: 20px;">Yuklanmoqda...</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -678,32 +668,27 @@ async function openAdminPanel() {
 
     await loadAdminDashboard();
 
-    // Auto-refresh every 4 seconds while modal is open
+    // Auto-refresh every 3.5 seconds while modal is open
     if (adminAutoRefreshTimer) clearInterval(adminAutoRefreshTimer);
-    adminAutoRefreshTimer = setInterval(loadAdminDashboard, 4000);
+    adminAutoRefreshTimer = setInterval(loadAdminDashboard, 3500);
 }
 
 // Local Admin Storage Helper
 function getLocalAdminData() {
     let devices = {};
     let rejected = {};
-    let deleted = {};
     try {
         devices = JSON.parse(localStorage.getItem('exam_admin_devices_v84')) || {};
     } catch(e) {}
     try {
         rejected = JSON.parse(localStorage.getItem('exam_admin_rejected_v84')) || {};
     } catch(e) {}
-    try {
-        deleted = JSON.parse(localStorage.getItem('exam_admin_deleted_v84')) || {};
-    } catch(e) {}
-    return { devices, rejected, deleted };
+    return { devices, rejected };
 }
 
-function saveLocalAdminData(devices, rejected, deleted) {
+function saveLocalAdminData(devices, rejected) {
     if (devices) localStorage.setItem('exam_admin_devices_v84', JSON.stringify(devices));
     if (rejected) localStorage.setItem('exam_admin_rejected_v84', JSON.stringify(rejected));
-    if (deleted) localStorage.setItem('exam_admin_deleted_v84', JSON.stringify(deleted));
 }
 
 // Render Admin Data
@@ -712,40 +697,31 @@ async function loadAdminDashboard() {
     const approvedTbody = document.getElementById('approved-devices-tbody');
     if (!pendingTbody || !approvedTbody) return;
 
-    const { devices, rejected, deleted } = getLocalAdminData();
+    const { devices, rejected } = getLocalAdminData();
 
     // 1. Bulutdan barcha tasdiqlash, to'xtatish va o'chirishlarni sinxronlashtirish
     try {
-        const approvals = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_APPROVALS, 60);
+        const approvals = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_APPROVALS, 80);
         approvals.forEach(msg => {
             if (!msg || !msg.deviceId) return;
             const id = msg.deviceId;
-            const msgTime = msg.timestamp || msg.approvedAt || 0;
-            const delTime = deleted[id] || 0;
-
             if (msg.action === 'delete') {
                 delete devices[id];
-                if (msgTime >= delTime) {
-                    deleted[id] = msgTime || Date.now();
-                }
             } else if (msg.action === 'block') {
                 if (devices[id]) devices[id].status = 'blocked';
             } else if (msg.action === 'unblock') {
                 if (devices[id]) devices[id].status = 'active';
             } else if (msg.action === 'approve') {
-                if (!delTime || msgTime > delTime) {
-                    delete deleted[id];
-                    devices[id] = {
-                        deviceId: id,
-                        fullName: msg.fullName,
-                        deviceInfo: msg.deviceInfo,
-                        status: devices[id]?.status === 'blocked' ? 'blocked' : 'active',
-                        approvedAt: msg.approvedAt || msgTime || Date.now()
-                    };
-                }
+                devices[id] = {
+                    deviceId: id,
+                    fullName: msg.fullName,
+                    deviceInfo: msg.deviceInfo,
+                    status: devices[id]?.status === 'blocked' ? 'blocked' : 'active',
+                    approvedAt: msg.approvedAt || msg.timestamp || Date.now()
+                };
             }
         });
-        saveLocalAdminData(devices, rejected, deleted);
+        saveLocalAdminData(devices, rejected);
     } catch(e) {}
 
     // 2. Real-vaqtda ONLAYN bo'lgan gadjetlarni aniqlash (oxirgi 2 daqiqa)
@@ -755,14 +731,12 @@ async function loadAdminDashboard() {
         const now = Date.now();
         presences.forEach(p => {
             if (p && p.devId && (now - p.time < 120000)) {
-                if (!deleted[p.devId]) {
-                    onlineMap.set(p.devId, p);
-                }
+                onlineMap.set(p.devId, p);
             }
         });
     } catch(e) {}
 
-    // 3. Yangi kirish so'rovlarini olish
+    // 3. Yangi kirish so'rovlarini olish (Kutilayotgan barcha faol so'rovlar)
     let pendingRequests = [];
     try {
         const reqs = await Cloud.getHistory(ACCESS_CONFIG.CHANNEL_REQUESTS, 50);
@@ -774,10 +748,7 @@ async function loadAdminDashboard() {
         });
 
         for (const [id, req] of reqMap.entries()) {
-            const reqTime = req.requestedAt || 0;
-            const delTime = deleted[id] || 0;
-            const rejTime = rejected[id] || 0;
-            if (!devices[id] && (!delTime || reqTime > delTime) && (!rejTime || reqTime > rejTime)) {
+            if (!devices[id] && !rejected[id]) {
                 pendingRequests.push(req);
             }
         }
@@ -813,24 +784,20 @@ async function loadAdminDashboard() {
 
     // 5. Render Pending Requests Table
     if (pendingRequests.length === 0) {
-        pendingTbody.innerHTML = `<tr><td colspan="3" style="text-align: center; padding: 20px; color: var(--text-sub);">Yangi so'rovlar yo'q. Barcha gadjetlar tasdiqlangan.</td></tr>`;
+        pendingTbody.innerHTML = `<tr><td colspan="4" style="text-align: center; padding: 20px; color: var(--text-sub);">Yangi so'rovlar yo'q. Barcha gadjetlar tasdiqlangan.</td></tr>`;
     } else {
         pendingTbody.innerHTML = pendingRequests.map(r => `
             <tr>
+                <td><strong>${r.fullName}</strong></td>
+                <td>📱 ${r.deviceInfo}</td>
+                <td><small>${new Date(r.requestedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</small></td>
                 <td>
-                    <div style="font-weight: 700; font-size: 0.95rem;">${r.fullName}</div>
-                    <div class="device-subtext">📱 ${r.deviceInfo}</div>
-                </td>
-                <td>
-                    <span style="font-size: 0.82rem; font-weight: 600; opacity: 0.85;">${new Date(r.requestedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-                </td>
-                <td>
-                    <div class="admin-actions-cell right-align">
+                    <div class="admin-actions-cell">
                         <button class="tbl-btn btn-approve" onclick="approveDevice('${r.deviceId}', '${escapeQuotes(r.fullName)}', '${escapeQuotes(r.deviceInfo)}')">
-                            ✅ Ruxsat
+                            ✅ Ruxsat berish
                         </button>
                         <button class="tbl-btn btn-reject" onclick="rejectDevice('${r.deviceId}')">
-                            ❌ Rad
+                            ❌ Rad etish
                         </button>
                     </div>
                 </td>
@@ -840,7 +807,7 @@ async function loadAdminDashboard() {
 
     // 6. Render Approved Devices Table
     if (approvedList.length === 0) {
-        approvedTbody.innerHTML = `<tr><td colspan="3" style="text-align: center; padding: 20px; color: var(--text-sub);">Hozircha tasdiqlangan gadjetlar yo'q.</td></tr>`;
+        approvedTbody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 20px; color: var(--text-sub);">Hozircha tasdiqlangan gadjetlar yo'q.</td></tr>`;
     } else {
         approvedTbody.innerHTML = approvedList.map(d => {
             const isOnline = onlineMap.has(d.deviceId) && d.status === 'active';
@@ -850,13 +817,12 @@ async function loadAdminDashboard() {
 
             return `
                 <tr>
-                    <td>
-                        <div style="font-weight: 700; font-size: 0.95rem;">${d.fullName}</div>
-                        <div class="device-subtext">📱 ${d.deviceInfo} · <small style="opacity: 0.8;">${new Date(d.approvedAt).toLocaleDateString()}</small></div>
-                    </td>
+                    <td><strong>${d.fullName}</strong></td>
+                    <td>📱 ${d.deviceInfo}</td>
                     <td>${statusBadge}</td>
+                    <td><small>${new Date(d.approvedAt).toLocaleDateString()}</small></td>
                     <td>
-                        <div class="admin-actions-cell right-align">
+                        <div class="admin-actions-cell">
                             <button class="tbl-btn btn-pause" onclick="toggleDeviceBlock('${d.deviceId}', '${d.status}')" title="${d.status === 'active' ? 'Vaqtincha to\'xtatish' : 'Qayta yoqish'}">
                                 ${d.status === 'active' ? '⏸️ To\'xtatish' : '▶️ Yoqish'}
                             </button>
@@ -878,9 +844,8 @@ function escapeQuotes(str) {
 
 // Action: Ruxsat berish
 window.approveDevice = async function(deviceId, fullName, deviceInfo) {
-    const { devices, rejected, deleted } = getLocalAdminData();
+    const { devices, rejected } = getLocalAdminData();
     delete rejected[deviceId];
-    delete deleted[deviceId];
 
     const now = Date.now();
     const approvedData = {
@@ -891,7 +856,7 @@ window.approveDevice = async function(deviceId, fullName, deviceInfo) {
         approvedAt: now
     };
     devices[deviceId] = approvedData;
-    saveLocalAdminData(devices, rejected, deleted);
+    saveLocalAdminData(devices, rejected);
 
     // Direct student notification
     await Cloud.publish(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + deviceId, {
@@ -920,9 +885,9 @@ window.approveDevice = async function(deviceId, fullName, deviceInfo) {
 // Action: Rad etish
 window.rejectDevice = async function(deviceId) {
     if (confirm("Ushbu so'rovni rad etmoqchimisiz?")) {
-        const { devices, rejected, deleted } = getLocalAdminData();
+        const { devices, rejected } = getLocalAdminData();
         rejected[deviceId] = Date.now();
-        saveLocalAdminData(devices, rejected, deleted);
+        saveLocalAdminData(devices, rejected);
 
         await Cloud.publish(ACCESS_CONFIG.CHANNEL_DEV_PREFIX + deviceId, {
             action: 'reject',
@@ -936,11 +901,11 @@ window.rejectDevice = async function(deviceId) {
 
 // Action: Gadjetni vaqtincha bloklash yoki ochish
 window.toggleDeviceBlock = async function(deviceId, currentStatus) {
-    const { devices, rejected, deleted } = getLocalAdminData();
+    const { devices, rejected } = getLocalAdminData();
     if (devices[deviceId]) {
         const newStatus = currentStatus === 'active' ? 'blocked' : 'active';
         devices[deviceId].status = newStatus;
-        saveLocalAdminData(devices, rejected, deleted);
+        saveLocalAdminData(devices, rejected);
 
         const action = newStatus === 'blocked' ? 'block' : 'unblock';
         const now = Date.now();
@@ -964,10 +929,9 @@ window.toggleDeviceBlock = async function(deviceId, currentStatus) {
 // Action: Gadjetni butunlay o'chirish
 window.deleteDevice = async function(deviceId, fullName) {
     if (confirm(`Haqiqatan ham ${fullName} ning ushbu gadjet ruxsatini butunlay o'chirmoqchimisiz?`)) {
-        const { devices, rejected, deleted } = getLocalAdminData();
+        const { devices, rejected } = getLocalAdminData();
         delete devices[deviceId];
-        deleted[deviceId] = Date.now();
-        saveLocalAdminData(devices, rejected, deleted);
+        saveLocalAdminData(devices, rejected);
 
         const now = Date.now();
 
