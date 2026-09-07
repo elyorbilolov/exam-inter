@@ -3,28 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Exam v8.2</title>
-    <link rel="stylesheet" href="style.css?v=v82">
+    <title>English Exam v8.3</title>
+    <link rel="stylesheet" href="style.css?v=v83">
     <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <script src="security.js?v=v82"></script>
+    <script src="security.js?v=v83"></script>
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./sw.js?v=v82').then(reg => {
+            navigator.serviceWorker.register('./sw.js?v=v83').then(reg => {
                 reg.update();
             });
         }
-        function hardReset() {
-            if(confirm("Barcha kesh va ma'lumotlar tozalanadi. Ishonchingiz komilmi?")) {
-                localStorage.clear();
-                if ('serviceWorker' in navigator) {
-                    navigator.serviceWorker.getRegistrations().then(regs => {
-                        for(let r of regs) r.unregister();
-                        location.reload(true);
-                    });
-                } else {
-                    location.reload(true);
+        function refreshApp() {
+            try {
+                if (window.scrollY > 0) {
+                    sessionStorage.setItem('saved_scroll_pos', window.scrollY);
                 }
+            } catch(e) {}
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then(regs => {
+                    for(let r of regs) r.update();
+                    location.reload();
+                }).catch(() => location.reload());
+            } else {
+                location.reload();
             }
         }
     </script>
@@ -42,7 +44,7 @@
                 <input type="text" id="search-input" placeholder="Qidirish...">
             </div>
             <div class="header-actions">
-                <button onclick="hardReset()" class="action-header-btn" title="Keshni tozalash" style="background: rgba(244, 63, 94, 0.2); border-color: rgba(244, 63, 64, 0.3);">
+                <button onclick="refreshApp()" class="action-header-btn" title="Sahifani yangilash" style="background: rgba(59, 130, 246, 0.2); border-color: rgba(59, 130, 246, 0.3);">
                     🔄
                 </button>
                 <button id="print-pdf" class="action-header-btn" title="PDF orqali chop etish" aria-label="Print PDF">
@@ -134,7 +136,7 @@
         </div>
     </div>
 
-    <script src="auth.js?v=v82"></script>
-    <script src="script.js?v=v82"></script>
+    <script src="auth.js?v=v83"></script>
+    <script src="script.js?v=v83"></script>
 </body>
 </html>

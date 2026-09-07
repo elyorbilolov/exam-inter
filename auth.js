@@ -1,11 +1,16 @@
 // =========================================================
-// DEVICE-BASED ACCESS CONTROL & ADMIN APPROVAL SYSTEM (v8.0)
+// DEVICE-BASED ACCESS CONTROL & ADMIN APPROVAL SYSTEM (v8.3)
+// Real-time Pub/Sub & Presence Tracking Powered by ntfy.sh
 // =========================================================
 
 const ACCESS_CONFIG = {
-    CLOUD_API_URL: "https://api.restful-api.dev/objects/ff808181a067127101a07b81e99d3485",
-    ADMIN_DEFAULT_KEY: "admin777", // Bosh Administrator Paroli
-    CHECK_INTERVAL_MS: 3500 // O'quvchi kutayotganda har 3.5 soniyada ruxsatni tekshirish
+    PRESENCE_TOPIC: "exam_inter_presence_v83",
+    REQUESTS_TOPIC: "exam_inter_requests_v83",
+    APPROVALS_TOPIC: "exam_inter_approvals_v83",
+    DEVICE_PREFIX: "exam_inter_dev_v83_",
+    ADMIN_DEFAULT_KEY: "admin777",
+    HEARTBEAT_INTERVAL_MS: 20000, // Har 20 soniyada o'quvchi online ekanligini bildiradi
+    POLL_INTERVAL_MS: 3000        // Kutilayotganda tekshirish
 };
 
 // Generates persistent stable device identifier
@@ -43,44 +48,7 @@ function detectDeviceInfo() {
 // Global Device Access State
 window.CurrentAccess = null;
 let pollTimer = null;
-
-// Cloud Sync Store
-const CloudStore = {
-    async getData() {
-        try {
-            const controller = new AbortController();
-            const timeout = setTimeout(() => controller.abort(), 4000);
-            const res = await fetch(ACCESS_CONFIG.CLOUD_API_URL, { signal: controller.signal });
-            clearTimeout(timeout);
-            if (res.ok) {
-                const json = await res.json();
-                if (json && json.data) {
-                    localStorage.setItem('cached_access_data', JSON.stringify(json.data));
-                    return json.data;
-                }
-            }
-        } catch(e) {
-            console.warn("Cloud fetch error, using local fallback");
-        }
-        return JSON.parse(localStorage.getItem('cached_access_data') || '{"devices":{},"requests":{}}');
-    },
-
-    async saveData(data) {
-        localStorage.setItem('cached_access_data', JSON.stringify(data));
-        try {
-            await fetch(ACCESS_CONFIG.CLOUD_API_URL, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    name: 'exam_inter_device_auth',
-                    data: data
-                })
-            });
-        } catch(e) {
-            console.error("Cloud save error:", e);
-        }
-    }
-};
+let adminAutoRefreshTimer = null;
 
 // ==========================================
 // CORE ACCESS CHECK (AUTO-LOGIN OR PROMPT)
@@ -96,24 +64,43 @@ async function initAccessControl() {
         return;
     }
 
-    // 2. Bulutli bazadan ushbu qurilma ruxsatini tekshiramiz
-    const store = await CloudStore.getData();
-    const approvedDevice = store.devices && store.devices[devId];
+    // 2. Ushbu qurilma ilgari tasdiqlanganmi?
+    let approvedDevice = null;
+    try {
+        approvedDevice = JSON.parse(localStorage.getItem('exam_student_approved'));
+    } catch(e) {}
+
+    // Eski keshdan migratsiya (agar mavjud bo'lsa)
+    if (!approvedDevice) {
+        try {
+            const oldCache = JSON.parse(localStorage.getItem('cached_access_data'));
+            if (oldCache && oldCache.devices && oldCache.devices[devId] && oldCache.devices[devId].status === 'active') {
+                approvedDevice = oldCache.devices[devId];
+                localStorage.setItem('exam_student_approved', JSON.stringify(approvedDevice));
+            }
+        } catch(e) {}
+    }
 
     if (approvedDevice && approvedDevice.status === 'active') {
         // Ushbu qurilmaga ruxsat berilgan!
         window.CurrentAccess = {
             isAdmin: false,
             deviceId: devId,
-            fullName: approvedDevice.fullName
+            fullName: approvedDevice.fullName,
+            deviceInfo: approvedDevice.deviceInfo || detectDeviceInfo()
         };
         injectUserBadge(approvedDevice.fullName);
-        startDeviceHeartbeat(devId);
+        startDeviceHeartbeat(devId, approvedDevice.fullName, approvedDevice.deviceInfo || detectDeviceInfo());
         return;
     }
 
     // 3. Agar ruxsat berilmagan bo'lsa, kirish so'rash modalini chiqaramiz
-    showAccessRequestModal(store.requests && store.requests[devId]);
+    let existingRequest = null;
+    try {
+        existingRequest = JSON.parse(localStorage.getItem('exam_student_request'));
+    } catch(e) {}
+
+    showAccessRequestModal(existingRequest);
 }
 
 // ==========================================
@@ -185,7 +172,7 @@ function showAccessRequestModal(existingRequest) {
 
     // Agar so'rov kutilayotgan bo'lsa, tekshiruvni boshlaymiz
     if (isPending) {
-        startPollingForApproval();
+        startPollingForApproval(getOrCreateDeviceId(), existingRequest.fullName, detectDeviceInfo());
     }
 
     // Submit Request
@@ -202,26 +189,39 @@ function showAccessRequestModal(existingRequest) {
         const devId = getOrCreateDeviceId();
         const devInfo = detectDeviceInfo();
 
-        const store = await CloudStore.getData();
-        if (!store.requests) store.requests = {};
-
-        store.requests[devId] = {
+        const reqData = {
+            action: 'request',
             deviceId: devId,
             fullName: fullName,
             deviceInfo: devInfo,
-            status: 'pending',
-            requestedAt: Date.now(),
-            lastSeen: Date.now()
+            requestedAt: Date.now()
         };
 
-        await CloudStore.saveData(store);
+        // Save locally
+        localStorage.setItem('exam_student_request', JSON.stringify({
+            status: 'pending',
+            fullName: fullName,
+            deviceInfo: devInfo,
+            requestedAt: Date.now()
+        }));
+
+        // Send to ntfy requests topic
+        try {
+            await fetch(`https://ntfy.sh/${ACCESS_CONFIG.REQUESTS_TOPIC}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(reqData)
+            });
+        } catch(err) {
+            console.warn("Request send error:", err);
+        }
 
         // Switch to waiting state
         form.style.display = 'none';
         document.getElementById('waiting-status-box').style.display = 'flex';
         document.getElementById('access-subtext').innerHTML = `Hurmatli <strong>${fullName}</strong>, sizning ushbu gadjetingizdan kirish so'rovingiz adminga yuborildi. Administrator tasdiqlashini kuting.`;
 
-        startPollingForApproval();
+        startPollingForApproval(devId, fullName, devInfo);
     });
 
     // Cancel / Edit Name
@@ -229,6 +229,9 @@ function showAccessRequestModal(existingRequest) {
         if (pollTimer) clearInterval(pollTimer);
         document.getElementById('waiting-status-box').style.display = 'none';
         form.style.display = 'flex';
+        const btn = document.getElementById('send-req-btn');
+        btn.disabled = false;
+        btn.textContent = "🚀 Admindan Ruxsat So'rash";
     });
 
     // Secret Admin Login
@@ -236,38 +239,65 @@ function showAccessRequestModal(existingRequest) {
 }
 
 // O'quvchi kutayotganda admin ruxsat berganini avtomatik aniqlash
-function startPollingForApproval() {
+function startPollingForApproval(devId, fullName, devInfo) {
     if (pollTimer) clearInterval(pollTimer);
-    const devId = getOrCreateDeviceId();
 
     pollTimer = setInterval(async () => {
-        const store = await CloudStore.getData();
+        try {
+            const res = await fetch(`https://ntfy.sh/${ACCESS_CONFIG.DEVICE_PREFIX}${devId}/json?poll=1&since=24h`, {
+                cache: 'no-store'
+            });
+            if (res.ok) {
+                const text = await res.text();
+                const lines = text.trim().split('\n').filter(Boolean);
+                for (let i = lines.length - 1; i >= 0; i--) {
+                    try {
+                        const parsed = JSON.parse(lines[i]);
+                        const msg = typeof parsed.message === 'string' ? JSON.parse(parsed.message) : parsed.message;
+                        
+                        if (msg && msg.action === 'approve') {
+                            clearInterval(pollTimer);
+                            // Save approved access locally forever
+                            localStorage.setItem('exam_student_approved', JSON.stringify({
+                                status: 'active',
+                                deviceId: devId,
+                                fullName: msg.fullName || fullName,
+                                deviceInfo: msg.deviceInfo || devInfo,
+                                approvedAt: msg.approvedAt || Date.now()
+                            }));
+                            localStorage.removeItem('exam_student_request');
 
-        // 1. Ruxsat berildimi?
-        if (store.devices && store.devices[devId] && store.devices[devId].status === 'active') {
-            clearInterval(pollTimer);
-            const modal = document.getElementById('access-modal-overlay');
-            if (modal) {
-                modal.innerHTML = `
-                    <div class="auth-modal-card" style="text-align: center;">
-                        <span style="font-size: 3rem;">🎉</span>
-                        <h2>Ruxsat Berildi!</h2>
-                        <p>Xush kelibsiz! Ushbu gadjetingiz uchun sayt to'liq ochildi.</p>
-                    </div>
-                `;
-                setTimeout(() => {
-                    location.reload();
-                }, 1200);
+                            const modal = document.getElementById('access-modal-overlay');
+                            if (modal) {
+                                modal.innerHTML = `
+                                    <div class="auth-modal-card" style="text-align: center;">
+                                        <span style="font-size: 3rem;">🎉</span>
+                                        <h2>Ruxsat Berildi!</h2>
+                                        <p>Xush kelibsiz! Ushbu gadjetingiz uchun sayt to'liq ochildi.</p>
+                                    </div>
+                                `;
+                                setTimeout(() => {
+                                    location.reload();
+                                }, 1200);
+                            }
+                            return;
+                        } else if (msg && msg.action === 'reject') {
+                            clearInterval(pollTimer);
+                            localStorage.setItem('exam_student_request', JSON.stringify({
+                                status: 'rejected',
+                                fullName: fullName,
+                                deviceInfo: devInfo
+                            }));
+                            location.reload();
+                            return;
+                        }
+                    } catch(e) {}
+                }
             }
-            return;
+        } catch(err) {
+            // silent network retry
         }
-
-        // 2. Rad etildimi?
-        if (store.requests && store.requests[devId] && store.requests[devId].status === 'rejected') {
-            clearInterval(pollTimer);
-            location.reload();
-        }
-    }, ACCESS_CONFIG.CHECK_INTERVAL_MS);
+    }, ACCESS_CONFIG.POLL_INTERVAL_MS);
 }
 
 // ==========================================
@@ -328,23 +358,56 @@ function injectUserBadge(name) {
     headerActions.prepend(badge);
 }
 
-// Doimiy onlayn tekshiruvi (Heartbeat)
-function startDeviceHeartbeat(devId) {
-    setInterval(async () => {
-        const store = await CloudStore.getData();
-        // Agar admin ushbu qurilmani bloklab yoki o'chirib qo'ysa
-        if (!store.devices || !store.devices[devId] || store.devices[devId].status !== 'active') {
-            alert("Ushbu gadjet uchun ruxsat bekor qilindi!");
-            location.reload();
-            return;
-        }
+// Doimiy onlayn tekshiruvi (Heartbeat va revoke tekshiruvi)
+function startDeviceHeartbeat(devId, fullName, deviceInfo) {
+    const ping = () => {
+        fetch(`https://ntfy.sh/${ACCESS_CONFIG.PRESENCE_TOPIC}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                devId: devId,
+                fullName: fullName,
+                deviceInfo: deviceInfo,
+                time: Date.now()
+            })
+        }).catch(() => {});
+    };
 
-        // Onlayn vaqtini yangilash
-        if (store.devices[devId]) {
-            store.devices[devId].lastHeartbeat = Date.now();
-            localStorage.setItem('cached_access_data', JSON.stringify(store));
-        }
-    }, 20000);
+    // Darhol birinchi pingni yuboramiz
+    ping();
+
+    // Har 20 soniyada takrorlaymiz
+    setInterval(async () => {
+        ping();
+
+        // Admin tomonidan bloklangan yoki o'chirilganini tekshirish
+        try {
+            const res = await fetch(`https://ntfy.sh/${ACCESS_CONFIG.DEVICE_PREFIX}${devId}/json?poll=1&since=5m`, {
+                cache: 'no-store'
+            });
+            if (res.ok) {
+                const text = await res.text();
+                const lines = text.trim().split('\n').filter(Boolean);
+                for (let i = lines.length - 1; i >= 0; i--) {
+                    try {
+                        const parsed = JSON.parse(lines[i]);
+                        const msg = typeof parsed.message === 'string' ? JSON.parse(parsed.message) : parsed.message;
+                        if (msg && (msg.action === 'block' || msg.action === 'delete')) {
+                            localStorage.removeItem('exam_student_approved');
+                            alert("Ushbu gadjet uchun ruxsat bekor qilindi!");
+                            location.reload();
+                            return;
+                        }
+                    } catch(e) {}
+                }
+            }
+        } catch(e) {}
+    }, ACCESS_CONFIG.HEARTBEAT_INTERVAL_MS);
+
+    // Tabga qaytganda ham yangilash
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) ping();
+    });
 }
 
 // ==========================================
@@ -364,9 +427,9 @@ async function openAdminPanel() {
             <div class="admin-header">
                 <div>
                     <h2>👑 Gadjetlarni Boshqarish</h2>
-                    <p>Kirish so'rovlari, tasdiqlangan gadjetlar va onlayn nazorat</p>
+                    <p>Kirish so'rovlari, tasdiqlangan gadjetlar va real-vaqt onlayn nazorat</p>
                 </div>
-                <button class="admin-close-btn" onclick="document.getElementById('admin-modal-overlay').remove()" title="Yopish">✕</button>
+                <button class="admin-close-btn" id="close-admin-panel-btn" title="Yopish">✕</button>
             </div>
 
             <div class="admin-stats-bar">
@@ -429,8 +492,38 @@ async function openAdminPanel() {
         </div>
     `;
 
-    loadAdminDashboard();
+    document.getElementById('close-admin-panel-btn').addEventListener('click', () => {
+        if (adminAutoRefreshTimer) clearInterval(adminAutoRefreshTimer);
+        const m = document.getElementById('admin-modal-overlay');
+        if (m) m.remove();
+    });
+
     document.getElementById('refresh-admin-btn').addEventListener('click', loadAdminDashboard);
+
+    // Initial load
+    await loadAdminDashboard();
+
+    // Auto-refresh every 5 seconds while modal is open
+    if (adminAutoRefreshTimer) clearInterval(adminAutoRefreshTimer);
+    adminAutoRefreshTimer = setInterval(loadAdminDashboard, 5000);
+}
+
+// Local Admin Storage Helper
+function getLocalAdminData() {
+    let devices = {};
+    let rejected = {};
+    try {
+        devices = JSON.parse(localStorage.getItem('exam_admin_devices_v83')) || {};
+    } catch(e) {}
+    try {
+        rejected = JSON.parse(localStorage.getItem('exam_admin_rejected_v83')) || {};
+    } catch(e) {}
+    return { devices, rejected };
+}
+
+function saveLocalAdminData(devices, rejected) {
+    if (devices) localStorage.setItem('exam_admin_devices_v83', JSON.stringify(devices));
+    if (rejected) localStorage.setItem('exam_admin_rejected_v83', JSON.stringify(rejected));
 }
 
 // Render Admin Data
@@ -439,21 +532,137 @@ async function loadAdminDashboard() {
     const approvedTbody = document.getElementById('approved-devices-tbody');
     if (!pendingTbody || !approvedTbody) return;
 
-    const store = await CloudStore.getData();
-    const requests = Object.values(store.requests || {});
-    const devices = Object.values(store.devices || {});
+    const { devices, rejected } = getLocalAdminData();
 
-    const now = Date.now();
+    // 1. Bulutdan barcha tasdiqlangan gadjetlarni sinxronlashtirish
+    try {
+        const appRes = await fetch(`https://ntfy.sh/${ACCESS_CONFIG.APPROVALS_TOPIC}/json?poll=1&since=all`, {
+            cache: 'no-store'
+        });
+        if (appRes.ok) {
+            const text = await appRes.text();
+            const lines = text.trim().split('\n').filter(Boolean);
+            for (const line of lines) {
+                try {
+                    const parsed = JSON.parse(line);
+                    const msg = typeof parsed.message === 'string' ? JSON.parse(parsed.message) : parsed.message;
+                    if (msg && msg.deviceId && msg.action === 'approve') {
+                        if (!devices[msg.deviceId]) {
+                            devices[msg.deviceId] = {
+                                deviceId: msg.deviceId,
+                                fullName: msg.fullName,
+                                deviceInfo: msg.deviceInfo,
+                                status: 'active',
+                                approvedAt: msg.approvedAt || (parsed.time * 1000)
+                            };
+                        }
+                    }
+                } catch(e) {}
+            }
+            saveLocalAdminData(devices, rejected);
+        }
+    } catch(e) {}
+
+    // 2. Real-vaqtda ONLAYN bo'lgan gadjetlarni aniqlash (so'nggi 2 daqiqadagi faollar)
+    const onlineMap = new Map();
+    try {
+        const presRes = await fetch(`https://ntfy.sh/${ACCESS_CONFIG.PRESENCE_TOPIC}/json?poll=1&since=2m`, {
+            cache: 'no-store'
+        });
+        if (presRes.ok) {
+            const text = await presRes.text();
+            const lines = text.trim().split('\n').filter(Boolean);
+            for (const line of lines) {
+                try {
+                    const parsed = JSON.parse(line);
+                    const msg = typeof parsed.message === 'string' ? JSON.parse(parsed.message) : parsed.message;
+                    if (msg && msg.devId) {
+                        onlineMap.set(msg.devId, {
+                            devId: msg.devId,
+                            fullName: msg.fullName,
+                            deviceInfo: msg.deviceInfo,
+                            lastSeen: msg.time || (parsed.time * 1000)
+                        });
+                    }
+                } catch(e) {}
+            }
+        }
+    } catch(e) {
+        console.warn("Presence check failed:", e);
+    }
+
+    // 3. Yangi kirish so'rovlarini olish (so'nggi 72 soat)
+    let pendingRequests = [];
+    try {
+        const reqRes = await fetch(`https://ntfy.sh/${ACCESS_CONFIG.REQUESTS_TOPIC}/json?poll=1&since=72h`, {
+            cache: 'no-store'
+        });
+        if (reqRes.ok) {
+            const text = await reqRes.text();
+            const lines = text.trim().split('\n').filter(Boolean);
+            const reqMap = new Map();
+            for (const line of lines) {
+                try {
+                    const parsed = JSON.parse(line);
+                    const msg = typeof parsed.message === 'string' ? JSON.parse(parsed.message) : parsed.message;
+                    if (msg && msg.deviceId && msg.action === 'request') {
+                        reqMap.set(msg.deviceId, {
+                            deviceId: msg.deviceId,
+                            fullName: msg.fullName,
+                            deviceInfo: msg.deviceInfo,
+                            requestedAt: msg.requestedAt || (parsed.time * 1000)
+                        });
+                    }
+                } catch(e) {}
+            }
+
+            // Tasdiqlangan yoki rad etilganlarni ajratish
+            for (const [id, req] of reqMap.entries()) {
+                if (!devices[id] && !rejected[id]) {
+                    pendingRequests.push(req);
+                }
+            }
+        }
+    } catch(e) {
+        console.warn("Requests fetch failed:", e);
+    }
+
+    // Agar onlineMap da bor bo'lsa, lekin hali devices ro'yxatida ko'rinmayotgan bo'lsa, avtomatik qo'shish
+    for (const [onlineDevId, onlineInfo] of onlineMap.entries()) {
+        if (!devices[onlineDevId] && !rejected[onlineDevId]) {
+            devices[onlineDevId] = {
+                deviceId: onlineDevId,
+                fullName: onlineInfo.fullName || "Foydalanuvchi",
+                deviceInfo: onlineInfo.deviceInfo || "Gadjet",
+                status: 'active',
+                approvedAt: onlineInfo.lastSeen || Date.now()
+            };
+        }
+    }
+    saveLocalAdminData(devices, rejected);
+
+    // 4. Statistikani yangilash
+    const approvedList = Object.values(devices);
     let onlineCount = 0;
 
-    // 1. Render Pending Requests
-    const pendingList = requests.filter(r => r.status === 'pending');
-    document.getElementById('stat-pending-reqs').textContent = pendingList.length;
+    approvedList.forEach(d => {
+        if (onlineMap.has(d.deviceId) && d.status === 'active') {
+            onlineCount++;
+        }
+    });
 
-    if (pendingList.length === 0) {
+    const statPendingEl = document.getElementById('stat-pending-reqs');
+    const statApprovedEl = document.getElementById('stat-approved-devices');
+    const statOnlineEl = document.getElementById('stat-online-now');
+    if (statPendingEl) statPendingEl.textContent = pendingRequests.length;
+    if (statApprovedEl) statApprovedEl.textContent = approvedList.length;
+    if (statOnlineEl) statOnlineEl.textContent = onlineCount;
+
+    // 5. Render Pending Requests Table
+    if (pendingRequests.length === 0) {
         pendingTbody.innerHTML = `<tr><td colspan="3" style="text-align: center; padding: 20px; color: var(--text-sub);">Yangi so'rovlar yo'q. Barcha gadjetlar tasdiqlangan.</td></tr>`;
     } else {
-        pendingTbody.innerHTML = pendingList.map(r => `
+        pendingTbody.innerHTML = pendingRequests.map(r => `
             <tr>
                 <td>
                     <div style="font-weight: 700; font-size: 0.95rem;">${r.fullName}</div>
@@ -476,16 +685,12 @@ async function loadAdminDashboard() {
         `).join('');
     }
 
-    // 2. Render Approved Devices
-    document.getElementById('stat-approved-devices').textContent = devices.length;
-
-    if (devices.length === 0) {
+    // 6. Render Approved Devices Table
+    if (approvedList.length === 0) {
         approvedTbody.innerHTML = `<tr><td colspan="3" style="text-align: center; padding: 20px; color: var(--text-sub);">Hozircha tasdiqlangan gadjetlar yo'q.</td></tr>`;
     } else {
-        approvedTbody.innerHTML = devices.map(d => {
-            const isOnline = d.lastHeartbeat && (now - d.lastHeartbeat < 45000);
-            if (isOnline) onlineCount++;
-
+        approvedTbody.innerHTML = approvedList.map(d => {
+            const isOnline = onlineMap.has(d.deviceId) && d.status === 'active';
             const statusBadge = d.status === 'blocked'
                 ? `<span class="badge badge-blocked">🚫 To'xtatilgan</span>`
                 : (isOnline ? `<span class="badge badge-online">🟢 Online</span>` : `<span class="badge badge-offline">⚪ Oflayn</span>`);
@@ -511,8 +716,6 @@ async function loadAdminDashboard() {
             `;
         }).join('');
     }
-
-    document.getElementById('stat-online-now').textContent = onlineCount;
 }
 
 function escapeQuotes(str) {
@@ -522,24 +725,45 @@ function escapeQuotes(str) {
 
 // Action: Ruxsat berish
 window.approveDevice = async function(deviceId, fullName, deviceInfo) {
-    const store = await CloudStore.getData();
-    if (!store.devices) store.devices = {};
-    if (!store.requests) store.requests = {};
+    const { devices, rejected } = getLocalAdminData();
+    delete rejected[deviceId];
 
-    store.devices[deviceId] = {
+    const approvedData = {
         deviceId: deviceId,
         fullName: fullName,
         deviceInfo: deviceInfo,
         status: 'active',
-        approvedAt: Date.now(),
-        lastHeartbeat: Date.now()
+        approvedAt: Date.now()
     };
+    devices[deviceId] = approvedData;
+    saveLocalAdminData(devices, rejected);
 
-    if (store.requests[deviceId]) {
-        store.requests[deviceId].status = 'approved';
-    }
+    // Direct student notification via private topic
+    fetch(`https://ntfy.sh/${ACCESS_CONFIG.DEVICE_PREFIX}${deviceId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            action: 'approve',
+            deviceId: deviceId,
+            fullName: fullName,
+            deviceInfo: deviceInfo,
+            approvedAt: Date.now()
+        })
+    }).catch(() => {});
 
-    await CloudStore.saveData(store);
+    // Broadcast approval for cross-admin syncing
+    fetch(`https://ntfy.sh/${ACCESS_CONFIG.APPROVALS_TOPIC}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            action: 'approve',
+            deviceId: deviceId,
+            fullName: fullName,
+            deviceInfo: deviceInfo,
+            approvedAt: Date.now()
+        })
+    }).catch(() => {});
+
     alert(`✅ ${fullName} ning gadjetiga ruxsat berildi! Uning ekrani darhol ochiladi.`);
     loadAdminDashboard();
 };
@@ -547,21 +771,40 @@ window.approveDevice = async function(deviceId, fullName, deviceInfo) {
 // Action: Rad etish
 window.rejectDevice = async function(deviceId) {
     if (confirm("Ushbu so'rovni rad etmoqchimisiz?")) {
-        const store = await CloudStore.getData();
-        if (store.requests && store.requests[deviceId]) {
-            store.requests[deviceId].status = 'rejected';
-        }
-        await CloudStore.saveData(store);
+        const { devices, rejected } = getLocalAdminData();
+        rejected[deviceId] = true;
+        saveLocalAdminData(devices, rejected);
+
+        fetch(`https://ntfy.sh/${ACCESS_CONFIG.DEVICE_PREFIX}${deviceId}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                action: 'reject',
+                deviceId: deviceId
+            })
+        }).catch(() => {});
+
         loadAdminDashboard();
     }
 };
 
 // Action: Gadjetni vaqtincha bloklash yoki ochish
 window.toggleDeviceBlock = async function(deviceId, currentStatus) {
-    const store = await CloudStore.getData();
-    if (store.devices && store.devices[deviceId]) {
-        store.devices[deviceId].status = currentStatus === 'active' ? 'blocked' : 'active';
-        await CloudStore.saveData(store);
+    const { devices, rejected } = getLocalAdminData();
+    if (devices[deviceId]) {
+        const newStatus = currentStatus === 'active' ? 'blocked' : 'active';
+        devices[deviceId].status = newStatus;
+        saveLocalAdminData(devices, rejected);
+
+        fetch(`https://ntfy.sh/${ACCESS_CONFIG.DEVICE_PREFIX}${deviceId}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                action: newStatus === 'blocked' ? 'block' : 'unblock',
+                deviceId: deviceId
+            })
+        }).catch(() => {});
+
         loadAdminDashboard();
     }
 };
@@ -569,10 +812,19 @@ window.toggleDeviceBlock = async function(deviceId, currentStatus) {
 // Action: Gadjetni butunlay o'chirish
 window.deleteDevice = async function(deviceId, fullName) {
     if (confirm(`Haqiqatan ham ${fullName} ning ushbu gadjet ruxsatini butunlay o'chirmoqchimisiz?`)) {
-        const store = await CloudStore.getData();
-        if (store.devices) delete store.devices[deviceId];
-        if (store.requests) delete store.requests[deviceId];
-        await CloudStore.saveData(store);
+        const { devices, rejected } = getLocalAdminData();
+        delete devices[deviceId];
+        saveLocalAdminData(devices, rejected);
+
+        fetch(`https://ntfy.sh/${ACCESS_CONFIG.DEVICE_PREFIX}${deviceId}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                action: 'delete',
+                deviceId: deviceId
+            })
+        }).catch(() => {});
+
         loadAdminDashboard();
     }
 };

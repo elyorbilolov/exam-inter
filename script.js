@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let readingAnswers = JSON.parse(localStorage.getItem('readingAnswers')) || {};
     let currentLevel = localStorage.getItem('selectedLevel') || null;
     let currentMode = localStorage.getItem('currentMode') || 'speaking';
-    let currentCard = localStorage.getItem('currentCard') || "Card A";
+    let currentCard = (currentLevel ? localStorage.getItem('currentCard_' + currentLevel) : null) || localStorage.getItem('currentCard') || "Card A";
     let currentPart = localStorage.getItem('currentPart') || "Part 1";
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     let learnedWriting = JSON.parse(localStorage.getItem('learnedWriting')) || [];
@@ -90,6 +90,67 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function findBestMatchingCard(targetCard, uniqueCards) {
+        if (!uniqueCards || uniqueCards.length === 0) return "Card A";
+        if (!targetCard) return uniqueCards[0].name;
+
+        // 1. Exact match
+        const exact = uniqueCards.find(c => c.name === targetCard);
+        if (exact) return exact.name;
+
+        // 2. Letter match: "Card D", "D (News)", "D", "Card D / Topic"
+        const getLetter = (str) => {
+            if (!str) return null;
+            const m = str.match(/^(?:Card\s+)?([A-Za-z])\b/i);
+            return m ? m[1].toUpperCase() : null;
+        };
+        const targetLetter = getLetter(targetCard);
+        if (targetLetter) {
+            const letterMatch = uniqueCards.find(c => getLetter(c.name) === targetLetter);
+            if (letterMatch) return letterMatch.name;
+        }
+
+        // 3. Lesson number match: e.g. "1.1", "1.2"
+        const numMatch = targetCard.match(/^\d+(\.\d+)?$/);
+        if (numMatch) {
+            const lessonMatch = uniqueCards.find(c => c.name === targetCard);
+            if (lessonMatch) return lessonMatch.name;
+        }
+
+        return uniqueCards[0].name;
+    }
+
+    // Scroll tracking & restoration across page refresh
+    let scrollSaveTimeout = null;
+    window.addEventListener('scroll', () => {
+        clearTimeout(scrollSaveTimeout);
+        scrollSaveTimeout = setTimeout(() => {
+            if (window.scrollY > 0) {
+                sessionStorage.setItem('saved_scroll_pos', window.scrollY);
+            }
+        }, 150);
+    }, { passive: true });
+
+    window.addEventListener('beforeunload', () => {
+        if (window.scrollY > 0) {
+            sessionStorage.setItem('saved_scroll_pos', window.scrollY);
+        }
+    });
+
+    function restoreSavedScroll() {
+        const savedY = sessionStorage.getItem('saved_scroll_pos');
+        if (savedY !== null && savedY !== undefined) {
+            const y = parseInt(savedY, 10);
+            if (!isNaN(y) && y > 0) {
+                requestAnimationFrame(() => {
+                    setTimeout(() => {
+                        window.scrollTo({ top: y, behavior: 'instant' });
+                    }, 80);
+                });
+            }
+        }
+    }
+
     const levelSelector = document.getElementById('level-selector');
     const mainContent = document.getElementById('main-content');
     const homeBtn = document.getElementById('home-btn');
@@ -120,9 +181,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
                 
-                if (!cardMap.has(currentCard)) {
-                    currentCard = uniqueCards.length > 0 ? uniqueCards[0].name : "1.1";
-                    localStorage.setItem('currentCard', currentCard);
+                const savedCard = (currentLevel ? localStorage.getItem('currentCard_' + currentLevel) : null) || localStorage.getItem('currentCard');
+                currentCard = findBestMatchingCard(savedCard, uniqueCards);
+                localStorage.setItem('currentCard', currentCard);
+                if (currentLevel) {
+                    localStorage.setItem('currentCard_' + currentLevel, currentCard);
                 }
                 
                 renderCardButtons(uniqueCards);
@@ -156,9 +219,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
                 
-                if (currentCard.match(/^\d+(\.\d+)?$/) || !cardMap.has(currentCard)) {
-                    currentCard = uniqueCards.length > 0 ? uniqueCards[0].name : "Card A";
-                    localStorage.setItem('currentCard', currentCard);
+                const savedCard = (currentLevel ? localStorage.getItem('currentCard_' + currentLevel) : null) || localStorage.getItem('currentCard');
+                currentCard = findBestMatchingCard(savedCard, uniqueCards);
+                localStorage.setItem('currentCard', currentCard);
+                if (currentLevel) {
+                    localStorage.setItem('currentCard_' + currentLevel, currentCard);
                 }
                 
                 renderCardButtons(uniqueCards);
@@ -281,6 +346,8 @@ document.addEventListener('DOMContentLoaded', () => {
     homeBtn.addEventListener('click', () => {
         currentLevel = null;
         localStorage.removeItem('selectedLevel');
+        sessionStorage.removeItem('saved_scroll_pos');
+        window.scrollTo({ top: 0, behavior: 'instant' });
         initLevelSelection();
     });
 
@@ -375,10 +442,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
                 
-                // If currentCard is not valid for lessons, reset it
-                if (!cardMap.has(currentCard)) {
-                    currentCard = uniqueCards.length > 0 ? uniqueCards[0].name : "1.1";
-                    localStorage.setItem('currentCard', currentCard);
+                const savedCard = (currentLevel ? localStorage.getItem('currentCard_' + currentLevel) : null) || localStorage.getItem('currentCard');
+                currentCard = findBestMatchingCard(savedCard, uniqueCards);
+                localStorage.setItem('currentCard', currentCard);
+                if (currentLevel) {
+                    localStorage.setItem('currentCard_' + currentLevel, currentCard);
                 }
             } else {
                 examData.forEach(item => {
@@ -390,19 +458,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
                 
-                // If currentCard is not directly in map but stripped version is (e.g. Card A -> A)
-                if (!cardMap.has(currentCard)) {
-                    const stripped = currentCard.replace('Card ', '').trim();
-                    if (cardMap.has(stripped)) {
-                        currentCard = stripped;
-                        localStorage.setItem('currentCard', currentCard);
-                    }
-                }
-                
-                // If currentCard looks like a lesson number, reset it to first card
-                if (currentCard.match(/^\d+(\.\d+)?$/) || !cardMap.has(currentCard)) {
-                    currentCard = uniqueCards.length > 0 ? uniqueCards[0].name : "Card A";
-                    localStorage.setItem('currentCard', currentCard);
+                const savedCard = (currentLevel ? localStorage.getItem('currentCard_' + currentLevel) : null) || localStorage.getItem('currentCard');
+                currentCard = findBestMatchingCard(savedCard, uniqueCards);
+                localStorage.setItem('currentCard', currentCard);
+                if (currentLevel) {
+                    localStorage.setItem('currentCard_' + currentLevel, currentCard);
                 }
             }
 
@@ -459,6 +519,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 renderContent(currentCard, currentPart);
             }
+            restoreSavedScroll();
         } catch (error) {
             contentArea.innerHTML = `<div class="loader" style="color: red;">Xatolik: ${error.message}</div>`;
         }
@@ -503,6 +564,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.classList.add('active');
                 currentCard = card.name;
                 localStorage.setItem('currentCard', currentCard);
+                if (currentLevel) {
+                    localStorage.setItem('currentCard_' + currentLevel, currentCard);
+                }
                 renderContent(currentCard, currentPart);
             });
             cardsNav.appendChild(btn);
