@@ -311,9 +311,6 @@ function injectAdminBadge() {
 
     document.getElementById('open-admin-btn').addEventListener('click', openAdminPanel);
     document.getElementById('auth-logout-btn').addEventListener('click', adminLogout);
-
-    // Sahifa ochilganda admin panelni ko'rsatish
-    openAdminPanel();
 }
 
 // Inject Student Badge in Header
