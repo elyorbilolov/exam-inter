@@ -532,6 +532,12 @@ h1 {
   max-width: 400px;
 }
 
+/* Hide search bar on main level selection screen */
+.level-selection-active .search-container,
+body.level-selection-active .search-container {
+  display: none !important;
+}
+
 #search-input {
   width: 100%;
   padding: 8px 12px;
@@ -2764,16 +2770,16 @@ h1 {
     display: flex !important;
     align-items: center !important;
     gap: 6px !important;
-    flex: 0 1 auto !important;
+    flex: 1 1 auto !important;
     min-width: 0 !important;
   }
 
   .header-left h1 {
-    font-size: 1.1rem !important;
+    font-size: clamp(0.95rem, 3.8vw, 1.1rem) !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
-    max-width: 140px !important;
+    max-width: none !important;
   }
 
   .header-actions {

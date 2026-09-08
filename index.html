@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Exam v9.3</title>
-    <link rel="stylesheet" href="style.css?v=v93">
+    <title>English Exam v9.4</title>
+    <link rel="stylesheet" href="style.css?v=v94">
     <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <script src="security.js?v=v93"></script>
+    <script>
+        try {
+            if (!localStorage.getItem('selectedLevel')) {
+                document.documentElement.classList.add('level-selection-active');
+            }
+        } catch(e) {}
+    </script>
+    <script src="security.js?v=v94"></script>
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./sw.js?v=v93').then(reg => {
+            navigator.serviceWorker.register('./sw.js?v=v94').then(reg => {
                 reg.update();
             });
         }
@@ -136,7 +143,7 @@
         </div>
     </div>
 
-    <script src="auth.js?v=v93"></script>
-    <script src="script.js?v=v93"></script>
+    <script src="auth.js?v=v94"></script>
+    <script src="script.js?v=v94"></script>
 </body>
 </html>

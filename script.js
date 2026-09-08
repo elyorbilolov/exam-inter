@@ -321,16 +321,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function initLevelSelection() {
+        const searchContainer = document.querySelector('.search-container');
         if (currentLevel) {
+            document.documentElement.classList.remove('level-selection-active');
+            document.body.classList.remove('level-selection-active');
+            if (searchContainer) searchContainer.style.display = '';
             levelSelector.style.display = 'none';
             mainContent.style.display = 'block';
             homeBtn.style.display = 'flex';
             loadData();
         } else {
+            document.documentElement.classList.add('level-selection-active');
+            document.body.classList.add('level-selection-active');
+            if (searchContainer) searchContainer.style.display = 'none';
             levelSelector.style.display = 'flex';
             mainContent.style.display = 'none';
             homeBtn.style.display = 'none';
             progressBar.style.width = '0%';
+            const mainTitleEl = document.querySelector('h1');
+            if (mainTitleEl) mainTitleEl.textContent = 'English Exam';
         }
         adjustStudyToolsVisibility();
     }
@@ -829,7 +838,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
             } else {
-                if (item["FullAnswer_EN"]) {
+                if (item["Reason_EN"] || item["Example_EN"] || item["ExtraInfo_EN"]) {
                     const parts = [
                         { label: "Answer", en: item["FullAnswer_EN"], uz: item["FullAnswer_UZ"] },
                         { label: "Reason", en: item["Reason_EN"], uz: item["Reason_UZ"] },
@@ -843,10 +852,17 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="answer-block">
                                 <span class="answer-label">${p.label}:</span>
                                 <span class="en-text highlight">${p.en}</span>
-                                <span class="uz-text small">(${p.uz})</span>
+                                <span class="uz-text small">(${p.uz || ""})</span>
                             </div>
                         `;
                     }).join('');
+                } else if (item["FullAnswer_EN"]) {
+                    answerHTML = `
+                        <div class="answer-content">
+                            <span class="en-text" style="color: black; font-weight: 600;">${item["FullAnswer_EN"]}</span>
+                            <span class="uz-text" style="display: block; margin-top: 5px;">(${item["FullAnswer_UZ"] || ""})</span>
+                        </div>
+                    `;
                 } else {
                     const cleanAnswerEN = item["Jovoblar (EN)"] ? item["Jovoblar (EN)"].replace(/\n/g, '<br>') : "No answer";
                     const cleanAnswerUZ = item["Jovoblar (UZ)"] ? item["Jovoblar (UZ)"].replace(/\n/g, '<br>') : "Javob yo'q";
@@ -1527,8 +1543,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     const qUz = (item["Sovollar (UZ)"] || "").toLowerCase();
                     const aEn = (item["FullAnswer_EN"] || item["Jovoblar (EN)"] || "").toLowerCase();
                     const aUz = (item["FullAnswer_UZ"] || item["Jovoblar (UZ)"] || "").toLowerCase();
+                    const rEn = (item["Reason_EN"] || "").toLowerCase();
+                    const rUz = (item["Reason_UZ"] || "").toLowerCase();
+                    const eEn = (item["Example_EN"] || "").toLowerCase();
+                    const eUz = (item["Example_UZ"] || "").toLowerCase();
+                    const exEn = (item["ExtraInfo_EN"] || "").toLowerCase();
+                    const exUz = (item["ExtraInfo_UZ"] || "").toLowerCase();
                     const query = searchQuery.toLowerCase();
-                    return qEn.includes(query) || qUz.includes(query) || aEn.includes(query) || aUz.includes(query);
+                    return qEn.includes(query) || qUz.includes(query) || 
+                           aEn.includes(query) || aUz.includes(query) ||
+                           rEn.includes(query) || rUz.includes(query) ||
+                           eEn.includes(query) || eUz.includes(query) ||
+                           exEn.includes(query) || exUz.includes(query);
                 });
             } else {
                 // Normal filter
@@ -1597,6 +1623,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     { label: "Reason", en: item["Reason"], uz: item["Reason translate"] },
                     { label: "Example", en: item["Example"], uz: item["Example translate"] },
                     { label: "Extra Info", en: item["Extra Info"], uz: item["Extra Info translate"] }
+                ];
+                textToSpeak = parts.map(p => p.en).filter(Boolean).join('. ');
+                answerHTML = parts.map(p => {
+                    if (!p.en) return '';
+                    const highlightedEn = highlightText(p.en, searchQuery);
+                    const blurredEn = isKeywordBlurActive ? blurKeywords(highlightedEn) : highlightedEn;
+                    return `
+                        <div class="answer-block">
+                            <span class="answer-label">${p.label}:</span>
+                            <span class="en-text highlight">${blurredEn}</span>
+                            <span class="uz-text small">(${highlightText(p.uz || "Tarjima yo'q", searchQuery)})</span>
+                        </div>
+                    `;
+                }).join('');
+            } else if (item["Reason_EN"] || item["Example_EN"] || item["ExtraInfo_EN"]) {
+                headingEn = item["Sovollar"] || '';
+                headingUz = item["Sovollar (UZ)"] || '';
+
+                const parts = [
+                    { label: "Answer", en: item["FullAnswer_EN"], uz: item["FullAnswer_UZ"] },
+                    { label: "Reason", en: item["Reason_EN"], uz: item["Reason_UZ"] },
+                    { label: "Example", en: item["Example_EN"], uz: item["Example_UZ"] },
+                    { label: "Extra Info", en: item["ExtraInfo_EN"], uz: item["ExtraInfo_UZ"] }
                 ];
                 textToSpeak = parts.map(p => p.en).filter(Boolean).join('. ');
                 answerHTML = parts.map(p => {
