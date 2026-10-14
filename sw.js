@@ -1,4 +1,4 @@
-const CACHE_NAME = 'exam-cache-v95';
+const CACHE_NAME = 'exam-cache-v96';
 const ASSETS = [
   './',
   './index.html',
@@ -53,7 +53,7 @@ self.addEventListener('fetch', (event) => {
       }
       return response;
     }).catch(() => {
-      return caches.match(event.request);
+      return caches.match(event.request, { ignoreSearch: true });
     })
   );
 });

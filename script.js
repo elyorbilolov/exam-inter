@@ -273,6 +273,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderReadingContent('reading');
             } else if (currentMode === 'listening') {
                 renderReadingContent('listening');
+            } else if (currentMode === 'grammar') {
+                renderGrammarContent();
             } else {
                 renderContent(currentCard, currentPart);
             }
@@ -425,6 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
             writingData = {};
             lessonsData = [];
             readingData = [];
+            grammarData = [];
 
             // Load speaking/exam data
             if (speakingFile) {
@@ -452,6 +455,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 const resReading = await fetch(`${readingFile}?v=${new Date().getTime()}`);
                 if (!resReading.ok) throw new Error(`${readingFile} faylni yuklab bo'lmadi`);
                 readingData = await resReading.json();
+            }
+
+            // Load grammar & vocabulary data if applicable
+            if (grammarFile) {
+                try {
+                    const resGrammar = await fetch(`${grammarFile}?v=${new Date().getTime()}`);
+                    if (resGrammar.ok) {
+                        grammarData = await resGrammar.json();
+                    } else {
+                        console.warn(`${grammarFile} yuklab bo'lmadi`);
+                    }
+                } catch (e) {
+                    console.warn("Grammar yuklashda xatolik:", e);
+                }
             }
             
             const uniqueCards = [];
@@ -521,6 +538,9 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (currentMode === 'reading' || currentMode === 'listening') {
                 cardsWrapper.style.display = 'none';
                 partsWrapper.style.display = 'block';
+            } else if (currentMode === 'grammar') {
+                cardsWrapper.style.display = 'none';
+                partsWrapper.style.display = 'none';
             } else {
                 cardsWrapper.style.display = 'block';
                 partsWrapper.style.display = 'block';
@@ -1618,11 +1638,22 @@ document.addEventListener('DOMContentLoaded', () => {
         renderGrammarContent();
     }
 
-    function renderGrammarContent(searchQuery = '') {
+    async function renderGrammarContent(searchQuery = '') {
         contentArea.innerHTML = '';
 
         if (!grammarData || grammarData.length === 0) {
-            contentArea.innerHTML = '<div class="loader">Grammar & Vocabulary ma\'lumotlari topilmadi.</div>';
+            contentArea.innerHTML = '<div class="loader">Grammar & Vocabulary yuklanmoqda... ⏳</div>';
+            try {
+                const res = await fetch(`intermediate_grammar.json?v=${new Date().getTime()}`);
+                if (res.ok) {
+                    grammarData = await res.json();
+                    renderGrammarContent(searchQuery);
+                    return;
+                }
+            } catch (err) {
+                console.error("Error loading grammar data:", err);
+            }
+            contentArea.innerHTML = '<div class="loader" style="color: #ef4444;">Grammar & Vocabulary ma\'lumotlarini yuklab bo\'lmadi. Sahifani qayta yuklang (🔄).</div>';
             return;
         }
 
