@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Exam v9.4</title>
-    <link rel="stylesheet" href="style.css?v=v94">
+    <title>English Exam v9.5</title>
+    <link rel="stylesheet" href="style.css?v=v95">
     <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <script>
@@ -14,10 +14,10 @@
             }
         } catch(e) {}
     </script>
-    <script src="security.js?v=v94"></script>
+    <script src="security.js?v=v95"></script>
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./sw.js?v=v94').then(reg => {
+            navigator.serviceWorker.register('./sw.js?v=v95').then(reg => {
                 reg.update();
             });
         }
@@ -111,6 +111,7 @@
                 <button class="mode-btn" data-mode="writing">✍️ Writing</button>
                 <button id="reading-mode-btn" class="mode-btn" data-mode="reading" style="display: none;">📖 Reading</button>
                 <button id="listening-mode-btn" class="mode-btn" data-mode="listening" style="display: none;">🎧 Listening</button>
+                <button id="grammar-mode-btn" class="mode-btn" data-mode="grammar" style="display: none;">📝 Grammar & Vocab</button>
                 <button id="lessons-mode-btn" class="mode-btn" data-mode="lessons" style="display: none;">📖 Lessons</button>
             </nav>
 
@@ -143,7 +144,7 @@
         </div>
     </div>
 
-    <script src="auth.js?v=v94"></script>
-    <script src="script.js?v=v94"></script>
+    <script src="auth.js?v=v95"></script>
+    <script src="script.js?v=v95"></script>
 </body>
 </html>

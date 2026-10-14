@@ -1,0 +1,2495 @@
+[
+  {
+    "id": "direct_indirect_questions",
+    "title": "1. Direct & Indirect Questions",
+    "titleUz": "To'g'ri va o'zlashma savollar",
+    "category": "grammar",
+    "icon": "❓",
+    "description": "Indirect questions: Word order (ega + fe'l), 'if / whether' qo'llanilishi",
+    "questions": [
+      {
+        "id": "di_1",
+        "sentence": "Which is the correct question?",
+        "options": [
+          "When did you start your first business?",
+          "When you started your first business?"
+        ],
+        "correctAnswer": "When did you start your first business?",
+        "explanation": "To'g'ri savollarda (Direct questions) o'tgan zamonda 'did' yordamchi fe'li egadan oldinga chiqadi.",
+        "translation": "Birinchi biznesingizni qachon boshlagansiz?"
+      },
+      {
+        "id": "di_2",
+        "sentence": "Choose the correct indirect question:",
+        "options": [
+          "Could you tell me who is your role model?",
+          "Could you tell me who your role model is?"
+        ],
+        "correctAnswer": "Could you tell me who your role model is?",
+        "explanation": "O'zlashma savollarda (Indirect questions) so'roq so'zidan keyin darak gap tartibi (ega + fe'l) keladi: who your role model is.",
+        "translation": "Menga o'rnak oladigan insoningiz kim ekanligini ayta olasizmi?"
+      },
+      {
+        "id": "di_3",
+        "sentence": "Choose the correct sentence:",
+        "options": [
+          "Would you mind telling me if you enjoy your job?",
+          "Would you mind telling me do you enjoy your job?"
+        ],
+        "correctAnswer": "Would you mind telling me if you enjoy your job?",
+        "explanation": "'Would you mind telling me...' iborasidan keyin 'if' ishlatiladi va yordamchi 'do' tushib qoladi.",
+        "translation": "Ihingiz sizga yoqadimi-yo'qmi, aytib bera olasizmi?"
+      },
+      {
+        "id": "di_4",
+        "sentence": "Choose the correct sentence:",
+        "options": [
+          "I’d like to know do you regret anything you’ve done.",
+          "I’d like to know if you regret anything you’ve done."
+        ],
+        "correctAnswer": "I’d like to know if you regret anything you’ve done.",
+        "explanation": "'I'd like to know' iborasidan keyin 'if' orqali o'zlashma gap tuziladi va 'do' ishlatilmaydi.",
+        "translation": "Qilgan biror ishingizdan afsuslanasizmi, shuni bilmoqchi edim."
+      },
+      {
+        "id": "di_5",
+        "sentence": "Choose the correct indirect question:",
+        "options": [
+          "Could you tell me how much money do you earn?",
+          "Could you tell me how much money you earn?"
+        ],
+        "correctAnswer": "Could you tell me how much money you earn?",
+        "explanation": "O'zlashma savolda darak gap so'z tartibi: how much money you earn.",
+        "translation": "Qancha maosh olishingizni ayta olasizmi?"
+      },
+      {
+        "id": "di_6",
+        "sentence": "Which is the correct question?",
+        "options": [
+          "When did she start learning Spanish?",
+          "When she started learning Spanish?"
+        ],
+        "correctAnswer": "When did she start learning Spanish?",
+        "explanation": "To'g'ridan-to'g'ri maxsus so'roq gapda yordamchi fe'l (did) egadan oldin keladi.",
+        "translation": "U ispan tilini o'rganishni qachon boshlagan?"
+      },
+      {
+        "id": "di_7",
+        "sentence": "Choose the correct indirect question:",
+        "options": [
+          "Could you tell me what do your parents do?",
+          "Could you tell me what your parents do?"
+        ],
+        "correctAnswer": "Could you tell me what your parents do?",
+        "explanation": "O'zlashma savolda yordamchi 'do' tushirib qoldiriladi: what your parents do.",
+        "translation": "Ota-onangiz nima ish qilishini ayta olasizmi?"
+      },
+      {
+        "id": "di_8",
+        "sentence": "Choose the correct sentence:",
+        "options": [
+          "Would you mind telling me if you want to move to New York?",
+          "Would you mind telling me do you want to move to New York?"
+        ],
+        "correctAnswer": "Would you mind telling me if you want to move to New York?",
+        "explanation": "Indirect questions 'if/whether' oladi, yordamchi 'do' ishlatilmaydi.",
+        "translation": "Nyu-Yorkka ko'chib o'tishni xohlaysizmi, aytib bera olmaysizmi?"
+      },
+      {
+        "id": "di_9",
+        "sentence": "Choose the correct sentence:",
+        "options": [
+          "I’d like to know whether you want to talk about it.",
+          "I’d like to know do you want to talk about it."
+        ],
+        "correctAnswer": "I’d like to know whether you want to talk about it.",
+        "explanation": "'I'd like to know' dan keyin 'whether' ishlatiladi.",
+        "translation": "Bu haqda gaplashishni xohlaysizmi-yo'qmi, bilmoqchi edim."
+      },
+      {
+        "id": "di_10",
+        "sentence": "Choose the correct indirect question:",
+        "options": [
+          "Could you tell me when does the course start?",
+          "Could you tell me when the course starts?"
+        ],
+        "correctAnswer": "Could you tell me when the course starts?",
+        "explanation": "O'zlashma savolda 'does' tushib qoladi va fe'lga -s qo'shiladi: when the course starts.",
+        "translation": "Kurs qachon boshlanishini ayta olasizmi?"
+      },
+      {
+        "id": "di_11",
+        "sentence": "Which is the correct question?",
+        "options": [
+          "When did you move to this small town?",
+          "When you moved to this small town?"
+        ],
+        "correctAnswer": "When did you move to this small town?",
+        "explanation": "Past Simple to'g'ri savoli: When did you move...?",
+        "translation": "Bu kichik shaharchaga qachon ko'chib kelgansiz?"
+      },
+      {
+        "id": "di_12",
+        "sentence": "Choose the correct indirect question:",
+        "options": [
+          "Could you tell me who helped you solve this math problem?",
+          "Could you tell me who did help you solve this math problem?"
+        ],
+        "correctAnswer": "Could you tell me who helped you solve this math problem?",
+        "explanation": "Ega so'rog'ida (Who helped...) yordamchi 'did' ishlatilmaydi.",
+        "translation": "Ushbu matematika masalasini yechishga kim yordam berganini ayta olasizmi?"
+      },
+      {
+        "id": "di_13",
+        "sentence": "Choose the correct sentence:",
+        "options": [
+          "Would you mind telling me do you enjoy your job?",
+          "Would you mind telling me if you enjoy your job?"
+        ],
+        "correctAnswer": "Would you mind telling me if you enjoy your job?",
+        "explanation": "O'zlashma savolda 'if' ishlatiladi, 'do' emas.",
+        "translation": "Ihingizdan zavqlanasizmi, shuni aytib bera olasizmi?"
+      },
+      {
+        "id": "di_14",
+        "sentence": "Choose the correct sentence:",
+        "options": [
+          "I’d like to know if have you committed any crime.",
+          "I’d like to know if you have committed any crime."
+        ],
+        "correctAnswer": "I’d like to know if you have committed any crime.",
+        "explanation": "O'zlashma savolda to'g'ri so'z tartibi: if + ega (you) + fe'l (have committed).",
+        "translation": "Biror jinoyat sodir etganmisiz, shuni bilmoqchi edim."
+      },
+      {
+        "id": "di_15",
+        "sentence": "Choose the correct indirect question:",
+        "options": [
+          "Could you tell me how much money your father earns per month?",
+          "Could you tell me how much money does your father earn per month?"
+        ],
+        "correctAnswer": "Could you tell me how much money your father earns per month?",
+        "explanation": "O'zlashma savolda darak gap tartibi qo'llaniladi (does tushib qoladi va earns bo'ladi).",
+        "translation": "Otangiz oyiga qancha maosh olishini ayta olasizmi?"
+      },
+      {
+        "id": "di_16",
+        "sentence": "When ________________? — They met each other 3 years ago.",
+        "options": [
+          "did they meet each other",
+          "they met each other",
+          "have they met each other",
+          "do they meet each other"
+        ],
+        "correctAnswer": "did they meet each other",
+        "explanation": "Javob '3 years ago' (o'tgan zamon) bo'lgani uchun: When did they meet each other?",
+        "translation": "Ular qachon uchrashishgan? — Ular 3 yil oldin uchrashishgan."
+      },
+      {
+        "id": "di_17",
+        "sentence": "Could you tell me ________________? — My grandfather is a police officer.",
+        "options": [
+          "what your grandfather does",
+          "what does your grandfather do",
+          "who is your grandfather",
+          "what your grandfather is"
+        ],
+        "correctAnswer": "what your grandfather does",
+        "explanation": "Kasb haqida so'rash: Could you tell me what your grandfather does?",
+        "translation": "Bobongiz nima ish qilishini ayta olasizmi? — Bobom politsiya xodimi."
+      },
+      {
+        "id": "di_18",
+        "sentence": "Would you mind telling me ________________? — Yes, of course I am planning to come to the meeting.",
+        "options": [
+          "if you are planning to come to the meeting",
+          "are you planning to come to the meeting",
+          "that you plan to come to the meeting",
+          "whether do you plan to come"
+        ],
+        "correctAnswer": "if you are planning to come to the meeting",
+        "explanation": "Yes/No javobiga mos o'zlashma savol 'if + ega + fe'l' shaklida tuziladi.",
+        "translation": "Majlisga kelishni rejalashtiryapsizmi, shuni ayta olasizmi?"
+      },
+      {
+        "id": "di_19",
+        "sentence": "I’d like to know ________________? — No, I don’t need your help.",
+        "options": [
+          "whether you need my help",
+          "do you need my help",
+          "if do you need my help",
+          "why you need help"
+        ],
+        "correctAnswer": "whether you need my help",
+        "explanation": "'I'd like to know whether you need my help.' darak gap tartibi.",
+        "translation": "Yordamim kerakmi-yo'qmi, bilmoqchi edim. — Yo'q, yordamingiz kerak emas."
+      },
+      {
+        "id": "di_20",
+        "sentence": "Could you ________________? — Of course, I can tell you when the train arrives.",
+        "options": [
+          "tell me when the train arrives",
+          "tell me when does the train arrive",
+          "tell when is the train arriving",
+          "to tell me when the train arrives"
+        ],
+        "correctAnswer": "tell me when the train arrives",
+        "explanation": "Could you tell me when the train arrives?",
+        "translation": "Poyezd qachon kelishini ayta olasizmi? — Albatta."
+      }
+    ]
+  },
+  {
+    "id": "conditionals_if_unless",
+    "title": "2. Conditionals: if / unless / will / won't",
+    "titleUz": "Shart ergash gaplar: if / unless / will / won't",
+    "category": "grammar",
+    "icon": "⚡",
+    "description": "Birinchi tur shart mayli (First conditional): If / Unless + Present Simple, will / won't + V1",
+    "questions": [
+      {
+        "id": "c_1",
+        "sentence": "If you eat good food and do more exercise, you ________________ be healthier.",
+        "options": [
+          "will",
+          "won't",
+          "if",
+          "unless"
+        ],
+        "correctAnswer": "will",
+        "explanation": "Natija qismida tasdiq ma'no: sog'lomroq bo'lasiz (you will be healthier).",
+        "translation": "Agar foydali ovqatlansangiz va ko'proq mashq qilsangiz, sog'lomroq bo'lasiz."
+      },
+      {
+        "id": "c_2",
+        "sentence": "Many people visit their families over the New Year’s holiday, ________________ they have to work.",
+        "options": [
+          "unless",
+          "if",
+          "will",
+          "won't"
+        ],
+        "correctAnswer": "unless",
+        "explanation": "'unless they have to work' = agar ishlashlariga to'g'ri kelmasa (agar majbur bo'lmasalar).",
+        "translation": "Agar ishlashga to'g'ri kelmasa, ko'p odamlar Yangi yil bayramida oilalarini ko'rishga borishadi."
+      },
+      {
+        "id": "c_3",
+        "sentence": "If you walk everywhere instead of taking the bus, your fitness ________________ improve.",
+        "options": [
+          "will",
+          "won't",
+          "if",
+          "unless"
+        ],
+        "correctAnswer": "will",
+        "explanation": "Agar piyoda yursangiz, jismoniy holatingiz yaxshilanadi (will improve).",
+        "translation": "Avtobus o'rniga hamma joyga piyoda yursangiz, jismoniy holatingiz yaxshilanadi."
+      },
+      {
+        "id": "c_4",
+        "sentence": "Unless pollution is reduced significantly, air quality ________________ get better.",
+        "options": [
+          "won't",
+          "will",
+          "if",
+          "unless"
+        ],
+        "correctAnswer": "won't",
+        "explanation": "Unless (agar ... bo'lmasa) bo'lganda natija qismida inkor bo'ladi: havo sifati yaxshilanmaydi (won't get better).",
+        "translation": "Agar ifloslanish sezilarli kamaytirilmasa, havo sifati yaxshilanmaydi."
+      },
+      {
+        "id": "c_5",
+        "sentence": "At this company, you can earn more money ________________ you work longer hours.",
+        "options": [
+          "if",
+          "unless",
+          "will",
+          "won't"
+        ],
+        "correctAnswer": "if",
+        "explanation": "Shart: agar ko'proq vaqt ishlasangiz (if you work longer hours).",
+        "translation": "Bu kompaniyada agar ko'proq soat ishlasangiz, ko'proq pul topishingiz mumkin."
+      },
+      {
+        "id": "c_6",
+        "sentence": "It ________________ really help the environment if recycling becomes more common.",
+        "options": [
+          "will",
+          "won't",
+          "if",
+          "unless"
+        ],
+        "correctAnswer": "will",
+        "explanation": "Agar qayta ishlash ommalashsa, bu atrof-muhitga albatta yordam beradi (it will really help).",
+        "translation": "Agar qayta ishlash keng tarqalsa, bu atrof-muhitga juda katta yordam beradi."
+      },
+      {
+        "id": "c_7",
+        "sentence": "This government will remain very unpopular ________________ taxes are lowered.",
+        "options": [
+          "unless",
+          "if",
+          "will",
+          "won't"
+        ],
+        "correctAnswer": "unless",
+        "explanation": "'unless taxes are lowered' = agar soliqlar tushirilmasa, hukumat nomaqbul bo'lib qolaveradi.",
+        "translation": "Soliqlar pasaytirilmasa, ushbu hukumat obro'siz bo'lib qolaveradi."
+      },
+      {
+        "id": "c_8",
+        "sentence": "Do you believe that if people are happy at work, they ________________ be happier in general?",
+        "options": [
+          "will",
+          "won't",
+          "if",
+          "unless"
+        ],
+        "correctAnswer": "will",
+        "explanation": "If + present simple, kelasi zamon tasdiq (they will be happier).",
+        "translation": "Agar insonlar ishda baxtli bo'lsalar, umuman hayotda ham baxtliroq bo'lishlariga ishonasizmi?"
+      },
+      {
+        "id": "c_9",
+        "sentence": "The president has promised to improve education ________________ he stays in power next year.",
+        "options": [
+          "if",
+          "unless",
+          "will",
+          "won't"
+        ],
+        "correctAnswer": "if",
+        "explanation": "Shart: agar u kelgusi yili hokimiyatda qolsa (if he stays in power).",
+        "translation": "Prezident agar kelasi yili hokimiyatda qolsa, ta'limni yaxshilashga va'da berdi."
+      },
+      {
+        "id": "c_10",
+        "sentence": "You ________________ find out what you’re capable of achieving unless you try.",
+        "options": [
+          "won't",
+          "will",
+          "if",
+          "unless"
+        ],
+        "correctAnswer": "won't",
+        "explanation": "Harakat qilib ko'rmaguningizcha (unless you try), bilib ololmaysiz (you won't find out).",
+        "translation": "Urinib ko'rmaguningizcha, nimalarga qodir ekanligingizni bila olmaysiz."
+      },
+      {
+        "id": "c_11",
+        "sentence": "She ________________ make any progress unless she tries hard.",
+        "options": [
+          "won't",
+          "will",
+          "if",
+          "unless"
+        ],
+        "correctAnswer": "won't",
+        "explanation": "Tirishib harakat qilmasa, o'sishga erisholmaydi (won't make any progress).",
+        "translation": "Qattiq harakat qilmasa, u hech qanday natijaga erisha olmaydi."
+      },
+      {
+        "id": "c_12",
+        "sentence": "The Prime Minister has promised to improve people’s life ________________ he stays in power next year.",
+        "options": [
+          "if",
+          "unless",
+          "will",
+          "won't"
+        ],
+        "correctAnswer": "if",
+        "explanation": "Shart ma'nosida: if he stays in power.",
+        "translation": "Bosh vazir agar hokimiyatda qolsa, xalq hayotini yaxshilashga va'da berdi."
+      },
+      {
+        "id": "c_13",
+        "sentence": "Air quality ________________ change for better side unless the world industries cut the pollution amount significantly.",
+        "options": [
+          "won't",
+          "will",
+          "if",
+          "unless"
+        ],
+        "correctAnswer": "won't",
+        "explanation": "Unless sharti bilan natijada inkor: won't change for better side.",
+        "translation": "Dunyo sanoati ifloslanishni kamaytirmasa, havo sifati yaxshi tomonga o'zgarmaydi."
+      },
+      {
+        "id": "c_14",
+        "sentence": "You are paid more money at this company ________________ you work longer hours.",
+        "options": [
+          "if",
+          "unless",
+          "will",
+          "won't"
+        ],
+        "correctAnswer": "if",
+        "explanation": "Shart: agar ko'proq ishlasangiz (if you work longer hours).",
+        "translation": "Ushbu kompaniyada ko'proq soat ishlasangiz, sizga ko'proq pul to'lanadi."
+      },
+      {
+        "id": "c_15",
+        "sentence": "You won’t be considered as a good specialist ________________ you have enough work experience.",
+        "options": [
+          "unless",
+          "if",
+          "will",
+          "won't"
+        ],
+        "correctAnswer": "unless",
+        "explanation": "'unless you have enough work experience' = yetarli ish tajribangiz bo'lmasa.",
+        "translation": "Yetarli ish tajribangiz bo'lmasa, siz yaxshi mutaxassis deb hisoblanmaysiz."
+      },
+      {
+        "id": "c_16",
+        "sentence": "Unless the government deals with corruption, the quality of education ________________ get better.",
+        "options": [
+          "won't",
+          "will",
+          "if",
+          "unless"
+        ],
+        "correctAnswer": "won't",
+        "explanation": "Korrupsiyaga qarshi kurashilmasa, ta'lim sifati oshmaydi (won't get better).",
+        "translation": "Hukumat korrupsiyaga qarshi kurashmasa, ta'lim sifati yaxshilanmaydi."
+      },
+      {
+        "id": "c_17",
+        "sentence": "Unless you learn all these words, you ________________ be allowed to take an exam.",
+        "options": [
+          "won't",
+          "will",
+          "if",
+          "unless"
+        ],
+        "correctAnswer": "won't",
+        "explanation": "Barcha so'zlarni yodlamasangiz, imtihonga qo'yilmaysiz (won't be allowed).",
+        "translation": "Barcha bu so'zlarni o'rganmasangiz, imtihon topshirishga ruxsat berilmaysiz."
+      },
+      {
+        "id": "c_18",
+        "sentence": "The new Prime Minister has claimed that ________________ the current taxes are lowered, businesses will continue to hide real incomes.",
+        "options": [
+          "unless",
+          "if",
+          "will",
+          "won't"
+        ],
+        "correctAnswer": "unless",
+        "explanation": "'unless current taxes are lowered' = soliqlar tushirilmasa, daromadlarini yashirishda davom etishadi.",
+        "translation": "Bosh vazir agar amaldagi soliqlar pasaytirilmasa, bizneslar real daromadlarini yashirishda davom etishini ta'kidladi."
+      },
+      {
+        "id": "c_19",
+        "sentence": "She won’t find a well-paid job ________________ she improves her English.",
+        "options": [
+          "unless",
+          "if",
+          "will",
+          "won't"
+        ],
+        "correctAnswer": "unless",
+        "explanation": "Ingliz tilini yaxshilamasa, yaxshi maoshli ish topolmaydi.",
+        "translation": "Ingliz tilini yaxshilamasa, u yuqori maoshli ish topa olmaydi."
+      },
+      {
+        "id": "c_20",
+        "sentence": "________________ Samuel is admitted to Stanford University, he will definitely be happy!",
+        "options": [
+          "If",
+          "Unless",
+          "Will",
+          "Won't"
+        ],
+        "correctAnswer": "If",
+        "explanation": "Boshida bosh harf bilan: If Samuel is admitted... (Agar Stenfordga qabul qilinsa).",
+        "translation": "Agar Samuel Stenford universitetiga qabul qilinsa, u albatta juda xursand bo'ladi!"
+      }
+    ]
+  },
+  {
+    "id": "passive_voice",
+    "title": "3. The Passive Voice",
+    "titleUz": "Majhul nisbat (Passive form)",
+    "category": "grammar",
+    "icon": "🔄",
+    "description": "Gaplarni majhul nisbatga aylantirish (be + V3)",
+    "questions": [
+      {
+        "id": "pv_1",
+        "sentence": "Bill Gates started the Microsoft Corporation in 1975. → The Microsoft Corporation ________________ by Bill Gates in 1975.",
+        "options": [
+          "was started",
+          "is started",
+          "had been started",
+          "was being started"
+        ],
+        "correctAnswer": "was started",
+        "explanation": "Past Simple Active (started) → Past Simple Passive (was/were + V3: was started).",
+        "translation": "Maykrosoft korporatsiyasiga 1975-yilda Bill Geyts tomonidan asos solingan."
+      },
+      {
+        "id": "pv_2",
+        "sentence": "People are setting up new independent cafés all the time. → New independent cafés ________________ all the time.",
+        "options": [
+          "are being set up",
+          "are set up",
+          "were being set up",
+          "have been set up"
+        ],
+        "correctAnswer": "are being set up",
+        "explanation": "Present Continuous Active (are setting up) → Present Continuous Passive (are being set up).",
+        "translation": "Hozirda doimiy ravishda yangi mustaqil kafelar ochilmoqda."
+      },
+      {
+        "id": "pv_3",
+        "sentence": "The bank must review all applications for loans. → All applications for loans ________________.",
+        "options": [
+          "must be reviewed",
+          "must review",
+          "must have reviewed",
+          "are reviewed"
+        ],
+        "correctAnswer": "must be reviewed",
+        "explanation": "Modal fe'l majhul nisbati: modal + be + V3 (must be reviewed).",
+        "translation": "Kredit uchun barcha arizalar ko'rib chiqilishi shart."
+      },
+      {
+        "id": "pv_4",
+        "sentence": "The government has set up a website for people wanting to start a company. → A website ________________ for people wanting to start a company.",
+        "options": [
+          "has been set up",
+          "was set up",
+          "is set up",
+          "had been set up"
+        ],
+        "correctAnswer": "has been set up",
+        "explanation": "Present Perfect Active (has set up) → Present Perfect Passive (has been set up).",
+        "translation": "Kompaniya ochmoqchi bo'lganlar uchun veb-sayt ishga tushirildi."
+      },
+      {
+        "id": "pv_5",
+        "sentence": "No one knows if the global crisis will affect any more countries. → No one knows if any more countries ________________.",
+        "options": [
+          "will be affected",
+          "will affect",
+          "are affected",
+          "would be affected"
+        ],
+        "correctAnswer": "will be affected",
+        "explanation": "Future Simple Passive: will be + V3 (will be affected).",
+        "translation": "Global inqiroz yana boshqa davlatlarga ta'sir qiladimi-yo'qmi, hech kim bilmaydi."
+      },
+      {
+        "id": "pv_6",
+        "sentence": "It is not certain if this economic collapse will hit any more countries. → It is not certain if any more countries ________________.",
+        "options": [
+          "will be hit",
+          "are hit",
+          "would hit",
+          "have been hit"
+        ],
+        "correctAnswer": "will be hit",
+        "explanation": "Future Simple Passive: will be + hit (V3).",
+        "translation": "Iqtisodiy qulash boshqa mamlakatlarga ham zarba beradimi, noaniq."
+      },
+      {
+        "id": "pv_7",
+        "sentence": "Young entrepreneurs are creating various new types of business year by year. → Various new types of business ________________ year by year.",
+        "options": [
+          "are being created",
+          "are created",
+          "were created",
+          "have been created"
+        ],
+        "correctAnswer": "are being created",
+        "explanation": "Present Continuous Passive: are being created.",
+        "translation": "Yildan-yilga yosh tadbirkorlar tomonidan yangi biznes turlari yaratilmoqda."
+      },
+      {
+        "id": "pv_8",
+        "sentence": "The government has launched an official website to support newly started businessmen. → An official website ________________ to support newly started businessmen.",
+        "options": [
+          "has been launched",
+          "was launched",
+          "is launched",
+          "had been launched"
+        ],
+        "correctAnswer": "has been launched",
+        "explanation": "Present Perfect Passive: has been launched.",
+        "translation": "Yangi boshlagan tadbirkorlarni qo'llab-quvvatlash uchun rasmiy veb-sayt ishga tushirildi."
+      },
+      {
+        "id": "pv_9",
+        "sentence": "Winklevoss brothers created the idea of Facebook. → The idea of Facebook ________________ by Winklevoss brothers.",
+        "options": [
+          "was created",
+          "is created",
+          "had created",
+          "was being created"
+        ],
+        "correctAnswer": "was created",
+        "explanation": "Past Simple Passive: was created.",
+        "translation": "Facebook g'oyasi Uinklvoss aka-ukalari tomonidan yaratilgan."
+      },
+      {
+        "id": "pv_10",
+        "sentence": "The government is providing cheap accommodation to poor families these days. → Cheap accommodation ________________ these days.",
+        "options": [
+          "is being provided",
+          "is provided",
+          "was provided",
+          "has been provided"
+        ],
+        "correctAnswer": "is being provided",
+        "explanation": "Present Continuous Passive: is being provided (accommodation sanalmaydi, 'is' oladi).",
+        "translation": "Hozirgi kunlarda kam ta'minlangan oilalarga arzon uy-joylar taqdim etilmoqda."
+      },
+      {
+        "id": "pv_11",
+        "sentence": "The university must announce all the exam results soon. → All the exam results ________________ soon.",
+        "options": [
+          "must be announced",
+          "must announce",
+          "are announced",
+          "will announce"
+        ],
+        "correctAnswer": "must be announced",
+        "explanation": "Modal passive: must be announced.",
+        "translation": "Yaqin orada universitet barcha imtihon natijalarini e'lon qilishi kerak."
+      },
+      {
+        "id": "pv_12",
+        "sentence": "The company has launched a new application for English learners. → A new application ________________ for English learners.",
+        "options": [
+          "has been launched",
+          "was launched",
+          "is launched",
+          "had launched"
+        ],
+        "correctAnswer": "has been launched",
+        "explanation": "Present Perfect Passive: has been launched.",
+        "translation": "Ingliz tili o'rganuvchilari uchun yangi ilova chiqarildi."
+      },
+      {
+        "id": "pv_13",
+        "sentence": "In the future, most companies will hire employees based on their creativity rather than knowledge. → In the future, employees ________________ based on their creativity rather than knowledge.",
+        "options": [
+          "will be hired",
+          "will hire",
+          "are hired",
+          "would be hired"
+        ],
+        "correctAnswer": "will be hired",
+        "explanation": "Future Simple Passive: will be hired.",
+        "translation": "Kelajakda xodimlar bilimdan ko'ra ko'proq ijodkorliklariga qarab ishga qabul qilinadi."
+      },
+      {
+        "id": "pv_14",
+        "sentence": "J.K. Rowling wrote Harry Potter books in a café near her apartment. → Harry Potter books ________________ by J.K. Rowling in a café near her apartment.",
+        "options": [
+          "were written",
+          "was written",
+          "are written",
+          "had written"
+        ],
+        "correctAnswer": "were written",
+        "explanation": "Books ko'plikda bo'lgani uchun: were written.",
+        "translation": "Garri Potter kitoblari J.K. Rouling tomonidan uning uyi yaqinidagi kafeda yozilgan."
+      },
+      {
+        "id": "pv_15",
+        "sentence": "The government is building new hospitals in Rochester. → New hospitals ________________ in Rochester.",
+        "options": [
+          "are being built",
+          "are built",
+          "were built",
+          "have been built"
+        ],
+        "correctAnswer": "are being built",
+        "explanation": "Present Continuous Passive: are being built.",
+        "translation": "Rochester shahrida yangi shifoxonalar qurilmoqda."
+      },
+      {
+        "id": "pv_16",
+        "sentence": "The company must fire the IT department if they do not understand the organizational culture. → The IT department ________________ if they don’t understand the organizational culture.",
+        "options": [
+          "must be fired",
+          "must fire",
+          "is fired",
+          "should fire"
+        ],
+        "correctAnswer": "must be fired",
+        "explanation": "Modal passive: must be fired.",
+        "translation": "IT bo'limi agar tashkiliy madaniyatni tushunmasa, ishdan bo'shatilishi shart."
+      },
+      {
+        "id": "pv_17",
+        "sentence": "The state has created an online platform for paying taxes. → An online platform ________________ by the state for paying taxes.",
+        "options": [
+          "has been created",
+          "was created",
+          "is created",
+          "had been created"
+        ],
+        "correctAnswer": "has been created",
+        "explanation": "Present Perfect Passive: has been created.",
+        "translation": "Soliqlarni to'lash uchun davlat tomonidan onlayn platforma yaratildi."
+      },
+      {
+        "id": "pv_18",
+        "sentence": "In the future, car manufacturing companies will produce electric cars on a large scale. → In the future, electric cars ________________ on a large scale by car manufacturing companies.",
+        "options": [
+          "will be produced",
+          "will produce",
+          "are produced",
+          "would produce"
+        ],
+        "correctAnswer": "will be produced",
+        "explanation": "Future Simple Passive: will be produced.",
+        "translation": "Kelajakda elektromobillar avtomobil ishlab chiqaruvchilar tomonidan keng miqyosda ishlab chiqariladi."
+      }
+    ]
+  },
+  {
+    "id": "comparisons",
+    "title": "4. Comparisons & Modifiers",
+    "titleUz": "Qiyoslash: taller, less, just as, a lot",
+    "category": "grammar",
+    "icon": "⚖️",
+    "description": "Qiyoslash darajalari: not as...as, just as...as, less than, a lot better",
+    "questions": [
+      {
+        "id": "comp_1",
+        "sentence": "Sardor isn’t as tall as Bakhrom. (taller) → Bakhrom ________________ Sardor.",
+        "options": [
+          "is taller than",
+          "is more taller than",
+          "is as tall as",
+          "isn't taller than"
+        ],
+        "correctAnswer": "is taller than",
+        "explanation": "Sardor Bahromchalik baland emas = Bahrom Sardordan balandroq (is taller than).",
+        "translation": "Bahrom Sardordan balandroq."
+      },
+      {
+        "id": "comp_2",
+        "sentence": "In my opinion, Samarkand is more exciting than Tashkent. (less) → In my opinion, Tashkent is ________________ Samarkand.",
+        "options": [
+          "less exciting than",
+          "exciting less than",
+          "not less exciting",
+          "more exciting than"
+        ],
+        "correctAnswer": "less exciting than",
+        "explanation": "more exciting than teskarisi: less exciting than (kamroq hayajonli).",
+        "translation": "Mening fikrimcha, Toshkent Samarqandga qaraganda kamroq qiziqarli."
+      },
+      {
+        "id": "comp_3",
+        "sentence": "Beauty and intelligence are both important to me. (just) → Beauty ________________ as intelligence to me.",
+        "options": [
+          "is just as important",
+          "just is important",
+          "is just important",
+          "is as just important"
+        ],
+        "correctAnswer": "is just as important",
+        "explanation": "Ikkisi teng muhim: is just as important as...",
+        "translation": "Go'zallik men uchun aql bilan bir xilda muhim."
+      },
+      {
+        "id": "comp_4",
+        "sentence": "Some people are less confident about their looks than others. (as) → Some people ________________ as others about their looks.",
+        "options": [
+          "are not as confident",
+          "are as confident",
+          "are more confident",
+          "not as confident"
+        ],
+        "correctAnswer": "are not as confident",
+        "explanation": "less confident than = are not as confident as (boshqalarchalik ishonchli emas).",
+        "translation": "Ba'zi odamlar tashqi ko'rinishlariga boshqalarchalik ishonishmaydi."
+      },
+      {
+        "id": "comp_5",
+        "sentence": "My new brand of lipstick is far better than my old brand. (a lot) → My new brand of lipstick ________________ than my old brand.",
+        "options": [
+          "is a lot better",
+          "is lot better",
+          "is a lot good",
+          "is more better"
+        ],
+        "correctAnswer": "is a lot better",
+        "explanation": "far better = a lot better (ancha yaxshiroq).",
+        "translation": "Yangi lab bo'yog'im eskisidan ancha yaxshiroq."
+      },
+      {
+        "id": "comp_6",
+        "sentence": "The Amudarya isn’t as long as the Syrdarya. (longer) → The Syrdarya ________________ the Amudarya.",
+        "options": [
+          "is longer than",
+          "is more long than",
+          "is as long as",
+          "isn't longer than"
+        ],
+        "correctAnswer": "is longer than",
+        "explanation": "Amudaryo Sirdaryochalik uzun emas = Sirdaryo Amudaryodan uzunroq (is longer than).",
+        "translation": "Sirdaryo Amudaryodan uzunroq."
+      },
+      {
+        "id": "comp_7",
+        "sentence": "Both quality and quantity are equally important to the company. (just) → Quality ________________ quantity to the company.",
+        "options": [
+          "is just as important as",
+          "is just important as",
+          "just as important",
+          "is as just important as"
+        ],
+        "correctAnswer": "is just as important as",
+        "explanation": "Teng muhimlik: is just as important as.",
+        "translation": "Kompaniya uchun sifat miqdor kabi bir xilda muhim."
+      },
+      {
+        "id": "comp_8",
+        "sentence": "In my mind, outdoor games are more useful than indoor games. (less) → In my mind, indoor games are ________________ than outdoor games.",
+        "options": [
+          "less useful",
+          "more useful",
+          "useful less",
+          "least useful"
+        ],
+        "correctAnswer": "less useful",
+        "explanation": "Teskari qiyos: indoor games are less useful than outdoor games.",
+        "translation": "Menimcha, uy ichidagi o'yinlar ochiq havodagi o'yinlardan ko'ra kamroq foydali."
+      },
+      {
+        "id": "comp_9",
+        "sentence": "My new smart phone is far better than my old one. (a lot) → My new smart phone ________________ than my old one.",
+        "options": [
+          "is a lot better",
+          "is a lot good",
+          "is more better",
+          "is lot better"
+        ],
+        "correctAnswer": "is a lot better",
+        "explanation": "far better = is a lot better.",
+        "translation": "Yangi smartfonim eskisidan ancha yaxshiroq."
+      },
+      {
+        "id": "comp_10",
+        "sentence": "Some online shops are less confident about their goods and services than others. (as) → Some online shops ________________ as others about their good and services.",
+        "options": [
+          "are not as confident",
+          "are as confident",
+          "are less confident",
+          "not as confident"
+        ],
+        "correctAnswer": "are not as confident",
+        "explanation": "less confident = are not as confident as.",
+        "translation": "Ba'zi internet-do'konlar o'z tovar va xizmatlariga boshqalarchalik ishonch hosil qilishmagan."
+      },
+      {
+        "id": "comp_11",
+        "sentence": "Michael isn’t as tall as Joe. (taller) → Joe ________________ Michael.",
+        "options": [
+          "is taller than",
+          "is taller",
+          "is more tall than",
+          "isn't taller than"
+        ],
+        "correctAnswer": "is taller than",
+        "explanation": "is taller than Michael.",
+        "translation": "Jo Maykldan balandroq."
+      },
+      {
+        "id": "comp_12",
+        "sentence": "In my opinion, Dubai is more exciting than Istanbul. (less) → In my opinion, Istanbul is ________________ Dubai.",
+        "options": [
+          "less exciting than",
+          "exciting less than",
+          "not less exciting",
+          "more exciting than"
+        ],
+        "correctAnswer": "less exciting than",
+        "explanation": "less exciting than.",
+        "translation": "Fikrimcha, Istanbul Dubayga qaraganda kamroq qiziqarli."
+      },
+      {
+        "id": "comp_13",
+        "sentence": "Talents and skills are equally important. (just) → Talents ________________ skills.",
+        "options": [
+          "are just as important as",
+          "are just important as",
+          "just as important",
+          "are as just important"
+        ],
+        "correctAnswer": "are just as important as",
+        "explanation": "Ko'plikda: are just as important as.",
+        "translation": "Iqtidor va ko'nikmalar bir xilda muhimdir."
+      },
+      {
+        "id": "comp_14",
+        "sentence": "Some animals are less dangerous than others. (as) → Some animals ________________ as others.",
+        "options": [
+          "are not as dangerous",
+          "are as dangerous",
+          "are more dangerous",
+          "not as dangerous"
+        ],
+        "correctAnswer": "are not as dangerous",
+        "explanation": "are not as dangerous as.",
+        "translation": "Ba'zi hayvonlar boshqalar kabi xavfli emas."
+      },
+      {
+        "id": "comp_15",
+        "sentence": "My new laptop is far better than the old one. (a lot) → My new laptop ________________ than the old one.",
+        "options": [
+          "is a lot better",
+          "is a lot good",
+          "is more better",
+          "is lot better"
+        ],
+        "correctAnswer": "is a lot better",
+        "explanation": "is a lot better.",
+        "translation": "Yangi noutbukim eskisidan ancha yaxshiroq."
+      },
+      {
+        "id": "comp_16",
+        "sentence": "Boris isn’t as smart as Kevin. (than) → Kevin ________________ Boris.",
+        "options": [
+          "is smarter than",
+          "is more smart than",
+          "isn't smarter than",
+          "is smart than"
+        ],
+        "correctAnswer": "is smarter than",
+        "explanation": "is smarter than.",
+        "translation": "Kevin Borisdan aqlliroq."
+      },
+      {
+        "id": "comp_17",
+        "sentence": "I think Los Angeles is more beautiful than New York. (less) → I think New York is ________________ Los Angeles.",
+        "options": [
+          "less beautiful than",
+          "beautiful less than",
+          "not less beautiful",
+          "more beautiful than"
+        ],
+        "correctAnswer": "less beautiful than",
+        "explanation": "less beautiful than.",
+        "translation": "Menimcha, Nyu-York Los-Anjelesdan kamroq go'zal."
+      },
+      {
+        "id": "comp_18",
+        "sentence": "Las Vegas and San Francisco are both very expensive. (just) → Las Vegas ________________ San Francisco.",
+        "options": [
+          "is just as expensive as",
+          "is just expensive as",
+          "just as expensive",
+          "is as just expensive"
+        ],
+        "correctAnswer": "is just as expensive as",
+        "explanation": "is just as expensive as.",
+        "translation": "Las-Vegas San-Fransisko kabi bir xilda qimmat."
+      },
+      {
+        "id": "comp_19",
+        "sentence": "European companies are less profitable than Chinese companies. (as) → European companies ________________ as Chinese companies.",
+        "options": [
+          "are not as profitable",
+          "are as profitable",
+          "are less profitable",
+          "not as profitable"
+        ],
+        "correctAnswer": "are not as profitable",
+        "explanation": "are not as profitable as.",
+        "translation": "Yevropa kompaniyalari Xitoy kompaniyalari kabi serdaromad emas."
+      },
+      {
+        "id": "comp_20",
+        "sentence": "My new house is far better than the old one. (lot) → My old house ________________ than the new one.",
+        "options": [
+          "is a lot worse",
+          "is a lot bad",
+          "is lot worse",
+          "is more worse"
+        ],
+        "correctAnswer": "is a lot worse",
+        "explanation": "Yangi uy ancha yaxshi = eski uy ancha yomonroq (is a lot worse).",
+        "translation": "Eski uyim yangisidan ancha yomonroq."
+      }
+    ]
+  },
+  {
+    "id": "past_regrets_should_have",
+    "title": "5. Past Regrets: should have / shouldn't have",
+    "titleUz": "O'tgan zamonda afsuslanish (should have + V3)",
+    "category": "grammar",
+    "icon": "💭",
+    "description": "O'tgan zamondagi xatolar va afsuslanishlar: should have + V3 / shouldn't have + V3",
+    "questions": [
+      {
+        "id": "sh_1",
+        "sentence": "Raul didn’t remember to set his alarm and woke up late. → He ________________ to set his alarm. (forget)",
+        "options": [
+          "shouldn't have forgotten",
+          "should have forgotten",
+          "shouldn't have forgot",
+          "should have forgot"
+        ],
+        "correctAnswer": "shouldn't have forgotten",
+        "explanation": "U budilnik qo'yishni unutmasligi kerak edi (shouldn't have forgotten).",
+        "translation": "U budilnik qo'yishni unutmasligi kerak edi."
+      },
+      {
+        "id": "sh_2",
+        "sentence": "He hadn’t packed the night before, so had to do it in the morning. → He ________________ his packing until the morning. (leave)",
+        "options": [
+          "shouldn't have left",
+          "should have left",
+          "shouldn't have leaved",
+          "should have leaved"
+        ],
+        "correctAnswer": "shouldn't have left",
+        "explanation": "Yuklarini ertalabgacha qoldirmasligi kerak edi: shouldn't have left.",
+        "translation": "U yuklarini yig'ishtirishni ertalabga qoldirmasligi kerak edi."
+      },
+      {
+        "id": "sh_3",
+        "sentence": "Traffic was terrible and it would have been quicker to walk. → He ________________ to the station. (walk)",
+        "options": [
+          "should have walked",
+          "shouldn't have walked",
+          "should walk",
+          "shouldn't walk"
+        ],
+        "correctAnswer": "should have walked",
+        "explanation": "Piyoda borgani ma'qul edi: he should have walked.",
+        "translation": "U vokzalga piyoda borishi kerak edi."
+      },
+      {
+        "id": "sh_4",
+        "sentence": "He ordered coffee and was waiting to pay when the train arrived. → He ________________ a coffee. (buy)",
+        "options": [
+          "shouldn't have bought",
+          "should have bought",
+          "shouldn't have buy",
+          "should have buy"
+        ],
+        "correctAnswer": "shouldn't have bought",
+        "explanation": "Kofe sotib olmasligi kerak edi: he shouldn't have bought.",
+        "translation": "U kofe sotib olmasligi kerak edi."
+      },
+      {
+        "id": "sh_5",
+        "sentence": "He had booked non-refundable ticket in advance and lost money. → He ________________ his ticket three weeks in advance. (book)",
+        "options": [
+          "shouldn't have booked",
+          "should have booked",
+          "shouldn't book",
+          "should book"
+        ],
+        "correctAnswer": "shouldn't have booked",
+        "explanation": "Chiptani 3 hafta oldin band qilmasligi kerak edi: shouldn't have booked.",
+        "translation": "U chiptani 3 hafta oldin band qilmasligi kerak edi."
+      },
+      {
+        "id": "sh_6",
+        "sentence": "Andrew stayed up till midnight and missed his morning flight. → He ________________ up till midnight. (stay)",
+        "options": [
+          "shouldn't have stayed",
+          "should have stayed",
+          "shouldn't stay",
+          "should stay"
+        ],
+        "correctAnswer": "shouldn't have stayed",
+        "explanation": "Yarim tungacha uyg'oq o'tirmasligi kerak edi: shouldn't have stayed.",
+        "translation": "U yarim tungacha bedor o'tirmasligi kerak edi."
+      },
+      {
+        "id": "sh_7",
+        "sentence": "Andrew completely forgot to set up his alarm. → He ________________ to set his alarm. (forget)",
+        "options": [
+          "shouldn't have forgotten",
+          "should have forgotten",
+          "shouldn't have forgot",
+          "should forgot"
+        ],
+        "correctAnswer": "shouldn't have forgotten",
+        "explanation": "Budilnik qo'yishni unutmasligi kerak edi: shouldn't have forgotten.",
+        "translation": "U budilnikni qo'yishni unutmasligi kerak edi."
+      },
+      {
+        "id": "sh_8",
+        "sentence": "Traffic was terrible, so walking would have been much faster. → He ________________ to the airport. (walk)",
+        "options": [
+          "should have walked",
+          "shouldn't have walked",
+          "should walk",
+          "shouldn't walk"
+        ],
+        "correctAnswer": "should have walked",
+        "explanation": "Aeroportga piyoda borishi kerak edi: should have walked.",
+        "translation": "U aeroportga piyoda borishi kerak edi."
+      },
+      {
+        "id": "sh_9",
+        "sentence": "At passport control he realized he had left his passport at home. → He ________________ his passport at home. (leave)",
+        "options": [
+          "shouldn't have left",
+          "should have left",
+          "shouldn't have leaved",
+          "should have leaved"
+        ],
+        "correctAnswer": "shouldn't have left",
+        "explanation": "Pasportini uyda qoldirmasligi kerak edi: shouldn't have left.",
+        "translation": "U pasportini uyda unutib qoldirmasligi kerak edi."
+      },
+      {
+        "id": "sh_10",
+        "sentence": "He missed his flight because he wasn't punctual. → He ________________ more punctual. (be)",
+        "options": [
+          "should have been",
+          "shouldn't have been",
+          "should be",
+          "shouldn't be"
+        ],
+        "correctAnswer": "should have been",
+        "explanation": "Aniq va intizomli bo'lishi kerak edi: should have been.",
+        "translation": "U vaqtga aniqroq bo'lishi kerak edi."
+      },
+      {
+        "id": "sh_11",
+        "sentence": "Tommy failed his exam because he didn’t start studying early. → He ________________ preparing for the exam earlier. (start)",
+        "options": [
+          "should have started",
+          "shouldn't have started",
+          "should start",
+          "shouldn't start"
+        ],
+        "correctAnswer": "should have started",
+        "explanation": "Imtihonga ertaroq tayyorgarlik ko'rishni boshlashi kerak edi: should have started.",
+        "translation": "U imtihonga ertaroq tayyorgarlik ko'rishni boshlashi kerak edi."
+      },
+      {
+        "id": "sh_12",
+        "sentence": "The night before exam, he went to the local pub with friends. → He ________________ to the local pub with his friends. (go)",
+        "options": [
+          "shouldn't have gone",
+          "should have gone",
+          "shouldn't have went",
+          "should have went"
+        ],
+        "correctAnswer": "shouldn't have gone",
+        "explanation": "Pabga bormasligi kerak edi: shouldn't have gone.",
+        "translation": "U do'stlari bilan pabga bormasligi kerak edi."
+      },
+      {
+        "id": "sh_13",
+        "sentence": "The traffic was terrible, so bus was a bad choice. → He ________________ the bus to university. (get)",
+        "options": [
+          "shouldn't have got",
+          "should have got",
+          "shouldn't get",
+          "should get"
+        ],
+        "correctAnswer": "shouldn't have got",
+        "explanation": "Avtobusga o'tirmasligi kerak edi: shouldn't have got.",
+        "translation": "U universitetga avtobusda bormasligi kerak edi."
+      },
+      {
+        "id": "sh_14",
+        "sentence": "He stopped to buy coffee and lost critical time. → He ________________ to buy coffee. (stop)",
+        "options": [
+          "shouldn't have stopped",
+          "should have stopped",
+          "shouldn't stop",
+          "should stop"
+        ],
+        "correctAnswer": "shouldn't have stopped",
+        "explanation": "Kofe olishga to'xtamasligi kerak edi: shouldn't have stopped.",
+        "translation": "U kofe olish uchun to'xtamasligi kerak edi."
+      },
+      {
+        "id": "sh_15",
+        "sentence": "He talked for 10 minutes with Arthur and arrived late. → He ________________ to his friend Arthur. (talk)",
+        "options": [
+          "shouldn't have talked",
+          "should have talked",
+          "shouldn't talk",
+          "should talk"
+        ],
+        "correctAnswer": "shouldn't have talked",
+        "explanation": "Do'sti bilan uzoq gaplashib turmasligi kerak edi: shouldn't have talked.",
+        "translation": "U do'sti Artur bilan gaplashib turmasligi kerak edi."
+      },
+      {
+        "id": "sh_16",
+        "sentence": "Richard drank too much alcohol and got into trouble. → He ________________ too much alcohol. (drink)",
+        "options": [
+          "shouldn't have drunk",
+          "should have drunk",
+          "shouldn't have drank",
+          "should have drank"
+        ],
+        "correctAnswer": "shouldn't have drunk",
+        "explanation": "Ko'p spirtli ichimlik ichmasligi kerak edi: shouldn't have drunk.",
+        "translation": "U ortiqcha spirtli ichimlik ichmasligi kerak edi."
+      },
+      {
+        "id": "sh_17",
+        "sentence": "He insulted people at the stadium because he was drunk. → He ________________ people at the stadium. (insult)",
+        "options": [
+          "shouldn't have insulted",
+          "should have insulted",
+          "shouldn't insult",
+          "should insult"
+        ],
+        "correctAnswer": "shouldn't have insulted",
+        "explanation": "Odamlarni haqorat qilmasligi kerak edi: shouldn't have insulted.",
+        "translation": "U stadiondagi odamlarni haqorat qilmasligi kerak edi."
+      },
+      {
+        "id": "sh_18",
+        "sentence": "He ruined his career by aggressive behavior. → He ________________ himself politely. (behave)",
+        "options": [
+          "should have behaved",
+          "shouldn't have behaved",
+          "should behave",
+          "shouldn't behave"
+        ],
+        "correctAnswer": "should have behaved",
+        "explanation": "O'zini xushmuomala tutishi kerak edi: should have behaved.",
+        "translation": "U o'zini odobli tutishi kerak edi."
+      },
+      {
+        "id": "sh_19",
+        "sentence": "A man tried to stop them but Richard hit him. → He ________________ the man at the stadium. (hit)",
+        "options": [
+          "shouldn't have hit",
+          "should have hit",
+          "shouldn't have hitted",
+          "should have hitted"
+        ],
+        "correctAnswer": "shouldn't have hit",
+        "explanation": "Odamni urmasligi kerak edi: shouldn't have hit (hit fe'lining V3 shakli ham hit).",
+        "translation": "U stadiondagi odamni urmasligi kerak edi."
+      },
+      {
+        "id": "sh_20",
+        "sentence": "He ruined his great boxing potential. → He ________________ about his future career. (think)",
+        "options": [
+          "should have thought",
+          "shouldn't have thought",
+          "should think",
+          "shouldn't think"
+        ],
+        "correctAnswer": "should have thought",
+        "explanation": "Kelajakdagi faoliyati haqida o'ylashi kerak edi: should have thought.",
+        "translation": "U kelajakdagi faoliyati haqida o'ylashi kerak edi."
+      }
+    ]
+  },
+  {
+    "id": "third_conditional",
+    "title": "6. Third Conditional",
+    "titleUz": "Uchinchi tur shart mayli (If had V3, would have V3)",
+    "category": "grammar",
+    "icon": "⏳",
+    "description": "O'tgan zamondagi amalga oshmagan voqea-hodisalar va ularning natijalari",
+    "questions": [
+      {
+        "id": "tc_1",
+        "sentence": "I suppose that if he had had more money …",
+        "options": [
+          "he would steal that woman’s purse.",
+          "he hasn’t stolen that woman’s purse.",
+          "he wouldn’t have stolen that woman’s purse."
+        ],
+        "correctAnswer": "he wouldn’t have stolen that woman’s purse.",
+        "explanation": "If + Past Perfect (had had) → would have + V3: wouldn't have stolen.",
+        "translation": "Agar uning ko'proq puli bo'lganida, u ayolning hamyonini o'g'irlamagan bo'lardi."
+      },
+      {
+        "id": "tc_2",
+        "sentence": "Masa might not have been arrested …",
+        "options": [
+          "if he hits the other man.",
+          "if he wouldn’t have hit the other man.",
+          "if he hadn’t hit the other man."
+        ],
+        "correctAnswer": "if he hadn’t hit the other man.",
+        "explanation": "Shart qismida: if + Past Perfect (if he hadn't hit).",
+        "translation": "Agar Masa boshqa kishini urmaganida, hibsga olinmagan bo'lardi."
+      },
+      {
+        "id": "tc_3",
+        "sentence": "If the police hadn’t caught the thieves in time …",
+        "options": [
+          "they probably took everything.",
+          "they would probably have taken everything.",
+          "they probably take everything."
+        ],
+        "correctAnswer": "they would probably have taken everything.",
+        "explanation": "Natija qismida: would have + V3: would probably have taken.",
+        "translation": "Agar politsiya o'g'rilarni o'z vaqtida ushlamaganda, ular hamma narsani olib ketishgan bo'lardi."
+      },
+      {
+        "id": "tc_4",
+        "sentence": "Daniel couldn’t have burgled anyone’s house …",
+        "options": [
+          "if he had been in prison.",
+          "if he isn’t in prison.",
+          "if he would have been in prison."
+        ],
+        "correctAnswer": "if he had been in prison.",
+        "explanation": "If + had been (qamoqda bo'lganida, talonchilik qilolmasdi).",
+        "translation": "Agar Daniel qamoqda bo'lganida, hech kimning uyini tunay olmas edi."
+      },
+      {
+        "id": "tc_5",
+        "sentence": "If they hadn’t left their bags in the restaurant …",
+        "options": [
+          "they would be stolen.",
+          "they have been stolen.",
+          "they wouldn’t have been stolen."
+        ],
+        "correctAnswer": "they wouldn’t have been stolen.",
+        "explanation": "Sumkalarini restoranda qoldirishmaganda, ular o'g'irlanmagan bo'lardi: wouldn't have been stolen.",
+        "translation": "Agar ular sumkalarini restoranda qoldirib ketishmaganida, o'g'irlanmas edi."
+      },
+      {
+        "id": "tc_6",
+        "sentence": "Jack might not have been arrested …",
+        "options": [
+          "if he hits the other man.",
+          "if he have hit the other man.",
+          "if he hadn’t hit the other man."
+        ],
+        "correctAnswer": "if he hadn’t hit the other man.",
+        "explanation": "if + hadn't hit the other man.",
+        "translation": "Jek agar boshqa kishini urmaganida, hibsga olinmas edi."
+      },
+      {
+        "id": "tc_7",
+        "sentence": "If Jack hadn’t left his bag in the restaurant …",
+        "options": [
+          "it would be stolen.",
+          "it have been stolen.",
+          "it wouldn’t have been stolen."
+        ],
+        "correctAnswer": "it wouldn’t have been stolen.",
+        "explanation": "it wouldn't have been stolen.",
+        "translation": "Jek sumkasini restoranda qoldirmaganida, o'g'irlanmas edi."
+      },
+      {
+        "id": "tc_8",
+        "sentence": "Daniel couldn’t have burgled anyone’s house …",
+        "options": [
+          "if he is already in prison.",
+          "if he had been put in prison.",
+          "if he wasn’t in prison."
+        ],
+        "correctAnswer": "if he had been put in prison.",
+        "explanation": "if + had been put in prison.",
+        "translation": "Agar Daniel qamoqqa tashlanganida, hech kimning uyini tunay olmas edi."
+      },
+      {
+        "id": "tc_9",
+        "sentence": "I guess that if Carol had had more money, …",
+        "options": [
+          "he would work extra hours",
+          "he hasn’t worked extra hours",
+          "he wouldn’t have worked extra hours"
+        ],
+        "correctAnswer": "he wouldn’t have worked extra hours",
+        "explanation": "wouldn't have worked extra hours.",
+        "translation": "Menimcha, Kerolning ko'proq puli bo'lganida, ortiqcha ishlamagan bo'lardi."
+      },
+      {
+        "id": "tc_10",
+        "sentence": "Megan might not have been fired …",
+        "options": [
+          "if she has an argument with the boss.",
+          "if she wouldn’t have had an argument with the boss.",
+          "if she hadn’t had an argument with the boss."
+        ],
+        "correctAnswer": "if she hadn’t had an argument with the boss.",
+        "explanation": "if + had not had (Past Perfect: hadn't had an argument).",
+        "translation": "Megan agar boshliq bilan tortishmaganida, ishdan bo'shatilmagan bo'lardi."
+      },
+      {
+        "id": "tc_11",
+        "sentence": "If the government hadn’t increased taxes, …",
+        "options": [
+          "it would cause budget deficit",
+          "it would have caused budget deficit",
+          "it caused budget deficit"
+        ],
+        "correctAnswer": "it would have caused budget deficit",
+        "explanation": "it would have caused budget deficit.",
+        "translation": "Hukumat soliqlarni oshirmaganda, bu byudjet taqchilligiga olib kelgan bo'lardi."
+      },
+      {
+        "id": "tc_12",
+        "sentence": "James would have come to the party …",
+        "options": [
+          "if he had been invited",
+          "if he has been invited",
+          "if he would have been invited"
+        ],
+        "correctAnswer": "if he had been invited",
+        "explanation": "if + Past Perfect Passive (if he had been invited).",
+        "translation": "Jeyms mehmondorchilikka taklif qilinganida, albatta kelgan bo'lardi."
+      },
+      {
+        "id": "tc_13",
+        "sentence": "If the police hadn’t arrested them, …",
+        "options": [
+          "they would commit a crime again",
+          "they would have committed a crime again.",
+          "they have committed a crime again"
+        ],
+        "correctAnswer": "they would have committed a crime again.",
+        "explanation": "they would have committed a crime again.",
+        "translation": "Agar politsiya ularni ushlamaganda, ular yana jinoyat sodir etgan bo'lardilar."
+      },
+      {
+        "id": "tc_14",
+        "sentence": "I think if she had called him, …",
+        "options": [
+          "he would have answered.",
+          "he hadn’t answered.",
+          "he wouldn’t answer."
+        ],
+        "correctAnswer": "he would have answered.",
+        "explanation": "he would have answered.",
+        "translation": "O'ylaymanki, agar u unga qo'ng'iroq qilganida, u javob bergan bo'lardi."
+      },
+      {
+        "id": "tc_15",
+        "sentence": "Sally might not have been kidnapped …",
+        "options": [
+          "if she doesn’t talk to a stranger",
+          "if she hadn’t talked to a stranger",
+          "if she would talk to a stranger"
+        ],
+        "correctAnswer": "if she hadn’t talked to a stranger",
+        "explanation": "if she hadn't talked to a stranger.",
+        "translation": "Salli notanish odam bilan gaplashmaganida, o'g'irlab ketilmagan bo'lardi."
+      },
+      {
+        "id": "tc_16",
+        "sentence": "If the company hadn’t increased salaries, …",
+        "options": [
+          "it would decrease employees’ motivation",
+          "it would have decreased employees’ motivation",
+          "it has decreased employees’ motivation"
+        ],
+        "correctAnswer": "it would have decreased employees’ motivation",
+        "explanation": "it would have decreased employees' motivation.",
+        "translation": "Agar kompaniya maoshlarni oshirmaganda, xodimlarning ishtiyoqi pasayib ketgan bo'lardi."
+      },
+      {
+        "id": "tc_17",
+        "sentence": "Margo would have invited Jim to the party …",
+        "options": [
+          "if they hadn’t had an argument",
+          "if they don’t have an argument",
+          "if they would have an argument"
+        ],
+        "correctAnswer": "if they hadn’t had an argument",
+        "explanation": "if they hadn't had an argument.",
+        "translation": "Margo Jim bilan urishib qolmaganida, uni ziyofatga taklif qilgan bo'lardi."
+      },
+      {
+        "id": "tc_18",
+        "sentence": "If Clara had applied for this job earlier, …",
+        "options": [
+          "she could be hired",
+          "she has been hired",
+          "she could have been hired"
+        ],
+        "correctAnswer": "she could have been hired",
+        "explanation": "Modal natija: she could have been hired (ishga qabul qilinishi mumkin edi).",
+        "translation": "Klara agar bu ishga ertaroq ariza topshirganida, ishga olingan bo'lishi mumkin edi."
+      },
+      {
+        "id": "tc_19",
+        "sentence": "If the doctor hadn't arrived so quickly, …",
+        "options": [
+          "the patient would have died.",
+          "the patient will die.",
+          "the patient died."
+        ],
+        "correctAnswer": "the patient would have died.",
+        "explanation": "would have + V3: would have died.",
+        "translation": "Shifokor tez yetib kelmaganida, bemor vafot etgan bo'lardi."
+      },
+      {
+        "id": "tc_20",
+        "sentence": "We wouldn't have missed our train …",
+        "options": [
+          "if we had taken a taxi.",
+          "if we take a taxi.",
+          "if we would take a taxi."
+        ],
+        "correctAnswer": "if we had taken a taxi.",
+        "explanation": "if + Past Perfect: if we had taken a taxi.",
+        "translation": "Taksi olganimizda poyezddan kechikmagan bo'lardik."
+      }
+    ]
+  },
+  {
+    "id": "reported_speech",
+    "title": "7. Reported Speech: Questions",
+    "titleUz": "O'zlashtirma gaplar: Savollar",
+    "category": "grammar",
+    "icon": "🗣️",
+    "description": "Ko'chirma so'roq gaplarni o'zlashtirma gapga aylantirish (asked if / asked what...)",
+    "questions": [
+      {
+        "id": "rs_1",
+        "sentence": "‘Do customers like the new product?’ → He asked the manager ________________.",
+        "options": [
+          "if customers liked the new product",
+          "did customers like the new product",
+          "if customers like the new product",
+          "that customers liked the new product"
+        ],
+        "correctAnswer": "if customers liked the new product",
+        "explanation": "Present Simple (like) o'zlashtirma gapda Past Simple (liked) ga o'zgaradi va 'if' qo'yiladi.",
+        "translation": "U menejerdan xaridorlarga yangi mahsulot yoqqan-yoqmaganligini so'radi."
+      },
+      {
+        "id": "rs_2",
+        "sentence": "‘Have children finished studying for exams?’ → She asked me ________________.",
+        "options": [
+          "if children had finished studying for exams",
+          "have children finished studying for exams",
+          "if children finished studying",
+          "that children had finished studying"
+        ],
+        "correctAnswer": "if children had finished studying for exams",
+        "explanation": "Present Perfect (have finished) → Past Perfect (had finished).",
+        "translation": "U mendan bolalar imtihonga tayyorgarlikni tugatishganmi-yo'qmi, so'radi."
+      },
+      {
+        "id": "rs_3",
+        "sentence": "‘Did Jack see the news yesterday evening?’ → They asked her ________________.",
+        "options": [
+          "if Jack had seen the news the previous evening",
+          "did Jack see the news yesterday",
+          "if Jack saw the news yesterday",
+          "if Jack has seen the news"
+        ],
+        "correctAnswer": "if Jack had seen the news the previous evening",
+        "explanation": "Past Simple (did see) → Past Perfect (had seen), yesterday evening → the previous evening.",
+        "translation": "Ular undan Jek kecha oqshom yangiliklarni ko'rgan-ko'rmaganligini so'rashdi."
+      },
+      {
+        "id": "rs_4",
+        "sentence": "‘What do critics think about these documentaries?’ → He asked us ________________.",
+        "options": [
+          "what critics thought about those documentaries",
+          "what did critics think about these documentaries",
+          "what critics think about those documentaries",
+          "what do critics think"
+        ],
+        "correctAnswer": "what critics thought about those documentaries",
+        "explanation": "Maxsus so'roq so'zi (what) saqlanadi, 'think' → 'thought', 'these' → 'those'.",
+        "translation": "U bizdan tanqidchilar ushbu hujjatli filmlar haqida nima deb o'ylashlarini so'radi."
+      },
+      {
+        "id": "rs_5",
+        "sentence": "‘What are employees going to do in their new jobs?’ → She asked the HR manager ________________.",
+        "options": [
+          "what employees were going to do in their new jobs",
+          "what are employees going to do in their new jobs",
+          "what were employees going to do",
+          "what employees are going to do"
+        ],
+        "correctAnswer": "what employees were going to do in their new jobs",
+        "explanation": "'are going to' → 'were going to' va darak gap tartibi (employees were going to do).",
+        "translation": "U HR menejerdan xodimlar yangi ishlarida nima qilishlarini so'radi."
+      },
+      {
+        "id": "rs_6",
+        "sentence": "‘Does Mr Smith like the new product?’ → The sales manager asked him ________________.",
+        "options": [
+          "if Mr Smith liked the new product",
+          "did Mr Smith like the new product",
+          "does Mr Smith like the new product",
+          "whether Mr Smith likes the new product"
+        ],
+        "correctAnswer": "if Mr Smith liked the new product",
+        "explanation": "Does like → liked va if qo'shiladi.",
+        "translation": "Sotuvlar menejeri janob Smitga yangi mahsulot yoqqan-yoqmaganligini so'radi."
+      },
+      {
+        "id": "rs_7",
+        "sentence": "‘Has the mechanic finished fixing the car?’ → She asked her husband ________________.",
+        "options": [
+          "if the mechanic had finished fixing the car",
+          "has the mechanic finished fixing the car",
+          "if the mechanic finished fixing the car",
+          "whether had the mechanic finished"
+        ],
+        "correctAnswer": "if the mechanic had finished fixing the car",
+        "explanation": "Has finished → had finished.",
+        "translation": "U eridan usta mashinani tuzatib bo'lgan-bo'lmaganligini so'radi."
+      },
+      {
+        "id": "rs_8",
+        "sentence": "‘Did students take part in the conference yesterday?’ → He asked students ________________.",
+        "options": [
+          "if they had taken part in the conference the day before",
+          "did students take part in the conference yesterday",
+          "if students took part yesterday",
+          "whether had students taken part"
+        ],
+        "correctAnswer": "if they had taken part in the conference the day before",
+        "explanation": "Did take part → had taken part, yesterday → the day before.",
+        "translation": "U talabalardan kecha konferensiyada qatnashgan-qatnashmaganliklarini so'radi."
+      },
+      {
+        "id": "rs_9",
+        "sentence": "‘Which country are freshmen going to travel next year?’ → My friend asked me ________________.",
+        "options": [
+          "which country freshmen were going to travel the following year",
+          "which country are freshmen going to travel next year",
+          "which country were freshmen going to travel",
+          "if freshmen were going to travel"
+        ],
+        "correctAnswer": "which country freshmen were going to travel the following year",
+        "explanation": "are going to → were going to, next year → the following year.",
+        "translation": "Do'stim mendan birinchi kurs talabalari kelasi yili qaysi davlatga sayohat qilishlarini so'radi."
+      },
+      {
+        "id": "rs_10",
+        "sentence": "‘Do children enjoy watching cartoons?’ → He asked me ________________.",
+        "options": [
+          "if children enjoyed watching cartoons",
+          "do children enjoy watching cartoons",
+          "whether children enjoy watching cartoons",
+          "did children enjoy watching cartoons"
+        ],
+        "correctAnswer": "if children enjoyed watching cartoons",
+        "explanation": "enjoy → enjoyed.",
+        "translation": "U mendan bolalar multfilm ko'rishni yoqtiradimi-yo'qmi, so'radi."
+      },
+      {
+        "id": "rs_11",
+        "sentence": "‘Have students finished the coursework?’ → She asked the teacher ________________.",
+        "options": [
+          "if students had finished the coursework",
+          "have students finished the coursework",
+          "if students finished coursework",
+          "that students had finished"
+        ],
+        "correctAnswer": "if students had finished the coursework",
+        "explanation": "have finished → had finished.",
+        "translation": "U o'qituvchidan talabalar kurs ishini tugatgan-tugatmaganliklarini so'radi."
+      },
+      {
+        "id": "rs_12",
+        "sentence": "‘Did everyone hear the news about John?’ → They asked us ________________.",
+        "options": [
+          "if everyone had heard the news about John",
+          "did everyone hear the news about John",
+          "if everyone heard the news",
+          "whether heard everyone the news"
+        ],
+        "correctAnswer": "if everyone had heard the news about John",
+        "explanation": "did hear → had heard.",
+        "translation": "Ular bizdan hamma Jon haqidagi yangilikni eshitgan-eshitmaganligini so'rashdi."
+      },
+      {
+        "id": "rs_13",
+        "sentence": "‘What do graduates want to do after university?’ → He asked the professor ________________.",
+        "options": [
+          "what graduates wanted to do after university",
+          "what did graduates want to do",
+          "what do graduates want to do",
+          "what graduates want to do"
+        ],
+        "correctAnswer": "what graduates wanted to do after university",
+        "explanation": "want → wanted va darak so'z tartibi.",
+        "translation": "U professordan bitiruvchilar universitetdan keyin nima qilishni xohlashlarini so'radi."
+      },
+      {
+        "id": "rs_14",
+        "sentence": "‘Where are the Smiths going to fly tomorrow?’ → She asked them ________________.",
+        "options": [
+          "where the Smiths were going to fly the next day",
+          "where are the Smiths going to fly tomorrow",
+          "where were the Smiths going to fly tomorrow",
+          "where the Smiths are going to fly"
+        ],
+        "correctAnswer": "where the Smiths were going to fly the next day",
+        "explanation": "are going to → were going to, tomorrow → the next day.",
+        "translation": "U ulardan Smitlar oilasi ertaga qayerga uchib ketmoqchi ekanligini so'radi."
+      },
+      {
+        "id": "rs_15",
+        "sentence": "‘Do you like reading novels?’ → He asked ________________.",
+        "options": [
+          "if I liked reading novels",
+          "did I like reading novels",
+          "if do I like reading novels",
+          "that I liked reading novels"
+        ],
+        "correctAnswer": "if I liked reading novels",
+        "explanation": "You → I, like → liked.",
+        "translation": "U mendan romanlar o'qishni yoqtirasizmi, deb so'radi."
+      },
+      {
+        "id": "rs_16",
+        "sentence": "‘Have you bought vegetables?’ → She asked ________________.",
+        "options": [
+          "if I had bought vegetables",
+          "have I bought vegetables",
+          "if I bought vegetables",
+          "whether did I buy vegetables"
+        ],
+        "correctAnswer": "if I had bought vegetables",
+        "explanation": "have bought → had bought.",
+        "translation": "U sabzavotlar sotib olganimni so'radi."
+      },
+      {
+        "id": "rs_17",
+        "sentence": "‘Did you do the washing-up?’ → He asked ________________.",
+        "options": [
+          "if I had done the washing-up",
+          "did I do the washing-up",
+          "if I did the washing-up",
+          "whether had I done the washing-up"
+        ],
+        "correctAnswer": "if I had done the washing-up",
+        "explanation": "did do → had done.",
+        "translation": "U idishlarni yuvgan-yuvmaganimni so'radi."
+      },
+      {
+        "id": "rs_18",
+        "sentence": "‘Where do you want to live after marriage?’ → They asked ________________.",
+        "options": [
+          "where I wanted to live after marriage",
+          "where do I want to live after marriage",
+          "where did I want to live",
+          "where I want to live"
+        ],
+        "correctAnswer": "where I wanted to live after marriage",
+        "explanation": "where I wanted to live.",
+        "translation": "Ular to'ydan keyin qayerda yashashni xohlashimni so'rashdi."
+      },
+      {
+        "id": "rs_19",
+        "sentence": "‘When is he going to call back?’ → She asked ________________.",
+        "options": [
+          "when he was going to call back",
+          "when is he going to call back",
+          "when was he going to call back",
+          "if he was going to call back"
+        ],
+        "correctAnswer": "when he was going to call back",
+        "explanation": "is going to → was going to.",
+        "translation": "U uning qachon qayta qo'ng'iroq qilishini so'radi."
+      },
+      {
+        "id": "rs_20",
+        "sentence": "‘Can you speak French fluently?’ → They asked me ________________.",
+        "options": [
+          "if I could speak French fluently",
+          "could I speak French fluently",
+          "can I speak French fluently",
+          "if can I speak French"
+        ],
+        "correctAnswer": "if I could speak French fluently",
+        "explanation": "can → could.",
+        "translation": "Ular mendan fransuz tilida ravon gapira olishimni so'rashdi."
+      }
+    ]
+  },
+  {
+    "id": "vocab_work_career",
+    "title": "8. Vocabulary: Work & Career",
+    "titleUz": "Lug'at: Ish, maosh va qulayliklar",
+    "category": "vocabulary",
+    "icon": "💼",
+    "description": "Ish va faoliyat so'zlari: salary, working hours, accommodation, redundant, job satisfaction, qualification",
+    "questions": [
+      {
+        "id": "vw_1",
+        "sentence": "For many people, the Middle East is a great place to work. The average ________________ is very high, which means that you can save a lot of money.",
+        "options": [
+          "salary",
+          "working hours",
+          "redundant",
+          "accommodation"
+        ],
+        "correctAnswer": "salary",
+        "explanation": "salary = maosh. O'rtacha maosh juda yuqori.",
+        "translation": "O'rtacha maosh juda yuqori, bu esa ko'p pul jamg'arish imkonini beradi."
+      },
+      {
+        "id": "vw_2",
+        "sentence": "Some jobs in Dubai come with rent-free ________________ so you don’t need to worry about finding somewhere to live.",
+        "options": [
+          "accommodation",
+          "salary",
+          "job satisfaction",
+          "working hours"
+        ],
+        "correctAnswer": "accommodation",
+        "explanation": "accommodation = yashash joyi / turar joy. Rent-free accommodation = bepul turar joy.",
+        "translation": "Ba'zi ishlar bepul turar joy bilan ta'minlanadi."
+      },
+      {
+        "id": "vw_3",
+        "sentence": "The ________________ are usually from 9 a.m. to 6 p.m. from Sundays to Thursdays.",
+        "options": [
+          "working hours",
+          "salary",
+          "accommodation",
+          "job satisfaction"
+        ],
+        "correctAnswer": "working hours",
+        "explanation": "working hours = ish soatlari (ertalab 9 dan kechki 6 gacha).",
+        "translation": "Ish soatlari odatda ertalab 9 dan kechki 6 gacha."
+      },
+      {
+        "id": "vw_4",
+        "sentence": "If your company decides that they can no longer keep you and make you ________________, there are laws to protect you.",
+        "options": [
+          "redundant",
+          "salary",
+          "accommodation",
+          "qualification"
+        ],
+        "correctAnswer": "redundant",
+        "explanation": "make redundant = shtat qisqarishi sababli ishdan bo'shatish.",
+        "translation": "Agar kompaniya sizni shtat qisqarishi sababli ishdan bo'shatsa, sizni himoya qiluvchi qonunlar mavjud."
+      },
+      {
+        "id": "vw_5",
+        "sentence": "It’s easy to see why employees report a good level of ________________ and recommend working abroad!",
+        "options": [
+          "job satisfaction",
+          "working hours",
+          "redundant",
+          "accommodation"
+        ],
+        "correctAnswer": "job satisfaction",
+        "explanation": "job satisfaction = ishdan qoniqish hissi.",
+        "translation": "Xodimlar nima uchun ishdan yuqori darajada qoniqish his qilishlarini tushunish oson."
+      },
+      {
+        "id": "vw_6",
+        "sentence": "First of all, one of the most important things is ________________ because it is vital to earn enough money for living.",
+        "options": [
+          "salary",
+          "qualification",
+          "accommodation",
+          "working hours"
+        ],
+        "correctAnswer": "salary",
+        "explanation": "salary = maosh (yashash uchun yetarli pul topish).",
+        "translation": "Eng muhim narsalardan biri bu maoshdir, chunki yashash uchun pul topish zarur."
+      },
+      {
+        "id": "vw_7",
+        "sentence": "Some companies even provide free ________________ for foreign specialists so they don’t have to worry about a place to live.",
+        "options": [
+          "accommodation",
+          "salary",
+          "qualification",
+          "job satisfaction"
+        ],
+        "correctAnswer": "accommodation",
+        "explanation": "free accommodation = bepul yashash joyi.",
+        "translation": "Ba'zi kompaniyalar xorijiy mutaxassislar uchun bepul turar joy bilan ta'minlaydi."
+      },
+      {
+        "id": "vw_8",
+        "sentence": "Another significant factor is ________________ because people want to have enough free time for their families and private life.",
+        "options": [
+          "working hours",
+          "salary",
+          "redundant",
+          "qualification"
+        ],
+        "correctAnswer": "working hours",
+        "explanation": "working hours = ish vaqti / soatlari.",
+        "translation": "Yana bir muhim omil — bu ish soatlari, chunki odamlar oilasi uchun bo'sh vaqtga ega bo'lishni xohlashadi."
+      },
+      {
+        "id": "vw_9",
+        "sentence": "However, in order to work for companies providing good facilities, employees should have higher ________________.",
+        "options": [
+          "qualification",
+          "redundant",
+          "working hours",
+          "accommodation"
+        ],
+        "correctAnswer": "qualification",
+        "explanation": "qualification = malaka / mutaxassislik darajasi.",
+        "translation": "Biroq, yaxshi sharoitlarga ega kompaniyalarda ishlash uchun xodimlar yuqoriroq malakaga ega bo'lishi kerak."
+      },
+      {
+        "id": "vw_10",
+        "sentence": "Google employees get high ________________, much more in comparison with employees of other companies.",
+        "options": [
+          "salary",
+          "accommodation",
+          "occupation",
+          "working hours"
+        ],
+        "correctAnswer": "salary",
+        "explanation": "high salary = yuqori maosh.",
+        "translation": "Google xodimlari boshqa kompaniyalarga qaraganda ancha yuqori maosh oladilar."
+      },
+      {
+        "id": "vw_11",
+        "sentence": "The company hires people of different ________________ such as software developers, web designers, and marketing specialists.",
+        "options": [
+          "occupation",
+          "accommodation",
+          "salary",
+          "working hours"
+        ],
+        "correctAnswer": "occupation",
+        "explanation": "occupation = kasb / faoliyat turi.",
+        "translation": "Kompaniya dasturchilar, dizaynerlar kabi turli kasb egalarini ishga oladi."
+      },
+      {
+        "id": "vw_12",
+        "sentence": "Taking all factors into consideration, Google employees have a high level of ________________ because everyone is happy to work here.",
+        "options": [
+          "job satisfaction",
+          "working hours",
+          "salary",
+          "accommodation"
+        ],
+        "correctAnswer": "job satisfaction",
+        "explanation": "high level of job satisfaction = ishdan yuqori darajada mamnunlik.",
+        "translation": "Barcha omillarni hisobga olsak, Google xodimlarining ishdan qoniqish darajasi juda yuqori."
+      }
+    ]
+  },
+  {
+    "id": "vocab_prefixes",
+    "title": "9. Vocabulary: Word Formation (Prefixes)",
+    "titleUz": "Lug'at: So'z yasovchi qo'shimchalar (in-, over-, mis-, re-)",
+    "category": "vocabulary",
+    "icon": "🧩",
+    "description": "Old qo'shimchalar: mis- (noto'g'ri), re- (qayta), over- (ortiqcha), in-/un- (inkor)",
+    "questions": [
+      {
+        "id": "vp_1",
+        "sentence": "You must have ________________ the directions. This is nowhere near where we’re meant to be. (understand)",
+        "options": [
+          "misunderstood",
+          "inunderstood",
+          "overunderstood",
+          "reunderstood"
+        ],
+        "correctAnswer": "misunderstood",
+        "explanation": "misunderstand = noto'g'ri tushunmoq. O'tgan zamonda: misunderstood.",
+        "translation": "Siz yo'nalishni noto'g'ri tushungan bo'lsangiz kerak. Biz bo'lishimiz kerak bo'lgan joyga umuman yaqin emas."
+      },
+      {
+        "id": "vp_2",
+        "sentence": "If you can’t make the meeting on Monday morning, you’ll just have to ________________ it. (arrange)",
+        "options": [
+          "rearrange",
+          "misarrange",
+          "inarrange",
+          "overarrange"
+        ],
+        "correctAnswer": "rearrange",
+        "explanation": "rearrange = vaqtini qayta belgilamoq / boshqa kunga ko'chirmoq.",
+        "translation": "Agar dushanba kuni ertalab yig'ilishga kela olmasangiz, uni boshqa kunga ko'chirishga to'g'ri keladi."
+      },
+      {
+        "id": "vp_3",
+        "sentence": "Our flight was cancelled due to bad weather, which was extremely ________________. (convenient)",
+        "options": [
+          "inconvenient",
+          "misconvenient",
+          "overconvenient",
+          "reconvenient"
+        ],
+        "correctAnswer": "inconvenient",
+        "explanation": "inconvenient = noqulay, qiyinchilik tug'diruvchi.",
+        "translation": "Parvozimiz yomon ob-havo tufayli bekor qilindi, bu juda noqulay bo'ldi."
+      },
+      {
+        "id": "vp_4",
+        "sentence": "After going missing in 1926, the writer Agatha Christie ________________ ten days later at a hotel. (appear)",
+        "options": [
+          "reappeared",
+          "misappeared",
+          "inappeared",
+          "overappeared"
+        ],
+        "correctAnswer": "reappeared",
+        "explanation": "reappear = qayta paydo bo'lmoq / ko'rinish bermoq.",
+        "translation": "1926-yilda g'oyib bo'lganidan so'ng, Agata Kristi o'n kundan keyin mehmonxonada qayta paydo bo'ldi."
+      },
+      {
+        "id": "vp_5",
+        "sentence": "Many people are guilty of ________________ on things they don’t really need, like clothes or jewellery. (spend)",
+        "options": [
+          "overspending",
+          "inspending",
+          "misspending",
+          "respending"
+        ],
+        "correctAnswer": "overspending",
+        "explanation": "overspend = ortiqcha / haddan tashqari ko'p pul sarflamoq.",
+        "translation": "Ko'p odamlar aslida kerak bo'lmagan kiyim yoki taqinchoqlarga haddan tashqari ko'p pul sarflashadi."
+      },
+      {
+        "id": "vp_6",
+        "sentence": "Sarah cannot come to the meeting due to personal issues. We will have to ________________ the meeting. (arrange)",
+        "options": [
+          "rearrange",
+          "misarrange",
+          "inarrange",
+          "overarrange"
+        ],
+        "correctAnswer": "rearrange",
+        "explanation": "rearrange the meeting = uchrashuvni qayta rejalashtirmoq.",
+        "translation": "Sara kela olmaydi. Yig'ilishni boshqa kunga ko'chirishimiz kerak."
+      },
+      {
+        "id": "vp_7",
+        "sentence": "If you ________________, I will tell your parents and they will punish you. (behave)",
+        "options": [
+          "misbehave",
+          "inbehave",
+          "overbehave",
+          "rebehave"
+        ],
+        "correctAnswer": "misbehave",
+        "explanation": "misbehave = o'zini yomon tutmoq, bezorilik qilmoq.",
+        "translation": "Agar nojo'ya harakat qilsang, ota-onangga aytaman va ular seni jazolaydilar."
+      },
+      {
+        "id": "vp_8",
+        "sentence": "My back hurts because bus seats were so ________________. (comfortable)",
+        "options": [
+          "uncomfortable",
+          "miscomfortable",
+          "incomfortable",
+          "recomfortable"
+        ],
+        "correctAnswer": "uncomfortable",
+        "explanation": "uncomfortable = noqulay / qulay bo'lmagan.",
+        "translation": "Avtobus o'rindiqlari juda noqulay bo'lgani uchun belim og'riyapti."
+      },
+      {
+        "id": "vp_9",
+        "sentence": "I think she ________________ me. I didn’t want to say anything wrong. (understand)",
+        "options": [
+          "misunderstood",
+          "inunderstood",
+          "overunderstood",
+          "reunderstood"
+        ],
+        "correctAnswer": "misunderstood",
+        "explanation": "misunderstood = meni noto'g'ri tushundi.",
+        "translation": "Menimcha, u meni noto'g'ri tushundi. Men yomon narsa aytmoqchi emasdim."
+      },
+      {
+        "id": "vp_10",
+        "sentence": "I don’t understand people who buy ________________ things. There are so many cheaper alternatives. (priced)",
+        "options": [
+          "overpriced",
+          "inpriced",
+          "mispriced",
+          "repriced"
+        ],
+        "correctAnswer": "overpriced",
+        "explanation": "overpriced = narxi asossiz qimmat / haddan tashqari qimmat.",
+        "translation": "Haddan tashqari qimmat narsalarni sotib oladigan odamlarni tushunmayman."
+      },
+      {
+        "id": "vp_11",
+        "sentence": "Travelling by bus is so ________________, it is very crowded and takes a lot of time. (convenient)",
+        "options": [
+          "inconvenient",
+          "misconvenient",
+          "overconvenient",
+          "reconvenient"
+        ],
+        "correctAnswer": "inconvenient",
+        "explanation": "inconvenient = noqulay.",
+        "translation": "Avtobusda yurish juda noqulay, u juda gavjum va ko'p vaqt oladi."
+      },
+      {
+        "id": "vp_12",
+        "sentence": "I think this dress is ________________. I won’t buy it for $1500! (priced)",
+        "options": [
+          "overpriced",
+          "inpriced",
+          "mispriced",
+          "repriced"
+        ],
+        "correctAnswer": "overpriced",
+        "explanation": "overpriced = haddan tashqari qimmat.",
+        "translation": "Bu ko'ylak juda qimmat deb hisoblayman. Men uni 1500 dollarga sotib olmayman!"
+      }
+    ]
+  },
+  {
+    "id": "vocab_have_vs_take",
+    "title": "10. Vocabulary: HAVE vs TAKE",
+    "titleUz": "Lug'at: HAVE va TAKE iboralari (Collocations)",
+    "category": "vocabulary",
+    "icon": "🤝",
+    "description": "HAVE va TAKE fe'llari bilan bog'liq turg'un birikmalar",
+    "questions": [
+      {
+        "id": "ht_1",
+        "sentence": "My company gets tickets for big matches, so I thought I’d ________________ advantage of it this time!",
+        "options": [
+          "take",
+          "have"
+        ],
+        "correctAnswer": "take",
+        "explanation": "take advantage of = foydalanib qolmoq / imkoniyatdan foydalanmoq.",
+        "translation": "Kompaniyam chiptalar oladi, shuning uchun bu safar fursatdan foydalanib qolay dedim!"
+      },
+      {
+        "id": "ht_2",
+        "sentence": "Is it all right if I ________________ a word with my wife and let you know?",
+        "options": [
+          "have",
+          "take"
+        ],
+        "correctAnswer": "have",
+        "explanation": "have a word with someone = biror kishi bilan gaplashib olmoq.",
+        "translation": "Xotinim bilan gaplashib olib, keyin sizga xabar qilsam maylimi?"
+      },
+      {
+        "id": "ht_3",
+        "sentence": "I ________________ a feeling that she’s invited some friends over that day.",
+        "options": [
+          "have",
+          "take"
+        ],
+        "correctAnswer": "have",
+        "explanation": "have a feeling = ko'nglim sezmoqda / his qilyapman.",
+        "translation": "Ko'nglim sezyaptiki, u o'sha kuni do'stlarini mehmonga chaqirgan."
+      },
+      {
+        "id": "ht_4",
+        "sentence": "I know she invited friends, but I don’t ________________ a clue at what time.",
+        "options": [
+          "have",
+          "take"
+        ],
+        "correctAnswer": "have",
+        "explanation": "not have a clue = umuman tasavvurga ega bo'lmaslik / bilmaslik.",
+        "translation": "Lekin qaysi vaqtda ekanligi haqida hech qanday tasavvurim yo'q."
+      },
+      {
+        "id": "ht_5",
+        "sentence": "________________ my word for it – it’s going to be a great game!",
+        "options": [
+          "Take",
+          "Have"
+        ],
+        "correctAnswer": "Take",
+        "explanation": "Take my word for it = gapimga ishon / mening so'zimga ishonaver.",
+        "translation": "Mening gapimga ishonaver — ajoyib o'yin bo'ladi!"
+      },
+      {
+        "id": "ht_6",
+        "sentence": "We usually ________________ turns to go out on a Saturday while the other looks after the kids.",
+        "options": [
+          "take",
+          "have"
+        ],
+        "correctAnswer": "take",
+        "explanation": "take turns = navbatma-navbat qilmoq.",
+        "translation": "Biz odatda shanba kunlari navbatma-navbat ko'chaga chiqamiz."
+      },
+      {
+        "id": "ht_7",
+        "sentence": "She ________________ care of the children while I am out.",
+        "options": [
+          "takes",
+          "has"
+        ],
+        "correctAnswer": "takes",
+        "explanation": "take care of = g'amxo'rlik qilmoq / qarab turmoq.",
+        "translation": "Men ko'chada bo'lganimda u bolalarga qarab turadi."
+      },
+      {
+        "id": "ht_8",
+        "sentence": "It should be my turn to go out, but I can’t ________________ that for granted!",
+        "options": [
+          "take",
+          "have"
+        ],
+        "correctAnswer": "take",
+        "explanation": "take something for granted = o'z-o'zidan shunday bo'lishi kerak deb hisoblamoq / qadriga yetmaslik.",
+        "translation": "Mening navbatim bo'lishi kerak, lekin buni o'z-o'zidan shart deb bilolmayman!"
+      },
+      {
+        "id": "ht_9",
+        "sentence": "I understand – I don’t expect you to ________________ a decision before you speak to her.",
+        "options": [
+          "take",
+          "have"
+        ],
+        "correctAnswer": "take",
+        "explanation": "take a decision (or make a decision) = qaror qabul qilmoq.",
+        "translation": "Tushunaman — u bilan gaplashmasdan oldin qaror qabul qilishingizni kutmayman."
+      },
+      {
+        "id": "ht_10",
+        "sentence": "I really hope I can make it, but I’ll let you know if I ________________ any difficulty arranging things!",
+        "options": [
+          "have",
+          "take"
+        ],
+        "correctAnswer": "have",
+        "explanation": "have difficulty (in doing something) = qiyinchilikka duch kelmoq.",
+        "translation": "Agar rejalashtirishda biror qiyinchilikka duch kelsam, sizga xabar beraman!"
+      },
+      {
+        "id": "ht_11",
+        "sentence": "They help us a lot and to be honest, I feel like ________________ it for granted!",
+        "options": [
+          "taking",
+          "having"
+        ],
+        "correctAnswer": "taking",
+        "explanation": "feel like taking it for granted = qadriga yetmayotgandek his qilmoq.",
+        "translation": "Ular bizga juda ko'p yordam berishadi va rostini aytsam, buni odatiy holdek qabul qilayotgandekman."
+      },
+      {
+        "id": "ht_12",
+        "sentence": "I also have to ask my parents to ________________ care of the children tonight.",
+        "options": [
+          "take",
+          "have"
+        ],
+        "correctAnswer": "take",
+        "explanation": "take care of = qarab turmoq.",
+        "translation": "Shuningdek, ota-onamdan bugun oqshom bolalarga qarab turishlarini so'rashim kerak."
+      }
+    ]
+  },
+  {
+    "id": "vocab_describing_people",
+    "title": "11. Vocabulary: Describing People",
+    "titleUz": "Lug'at: Tashqi ko'rinish va shaxsiyat",
+    "category": "vocabulary",
+    "icon": "👤",
+    "description": "Tashqi ko'rinish so'zlari: bald, dyed, elderly, eyelashes, fringe, moustache, overweight, shape, slim, well-built",
+    "questions": [
+      {
+        "id": "dp_1",
+        "sentence": "If you want to keep in good ________________, it’s advisable to do some exercise every day.",
+        "options": [
+          "shape",
+          "slim",
+          "overweight",
+          "shoulder"
+        ],
+        "correctAnswer": "shape",
+        "explanation": "keep in good shape = yaxshi jismoniy holatda bo'lmoq / qomatni saqlamoq.",
+        "translation": "Yaxshi qomatni saqlab qolishni istasangiz, har kuni mashq qilish tavsiya etiladi."
+      },
+      {
+        "id": "dp_2",
+        "sentence": "My father started losing his hair in his thirties and now he’s completely ________________.",
+        "options": [
+          "bald",
+          "dyed",
+          "curly",
+          "slim"
+        ],
+        "correctAnswer": "bald",
+        "explanation": "bald = kal / sochsiz.",
+        "translation": "Otam o'ttiz yoshlarida sochini yo'qota boshlagan va hozir butunlay kal."
+      },
+      {
+        "id": "dp_3",
+        "sentence": "Do you think Anya’s hair is ________________? I’m sure it used to be much lighter than it is now.",
+        "options": [
+          "dyed",
+          "bald",
+          "fringe",
+          "overweight"
+        ],
+        "correctAnswer": "dyed",
+        "explanation": "dyed hair = bo'yalgan soch.",
+        "translation": "Sizningcha Anyaning sochi bo'yalganmi? Avval ancha ochroq rangda bo'lganiga ishonchim komil."
+      },
+      {
+        "id": "dp_4",
+        "sentence": "Not playing any sport and eating too much are two main causes of becoming ________________.",
+        "options": [
+          "overweight",
+          "shape",
+          "slim",
+          "well-built"
+        ],
+        "correctAnswer": "overweight",
+        "explanation": "overweight = ortiqcha vaznli / semiz.",
+        "translation": "Sport bilan shug'ullanmaslik va ko'p ovqat yeyish ortiqcha vazn orttirishning ikkita asosiy sababidir."
+      },
+      {
+        "id": "dp_5",
+        "sentence": "This dress is a bit tight and I’m not ________________ enough to wear it.",
+        "options": [
+          "slim",
+          "overweight",
+          "shape",
+          "bald"
+        ],
+        "correctAnswer": "slim",
+        "explanation": "slim = xushbichim / ozg'in.",
+        "translation": "Bu ko'ylak biroz tor va men uni kiyish uchun yetarlicha ozg'in emasman."
+      },
+      {
+        "id": "dp_6",
+        "sentence": "Jessica always had really long hair but she decided to change it and now has it ________________-length.",
+        "options": [
+          "shoulder",
+          "fringe",
+          "shape",
+          "eyelashes"
+        ],
+        "correctAnswer": "shoulder",
+        "explanation": "shoulder-length = yelkagacha tushib turadigan (soch).",
+        "translation": "Jessikaning sochi doim uzun edi, lekin u o'zgartirishga qaror qildi va hozir yelka uzunligida."
+      },
+      {
+        "id": "dp_7",
+        "sentence": "When Ahmet was a little boy, he always wanted to grow a ________________ just like his dad!",
+        "options": [
+          "moustache",
+          "eyelashes",
+          "fringe",
+          "bald"
+        ],
+        "correctAnswer": "moustache",
+        "explanation": "moustache = mo'ylov.",
+        "translation": "Ahmet kichkinaligida doim otasidek mo'ylov qo'yishni orzu qilardi!"
+      },
+      {
+        "id": "dp_8",
+        "sentence": "The hairdresser in my village offers a 20% discount for ________________ people over seventy years old.",
+        "options": [
+          "elderly",
+          "overweight",
+          "slim",
+          "well-built"
+        ],
+        "correctAnswer": "elderly",
+        "explanation": "elderly people = keksalar / yoshi ulug' odamlar.",
+        "translation": "Qishlog'imdagi sartaroshxona yetmish yoshdan oshgan keksalar uchun 20% chegirma beradi."
+      },
+      {
+        "id": "dp_9",
+        "sentence": "That girl’s ________________ is so long that I’m surprised she can see anything through it!",
+        "options": [
+          "fringe",
+          "eyelashes",
+          "moustache",
+          "shoulder"
+        ],
+        "correctAnswer": "fringe",
+        "explanation": "fringe = kokil / peshona sochi (chelyolka).",
+        "translation": "U qizning kokili shunchalik uzunki, u qanday ko'rayotganiga hayronman!"
+      },
+      {
+        "id": "dp_10",
+        "sentence": "Chiara had beautiful eyes; they were green, with long, dark ________________.",
+        "options": [
+          "eyelashes",
+          "fringe",
+          "moustache",
+          "shape"
+        ],
+        "correctAnswer": "eyelashes",
+        "explanation": "eyelashes = kipriklar.",
+        "translation": "Kiarada go'zal ko'zlar bor edi; uzun, qora kiprikli yashil ko'zlar."
+      },
+      {
+        "id": "dp_11",
+        "sentence": "John is a very handsome and ________________ man. I guess he does sports almost every day.",
+        "options": [
+          "well-built",
+          "bald",
+          "overweight",
+          "elderly"
+        ],
+        "correctAnswer": "well-built",
+        "explanation": "well-built = baquvvat, qomati kelishgan.",
+        "translation": "Jon juda kelishgan va baquvvat erkak. U deyarli har kuni sport bilan shug'ullansa kerak."
+      },
+      {
+        "id": "dp_12",
+        "sentence": "It is so difficult to have ________________ hair because you always need to make them straight.",
+        "options": [
+          "curly",
+          "bald",
+          "slim",
+          "dyed"
+        ],
+        "correctAnswer": "curly",
+        "explanation": "curly hair = jingalak soch.",
+        "translation": "Jingalak sochlarga ega bo'lish juda qiyin, chunki ularni doim to'g'rilash kerak bo'ladi."
+      },
+      {
+        "id": "dp_13",
+        "sentence": "Son: Daddy, what is ________________? Dad: It’s facial hair between lips and nose, son.",
+        "options": [
+          "moustache",
+          "fringe",
+          "eyelashes",
+          "beard"
+        ],
+        "correctAnswer": "moustache",
+        "explanation": "moustache = lab va burun o'rtasidagi tuklar (mo'ylov).",
+        "translation": "O'g'il: Dada, mo'ylov nima? Ota: Bu lab va burun o'rtasidagi soch, o'g'lim."
+      },
+      {
+        "id": "dp_14",
+        "sentence": "My Uncle Sam has lost his hair and now he is completely ________________.",
+        "options": [
+          "bald",
+          "curly",
+          "dyed",
+          "well-built"
+        ],
+        "correctAnswer": "bald",
+        "explanation": "completely bald = butunlay sochsiz / kal.",
+        "translation": "Sem tog'am sochlarini yo'qotdi va hozir butunlay kal."
+      },
+      {
+        "id": "dp_15",
+        "sentence": "Andrew is so ________________. I don’t think he even weighs 50 kg!",
+        "options": [
+          "slim",
+          "overweight",
+          "well-built",
+          "elderly"
+        ],
+        "correctAnswer": "slim",
+        "explanation": "slim / thin = ozg'in.",
+        "translation": "Endryu shunchalik ozg'inki, u 50 kg ham chiqmasa kerak!"
+      }
+    ]
+  }
+]
