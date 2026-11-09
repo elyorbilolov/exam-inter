@@ -1,7 +1,7 @@
 [
   {
     "Mavzular": "A",
-    "Mavzular nomi": "Card A",
+    "Mavzular nomi": "Happy/Patient",
     "Qism": "Part 1",
     "Sovollar": "1. Are you a happy person?",
     "Sovollar (UZ)": "Siz baxtli odammisiz?",
@@ -10,7 +10,7 @@
   },
   {
     "Mavzular": "A",
-    "Mavzular nomi": "Card A",
+    "Mavzular nomi": "Happy/Patient",
     "Qism": "Part 1",
     "Sovollar": "2. When do you feel unhappy?",
     "Sovollar (UZ)": "Qachon o‘zingizni baxtsiz his qilasiz?",
@@ -19,7 +19,7 @@
   },
   {
     "Mavzular": "A",
-    "Mavzular nomi": "Card A",
+    "Mavzular nomi": "Happy/Patient",
     "Qism": "Part 1",
     "Sovollar": "3. What makes you happy?",
     "Sovollar (UZ)": "Sizni nima baxtli qiladi?",
@@ -28,7 +28,7 @@
   },
   {
     "Mavzular": "A",
-    "Mavzular nomi": "Card A",
+    "Mavzular nomi": "Happy/Patient",
     "Qism": "Part 1",
     "Sovollar": "4. Are you introvert or extravert?",
     "Sovollar (UZ)": "Siz introvertmisiz yoki ekstravert?",
@@ -37,7 +37,7 @@
   },
   {
     "Mavzular": "A",
-    "Mavzular nomi": "Card A",
+    "Mavzular nomi": "Happy/Patient",
     "Qism": "Part 2",
     "Sovollar": "1. Are kids patient nowadays? What things can’t they wait for?",
     "Sovollar (UZ)": "Hozirgi kunda bolalar sabrlimi? Ular qaysi narsalarni kuta olmaydilar?",
@@ -46,7 +46,7 @@
   },
   {
     "Mavzular": "A",
-    "Mavzular nomi": "Card A",
+    "Mavzular nomi": "Happy/Patient",
     "Qism": "Part 2",
     "Sovollar": "2. Should parents buy their kids whatever they want?",
     "Sovollar (UZ)": "Ota-onalar farzandlariga ular xohlagan hamma narsani olib berishlari kerakmi?",
@@ -55,7 +55,7 @@
   },
   {
     "Mavzular": "A",
-    "Mavzular nomi": "Card A",
+    "Mavzular nomi": "Happy/Patient",
     "Qism": "Part 2",
     "Sovollar": "3. Do parents need to teach their children to be patient?",
     "Sovollar (UZ)": "Ota-onalar farzandlariga sabrli bo‘lishni o‘rgatishlari kerakmi?",
@@ -64,7 +64,7 @@
   },
   {
     "Mavzular": "A",
-    "Mavzular nomi": "Card A",
+    "Mavzular nomi": "Happy/Patient",
     "Qism": "Part 2",
     "Sovollar": "4. How do you manage to resist your temptation?",
     "Sovollar (UZ)": "Vasvasalaringizga qanday qarshi turasiz?",
@@ -74,7 +74,7 @@
 
   {
     "Mavzular": "B",
-    "Mavzular nomi": "Card B",
+    "Mavzular nomi": "Business",
     "Qism": "Part 1",
     "Sovollar": "1. Are you interested in doing business?",
     "Sovollar (UZ)": "Siz biznes bilan shug‘ullanishga qiziqasizmi?",
@@ -83,7 +83,7 @@
   },
   {
     "Mavzular": "B",
-    "Mavzular nomi": "Card B",
+    "Mavzular nomi": "Business",
     "Qism": "Part 1",
     "Sovollar": "2. Is it easy to set up a business in Uzbekistan?",
     "Sovollar (UZ)": "O‘zbekistonda biznes boshlash osonmi?",
@@ -92,7 +92,7 @@
   },
   {
     "Mavzular": "B",
-    "Mavzular nomi": "Card B",
+    "Mavzular nomi": "Business",
     "Qism": "Part 1",
     "Sovollar": "3. Do you have any business people in your family?",
     "Sovollar (UZ)": "Oilangizda biznes bilan shug‘ullanuvchi odamlar bormi?",
@@ -101,7 +101,7 @@
   },
   {
     "Mavzular": "B",
-    "Mavzular nomi": "Card B",
+    "Mavzular nomi": "Business",
     "Qism": "Part 1",
     "Sovollar": "4. What successful companies do you know?",
     "Sovollar (UZ)": "Qaysi muvaffaqiyatli kompaniyalarni bilasiz?",
@@ -110,7 +110,7 @@
   },
   {
     "Mavzular": "B",
-    "Mavzular nomi": "Card B",
+    "Mavzular nomi": "Business",
     "Qism": "Part 2",
     "Sovollar": "1. If you wanted to set up a business, what business would you start?",
     "Sovollar (UZ)": "Agar biznes boshlamoqchi bo‘lsangiz, qanday biznes boshlardingiz?",
@@ -119,7 +119,7 @@
   },
   {
     "Mavzular": "B",
-    "Mavzular nomi": "Card B",
+    "Mavzular nomi": "Business",
     "Qism": "Part 2",
     "Sovollar": "2. What are the challenges of starting a business?",
     "Sovollar (UZ)": "Biznes boshlashda qanday qiyinchiliklar mavjud?",
@@ -128,7 +128,7 @@
   },
   {
     "Mavzular": "B",
-    "Mavzular nomi": "Card B",
+    "Mavzular nomi": "Business",
     "Qism": "Part 2",
     "Sovollar": "3. How can you advertise your products or service?",
     "Sovollar (UZ)": "Mahsulot yoki xizmatingizni qanday reklama qilishingiz mumkin?",
@@ -137,7 +137,7 @@
   },
   {
     "Mavzular": "B",
-    "Mavzular nomi": "Card B",
+    "Mavzular nomi": "Business",
     "Qism": "Part 2",
     "Sovollar": "4. If you needed some financial support, how would you attract some investors?",
     "Sovollar (UZ)": "Agar moliyaviy yordam kerak bo‘lsa, investorlarni qanday jalb qilardingiz?",
@@ -147,7 +147,7 @@
 
   {
     "Mavzular": "C",
-    "Mavzular nomi": "Card C",
+    "Mavzular nomi": "Competetion",
     "Qism": "Part 1",
     "Sovollar": "1. Do you like competitions?",
     "Sovollar (UZ)": "Musobaqalarni yoqtirasizmi?",
@@ -156,7 +156,7 @@
   },
   {
     "Mavzular": "C",
-    "Mavzular nomi": "Card C",
+    "Mavzular nomi": "Competetion",
     "Qism": "Part 1",
     "Sovollar": "2. Have you ever taken part in a competition?",
     "Sovollar (UZ)": "Hech qachon musobaqada qatnashganmisiz?",
@@ -165,7 +165,7 @@
   },
   {
     "Mavzular": "C",
-    "Mavzular nomi": "Card C",
+    "Mavzular nomi": "Competetion",
     "Qism": "Part 1",
     "Sovollar": "3. Which is more important: competition or cooperation?",
     "Sovollar (UZ)": "Qaysi biri muhimroq: raqobatmi yoki hamkorlikmi?",
@@ -174,7 +174,7 @@
   },
   {
     "Mavzular": "C",
-    "Mavzular nomi": "Card C",
+    "Mavzular nomi": "Competetion",
     "Qism": "Part 1",
     "Sovollar": "4. Do you like competitive sports?",
     "Sovollar (UZ)": "Raqobatli sport turlarini yoqtirasizmi?",
@@ -183,7 +183,7 @@
   },
   {
     "Mavzular": "C",
-    "Mavzular nomi": "Card C",
+    "Mavzular nomi": "Competetion",
     "Qism": "Part 2",
     "Sovollar": "1. What competitive sports do you know?",
     "Sovollar (UZ)": "Qanday raqobatli sport turlarini bilasiz?",
@@ -192,7 +192,7 @@
   },
   {
     "Mavzular": "C",
-    "Mavzular nomi": "Card C",
+    "Mavzular nomi": "Competetion",
     "Qism": "Part 2",
     "Sovollar": "2. Should children do competitive sports at school?",
     "Sovollar (UZ)": "Bolalar maktabda raqobatli sport turlari bilan shug‘ullanishlari kerakmi?",
@@ -201,7 +201,7 @@
   },
   {
     "Mavzular": "C",
-    "Mavzular nomi": "Card C",
+    "Mavzular nomi": "Competetion",
     "Qism": "Part 2",
     "Sovollar": "3. What are the advantages of competitive sports?",
     "Sovollar (UZ)": "Raqobatli sportning qanday afzalliklari bor?",
@@ -210,7 +210,7 @@
   },
   {
     "Mavzular": "C",
-    "Mavzular nomi": "Card C",
+    "Mavzular nomi": "Competetion",
     "Qism": "Part 2",
     "Sovollar": "4. What are the disadvantages of competitive sports?",
     "Sovollar (UZ)": "Raqobatli sportning qanday kamchiliklari bor?",
@@ -220,7 +220,7 @@
 
   {
     "Mavzular": "D",
-    "Mavzular nomi": "Card D",
+    "Mavzular nomi": "Free time",
     "Qism": "Part 1",
     "Sovollar": "1. What do you do in your free time?",
     "Sovollar (UZ)": "Bo‘sh vaqtingizda nima qilasiz?",
@@ -229,7 +229,7 @@
   },
   {
     "Mavzular": "D",
-    "Mavzular nomi": "Card D",
+    "Mavzular nomi": "Free time",
     "Qism": "Part 1",
     "Sovollar": "2. Have you ever participated in any sport competitions?",
     "Sovollar (UZ)": "Hech qachon sport musobaqalarida qatnashganmisiz?",
@@ -238,7 +238,7 @@
   },
   {
     "Mavzular": "D",
-    "Mavzular nomi": "Card D",
+    "Mavzular nomi": "Free time",
     "Qism": "Part 1",
     "Sovollar": "3. Do you like travelling across your country?",
     "Sovollar (UZ)": "Mamlakatingiz bo‘ylab sayohat qilishni yoqtirasizmi?",
@@ -247,7 +247,7 @@
   },
   {
     "Mavzular": "D",
-    "Mavzular nomi": "Card D",
+    "Mavzular nomi": "Free time",
     "Qism": "Part 1",
     "Sovollar": "4. Do you prefer to spend time indoors or outdoors?",
     "Sovollar (UZ)": "Vaqtingizni uyda yoki tashqarida o‘tkazishni afzal ko‘rasizmi?",
@@ -256,7 +256,7 @@
   },
   {
     "Mavzular": "D",
-    "Mavzular nomi": "Card D",
+    "Mavzular nomi": "Free time",
     "Qism": "Part 2",
     "Sovollar": "1. Describe your dream job.",
     "Sovollar (UZ)": "Orzuingizdagi kasbni tasvirlab bering.",
@@ -265,7 +265,7 @@
   },
   {
     "Mavzular": "D",
-    "Mavzular nomi": "Card D",
+    "Mavzular nomi": "Free time",
     "Qism": "Part 2",
     "Sovollar": "2. What job will be popular in the future?",
     "Sovollar (UZ)": "Kelajakda qaysi kasblar mashhur bo‘ladi?",
@@ -274,7 +274,7 @@
   },
   {
     "Mavzular": "D",
-    "Mavzular nomi": "Card D",
+    "Mavzular nomi": "Free time",
     "Qism": "Part 2",
     "Sovollar": "3. Explain profession that is getting popular in your country now.",
     "Sovollar (UZ)": "Hozir mamlakatingizda ommalashib borayotgan kasbni tushuntiring.",
@@ -283,7 +283,7 @@
   },
   {
     "Mavzular": "D",
-    "Mavzular nomi": "Card D",
+    "Mavzular nomi": "Free time",
     "Qism": "Part 2",
     "Sovollar": "4. How will technology help people to do business that is more successful?",
     "Sovollar (UZ)": "Texnologiya odamlarga biznesni yanada muvaffaqiyatli yuritishda qanday yordam beradi?",
@@ -293,7 +293,7 @@
 
   {
     "Mavzular": "E",
-    "Mavzular nomi": "Card E",
+    "Mavzular nomi": "Crime",
     "Qism": "Part 1",
     "Sovollar": "1. Is it safe to live in your city?",
     "Sovollar (UZ)": "Shaharingizda yashash xavfsizmi?",
@@ -302,7 +302,7 @@
   },
   {
     "Mavzular": "E",
-    "Mavzular nomi": "Card E",
+    "Mavzular nomi": "Crime",
     "Qism": "Part 1",
     "Sovollar": "2. What types of crimes do you know?",
     "Sovollar (UZ)": "Qanday jinoyat turlarini bilasiz?",
@@ -311,7 +311,7 @@
   },
   {
     "Mavzular": "E",
-    "Mavzular nomi": "Card E",
+    "Mavzular nomi": "Crime",
     "Qism": "Part 1",
     "Sovollar": "3. Is the nightlife dangerous in your city?",
     "Sovollar (UZ)": "Shaharingizdagi tungi hayot xavflimi?",
@@ -320,7 +320,7 @@
   },
   {
     "Mavzular": "E",
-    "Mavzular nomi": "Card E",
+    "Mavzular nomi": "Crime",
     "Qism": "Part 1",
     "Sovollar": "4. Have you ever witnessed any type of crime?",
     "Sovollar (UZ)": "Hech qachon biror jinoyatga guvoh bo‘lganmisiz?",
@@ -329,7 +329,7 @@
   },
   {
     "Mavzular": "E",
-    "Mavzular nomi": "Card E",
+    "Mavzular nomi": "Crime",
     "Qism": "Part 2",
     "Sovollar": "1. What would you do to decrease the crime rate if you worked as a police officer?",
     "Sovollar (UZ)": "Agar politsiya xodimi bo‘lib ishlaganingizda, jinoyatchilik darajasini kamaytirish uchun nima qilardingiz?",
@@ -338,7 +338,7 @@
   },
   {
     "Mavzular": "E",
-    "Mavzular nomi": "Card E",
+    "Mavzular nomi": "Crime",
     "Qism": "Part 2",
     "Sovollar": "2. Why do you think crime rates are higher in cities?",
     "Sovollar (UZ)": "Nima uchun shaharlarda jinoyatchilik darajasi yuqoriroq deb o‘ylaysiz?",
@@ -347,7 +347,7 @@
   },
   {
     "Mavzular": "E",
-    "Mavzular nomi": "Card E",
+    "Mavzular nomi": "Crime",
     "Qism": "Part 2",
     "Sovollar": "3. What is cybercrime?",
     "Sovollar (UZ)": "Kiberjinoyat nima?",
@@ -356,7 +356,7 @@
   },
   {
     "Mavzular": "E",
-    "Mavzular nomi": "Card E",
+    "Mavzular nomi": "Crime",
     "Qism": "Part 2",
     "Sovollar": "4. Would you help a person if he/she were being attacked??",
     "Sovollar (UZ)": "Agar biror odamga hujum qilinayotganini ko‘rsangiz, unga yordam berarmidingiz?",
@@ -366,7 +366,7 @@
 
   {
     "Mavzular": "F",
-    "Mavzular nomi": "Card F",
+    "Mavzular nomi": "Films",
     "Qism": "Part 1",
     "Sovollar": "1. Do you watch films?",
     "Sovollar (UZ)": "Filmlar tomosha qilasizmi?",
@@ -375,7 +375,7 @@
   },
   {
     "Mavzular": "F",
-    "Mavzular nomi": "Card F",
+    "Mavzular nomi": "Films",
     "Qism": "Part 1",
     "Sovollar": "2. Do you prefer watching movies at home or in the cinema? Why?",
     "Sovollar (UZ)": "Filmlarni uyda yoki kinoteatrda tomosha qilishni afzal ko‘rasizmi? Nima uchun?",
@@ -384,7 +384,7 @@
   },
   {
     "Mavzular": "F",
-    "Mavzular nomi": "Card F",
+    "Mavzular nomi": "Films",
     "Qism": "Part 1",
     "Sovollar": "3. What is your favorite film? Why?",
     "Sovollar (UZ)": "Sevimli filmingiz qaysi? Nima uchun?",
@@ -393,7 +393,7 @@
   },
   {
     "Mavzular": "F",
-    "Mavzular nomi": "Card F",
+    "Mavzular nomi": "Films",
     "Qism": "Part 1",
     "Sovollar": "4. Who is your favorite actor or actress?",
     "Sovollar (UZ)": "Sevimli aktyoringiz yoki aktrisangiz kim?",
@@ -402,7 +402,7 @@
   },
   {
     "Mavzular": "F",
-    "Mavzular nomi": "Card F",
+    "Mavzular nomi": "Films",
     "Qism": "Part 2",
     "Sovollar": "1. Do you play video games?",
     "Sovollar (UZ)": "Video o‘yinlar o‘ynaysizmi?",
@@ -411,7 +411,7 @@
   },
   {
     "Mavzular": "F",
-    "Mavzular nomi": "Card F",
+    "Mavzular nomi": "Films",
     "Qism": "Part 2",
     "Sovollar": "2. What kind of video games do you like playing? Why?",
     "Sovollar (UZ)": "Qanday video o‘yinlarni o‘ynashni yoqtirasiz? Nima uchun?",
@@ -420,7 +420,7 @@
   },
   {
     "Mavzular": "F",
-    "Mavzular nomi": "Card F",
+    "Mavzular nomi": "Films",
     "Qism": "Part 2",
     "Sovollar": "3. Do you think video games can be educational? Why?",
     "Sovollar (UZ)": "Sizningcha, video o‘yinlar ta’limiy bo‘lishi mumkinmi? Nima uchun?",
@@ -429,7 +429,7 @@
   },
   {
     "Mavzular": "F",
-    "Mavzular nomi": "Card F",
+    "Mavzular nomi": "Films",
     "Qism": "Part 2",
     "Sovollar": "4. Do you like playing video games alone or with friends? Why?",
     "Sovollar (UZ)": "Video o‘yinlarni yolg‘iz yoki do‘stlaringiz bilan o‘ynashni yoqtirasizmi? Nima uchun?",
@@ -439,7 +439,7 @@
 
   {
     "Mavzular": "G",
-    "Mavzular nomi": "Card G",
+    "Mavzular nomi": "Technology",
     "Qism": "Part 1",
     "Sovollar": "1. How do you use technology every day?",
     "Sovollar (UZ)": "Har kuni texnologiyadan qanday foydalanasiz?",
@@ -448,7 +448,7 @@
   },
   {
     "Mavzular": "G",
-    "Mavzular nomi": "Card G",
+    "Mavzular nomi": "Technology",
     "Qism": "Part 1",
     "Sovollar": "2. Does technology make life easier or harder? Why?",
     "Sovollar (UZ)": "Texnologiya hayotni osonlashtiradimi yoki qiyinlashtiradimi? Nima uchun?",
@@ -457,7 +457,7 @@
   },
   {
     "Mavzular": "G",
-    "Mavzular nomi": "Card G",
+    "Mavzular nomi": "Technology",
     "Qism": "Part 1",
     "Sovollar": "3. What is your favorite gadget or device? Why?",
     "Sovollar (UZ)": "Sevimli gadjetingiz yoki qurilmangiz qaysi? Nima uchun?",
@@ -466,7 +466,7 @@
   },
   {
     "Mavzular": "G",
-    "Mavzular nomi": "Card G",
+    "Mavzular nomi": "Technology",
     "Qism": "Part 1",
     "Sovollar": "4. How do you use technology to talk to your friends and family?",
     "Sovollar (UZ)": "Do‘stlaringiz va oilangiz bilan gaplashish uchun texnologiyadan qanday foydalanasiz?",
@@ -475,7 +475,7 @@
   },
   {
     "Mavzular": "G",
-    "Mavzular nomi": "Card G",
+    "Mavzular nomi": "Technology",
     "Qism": "Part 2",
     "Sovollar": "1. Do people depend too much on technology? Why or why not?",
     "Sovollar (UZ)": "Odamlar texnologiyaga haddan tashqari ko‘p bog‘lanib qolishganmi? Nima uchun?",
@@ -484,7 +484,7 @@
   },
   {
     "Mavzular": "G",
-    "Mavzular nomi": "Card G",
+    "Mavzular nomi": "Technology",
     "Qism": "Part 2",
     "Sovollar": "2. What are the most important inventions in technology? Why?",
     "Sovollar (UZ)": "Texnologiyadagi eng muhim ixtirolar qaysilar? Nima uchun?",
@@ -493,7 +493,7 @@
   },
   {
     "Mavzular": "G",
-    "Mavzular nomi": "Card G",
+    "Mavzular nomi": "Technology",
     "Qism": "Part 2",
     "Sovollar": "3. What are some bad things about modern technology?",
     "Sovollar (UZ)": "Zamonaviy texnologiyaning qanday salbiy tomonlari bor?",
@@ -502,7 +502,7 @@
   },
   {
     "Mavzular": "G",
-    "Mavzular nomi": "Card G",
+    "Mavzular nomi": "Technology",
     "Qism": "Part 2",
     "Sovollar": "4. How do you think technology will change in the future?",
     "Sovollar (UZ)": "Sizningcha, kelajakda texnologiya qanday o‘zgaradi?",
@@ -512,7 +512,7 @@
 
   {
     "Mavzular": "H",
-    "Mavzular nomi": "Card H",
+    "Mavzular nomi": "Weather",
     "Qism": "Part 1",
     "Sovollar": "1. What is your favorite type of weather? Why?",
     "Sovollar (UZ)": "Qanday ob-havoni eng ko‘p yoqtirasiz? Nima uchun?",
@@ -521,7 +521,7 @@
   },
   {
     "Mavzular": "H",
-    "Mavzular nomi": "Card H",
+    "Mavzular nomi": "Weather",
     "Qism": "Part 1",
     "Sovollar": "2. What is your favorite season of the year? Why do you like it?",
     "Sovollar (UZ)": "Yilning qaysi faslini eng ko‘p yoqtirasiz? Nima uchun?",
@@ -530,7 +530,7 @@
   },
   {
     "Mavzular": "H",
-    "Mavzular nomi": "Card H",
+    "Mavzular nomi": "Weather",
     "Qism": "Part 1",
     "Sovollar": "3. How does the weather affect your mood and activities?",
     "Sovollar (UZ)": "Ob-havo kayfiyatingiz va faoliyatingizga qanday ta’sir qiladi?",
@@ -539,7 +539,7 @@
   },
   {
     "Mavzular": "H",
-    "Mavzular nomi": "Card H",
+    "Mavzular nomi": "Weather",
     "Qism": "Part 1",
     "Sovollar": "4. Do you think your country has good weather? Why or why not?",
     "Sovollar (UZ)": "Sizningcha, mamlakatingizda ob-havo yaxshimi? Nima uchun?",
@@ -548,7 +548,7 @@
   },
   {
     "Mavzular": "H",
-    "Mavzular nomi": "Card H",
+    "Mavzular nomi": "Weather",
     "Qism": "Part 2",
     "Sovollar": "1. How do you feel about climate change?",
     "Sovollar (UZ)": "Iqlim o‘zgarishi haqida qanday fikrdasiz?",
@@ -557,7 +557,7 @@
   },
   {
     "Mavzular": "H",
-    "Mavzular nomi": "Card H",
+    "Mavzular nomi": "Weather",
     "Qism": "Part 2",
     "Sovollar": "2. Have you ever experienced extreme weather? What happened?",
     "Sovollar (UZ)": "Hech qachon ekstremal ob-havoni boshdan kechirganmisiz? Nima bo‘lgan?",
@@ -566,7 +566,7 @@
   },
   {
     "Mavzular": "H",
-    "Mavzular nomi": "Card H",
+    "Mavzular nomi": "Weather",
     "Qism": "Part 2",
     "Sovollar": "3. What kind of natural landscapes do you like the most (e.g., mountains, beaches, forests)? Why?",
     "Sovollar (UZ)": "Qanday tabiiy manzaralarni eng ko‘p yoqtirasiz? Masalan, tog‘lar, plyajlar yoki o‘rmonlar. Nima uchun?",
@@ -575,7 +575,7 @@
   },
   {
     "Mavzular": "H",
-    "Mavzular nomi": "Card H",
+    "Mavzular nomi": "Weather",
     "Qism": "Part 2",
     "Sovollar": "4. What are some things people can do to help protect nature and the environment?",
     "Sovollar (UZ)": "Odamlar tabiat va atrof-muhitni himoya qilish uchun nimalar qilishlari mumkin?",
@@ -585,7 +585,7 @@
 
   {
     "Mavzular": "I",
-    "Mavzular nomi": "Card I",
+    "Mavzular nomi": "Food and Culture",
     "Qism": "Part 1",
     "Sovollar": "1. What is your favorite traditional dish from your country?",
     "Sovollar (UZ)": "Mamlakatingizdagi eng sevimli milliy taomingiz qaysi?",
@@ -594,7 +594,7 @@
   },
   {
     "Mavzular": "I",
-    "Mavzular nomi": "Card I",
+    "Mavzular nomi": "Food and Culture",
     "Qism": "Part 1",
     "Sovollar": "2. How does food bring people together?",
     "Sovollar (UZ)": "Ovqat odamlarni qanday birlashtiradi?",
@@ -603,7 +603,7 @@
   },
   {
     "Mavzular": "I",
-    "Mavzular nomi": "Card I",
+    "Mavzular nomi": "Food and Culture",
     "Qism": "Part 1",
     "Sovollar": "3. Who usually cooks dinner in your culture?",
     "Sovollar (UZ)": "Sizning madaniyatingizda odatda kechki ovqatni kim tayyorlaydi?",
@@ -612,7 +612,7 @@
   },
   {
     "Mavzular": "I",
-    "Mavzular nomi": "Card I",
+    "Mavzular nomi": "Food and Culture",
     "Qism": "Part 1",
     "Sovollar": "4. Do you enjoy trying food from different countries?",
     "Sovollar (UZ)": "Turli mamlakatlarning taomlarini tatib ko‘rishni yoqtirasizmi?",
@@ -621,7 +621,7 @@
   },
   {
     "Mavzular": "I",
-    "Mavzular nomi": "Card I",
+    "Mavzular nomi": "Food and Culture",
     "Qism": "Part 2",
     "Sovollar": "1. What is a challenge you have recently faced?",
     "Sovollar (UZ)": "Yaqinda qanday qiyinchilikka duch keldingiz?",
@@ -630,7 +630,7 @@
   },
   {
     "Mavzular": "I",
-    "Mavzular nomi": "Card I",
+    "Mavzular nomi": "Food and Culture",
     "Qism": "Part 2",
     "Sovollar": "2. How do you usually overcome challenges?",
     "Sovollar (UZ)": "Odatda qiyinchiliklarni qanday yengasiz?",
@@ -639,7 +639,7 @@
   },
   {
     "Mavzular": "I",
-    "Mavzular nomi": "Card I",
+    "Mavzular nomi": "Food and Culture",
     "Qism": "Part 2",
     "Sovollar": "3. Do you think challenges are important for growth? Why?",
     "Sovollar (UZ)": "Sizningcha, qiyinchiliklar rivojlanish uchun muhimmi? Nima uchun?",
@@ -648,7 +648,7 @@
   },
   {
     "Mavzular": "I",
-    "Mavzular nomi": "Card I",
+    "Mavzular nomi": "Food and Culture",
     "Qism": "Part 2",
     "Sovollar": "4. Can facing challenges make you stronger?",
     "Sovollar (UZ)": "Qiyinchiliklarga duch kelish sizni kuchliroq qila oladimi?",
@@ -658,7 +658,7 @@
 
   {
     "Mavzular": "J",
-    "Mavzular nomi": "Card J",
+    "Mavzular nomi": "Entertainment",
     "Qism": "Part 1",
     "Sovollar": "1. What is your favorite film genre and why?",
     "Sovollar (UZ)": "Sevimli film janringiz qaysi va nima uchun?",
@@ -667,7 +667,7 @@
   },
   {
     "Mavzular": "J",
-    "Mavzular nomi": "Card J",
+    "Mavzular nomi": "Entertainment",
     "Qism": "Part 1",
     "Sovollar": "2. Do you prefer watching movies at home or at the cinema?",
     "Sovollar (UZ)": "Filmlarni uyda yoki kinoteatrda tomosha qilishni afzal ko‘rasizmi?",
@@ -676,7 +676,7 @@
   },
   {
     "Mavzular": "J",
-    "Mavzular nomi": "Card J",
+    "Mavzular nomi": "Entertainment",
     "Qism": "Part 1",
     "Sovollar": "3. How has Netflix changed the way you watch films?",
     "Sovollar (UZ)": "Netflix filmlarni tomosha qilish uslubingizni qanday o‘zgartirdi?",
@@ -685,7 +685,7 @@
   },
   {
     "Mavzular": "J",
-    "Mavzular nomi": "Card J",
+    "Mavzular nomi": "Entertainment",
     "Qism": "Part 1",
     "Sovollar": "4. What are some classic films everyone should watch?",
     "Sovollar (UZ)": "Hamma tomosha qilishi kerak bo‘lgan klassik filmlar qaysilar?",
@@ -694,7 +694,7 @@
   },
   {
     "Mavzular": "J",
-    "Mavzular nomi": "Card J",
+    "Mavzular nomi": "Entertainment",
     "Qism": "Part 2",
     "Sovollar": "1. How do you use technology in your daily life?",
     "Sovollar (UZ)": "Kundalik hayotingizda texnologiyadan qanday foydalanasiz?",
@@ -703,7 +703,7 @@
   },
   {
     "Mavzular": "J",
-    "Mavzular nomi": "Card J",
+    "Mavzular nomi": "Entertainment",
     "Qism": "Part 2",
     "Sovollar": "2. What are the advantages of using smart devices?",
     "Sovollar (UZ)": "Aqlli qurilmalardan foydalanishning qanday afzalliklari bor?",
@@ -712,7 +712,7 @@
   },
   {
     "Mavzular": "J",
-    "Mavzular nomi": "Card J",
+    "Mavzular nomi": "Entertainment",
     "Qism": "Part 2",
     "Sovollar": "3. Can you imagine your life without technology?",
     "Sovollar (UZ)": "Hayotingizni texnologiyasiz tasavvur qila olasizmi?",
@@ -721,7 +721,7 @@
   },
   {
     "Mavzular": "J",
-    "Mavzular nomi": "Card J",
+    "Mavzular nomi": "Entertainment",
     "Qism": "Part 2",
     "Sovollar": "4. How do you stay safe online?",
     "Sovollar (UZ)": "Internetda o‘zingizni qanday xavfsiz saqlaysiz?",
