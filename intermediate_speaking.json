@@ -587,19 +587,19 @@
     "Mavzular": "I",
     "Mavzular nomi": "Food and Culture",
     "Qism": "Part 1",
-    "Sovollar": "1. What is your favorite traditional dish from your country?",
+    "Sovollar": "1. What is your favorite traditional meal from your country?",
     "Sovollar (UZ)": "Mamlakatingizdagi eng sevimli milliy taomingiz qaysi?",
-    "FullAnswer_EN": "My favorite traditional dish is plov because it is delicious and filling. It is usually made with rice, meat, carrots, and onions. I especially enjoy eating it with my family during special occasions.",
+    "FullAnswer_EN": "My favorite traditional meal is plov because it is delicious and filling. It is usually made with rice, meat, carrots, and onions. I especially enjoy eating it with my family during special occasions.",
     "FullAnswer_UZ": "Mening sevimli milliy taomim palov, chunki u mazali va to‘yimli. U odatda guruch, go‘sht, sabzi va piyozdan tayyorlanadi. Ayniqsa, uni oilam bilan maxsus kunlarda yeyishni yaxshi ko‘raman."
   },
   {
     "Mavzular": "I",
     "Mavzular nomi": "Food and Culture",
     "Qism": "Part 1",
-    "Sovollar": "2. How does food bring people together?",
-    "Sovollar (UZ)": "Ovqat odamlarni qanday birlashtiradi?",
-    "FullAnswer_EN": "Food brings people together because families and friends often eat and talk together. Traditional meals are also an important part of celebrations and special events. Sharing food can make relationships stronger.",
-    "FullAnswer_UZ": "Ovqat odamlarni birlashtiradi, chunki oila va do‘stlar ko‘pincha birga ovqatlanib, suhbatlashadilar. Milliy taomlar bayramlar va maxsus tadbirlarning ham muhim qismidir. Ovqatni birga baham ko‘rish munosabatlarni mustahkamlashi mumkin."
+    "Sovollar": "2. Why do people like eating with their family and friends?",
+    "Sovollar (UZ)": "Nima uchun odamlar oilasi va do‘stlari bilan birga ovqatlanishni yoqtirishadi?",
+    "FullAnswer_EN": "People like eating with their family and friends because it brings them together to talk and share their feelings. Traditional meals are also an important part of celebrations and special events. Sharing food strengthens relationships and creates joyful memories.",
+    "FullAnswer_UZ": "Odamlar oilasi va do‘stlari bilan birga ovqatlanishni yoqtirishadi, chunki bu ularni suhbatlashish va his-tuyg‘ularini baham ko‘rish uchun birlashtiradi. Milliy taomlar bayramlar va maxsus tadbirlarning ham muhim qismidir. Ovqatni birga baham ko‘rish munosabatlarni mustahkamlaydi va quvonchli xotiralar yaratadi."
   },
   {
     "Mavzular": "I",
@@ -641,19 +641,19 @@
     "Mavzular": "I",
     "Mavzular nomi": "Food and Culture",
     "Qism": "Part 2",
-    "Sovollar": "3. Do you think challenges are important for growth? Why?",
-    "Sovollar (UZ)": "Sizningcha, qiyinchiliklar rivojlanish uchun muhimmi? Nima uchun?",
-    "FullAnswer_EN": "Yes, I think challenges are very important for personal growth. They force us to learn new skills and become more confident. Without challenges, people may not discover what they are really capable of.",
-    "FullAnswer_UZ": "Ha, menimcha, qiyinchiliklar shaxsiy rivojlanish uchun juda muhim. Ular bizni yangi ko‘nikmalarni o‘rganishga va o‘zimizga bo‘lgan ishonchimizni oshirishga majbur qiladi. Qiyinchiliklarsiz odamlar nimalarga qodir ekanliklarini to‘liq anglamasliklari mumkin."
+    "Sovollar": "3. Do you think challenges help you grow? Why?",
+    "Sovollar (UZ)": "Sizningcha, qiyinchiliklar o‘sishingizga (rivojlanishingizga) yordam beradimi? Nima uchun?",
+    "FullAnswer_EN": "Yes, I think challenges definitely help us grow because they force us to learn new skills and become more confident. Overcoming difficult situations gives us valuable experience and makes us wiser. Without challenges, people may not discover what they are really capable of.",
+    "FullAnswer_UZ": "Ha, menimcha, qiyinchiliklar albatta o‘sishimizga yordam beradi, chunki ular bizni yangi ko‘nikmalarni o‘rganishga va o‘zimizga bo‘lgan ishonchimizni oshirishga majbur qiladi. Qiyin vaziyatlarni yengish bizga qimmatli tajriba beradi va yanada dono qiladi. Qiyinchiliklarsiz odamlar nimalarga qodir ekanliklarini to‘liq anglamasliklari mumkin."
   },
   {
     "Mavzular": "I",
     "Mavzular nomi": "Food and Culture",
     "Qism": "Part 2",
-    "Sovollar": "4. Can facing challenges make you stronger?",
-    "Sovollar (UZ)": "Qiyinchiliklarga duch kelish sizni kuchliroq qila oladimi?",
-    "FullAnswer_EN": "Yes, facing challenges can make people mentally stronger. When we solve difficult problems, we become more confident in our abilities. We also learn how to stay calm and continue working when things are difficult.",
-    "FullAnswer_UZ": "Ha, qiyinchiliklarga duch kelish odamni ruhiy jihatdan kuchliroq qilishi mumkin. Qiyin muammolarni hal qilganimizda, o‘z qobiliyatlarimizga bo‘lgan ishonchimiz ortadi. Shuningdek, ishlar qiyin bo‘lganda xotirjam qolish va davom etishni o‘rganamiz."
+    "Sovollar": "4. Can challenges make people stronger?",
+    "Sovollar (UZ)": "Qiyinchiliklar odamlarni kuchliroq qila oladimi?",
+    "FullAnswer_EN": "Yes, challenges can make people much stronger, especially mentally. When we solve difficult problems, we become more confident in our abilities. We also learn how to stay calm, adapt to unexpected difficulties, and continue working hard.",
+    "FullAnswer_UZ": "Ha, qiyinchiliklar odamlarni ancha kuchliroq, ayniqsa ruhiy jihatdan baquvvat qilishi mumkin. Qiyin muammolarni hal qilganimizda, o‘z qobiliyatlarimizga bo‘lgan ishonchimiz ortadi. Shuningdek, kutilmagan qiyinchiliklarga moslashish, xotirjam qolish va mehnat qilishda davom etishni o‘rganamiz."
   },
 
   {
