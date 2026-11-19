@@ -674,8 +674,20 @@ document.addEventListener('DOMContentLoaded', () => {
         return processed;
     }
 
+    function stripFormattingTags(text) {
+        if (!text) return '';
+        return String(text)
+            .replace(/\[\/?(red|blue|green|yellow|orange|r)\]/gi, '')
+            .replace(/<\/?(red|blue|green|yellow|orange|r)>/gi, '')
+            .replace(/\*\*/g, '')
+            .trim();
+    }
+
     function getWordCount(text) {
-        return text.trim().split(/\s+/).length;
+        if (!text) return 0;
+        const clean = stripFormattingTags(text);
+        if (!clean) return 0;
+        return clean.split(/\s+/).length;
     }
 
     function getTopicIcon(text) {
@@ -1041,7 +1053,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     else break;
                 }
                 speak(fullSpeech);
-                setTimeout(() => speak(data.jovob_en), 2000);
+                setTimeout(() => speak(stripFormattingTags(data.jovob_en)), 2000);
             });
 
             learnedBtn.addEventListener('click', (e) => {
@@ -1093,7 +1105,7 @@ document.addEventListener('DOMContentLoaded', () => {
             checkBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const userText = textarea.value.trim();
-                const originalText = data.jovob_en.trim();
+                const originalText = stripFormattingTags(data.jovob_en);
                 
                 if (!userText) {
                     feedback.textContent = "Iltimos, oldin biror narsa yozing.";
@@ -2546,7 +2558,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     checkSpeechBtn.addEventListener('click', (ev) => {
                         ev.stopPropagation();
                         const userText = transcriptBox.textContent.trim();
-                        const originalText = textToSpeak.trim();
+                        const originalText = stripFormattingTags(textToSpeak);
                         
                         if (!userText || userText === "Gapiring...") {
                             speechFeedback.textContent = "Matn aniqlanmadi.";
