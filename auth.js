@@ -1,5 +1,5 @@
 // =========================================================
-// DEVICE-BASED ACCESS CONTROL & ADMIN APPROVAL SYSTEM (v10.5)
+// DEVICE-BASED ACCESS CONTROL & ADMIN APPROVAL SYSTEM (v10.6)
 // Modern Glassmorphism Design & Anti-Alert-Loop Protection
 // =========================================================
 
